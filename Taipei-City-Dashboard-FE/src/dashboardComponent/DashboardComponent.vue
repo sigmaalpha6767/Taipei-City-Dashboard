@@ -29,6 +29,8 @@ import IconPercentChart from "./components/IconPercentChart.vue";
 import IndicatorChart from "./components/IndicatorChart.vue";
 import TextUnitChart from "./components/TextUnitChart.vue";
 import FoodSafetyVulnerableExposure from "./components/FoodSafetyVulnerableExposure.vue";
+import FoodSafetySchoolExposure from "./components/FoodSafetySchoolExposure.vue";
+import FoodSafetyCareExposure from "./components/FoodSafetyCareExposure.vue";
 import FoodSafetyRiskInspection from "./components/FoodSafetyRiskInspection.vue";
 import FoodSafetyCategoryChart from "./components/FoodSafetyCategoryChart.vue";
 import FoodSafetyDistrictChart from "./components/FoodSafetyDistrictChart.vue";
@@ -232,6 +234,10 @@ function returnChartComponent(name, svg) {
 		return svg ? TextUnitChartSvg : TextUnitChart;
 	case "FoodSafetyVulnerableExposure":
 		return svg ? MapLegendSvg : FoodSafetyVulnerableExposure;
+	case "FoodSafetySchoolExposure":
+		return svg ? MapLegendSvg : FoodSafetySchoolExposure;
+	case "FoodSafetyCareExposure":
+		return svg ? MapLegendSvg : FoodSafetyCareExposure;
 	case "FoodSafetyRiskInspection":
 		return svg ? MapLegendSvg : FoodSafetyRiskInspection;
 	case "FoodSafetyCategoryChart":

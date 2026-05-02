@@ -31,7 +31,8 @@ aging_kpi	{#F65658,#F49F36,#F5C860,#9AC17C,#4CB495,#569C9A,#60819C,#2F8AB1}	{Tex
 aging_workforce_trend	{#24B0DD,#56B96D,#F8CF58,#F5AD4A,#E170A6,#ED6A45,#AF4137,#10294A}	{BarPercentChart,RadarChart,ColumnChart}	%
 bike_network	{#a0b8e8,#b7ff98}	{DonutChart,BarChart}	公里
 bike_map	{#a0b8e8,#b7ff98}	{MapLegend}	條
-food_safety_vulnerable_exposure	{#F5AD4A,#E0413A,#56C1F0,#56B96D}	{FoodSafetyVulnerableExposure}	\N
+food_safety_vulnerable_exposure	{#5a9cf8,#888787}	{FoodSafetySchoolExposure}	\N
+food_safety_care_exposure	{#5a9cf8,#888787}	{FoodSafetyCareExposure}	\N
 \.
 
 
@@ -63,7 +64,8 @@ COPY public.components (id, index, name) FROM stdin;
 218	aging_kpi	長照指標
 215	aging_workforce_trend	高齡就業人口之年增結構
 217	bike_map	自行車道路網圖資
-220	food_safety_vulnerable_exposure	校園與長照食安暴露風險
+220	food_safety_vulnerable_exposure	校園食安暴露風險
+223	food_safety_care_exposure	長照食安暴露風險
 \.
 
 
@@ -85,7 +87,7 @@ COPY public.dashboards (id, index, name, components, icon, updated_at, created_a
 356	ltc_care_tpe	長照關懷	{214,215,216,218}	elderly	2025-02-26 08:43:42.86017+00	2024-03-21 09:38:37.66+00
 355	ltc_care_newtpe	長照關懷	{214,215,216,218}	elderly	2025-02-27 06:42:21.705931+00	2024-03-21 09:38:37.66+00
 359	map-layers-metrotaipei	圖資資訊	{217}	public	2024-05-16 03:56:12.76016+00	2024-03-21 10:04:24.928533+00
-358	practical_transportation_newtpe	務實交通	{60,212,213,220}	directions_car	2025-03-12 08:00:38.75842+00	2024-03-21 09:38:37.66+00
+358	practical_transportation_newtpe	務實交通	{60,212,213,220,223}	directions_car	2025-03-12 08:00:38.75842+00	2024-03-21 09:38:37.66+00
 1	09a25cd9cb7d	收藏組件	\N	favorite	2025-03-14 07:34:22.247753+00	2025-03-14 07:34:22.247753+00
 2	3245d9eace5f	我的新儀表板	{215,218,216,213,212,214,60,146}	star	2025-03-14 14:55:11.732116+00	2025-03-14 14:55:11.732116+00
 \.
@@ -127,7 +129,8 @@ ebus_percent	\N	\N	\N	static	\N	\N	\N	交通局	顯示雙北電動公車比例	�
 ebus_percent	\N	\N	\N	static	\N	\N	\N	交通局	顯示臺北電動公車比例	此圖顯示臺北市電動公車的比例，呈現全市公車車隊中電動車所占比重，以及近年來電動公車數量的成長情形。圖表比較傳統燃油公車與電動公車的比例變化，並標示臺北市政府推動電動化政策、補助措施及其帶來的環保效益。透過這些數據，可評估臺北市電動公車的普及程度，及其在減碳與空氣品質改善上的貢獻，有助於進一步規劃更完善的公共運輸電動化策略，推動城市交通朝向低碳永續目標邁進。	可用於評估臺北市公共運輸電動化的進程，透過此圖顯示電動公車在市區公車總數中的占比及其成長趨勢。圖表呈現傳統燃油公車與電動公車的比例變化，並標示臺北市政府推動的政策措施、補助方案及相關環保效益等影響因素。透過這些數據，可分析臺北市電動公車的普及程度及其在減碳排放與空氣品質改善方面的貢獻，有助於進一步規劃更完善的公共運輸電動化策略，推動臺北朝向低碳與永續發展的城市目標邁進。	{https://tdx.transportdata.tw/api/basic/v2/Bus/Vehicle/City/Taipei?%24top=30&%24format=JSON}	{doit}	2025-02-15 05:56:00+00	2025-02-20 09:11:21.620625+00	percent	select '電動公車數量' as x_axis,y_axis,sum(data) data from \r\n(\r\nselect '電動巴士' as y_axis,count(*) as  data\r\nfrom public.bus_info_tpe\r\nwhere plate_numb like 'E%'\r\nunion all\r\nselect '非電動巴士' as y_axis,count(*) as  data\r\nfrom public.bus_info_tpe)d\r\ngroup by \r\ny_axis	\N	taipei
 youbike_availability	\N	{99}	\N	current	\N	10	minute	交通局	顯示當前雙北共享單車YouBike的使用情況。	顯示雙北地區（臺北市與新北市）當前共享單車 YouBike 的使用情況，格式為可借車輛數／全區車位數。資料來源為兩市交通局公開資料，每5分鐘更新一次，提供即時的車輛可用資訊與站點使用狀況，有助於掌握整體運行效率與民眾使用情形，亦可作為交通管理與營運調度的參考依據。	藉由顯示雙北地區 YouBike 的使用情況，以及觀察可借車輛數約為車柱總數的一半，可大致掌握目前停放於站點與使用中車輛的整體分布情形。使用者亦可透過地圖模式查詢雙北各站點的即時資訊，包括可借車輛數、可還空位數及站點位置，方便規劃路線與掌握使用狀況，提升共享單車的便利性與使用效率。	{https://tdx.transportdata.tw/api-service/swagger/basic/2cc9b888-a592-496f-99de-9ab35b7fb70d#/Bike/BikeApi_Availability_2181,https://tdx.transportdata.tw/api/basic/v2/Bike/Availability/City/NewTaipei?%24top=30&%24format=JSON}	{doit,ntpc}	2023-12-20 05:56:00+00	2024-03-19 06:08:17.99+00	percent	select x_axis,y_axis,sum(data)data\r\nfrom (select '在站車輛' as x_axis, \r\nunnest(ARRAY['可借車輛', '空位']) as y_axis, \r\nunnest(ARRAY[SUM(available_rent_general_bikes), SUM(available_return_bikes)]) as data\r\nfrom tran_ubike_realtime_new_tpe\r\nunion all \r\nselect '在站車輛' as x_axis, \r\nunnest(ARRAY['可借車輛', '空位']) as y_axis, \r\nunnest(ARRAY[SUM(available_rent_general_bikes), SUM(available_return_bikes)]) as data\r\nfrom tran_ubike_realtime)d\r\ngroup by x_axis,y_axis	\N	metrotaipei
 youbike_availability	\N	{70}	\N	current	\N	10	minute	交通局	顯示當前臺北市共享單車YouBike的使用情況。	顯示臺北市當前共享單車 YouBike 的使用情況，格式為可借車輛數／全市車位數。資料來源為臺北市政府交通局公開資料，每5分鐘更新一次，反映即時的使用狀況與車輛調度情形，可作為交通監測與市民使用參考依據。	藉由臺北市 YouBike 使用情況的顯示，以及全市可借車輛數約為車柱總數的一半，可大致掌握目前停放於站點與正在使用中的車輛數量。使用者可透過地圖模式查詢臺北市各站點的即時資訊，包括可借車輛數、可還空位數及站點位置，方便即時掌握使用狀況，提升共享單車的使用效率與便利性。	{https://tdx.transportdata.tw/api-service/swagger/basic/2cc9b888-a592-496f-99de-9ab35b7fb70d#/Bike/BikeApi_Availability_2181}	{doit}	2023-12-20 05:56:00+00	2024-03-19 06:08:17.99+00	percent	select '在站車輛' as x_axis, \r\nunnest(ARRAY['可借車輛', '空位']) as y_axis, \r\nunnest(ARRAY[SUM(available_rent_general_bikes), SUM(available_return_bikes)]) as data\r\nfrom tran_ubike_realtime	\N	taipei
-food_safety_vulnerable_exposure	\N	{200,201,202}	\N	static	\N	\N	\N	教育部、雙北教育局、社會局、衛生局	整合食安事件、學校、幼兒園、長照機構與高齡人口資料，呈現脆弱族群暴露範圍。	當食安事件、疑似原物料或同源供應商風險出現時，整合學校、幼兒園、長照機構與高齡人口資料，計算各行政區與場域的脆弱族群暴露分數。Component 4 為 MVP 版本，使用 mock event 與 mock data。前端從 /data/prepared/vulnerable_exposure.json 讀取已預先處理好的暴露分析結果。	衛生局判定影響範圍、教育局通知學校檢查午餐留樣、社會局提醒長照機構注意餐食來源。Component 5 將以此輸出為輸入做行動排序。	{}	{doit}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	two_d	SELECT '事件模式' AS x_axis, 1 AS data	\N	metrotaipei
+food_safety_vulnerable_exposure	\N	{200,201,202}	\N	static	\N	\N	\N	教育部、雙北教育局、衛生局	當前食安事件對校園（國中小+幼兒園）之暴露範圍。	依據當前食安事件、疑似原物料或同源供應商風險，篩選受影響的國中小與幼兒園，並呈現各行政區暴露分數。資料來自 postgres-data 的 vulnerable_facility_exposure / district_exposure_summary / food_event_current 三張表，BE 端點為 GET /api/v1/food/exposure。	衛生局判定影響範圍、教育局通知學校檢查午餐留樣、AI 決策建議生成校方公告函。	{}	{doit}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	two_d	SELECT '事件模式' AS x_axis, 1 AS data	\N	metrotaipei
+food_safety_care_exposure	\N	{200,201,202}	\N	static	\N	\N	\N	社會局、衛生局	當前食安事件對長照機構之暴露範圍。	依據當前食安事件、疑似原物料或同源供應商風險，篩選受影響的長照機構並呈現各行政區暴露分數。資料來自 postgres-data 的 vulnerable_facility_exposure / district_exposure_summary / food_event_current 三張表，BE 端點為 GET /api/v1/food/exposure。	社會局通知長照機構檢查餐食來源、衛生局判定影響範圍、AI 決策建議生成提醒函。	{}	{doit}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	two_d	SELECT '事件模式' AS x_axis, 1 AS data	\N	metrotaipei
 \.
 
 

@@ -23,7 +23,9 @@ export const chartTypes: chartType = {
 	IndicatorChart: "指標圖", // V
 	MapLegend: "地圖圖例", // V
 	TextUnitChart: "文字數值圖", // V
-	FoodSafetyVulnerableExposure: "食安暴露風險", // Component 4
+	FoodSafetyVulnerableExposure: "食安暴露風險", // Component 4 legacy（合併版，保留向下相容）
+	FoodSafetySchoolExposure: "校園食安暴露風險", // Component 4 — 國中小+幼兒園
+	FoodSafetyCareExposure: "長照食安暴露風險", // Component 4 — 長照機構
 	FoodSafetyRiskInspection: "食品抽驗風險", // Component 1 legacy
 	FoodSafetyCategoryChart: "檢體排行", // Component 1
 	FoodSafetyDistrictChart: "行政區排行", // Component 1
