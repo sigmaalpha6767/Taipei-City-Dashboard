@@ -174,7 +174,11 @@ export const useChatStore = defineStore('chat', () => {
 						.map(x => `${x.city || ''}${x.district}(${x.fail_count}件)`).join('、');
 					if (districts) lines.push(`- 風險前 6 行政區：${districts}`);
 					const recids = (d.recidivists || []).slice(0, 5)
-						.map(r => `${r.name}[${r.kind || '場域'}/${r.fail_count}次/${r.city || ''}${r.district || ''}]`).join('、');
+						.map(r => {
+							const dist = Array.isArray(r.districts) && r.districts.length ? r.districts.join('、') : '';
+							const loc = [r.city, dist].filter(Boolean).join(' ');
+							return `${r.store_name}[${r.fail_count}次違規${loc ? '／' + loc : ''}；主違: ${r.main_violation_type || '—'}]`;
+						}).join('、');
 					if (recids) lines.push(`- Top 5 累犯場域：${recids}`);
 				}
 			}
