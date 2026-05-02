@@ -76,3 +76,6 @@ Taipei-City-Dashboard-DE/docker/prod/.env
 .playwright-mcp/
 Taipei-City-Dashboard-FE/src/dashboardComponent/image.png
 vite.config.js.timestamp-*.mjs
+
+# 食安資料端一鍵安裝腳本（例外）
+!db-sample-data/food-safety/setup.sh
