@@ -9,6 +9,11 @@ const props = defineProps([
 	"map_config", "map_filter", "map_filter_on",
 ]);
 
+// 點 treemap 上的食材 → emit 事件給 DashboardComponent，由 mapStore.filterByParam
+// 過濾 map 點為「sample_name = 該食材」
+const emits = defineEmits(["filterByParam", "filterByLayer", "clearByParamFilter", "clearByLayerFilter"]);
+const selectedIndex = ref(null);
+
 const payload = ref(null);
 async function load() {
 	try {
@@ -46,8 +51,36 @@ const top10Sum = computed(() => top10.value.reduce((acc, s) => acc + s.fail_coun
 const totalSum = computed(() => samples.value.reduce((acc, s) => acc + s.fail_count, 0));
 const top10Pct = computed(() => totalSum.value > 0 ? (top10Sum.value / totalSum.value * 100).toFixed(0) : 0);
 
+function handleDataSelection(_e, _ctx, config) {
+	if (!props.map_filter || !props.map_filter_on) return;
+	const idx = config.dataPointIndex;
+	const sample = top10.value[idx];
+	if (!sample) return;
+	const key = `${idx}`;
+
+	// 本組件包含兩張 chart（CategoryChart 食材, DistrictChart 行政區）共用一份 map_filter，
+	// 但兩張要 filter 的 map 屬性不同（sample_name vs district），所以這裡 override 成 sample_name。
+	const localFilter = {
+		...props.map_filter,
+		mode: "byParam",
+		byParam: { xParam: "sample_name" },
+	};
+
+	if (key !== selectedIndex.value) {
+		emits("filterByParam", localFilter, props.map_config, sample.sample_name, null);
+		selectedIndex.value = key;
+	} else {
+		emits("clearByParamFilter", props.map_config);
+		selectedIndex.value = null;
+	}
+}
+
 const chartOptions = computed(() => ({
-	chart: { borderRadius: 5, toolbar: { show: false } },
+	chart: {
+		borderRadius: 5,
+		toolbar: { show: false },
+		events: { dataPointSelection: handleDataSelection },
+	},
 	colors: distributedColors.value,
 	dataLabels: {
 		enabled: true,

@@ -9,6 +9,13 @@ const props = defineProps([
 	"map_config", "map_filter", "map_filter_on",
 ]);
 
+// 把內部 DistrictChart emit 的 filter 事件透傳出去，讓 DashboardComponent 接到後送 mapStore
+const emits = defineEmits([
+	"filterByParam", "filterByLayer",
+	"clearByParamFilter", "clearByLayerFilter",
+	"fly",
+]);
+
 const payload = ref(null);
 async function load() {
 	try {
@@ -46,6 +53,11 @@ const innerConfig = computed(() => ({
 			:map_config="map_config"
 			:map_filter="map_filter"
 			:map_filter_on="map_filter_on"
+			@filter-by-param="(...args) => emits('filterByParam', ...args)"
+			@filter-by-layer="(...args) => emits('filterByLayer', ...args)"
+			@clear-by-param-filter="(...args) => emits('clearByParamFilter', ...args)"
+			@clear-by-layer-filter="(...args) => emits('clearByLayerFilter', ...args)"
+			@fly="(...args) => emits('fly', ...args)"
 		/>
 	</div>
 </template>
