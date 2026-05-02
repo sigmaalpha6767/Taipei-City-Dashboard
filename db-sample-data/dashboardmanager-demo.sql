@@ -35,6 +35,7 @@ food_safety_vulnerable_exposure	{#5a9cf8,#888787}	{FoodSafetySchoolExposure}	\N
 food_safety_care_exposure	{#5a9cf8,#888787}	{FoodSafetyCareExposure}	\N
 food_safety_risk_inspection	{#E0413A,#F08740,#F2C94C,#56B96D,#7B1FA2,#1E88E5}	{FoodSafetyCategoryChart,FoodSafetyDistrictChart}	\N
 food_safety_citizen_radar	{#56C1F0,#F5AD4A,#E0413A,#56B96D}	{FoodSafetyCitizenRadar}	\N
+food_safety_disease_stats	{#5a9cf8,#888787}	{FoodSafetyDiseaseStats}	\N
 \.
 
 
@@ -72,6 +73,7 @@ COPY public.components (id, index, name) FROM stdin;
 221	food_safety_risk_inspection	食品抽驗不合格與高風險食材
 222	food_safety_citizen_radar	市民食安雷達
 223	food_safety_care_exposure	長照食安暴露風險
+224	food_safety_disease_stats	食源性疾病統計
 \.
 
 
@@ -141,6 +143,7 @@ food_safety_risk_inspection	\N	{210,211}	{"mode": "byParam", "byParam": {"xParam
 food_safety_risk_inspection	\N	{210,211}	{"mode": "byParam", "byParam": {"xParam": "district"}}	static	\N	1	year	臺北市政府衛生局	臺北市 113 年食品抽驗不合格清冊分析，找出高風險食材類別與行政區。	本組件以臺北市衛生局公開的食品抽驗不合格清冊為基礎，計算各食材類別的不合格件數、主要違規原因（農藥殘留／微生物／重金屬／添加物等）與涉及行政區。資料涵蓋 268 筆不合格抽驗紀錄。	為衛生局後續加強抽驗的優先順序提供依據；為教育局／社會局判斷食材採購風險提供背景資料；為市民查詢生活區域食安風險提供透明度。	{https://data.taipei/dataset/detail?id=02b3f7a1-fca9-4eb9-b0f8-cc54da35ddee}	{doit}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	two_d	SELECT '全年彙整' AS x_axis, 268 AS data	\N	taipei
 food_safety_citizen_radar	\N	{210}	{"mode": "byParam", "byParam": {"xParam": "sample_name"}}	static	\N	\N	\N	雙北衛生局、教育局、社會局	輸入您的住址或所在位置，立即取得方圓 1 公里內食安風險評估與行動建議。	市民食安雷達整合 Component 1（食品抽驗不合格清冊）+ Component 4（校園長照暴露分析）的資料，依使用者所在位置即時計算個人化風險分數，列出範圍內的不合格店家、學校、長照機構，並給出避開或聯繫機構的具體建議。	家長確認小孩學校用餐風險、子女查詢長輩活動範圍食安狀況、市民選擇外食地點前的風險檢查、衛生局與民眾雙向的食安透明度。	{}	{doit}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	two_d	SELECT '市民查詢' AS x_axis, 1 AS data	\N	metrotaipei
 food_safety_citizen_radar	\N	{210}	{"mode": "byParam", "byParam": {"xParam": "sample_name"}}	static	\N	\N	\N	雙北衛生局、教育局、社會局	輸入您的住址或所在位置，立即取得方圓 1 公里內食安風險評估與行動建議。	市民食安雷達整合 Component 1（食品抽驗不合格清冊）+ Component 4（校園長照暴露分析）的資料，依使用者所在位置即時計算個人化風險分數，列出範圍內的不合格店家、學校、長照機構，並給出避開或聯繫機構的具體建議。	家長確認小孩學校用餐風險、子女查詢長輩活動範圍食安狀況、市民選擇外食地點前的風險檢查、衛生局與民眾雙向的食安透明度。	{}	{doit}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	two_d	SELECT '市民查詢' AS x_axis, 1 AS data	\N	taipei
+food_safety_disease_stats	\N	\N	\N	static	\N	\N	\N	衛福部疾管署、雙北衛生局	從病原統計反推可能食材與處置策略。	依雙北年度食品中毒典型分布（諾羅 / 沙門氏菌 / 腸炎弧菌等 7 種主要病原），呈現件數佔比、嚴重度，並對每個病原顯示關聯食材、典型發生場所、處置策略與檢驗方向。資料表 disease_outbreak_stats，BE 端點 GET /api/v1/food/disease-stats。	衛生局接獲群聚通報時快速判斷可能食材方向；學校 / 長照機構環境消毒決策；AI 提示稽查與檢驗優先級。	{}	{doit}	2026-05-02 00:00:00+00	2026-05-02 00:00:00+00	two_d	SELECT 'disease' AS x_axis, 1 AS data	\N	metrotaipei
 \.
 
 

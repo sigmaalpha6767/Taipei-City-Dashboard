@@ -32,5 +32,6 @@ export const chartTypes: chartType = {
 	FoodSafetyViolationChart: "違規類別占比", // Component 1
 	FoodSafetyMonthlyTrendChart: "月份趨勢", // Component 1
 	FoodSafetyInspectionListChart: "建議稽查清單", // Component 1
-	FoodSafetyCitizenRadar: "市民食安雷達", // Component 6
+	FoodSafetyCitizenRadar: "市民食安雷達", // Component 6 legacy
+	FoodSafetyDiseaseStats: "食源性疾病統計", // Component 6 — 病原 → 食材 + 處置
 };

@@ -29,6 +29,7 @@ export const chartTypes = {
 	FoodSafetyMonthlyTrendChart: "月份趨勢",
 	FoodSafetyInspectionListChart: "建議稽查清單",
 	FoodSafetyCitizenRadar: "市民食安雷達",
+	FoodSafetyDiseaseStats: "食源性疾病統計",
 };
 
 export const chartsPerDataType = {
@@ -51,6 +52,7 @@ export const chartsPerDataType = {
 		"FoodSafetyMonthlyTrendChart",
 		"FoodSafetyInspectionListChart",
 		"FoodSafetyCitizenRadar",
+		"FoodSafetyDiseaseStats",
 	],
 	three_d: [
 		"ColumnChart",

@@ -12,22 +12,28 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCHEMA="$SCRIPT_DIR/schema"
 DATA="$SCRIPT_DIR/data"
 
-echo "▸ Step 1/5: 建立 food_inspection_raw 表 schema"
+echo "▸ Step 1/7: 建立 food_inspection_raw 表 schema"
 docker exec -i postgres-data psql -U postgres -d dashboard < "$SCHEMA/01_food_inspection.sql"
 
-echo "▸ Step 2/5: 建立 vulnerable_exposure 系列表 schema (5 張)"
+echo "▸ Step 2/7: 建立 vulnerable_exposure 系列表 schema (5 張)"
 docker exec -i postgres-data psql -U postgres -d dashboard < "$SCHEMA/02_vulnerable_exposure.sql"
 
-echo "▸ Step 3/5: 鬆綁 school_directory.agency_code unique 約束"
+echo "▸ Step 3/7: 建立 disease_outbreak_stats 表 schema (Component 6)"
+docker exec -i postgres-data psql -U postgres -d dashboard < "$SCHEMA/03_disease_outbreak.sql"
+
+echo "▸ Step 4/7: 鬆綁 school_directory.agency_code unique 約束"
 docker exec postgres-data psql -U postgres -d dashboard \
   -c "ALTER TABLE school_directory DROP CONSTRAINT IF EXISTS school_directory_agency_code_key;" \
   > /dev/null
 
-echo "▸ Step 4/5: 灌食安抽驗資料 (368 筆)"
+echo "▸ Step 5/7: 灌食安抽驗資料 (368 筆)"
 docker exec -i postgres-data psql -U postgres -d dashboard < "$DATA/03_food_inspection_data.sql" | tail -3
 
-echo "▸ Step 5/5: 灌脆弱場域資料 (校 + 長照 + 場域 + 行政區 + 事件)"
+echo "▸ Step 6/7: 灌脆弱場域資料 (校 + 長照 + 場域 + 行政區 + 事件)"
 docker exec -i postgres-data psql -U postgres -d dashboard < "$DATA/04_vulnerable_data.sql" | tail -3
+
+echo "▸ Step 7/7: 灌食源性疾病統計 (7 種病原)"
+docker exec -i postgres-data psql -U postgres -d dashboard < "$DATA/05_disease_outbreak_data.sql" | tail -3
 
 echo ""
 echo "▸ 驗證："
@@ -38,6 +44,7 @@ UNION ALL SELECT 'care_facility_directory', COUNT(*) FROM care_facility_director
 UNION ALL SELECT 'vulnerable_facility_exposure', COUNT(*) FROM vulnerable_facility_exposure
 UNION ALL SELECT 'district_exposure_summary', COUNT(*) FROM district_exposure_summary
 UNION ALL SELECT 'food_event_current', COUNT(*) FROM food_event_current
+UNION ALL SELECT 'disease_outbreak_stats', COUNT(*) FROM disease_outbreak_stats
 ORDER BY tbl;"
 
 echo ""

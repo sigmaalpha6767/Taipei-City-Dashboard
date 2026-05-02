@@ -9,6 +9,7 @@ import http from "../router/axios";
 
 let summaryCache = null;
 let exposureCache = null;
+let diseaseCache = null;
 
 export function loadFoodInspection({ forceReload = false } = {}) {
 	if (forceReload) summaryCache = null;
@@ -39,7 +40,23 @@ export function loadFoodExposure({ forceReload = false } = {}) {
 	return exposureCache;
 }
 
+// 食源性疾病統計 — Component 6（從 postgres-data.disease_outbreak_stats）
+export function loadFoodDiseaseStats({ forceReload = false } = {}) {
+	if (forceReload) diseaseCache = null;
+	if (!diseaseCache) {
+		diseaseCache = http
+			.get("/food/disease-stats")
+			.then((resp) => resp.data?.data || {})
+			.catch((e) => {
+				diseaseCache = null;
+				throw e;
+			});
+	}
+	return diseaseCache;
+}
+
 export function clearFoodInspectionCache() {
 	summaryCache = null;
 	exposureCache = null;
+	diseaseCache = null;
 }

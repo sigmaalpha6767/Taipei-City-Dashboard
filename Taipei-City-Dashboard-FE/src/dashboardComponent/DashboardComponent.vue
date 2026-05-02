@@ -38,6 +38,7 @@ import FoodSafetyViolationChart from "./components/FoodSafetyViolationChart.vue"
 import FoodSafetyMonthlyTrendChart from "./components/FoodSafetyMonthlyTrendChart.vue";
 import FoodSafetyInspectionListChart from "./components/FoodSafetyInspectionListChart.vue";
 import FoodSafetyCitizenRadar from "./components/FoodSafetyCitizenRadar.vue";
+import FoodSafetyDiseaseStats from "./components/FoodSafetyDiseaseStats.vue";
 
 import MapLegendSvg from "./assets/chart/MapLegend.svg";
 import DistrictChartSvg from "./assets/chart/DistrictChart.svg";
@@ -252,6 +253,8 @@ function returnChartComponent(name, svg) {
 		return svg ? MapLegendSvg : FoodSafetyInspectionListChart;
 	case "FoodSafetyCitizenRadar":
 		return svg ? MapLegendSvg : FoodSafetyCitizenRadar;
+	case "FoodSafetyDiseaseStats":
+		return svg ? BarChartSvg : FoodSafetyDiseaseStats;
 	default:
 		return svg ? MapLegendSvg : MapLegend;
 	}

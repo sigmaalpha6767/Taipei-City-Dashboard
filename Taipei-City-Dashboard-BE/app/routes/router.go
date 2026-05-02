@@ -217,6 +217,7 @@ func configureFoodSafetyRoutes() {
 	{
 		foodRoutes.GET("/summary", controllers.GetFoodSummary)
 		foodRoutes.GET("/exposure", controllers.GetFoodExposure)
+		foodRoutes.GET("/disease-stats", controllers.GetFoodDiseaseStats)
 	}
 }
 

@@ -653,6 +653,95 @@ func GetFoodExposure(c *gin.Context) {
 	})
 }
 
+// === GET /api/v1/food/disease-stats — Component 6 食源性疾病統計 ===
+//
+// 從 postgres-data.disease_outbreak_stats 取得 7 種主要病原統計，
+// 每筆含關聯食材 / 處置策略 / 檢驗方向，回答「從病原反推食材」的決策問題。
+
+type diseaseRow struct {
+	Pathogen        string  `gorm:"column:pathogen"          json:"pathogen"`
+	PathogenType    string  `gorm:"column:pathogen_type"     json:"pathogen_type"`
+	CaseCount       int     `gorm:"column:case_count"        json:"case_count"`
+	CaseSharePct    float64 `gorm:"column:case_share_pct"    json:"case_share_pct"`
+	SeverityLevel   string  `gorm:"column:severity_level"    json:"severity_level"`
+	RelatedFoodsCSV string  `gorm:"column:related_foods"     json:"-"`
+	TypicalSettings string  `gorm:"column:typical_settings"  json:"typical_settings"`
+	ActionStrategy  string  `gorm:"column:action_strategy"   json:"action_strategy"`
+	TestDirection   string  `gorm:"column:test_direction"    json:"test_direction"`
+	IncubationHr    string  `gorm:"column:incubation_hr"     json:"incubation_hr"`
+	MainSymptom     string  `gorm:"column:main_symptom"      json:"main_symptom"`
+	ColorHex        string  `gorm:"column:color_hex"         json:"color_hex"`
+	SortOrder       int     `gorm:"column:sort_order"        json:"sort_order"`
+	Notes           string  `gorm:"column:notes"             json:"notes"`
+}
+
+func GetFoodDiseaseStats(c *gin.Context) {
+	var rows []diseaseRow
+	models.DBDashboard.Raw(`
+		SELECT pathogen, pathogen_type, case_count, case_share_pct, severity_level,
+		       related_foods, typical_settings, action_strategy, test_direction,
+		       incubation_hr, main_symptom, color_hex, sort_order, notes
+		FROM disease_outbreak_stats
+		ORDER BY sort_order, case_count DESC
+	`).Scan(&rows)
+
+	items := make([]gin.H, 0, len(rows))
+	totalCases := 0
+	for _, r := range rows {
+		totalCases += r.CaseCount
+		items = append(items, gin.H{
+			"pathogen":         r.Pathogen,
+			"pathogen_type":    r.PathogenType,
+			"case_count":       r.CaseCount,
+			"case_share_pct":   r.CaseSharePct,
+			"severity_level":   r.SeverityLevel,
+			"related_foods":    splitNonEmpty(r.RelatedFoodsCSV),
+			"typical_settings": r.TypicalSettings,
+			"action_strategy":  r.ActionStrategy,
+			"test_direction":   r.TestDirection,
+			"incubation_hr":    r.IncubationHr,
+			"main_symptom":     r.MainSymptom,
+			"color_hex":        r.ColorHex,
+			"sort_order":       r.SortOrder,
+			"notes":            r.Notes,
+		})
+	}
+
+	// 推導 KPI
+	highSev := 0
+	bacteriaCnt := 0
+	virusCnt := 0
+	for _, r := range rows {
+		if r.SeverityLevel == "high" {
+			highSev += r.CaseCount
+		}
+		if r.PathogenType == "bacteria" {
+			bacteriaCnt += r.CaseCount
+		}
+		if r.PathogenType == "virus" {
+			virusCnt += r.CaseCount
+		}
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"status": "success",
+		"data": gin.H{
+			"summary": gin.H{
+				"total_cases":      totalCases,
+				"pathogen_count":   len(rows),
+				"high_severity":    highSev,
+				"bacteria_cases":   bacteriaCnt,
+				"virus_cases":      virusCnt,
+			},
+			"items": items,
+			"metadata": gin.H{
+				"source": "衛福部疾管署食品中毒監視系統 (典型雙北年度分布) + postgres-data.disease_outbreak_stats",
+				"note":   "資料模型對齊衛福部疾管署歷年公開統計，數值為雙北年度典型分布",
+			},
+		},
+	})
+}
+
 func splitNonEmpty(s string) []string {
 	if s == "" {
 		return []string{}
