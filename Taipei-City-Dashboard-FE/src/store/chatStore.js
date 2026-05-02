@@ -230,11 +230,21 @@ export const useChatStore = defineStore('chat', () => {
 			}));
 	};
 
-	// 偵測「典型食安 FAQ」 — 走「短 prompt + 資料塞 user message + 不給 tools」快路徑。
-	// 為什麼這樣設計：TWCC llama3.3-ffm-70b 對長 system prompt（>1k 字）不忠實，
-	// 會回退成訓練資料的通用空話。文件範例 system prompt 都只有一句話。
-	// 對典型問題「拿掉 tool 選擇權 + 把資料放在 user 訊息裡」，模型只能讀資料回答。
+	// 對話 topic 路徑分流（避免食安 snapshot 污染所有問題）：
+	//   FAQ:  「哪些食物/該注意什麼疾病食材/飲食建議」→ 短 prompt + 資料塞 user msg + 無 tool
+	//   COMP: 「找/有沒有 XX 組件/圖表/儀表板」→ 乾淨 prompt + 只給 search_dashboard_components
+	//   FOOD: 「累犯/抽驗/稽查/店家/食材」→ 食安 system prompt + snapshot + 食安 tools
+	//   CHAT: 你好/謝謝/閒聊/找不到 keyword → minimal prompt 無 tool
 	const FOOD_FAQ_REGEX = /(?:哪些(?:食物|食材|東西)|什麼食物|什麼東西.*(?:風險|危險)|高風險食物|風險食物|該避(?:開|免)|食物.*(?:風險|危險)|飲食安全|該注意.*(?:食材|食物|疾病|什麼)|市民.*(?:建議|注意)|民眾.*(?:建議|注意)|(?:一般|普通).*(?:民眾|市民|人).*(?:風險|建議|注意))/;
+	const COMPONENT_REGEX = /(?:組件|圖表|儀表板|dashboard|chart)/i;
+	const FOOD_DEEP_REGEX = /(?:累犯|抽驗|稽查|食安|違規|店家|供應商|食材|食品|食源|疾病|病原|諾羅|沙門|TFDA|衛福|長照|校園|脆弱|暴露|行政區.*(?:風險|排行)|風險.*行政區)/;
+
+	const detectTopic = (q) => {
+		if (FOOD_FAQ_REGEX.test(q)) return 'faq';
+		if (COMPONENT_REGEX.test(q)) return 'component';
+		if (FOOD_DEEP_REGEX.test(q)) return 'food';
+		return 'chat';
+	};
 
 	// 主對話入口：使用者送出訊息 → BE LLM (+/- tools) → 串接結果
 	const sendChat = async (text) => {
@@ -262,33 +272,51 @@ export const useChatStore = defineStore('chat', () => {
 		const botIdx = chatData.value.length - 1;
 		chatStreaming.value = true;
 
-		// pre-fetch 即時資料快照（第一次同步等，之後 cache 立返）
-		const snapshot = await buildReferenceSnapshot().catch(() => '');
+		const topic = detectTopic(trimmed);
+		// 食安類才需要 snapshot；其他主題不 fetch（也避免污染）
+		const needSnapshot = topic === 'faq' || topic === 'food';
+		const snapshot = needSnapshot ? await buildReferenceSnapshot().catch(() => '') : '';
 
-		// 路徑分流：典型食安 FAQ 走短 prompt 快路徑（強制模型讀資料），其他走 tool calling
-		const isFoodFAQ = FOOD_FAQ_REGEX.test(trimmed) && snapshot;
 		let messages;
-		let useTool = !isFoodFAQ;
+		let payloadTools = null; // null = 該 path 不傳 tools
 
-		if (isFoodFAQ) {
-			// 短 system + 資料放 user message（多數模型對 user role 忠實度 > system role）+ 不給 tools
+		if (topic === 'faq' && snapshot) {
 			messages = [
 				{
 					role: 'system',
 					content: '你是雙北食安顧問。直接用使用者提供的「資料」回答，主體必須是「食材名稱」（不是病原名）。中文，≤ 220 字。每項食材後括號標註關聯病原與案件數。最後一句行動建議。禁止只列病原名後說「請注意食品安全」這種空話。'
 				},
-				...buildHistoryMessages().slice(0, -1).slice(-4), // 留最近 4 輪上下文
+				...buildHistoryMessages().slice(0, -1).slice(-4),
 				{
 					role: 'user',
 					content: `問題：${trimmed}\n\n以下是雙北食安 + TFDA 即時資料（請直接從中挑出相關食材回答）：\n\n${snapshot}`
 				},
 			];
-		} else {
-			const systemContent = snapshot
-				? `${SYSTEM_PROMPT}\n\n# 即時資料快照（直接引用以下實際數字、食材名、場域名回答；不要憑空編造、不要只列病原名稱）\n\n${snapshot}`
-				: SYSTEM_PROMPT;
+		} else if (topic === 'component') {
 			messages = [
-				{ role: 'system', content: systemContent },
+				{
+					role: 'system',
+					content: '你是【臺北城市儀表板】導覽小幫手。使用者要找儀表板組件或圖表時，**必須**呼叫 search_dashboard_components 工具搜尋，不要憑空回答。回應 ≤ 100 字介紹找到的組件。'
+				},
+				...buildHistoryMessages().slice(0, -1),
+			];
+			payloadTools = [TOOLS[0]]; // 只給 search_dashboard_components
+		} else if (topic === 'food' && snapshot) {
+			messages = [
+				{
+					role: 'system',
+					content: `${SYSTEM_PROMPT}\n\n# 即時資料快照（請直接引用實際數字、食材名、場域名回答）\n\n${snapshot}`
+				},
+				...buildHistoryMessages().slice(0, -1),
+			];
+			payloadTools = TOOLS.slice(1); // 食安 tools，不含 search_dashboard_components 避免誤觸
+		} else {
+			// chat: 一般閒聊 / 沒命中 keyword
+			messages = [
+				{
+					role: 'system',
+					content: '你是【臺北城市儀表板】小幫手。簡潔回答使用者問題（中文，≤ 150 字）。如果使用者要找儀表板組件，請提示他們可以說「幫我找 XX 的組件」；如果問食安，可以提示「哪些食物高風險」。'
+				},
 				...buildHistoryMessages().slice(0, -1),
 			];
 		}
@@ -297,11 +325,11 @@ export const useChatStore = defineStore('chat', () => {
 			const payload = {
 				messages,
 				max_new_tokens: 600,
-				temperature: isFoodFAQ ? 0.3 : 0.4,
+				temperature: topic === 'faq' ? 0.3 : 0.4,
 				stream: false,
 			};
-			if (useTool) {
-				payload.tools = TOOLS;
+			if (payloadTools) {
+				payload.tools = payloadTools;
 				payload.tool_choice = 'auto';
 			}
 			const resp = await http.post('/ai/chat/twai', payload);
