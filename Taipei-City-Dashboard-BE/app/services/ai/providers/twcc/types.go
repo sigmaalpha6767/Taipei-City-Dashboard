@@ -8,24 +8,21 @@ type TWCCMessage struct {
 	ToolCallID string         `json:"tool_call_id,omitempty"`
 }
 
-type TWCCParameters struct {
-	MaxNewTokens     *int      `json:"max_new_tokens,omitempty"`
-	Temperature      *float64  `json:"temperature,omitempty"`
-	TopK             *int     `json:"top_k,omitempty"`
-	TopP             *float64  `json:"top_p,omitempty"`
-	FrequencePenalty *float64  `json:"frequence_penalty,omitempty"`
-	StopSequences    []string `json:"stop_sequences,omitempty"`
-	Seed             *int     `json:"seed,omitempty"`
-	Stream           bool     `json:"stream,omitempty"`
-}
-
+// TWCCRequest follows the OpenAI-compatible /chat/completions schema accepted by
+// TWCC AI Foundry (https://api-ams.twcc.ai/api/models/chat/completions).
 type TWCCRequest struct {
-	Model      string         `json:"model"`
-	Messages   []TWCCMessage  `json:"messages"`
-	Parameters TWCCParameters `json:"parameters"`
-	Stream     bool           `json:"stream,omitempty"`
-	Tools      []TWCCTool     `json:"tools,omitempty"`
-	ToolChoice interface{}    `json:"tool_choice,omitempty"`
+	Model            string        `json:"model"`
+	Messages         []TWCCMessage `json:"messages"`
+	MaxTokens        *int          `json:"max_tokens,omitempty"`
+	Temperature      *float64      `json:"temperature,omitempty"`
+	TopP             *float64      `json:"top_p,omitempty"`
+	TopK             *int          `json:"top_k,omitempty"`
+	FrequencyPenalty *float64      `json:"frequency_penalty,omitempty"`
+	Stop             []string      `json:"stop,omitempty"`
+	Seed             *int          `json:"seed,omitempty"`
+	Stream           bool          `json:"stream,omitempty"`
+	Tools            []TWCCTool    `json:"tools,omitempty"`
+	ToolChoice       interface{}   `json:"tool_choice,omitempty"`
 }
 
 type TWCCTool struct {
@@ -60,10 +57,16 @@ type TWCCResponse struct {
 		} `json:"message"`
 		FinishReason string `json:"finish_reason"`
 	} `json:"choices"`
-	// TWCC AFS Specific Token Fields (at root level)
+	// TWCC AFS Legacy Fields (at root level)
 	PromptTokens    int `json:"prompt_tokens"`
 	GeneratedTokens int `json:"generated_tokens"`
 	TotalTokens     int `json:"total_tokens"`
+	// OpenAI-compatible nested usage
+	Usage *struct {
+		PromptTokens     int `json:"prompt_tokens"`
+		CompletionTokens int `json:"completion_tokens"`
+		TotalTokens      int `json:"total_tokens"`
+	} `json:"usage,omitempty"`
 }
 
 type TWCCStreamResponse struct {

@@ -1,0 +1,140 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - link "doit logo 臺北城市儀表板文件 Taipei City Dashboard Documentation" [ref=e5] [cursor=pointer]:
+        - /url: /documentation/
+        - img "doit logo" [ref=e6]
+        - generic [ref=e7]:
+          - heading "臺北城市儀表板文件" [level=1] [ref=e8]
+          - heading "Taipei City Dashboard Documentation" [level=2] [ref=e9]
+      - generic [ref=e10]:
+        - button "EN" [ref=e11]:
+          - paragraph [ref=e12]: EN
+        - generic [ref=e13]:
+          - checkbox "light_mode"
+          - generic [ref=e14] [cursor=pointer]: light_mode
+    - generic [ref=e16]:
+      - complementary [ref=e17]:
+        - code [ref=e18]: v3.1.9
+        - heading "前端文件" [level=5] [ref=e19]
+        - heading "入門指南" [level=6] [ref=e21]
+        - link "儀表板簡介" [ref=e23] [cursor=pointer]:
+          - /url: /documentation/front-end/introduction
+        - link "核心科技與必備知識" [ref=e25] [cursor=pointer]:
+          - /url: /documentation/front-end/prerequisites
+        - link "下載並設定專案" [ref=e27] [cursor=pointer]:
+          - /url: /documentation/front-end/project-setup
+        - heading "專案架構" [level=6] [ref=e29]
+        - link "用戶介面" [ref=e31] [cursor=pointer]:
+          - /url: /documentation/front-end/user-interface
+        - link "檔案儲存系統" [ref=e33] [cursor=pointer]:
+          - /url: /documentation/front-end/file-system
+        - link "畫面渲染策略" [ref=e35] [cursor=pointer]:
+          - /url: /documentation/front-end/rendering-strategy
+        - heading "儀表板指南" [level=6] [ref=e37]
+        - link "儀表板簡介" [ref=e39] [cursor=pointer]:
+          - /url: /documentation/front-end/introduction-to-dashboards
+        - link "編輯儀表板" [ref=e41] [cursor=pointer]:
+          - /url: /documentation/front-end/modifying-a-dashboard
+        - heading "組件指南" [level=6] [ref=e43]
+        - link "組件簡介" [ref=e45] [cursor=pointer]:
+          - /url: /documentation/front-end/introduction-to-components
+        - link "圖表資料樣式" [ref=e47] [cursor=pointer]:
+          - /url: /documentation/front-end/chart-data
+        - link "支援圖表類型" [ref=e49] [cursor=pointer]:
+          - /url: /documentation/front-end/supported-chart-types
+        - link "空間資料樣式" [ref=e51] [cursor=pointer]:
+          - /url: /documentation/front-end/map-data
+        - link "支援地圖類型" [ref=e53] [cursor=pointer]:
+          - /url: /documentation/front-end/supported-map-types
+        - link "篩選地圖" [ref=e55] [cursor=pointer]:
+          - /url: /documentation/front-end/map-filtering
+        - link "歷史資料樣式" [ref=e57] [cursor=pointer]:
+          - /url: /documentation/front-end/history-data
+        - heading "用戶驗證與系統管理" [level=6] [ref=e59]
+        - link "用戶驗證" [ref=e61] [cursor=pointer]:
+          - /url: /documentation/front-end/user-authentication
+        - link "系統管理" [ref=e63] [cursor=pointer]:
+          - /url: /documentation/front-end/system-administration
+        - heading "客製化指南" [level=6] [ref=e65]
+        - link "客製化指南概覽" [ref=e67] [cursor=pointer]:
+          - /url: /documentation/front-end/customization-overview
+        - link "客製化樣式" [ref=e69] [cursor=pointer]:
+          - /url: /documentation/front-end/custom-styling
+        - link "客製化彈跳視窗" [ref=e71] [cursor=pointer]:
+          - /url: /documentation/front-end/custom-dialogs
+        - link "客製化圖表" [ref=e73] [cursor=pointer]:
+          - /url: /documentation/front-end/custom-charts
+        - link "客製化地圖" [ref=e75] [cursor=pointer]:
+          - /url: /documentation/front-end/custom-maps
+        - link "轉為純靜態網頁" [ref=e77] [cursor=pointer]:
+          - /url: /documentation/front-end/create-a-static-application
+        - heading "協作指南" [level=6] [ref=e79]
+        - link "協作方式概覽" [ref=e81] [cursor=pointer]:
+          - /url: /documentation/front-end/contribution-overview
+        - link "程式撰寫規範" [ref=e83] [cursor=pointer]:
+          - /url: /documentation/front-end/code-style
+        - link "設計指南" [ref=e85] [cursor=pointer]:
+          - /url: /documentation/front-end/design-guide
+        - link "資料來源與清理" [ref=e87] [cursor=pointer]:
+          - /url: /documentation/front-end/data-sources-and-cleaning
+        - link "開立Issue" [ref=e89] [cursor=pointer]:
+          - /url: /documentation/front-end/open-an-issue
+        - link "開立Pull Request" [ref=e91] [cursor=pointer]:
+          - /url: /documentation/front-end/open-a-pull-request
+      - generic [ref=e92]:
+        - heading "下載並設定專案" [level=1] [ref=e93]
+        - generic [ref=e94]:
+          - link "play_circle 下載並設定儀表板二 Project Setup (2)" [ref=e95] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=gHs7V72Jux4
+          - link "play_circle 下載並設定儀表板三 Project Setup (3)" [ref=e100] [cursor=pointer]:
+            - /url: https://www.youtube.com/watch?v=qIItAEvAr7E
+        - generic [ref=e117]:
+          - paragraph
+          - 'heading "在本地運行專案 #" [level=2] [ref=e118]'
+          - paragraph [ref=e120]
+          - paragraph [ref=e122]
+          - paragraph [ref=e125]
+          - generic [ref=e129]
+          - blockquote [ref=e132]
+          - blockquote [ref=e138]
+          - blockquote [ref=e149]
+          - paragraph [ref=e157]: looks_4 在終端中，依次執行以下指令以建立一個 docker network 並啟動容器。
+          - blockquote [ref=e158]
+          - paragraph [ref=e163]
+          - generic [ref=e165]
+          - paragraph [ref=e168]
+          - generic [ref=e170]
+          - paragraph [ref=e173]: 初始化前端和後端環境。此指令建立的容器是暫時性的。請等待容器停止運行後再運行下一個指令。
+          - generic [ref=e174]
+          - blockquote [ref=e177]
+          - paragraph [ref=e184]: 啟動前端和後端服務：
+          - blockquote [ref=e185]
+          - generic [ref=e193]
+          - blockquote [ref=e196]
+          - blockquote [ref=e204]
+          - paragraph [ref=e210]
+          - 'heading "進一步的開發設定 #" [level=2] [ref=e213]'
+          - 'heading "PGAdmin #" [level=3] [ref=e215]'
+          - paragraph [ref=e217]: 請按照以下步驟操作以在 pgAdmin 中匯入兩個 Postgres 資料庫：
+          - paragraph [ref=e218]
+          - paragraph [ref=e226]
+          - 'heading "Postman #" [level=3] [ref=e231]'
+          - paragraph [ref=e233]
+          - 'heading "Qdrant 向量資料庫與資料匯入 #" [level=3] [ref=e236]'
+          - paragraph [ref=e238]: 此步驟用於將 PostgreSQL 資料庫中的資料轉換為向量嵌入，並上傳至 Qdrant 向量資料庫以供搜尋使用。
+          - paragraph [ref=e239]
+          - paragraph [ref=e242]
+          - generic [ref=e244]
+          - blockquote [ref=e247]
+          - paragraph
+        - link "auto_fix_high 於Github編輯此文章" [ref=e105] [cursor=pointer]:
+          - /url: https://github.com/taipei-doit/Taipei-City-Dashboard-Documentation/edit/main/src/assets/articles/front-end-ch/project-setup.md
+          - generic [ref=e106]: auto_fix_high
+          - text: 於Github編輯此文章
+        - generic [ref=e107]:
+          - link "keyboard_arrow_left 前一篇文章 核心科技與必備知識" [ref=e109] [cursor=pointer]:
+            - /url: /documentation/front-end/prerequisites
+          - link "下一篇文章 keyboard_arrow_right 用戶介面" [ref=e113] [cursor=pointer]:
+            - /url: /documentation/front-end/user-interface
+  - img

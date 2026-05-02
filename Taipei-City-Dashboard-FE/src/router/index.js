@@ -18,6 +18,7 @@ import MapView from "../views/MapView.vue";
 import ComponentView from "../views/ComponentView.vue";
 import ComponentInfoView from "../views/ComponentInfoView.vue";
 import EmbedView from "../views/EmbedView.vue";
+import AiAdvisorView from "../views/AiAdvisorView.vue";
 
 const routes = [
 	{
@@ -43,6 +44,11 @@ const routes = [
 		path: "/component",
 		name: "component",
 		component: ComponentView,
+	},
+	{
+		path: "/ai-advisor",
+		name: "ai-advisor",
+		component: AiAdvisorView,
 	},
 	{
 		path: "/component/:index",

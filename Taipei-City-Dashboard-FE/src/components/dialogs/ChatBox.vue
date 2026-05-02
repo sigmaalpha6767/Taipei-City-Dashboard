@@ -13,9 +13,9 @@ import http from "../../router/axios";
 const chatStore = useChatStore();
 const contentStore = useContentStore();
 const authStore = useAuthStore();
-const { addChatData, addQueryData, saveChatLog } = chatStore;
+const { addChatData, sendChat, saveChatLog } = chatStore;
 const { createDashboard } = contentStore;
-const { chatData } = storeToRefs(chatStore);
+const { chatData, chatStreaming } = storeToRefs(chatStore);
 const { editDashboard } = storeToRefs(contentStore);
 const { user } = storeToRefs(authStore);
 
@@ -63,11 +63,8 @@ const qaBtnHandler = async (text, relations) => {
 };
 
 const sendBtnHandler = (text) => {
-	if (!text.trim()) return;
-	addQueryData({
-		role: "user",
-		content: text,
-	});
+	if (!text.trim() || chatStreaming.value) return;
+	sendChat(text);
 	userMessage.value = "";
 };
 
@@ -114,8 +111,10 @@ watch(
           v-show="isStickyOpen"
           class="sticky-body"
         >
-          <span>小幫手會依據您輸入的內容，自動檢索本站臺的組件資料庫，並回傳相似度較高的組件清單，協助您快速找到符合需求的元件或資訊。<br><br>
-            目前小幫手僅提供組件比對與分析服務，不支援一般聊天功能。如造成不便，敬請見諒！</span>
+          <span>小幫手已升級為 AI 對話助理，可呼叫工具取得即時資料：<br>
+            • 「幫我找空氣品質的組件」→ 推薦儀表板組件<br>
+            • 「本週該稽查的店是？它們在哪？」→ 食安資料 + 接續對話<br><br>
+            支援多輪對話，會記得上下文。</span>
         </div>
       </div>
       <div
@@ -133,10 +132,22 @@ watch(
           </div>
           <div class="content">
             <div
-              v-if="chat.content"
+              v-if="chat.toolCalls && chat.toolCalls.length"
+              class="tool-strip"
+            >
+              <span
+                v-for="tc in chat.toolCalls"
+                :key="tc.id"
+                class="tool-chip"
+              >
+                ⚡ {{ tc.name }}
+              </span>
+            </div>
+            <div
+              v-if="chat.content || (chatStreaming && chat === chatData[chatData.length - 1])"
               class="message--bubble"
             >
-              <p>{{ chat.content }}</p>
+              <p>{{ chat.content || "思考中…" }}</p>
             </div>
             <!-- 表格區 -->
             <div
@@ -388,6 +399,26 @@ $radius-20: 20px;
 						.relation-table th {
 							font-weight: bold;
 							text-align: center;
+						}
+					}
+
+					.tool-strip {
+						display: flex;
+						flex-wrap: wrap;
+						gap: 4px;
+						margin-bottom: 4px;
+
+						.tool-chip {
+							display: inline-flex;
+							align-items: center;
+							gap: 2px;
+							font-size: 11px;
+							padding: 2px 8px;
+							border-radius: 999px;
+							background: rgba(86, 193, 240, 0.15);
+							color: #56C1F0;
+							border: 1px solid rgba(86, 193, 240, 0.4);
+							font-family: monospace;
 						}
 					}
 

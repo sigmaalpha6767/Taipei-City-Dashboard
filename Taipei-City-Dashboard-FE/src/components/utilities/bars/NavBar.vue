@@ -80,6 +80,15 @@ const isLocalhost = computed(() => {
       >
         地圖交叉比對
       </router-link>
+      <router-link
+        :to="`/ai-advisor`"
+        :class="{
+          'router-link-active':
+            authStore.currentPath.includes('ai-advisor'),
+        }"
+      >
+        AI 決策建議
+      </router-link>
     </div>
     <div class="navbar-user">
       <button

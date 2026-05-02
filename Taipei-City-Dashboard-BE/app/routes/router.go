@@ -41,6 +41,7 @@ func ConfigureRoutes() {
 	configureContributorRoutes()
 	configureChatLogRoutes()
 	configureAIRoutes()
+	configureFoodSafetyRoutes()
 }
 
 func configureAuthRoutes() {
@@ -204,6 +205,17 @@ func configureAIRoutes() {
 	aiRoutes.Use(middleware.IsLoggedIn())
 	{
 		aiRoutes.POST("/chat/twai", controllers.ChatWithTWCC)
+	}
+}
+
+// configureFoodSafetyRoutes 暴露公開 endpoint 給 dashboard component / AI Advisor view，
+// 取代原本 FE 讀的靜態 /data/prepared/food_inspection.json。
+func configureFoodSafetyRoutes() {
+	foodRoutes := RouterGroup.Group("/food")
+	foodRoutes.Use(middleware.LimitAPIRequests(global.ComponentLimitAPIRequestsTimes, global.LimitRequestsDuration))
+	{
+		foodRoutes.GET("/summary", controllers.GetFoodSummary)
+		foodRoutes.GET("/exposure", controllers.GetFoodExposure)
 	}
 }
 

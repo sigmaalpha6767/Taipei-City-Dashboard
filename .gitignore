@@ -73,3 +73,6 @@ Taipei-City-Dashboard-DE/docker/prod/.env
 *.py[cod]
 
 *.env
+.playwright-mcp/
+Taipei-City-Dashboard-FE/src/dashboardComponent/image.png
+vite.config.js.timestamp-*.mjs

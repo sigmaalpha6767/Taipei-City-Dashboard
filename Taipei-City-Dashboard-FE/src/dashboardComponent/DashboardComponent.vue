@@ -28,6 +28,14 @@ import BarChartWithGoal from "./components/BarChartWithGoal.vue";
 import IconPercentChart from "./components/IconPercentChart.vue";
 import IndicatorChart from "./components/IndicatorChart.vue";
 import TextUnitChart from "./components/TextUnitChart.vue";
+import FoodSafetyVulnerableExposure from "./components/FoodSafetyVulnerableExposure.vue";
+import FoodSafetyRiskInspection from "./components/FoodSafetyRiskInspection.vue";
+import FoodSafetyCategoryChart from "./components/FoodSafetyCategoryChart.vue";
+import FoodSafetyDistrictChart from "./components/FoodSafetyDistrictChart.vue";
+import FoodSafetyViolationChart from "./components/FoodSafetyViolationChart.vue";
+import FoodSafetyMonthlyTrendChart from "./components/FoodSafetyMonthlyTrendChart.vue";
+import FoodSafetyInspectionListChart from "./components/FoodSafetyInspectionListChart.vue";
+import FoodSafetyCitizenRadar from "./components/FoodSafetyCitizenRadar.vue";
 
 import MapLegendSvg from "./assets/chart/MapLegend.svg";
 import DistrictChartSvg from "./assets/chart/DistrictChart.svg";
@@ -222,6 +230,22 @@ function returnChartComponent(name, svg) {
 		return svg ? IndicatorChartSvg : IndicatorChart;
 	case "TextUnitChart":
 		return svg ? TextUnitChartSvg : TextUnitChart;
+	case "FoodSafetyVulnerableExposure":
+		return svg ? MapLegendSvg : FoodSafetyVulnerableExposure;
+	case "FoodSafetyRiskInspection":
+		return svg ? MapLegendSvg : FoodSafetyRiskInspection;
+	case "FoodSafetyCategoryChart":
+		return svg ? BarChartSvg : FoodSafetyCategoryChart;
+	case "FoodSafetyDistrictChart":
+		return svg ? BarChartSvg : FoodSafetyDistrictChart;
+	case "FoodSafetyViolationChart":
+		return svg ? DonutChartSvg : FoodSafetyViolationChart;
+	case "FoodSafetyMonthlyTrendChart":
+		return svg ? TimelineSeparateChartSvg : FoodSafetyMonthlyTrendChart;
+	case "FoodSafetyInspectionListChart":
+		return svg ? MapLegendSvg : FoodSafetyInspectionListChart;
+	case "FoodSafetyCitizenRadar":
+		return svg ? MapLegendSvg : FoodSafetyCitizenRadar;
 	default:
 		return svg ? MapLegendSvg : MapLegend;
 	}

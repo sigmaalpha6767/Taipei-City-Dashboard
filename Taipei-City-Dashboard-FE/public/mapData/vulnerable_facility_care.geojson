@@ -1,0 +1,708 @@
+{
+  "type": "FeatureCollection",
+  "name": "VulnerableFacility_Care",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.397675,
+          25.146732
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N001",
+        "facility_name": "財團法人新北市私立台灣天主教安老院",
+        "facility_type": "nursing_home",
+        "city": "新北市",
+        "district": "八里區",
+        "address": "新北市八里區中山路1段33號",
+        "population_or_capacity": 78,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.489967,
+          25.26107
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N002",
+        "facility_name": "新北市私立仁惠老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三芝區",
+        "address": "新北市三芝區四棧橋53之11號",
+        "population_or_capacity": 49,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.501153,
+          25.255405
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N003",
+        "facility_name": "新北市私立長勤老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三芝區",
+        "address": "新北市三芝區長勤街63號、63號2樓、63號3樓、63號4樓",
+        "population_or_capacity": 49,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.47454,
+          25.253303
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N004",
+        "facility_name": "財團法人台灣基督長老教會雙連教會附設新北市私立雙連安養中心",
+        "facility_type": "nursing_home",
+        "city": "新北市",
+        "district": "三芝區",
+        "address": "新北市三芝區後厝里北勢子22-17號",
+        "population_or_capacity": 432,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.500081,
+          25.067656
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N005",
+        "facility_name": "新北市私立鴻澄老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區三和路2段30號3樓、3樓之1、3樓之2、3樓之3、3樓之4",
+        "population_or_capacity": 35,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.487158,
+          25.07675
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N006",
+        "facility_name": "新北市私立大德老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區三和路4段103-1號4樓",
+        "population_or_capacity": 39,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.488002,
+          25.076118
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N007",
+        "facility_name": "新北市私立心侑老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區三和路4段95之1號2樓、3樓",
+        "population_or_capacity": 29,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.467938,
+          25.051167
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N008",
+        "facility_name": "新北市私立幸福老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區中興北街54號5樓",
+        "population_or_capacity": 46,
+        "is_affected": true,
+        "relation_type": "同供應商+同原料",
+        "related_ingredient": "高麗菜",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 70.64,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.488741,
+          25.051388
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N009",
+        "facility_name": "新北市私立豐禾老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區成功路79號1樓-5樓",
+        "population_or_capacity": 45,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.488118,
+          25.051672
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N010",
+        "facility_name": "新北市私立靜園老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區成功路97號10樓",
+        "population_or_capacity": 49,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.488118,
+          25.051672
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N011",
+        "facility_name": "新北市私立今光愛心老人養護中心",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區成功路97號2樓",
+        "population_or_capacity": 48,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.491431,
+          25.079997
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N012",
+        "facility_name": "新北市私立大安老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區自強路4段110號3樓",
+        "population_or_capacity": 24,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.488223,
+          25.07619
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N013",
+        "facility_name": "新北市私立祐安老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區自強路4段6號3樓",
+        "population_or_capacity": 49,
+        "is_affected": true,
+        "relation_type": "同供應商+同原料",
+        "related_ingredient": "高麗菜",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 70.69,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.467091,
+          25.04364
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N014",
+        "facility_name": "新北市私立沐心老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區重新路5段635之2號、635之2號2樓、635之2號3樓",
+        "population_or_capacity": 46,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.466791,
+          25.043382
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N015",
+        "facility_name": "新北市私立圓滿老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區重新路5段639號10樓、639之1號10樓",
+        "population_or_capacity": 39,
+        "is_affected": true,
+        "relation_type": "同供應商+同原料",
+        "related_ingredient": "高麗菜",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 70.55,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.491339,
+          25.076407
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N016",
+        "facility_name": "新北市私立蓮愛老人養護中心",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區溪尾街41號2樓",
+        "population_or_capacity": 32,
+        "is_affected": true,
+        "relation_type": "同供應商+同原料",
+        "related_ingredient": "高麗菜",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 70.45,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.502098,
+          25.064238
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N017",
+        "facility_name": "新北市私立安泰老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區福德北路4號3樓、4樓",
+        "population_or_capacity": 30,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.494418,
+          25.071483
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N018",
+        "facility_name": "新北市私立長園老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三重區",
+        "address": "新北市三重區龍門路1號3樓、3樓之1",
+        "population_or_capacity": 46,
+        "is_affected": true,
+        "relation_type": "同供應商+同原料",
+        "related_ingredient": "高麗菜",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 70.64,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.366382,
+          24.91152
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N019",
+        "facility_name": "新北市私立慈恩老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區大利路2號(1、2層)、4號、6號2樓",
+        "population_or_capacity": 45,
+        "is_affected": true,
+        "relation_type": "同供應商",
+        "related_ingredient": "",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 65.13,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.37422,
+          24.932865
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N020",
+        "facility_name": "新北市私立安康老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區中華路22號3樓之3",
+        "population_or_capacity": 31,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N021",
+        "facility_name": "新北市私立清安養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段278號3樓",
+        "population_or_capacity": 48,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N022",
+        "facility_name": "新北市私立清平養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段278號4樓",
+        "population_or_capacity": 48,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N023",
+        "facility_name": "新北市私立清心養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段278號5樓",
+        "population_or_capacity": 48,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N024",
+        "facility_name": "新北市私立清氣養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段278號6樓",
+        "population_or_capacity": 48,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N025",
+        "facility_name": "新北市私立清福養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段278號7樓",
+        "population_or_capacity": 48,
+        "is_affected": true,
+        "relation_type": "同供應商",
+        "related_ingredient": "",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 65.17,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N026",
+        "facility_name": "新北市私立清景養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段280號3樓",
+        "population_or_capacity": 48,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N027",
+        "facility_name": "新北市私立清風養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段280號4樓",
+        "population_or_capacity": 48,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N028",
+        "facility_name": "新北市私立清照養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段280號5樓",
+        "population_or_capacity": 48,
+        "is_affected": true,
+        "relation_type": "同供應商+同原料",
+        "related_ingredient": "高麗菜",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 70.67,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N029",
+        "facility_name": "新北市私立清日養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段280號6樓",
+        "population_or_capacity": 48,
+        "is_affected": true,
+        "relation_type": "同供應商+同原料",
+        "related_ingredient": "高麗菜",
+        "related_supplier": "三統食品有限公司",
+        "exposure_score": 70.67,
+        "risk_level": "orange",
+        "suggested_attention": "加強衛教並確認餐食來源（重點：確認與疑似供應商之合約與批號）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.387681,
+          24.933671
+        ]
+      },
+      "properties": {
+        "facility_id": "ELD_N030",
+        "facility_name": "新北市私立清春養老院老人長期照顧中心(養護型)",
+        "facility_type": "elderly_home",
+        "city": "新北市",
+        "district": "三峽區",
+        "address": "新北市三峽區介壽路1段280號7樓",
+        "population_or_capacity": 48,
+        "is_affected": false,
+        "risk_level": "green",
+        "exposure_score": 0
+      }
+    }
+  ]
+}

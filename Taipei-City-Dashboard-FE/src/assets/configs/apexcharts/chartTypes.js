@@ -19,6 +19,14 @@ export const chartTypes = {
 	IndicatorChart: "指標圖",
 	MapLegend: "地圖圖例",
 	TextUnitChart: "文字單位圖",
+	FoodSafetyVulnerableExposure: "食安暴露風險",
+	FoodSafetyRiskInspection: "食品抽驗風險",
+	FoodSafetyCategoryChart: "檢體排行",
+	FoodSafetyDistrictChart: "行政區排行",
+	FoodSafetyViolationChart: "違規類別占比",
+	FoodSafetyMonthlyTrendChart: "月份趨勢",
+	FoodSafetyInspectionListChart: "建議稽查清單",
+	FoodSafetyCitizenRadar: "市民食安雷達",
 };
 
 export const chartsPerDataType = {
@@ -31,6 +39,14 @@ export const chartsPerDataType = {
 		"RadarChart",
 		"PolarAreaChart",
 		"MetroChart",
+		"FoodSafetyVulnerableExposure",
+		"FoodSafetyRiskInspection",
+		"FoodSafetyCategoryChart",
+		"FoodSafetyDistrictChart",
+		"FoodSafetyViolationChart",
+		"FoodSafetyMonthlyTrendChart",
+		"FoodSafetyInspectionListChart",
+		"FoodSafetyCitizenRadar",
 	],
 	three_d: [
 		"ColumnChart",

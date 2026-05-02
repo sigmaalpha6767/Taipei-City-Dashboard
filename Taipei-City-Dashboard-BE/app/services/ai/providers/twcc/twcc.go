@@ -45,16 +45,15 @@ func (m *TWCC) GenerateContent(ctx context.Context, messages []llms.MessageConte
 	}
 
 	twccMessages := m.toTWCCMessages(messages)
-	twccParams := m.toTWCCParameters(&opts)
 	isStreaming := opts.StreamingFunc != nil
 
 	reqBody := TWCCRequest{
-		Model:      m.ModelName,
-		Messages:   twccMessages,
-		Parameters: twccParams,
-		Stream:     isStreaming,
-		Tools:      m.toTWCCTools(opts.Tools),
+		Model:    m.ModelName,
+		Messages: twccMessages,
+		Stream:   isStreaming,
+		Tools:    m.toTWCCTools(opts.Tools),
 	}
+	m.applyOpenAIParameters(&reqBody, &opts)
 	if opts.ToolChoice != nil {
 		reqBody.ToolChoice = opts.ToolChoice
 	} else if len(reqBody.Tools) > 0 {
@@ -135,19 +134,32 @@ func (m *TWCC) mapRole(role llms.ChatMessageType) string {
 	}
 }
 
-func (m *TWCC) toTWCCParameters(opts *llms.CallOptions) TWCCParameters {
-	p := TWCCParameters{Stream: opts.StreamingFunc != nil}
+// applyOpenAIParameters maps the langchaingo metadata onto the OpenAI-compatible
+// top-level fields TWCC's /chat/completions endpoint expects.
+func (m *TWCC) applyOpenAIParameters(req *TWCCRequest, opts *llms.CallOptions) {
 	meta := opts.Metadata
 
-	if v, ok := meta["max_new_tokens"].(int); ok { p.MaxNewTokens = &v }
-	if v, ok := meta["temperature"].(float64); ok { p.Temperature = &v }
-	if v, ok := meta["top_p"].(float64); ok { p.TopP = &v }
-	if v, ok := meta["top_k"].(int); ok { p.TopK = &v }
-	if v, ok := meta["frequence_penalty"].(float64); ok { p.FrequencePenalty = &v }
-	if v, ok := meta["stop_sequences"].([]string); ok { p.StopSequences = v }
-	if v, ok := meta["seed"].(int); ok { p.Seed = &v }
-	
-	return p
+	if v, ok := meta["max_new_tokens"].(int); ok {
+		req.MaxTokens = &v
+	}
+	if v, ok := meta["temperature"].(float64); ok {
+		req.Temperature = &v
+	}
+	if v, ok := meta["top_p"].(float64); ok {
+		req.TopP = &v
+	}
+	if v, ok := meta["top_k"].(int); ok {
+		req.TopK = &v
+	}
+	if v, ok := meta["frequence_penalty"].(float64); ok {
+		req.FrequencyPenalty = &v
+	}
+	if v, ok := meta["stop_sequences"].([]string); ok {
+		req.Stop = v
+	}
+	if v, ok := meta["seed"].(int); ok {
+		req.Seed = &v
+	}
 }
 
 func (m *TWCC) toTWCCTools(tools []llms.Tool) []TWCCTool {
@@ -169,14 +181,16 @@ func (m *TWCC) toTWCCTools(tools []llms.Tool) []TWCCTool {
 }
 
 func (m *TWCC) doRequest(ctx context.Context, body []byte, isStreaming bool) (*http.Response, error) {
-	endpoint := fmt.Sprintf("%s/models/conversation", m.BaseURL)
+	// OpenAI-compatible endpoint exposed by TWCC AI Foundry.
+	endpoint := fmt.Sprintf("%s/models/chat/completions", m.BaseURL)
 	req, err := http.NewRequestWithContext(ctx, "POST", endpoint, bytes.NewBuffer(body))
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %v", err)
 	}
 
 	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("X-API-KEY", m.APIKey)
+	req.Header.Set("Authorization", "Bearer "+m.APIKey)
+	req.Header.Set("X-API-KEY", m.APIKey) // legacy fallback header — harmless
 
 	client := m.HTTPClient
 	if isStreaming { client = &http.Client{Timeout: 0} }
@@ -422,13 +436,22 @@ func (m *TWCC) handleStandardResponse(body io.Reader) (*llms.ContentResponse, er
 		tools, content = extractXMLToolCalls(content)
 	}
 
+	// Token usage: prefer OpenAI nested usage, fall back to legacy AFS root fields.
+	it, ot, tt := tr.PromptTokens, tr.GeneratedTokens, tr.TotalTokens
+	if tr.Usage != nil {
+		it, ot, tt = tr.Usage.PromptTokens, tr.Usage.CompletionTokens, tr.Usage.TotalTokens
+		if tt == 0 {
+			tt = it + ot
+		}
+	}
+
 	return &llms.ContentResponse{
 		Choices: []*llms.ContentChoice{{
 			Content: content,
 			GenerationInfo: map[string]interface{}{
 				"model": m.ModelName, "tool_calls": tools,
 				"usage": map[string]interface{}{
-					"input_tokens": tr.PromptTokens, "output_tokens": tr.GeneratedTokens, "total_tokens": tr.TotalTokens,
+					"input_tokens": it, "output_tokens": ot, "total_tokens": tt,
 				},
 			},
 		}},
