@@ -329,6 +329,67 @@ func splitCSV(s string) []string {
 	return out
 }
 
+// === Tool 5: get_disease_stats ===
+//
+// 從 disease_outbreak_stats 表（TFDA 民國 112 年全國食品中毒）回傳 12 病原資料。
+// AI 用此 tool 把事件症狀 / 群聚樣態反推可能病原與檢驗方向。
+
+type diseaseStatsRow struct {
+	Pathogen        string  `gorm:"column:pathogen"`
+	PathogenType    string  `gorm:"column:pathogen_type"`
+	CaseCount       int     `gorm:"column:case_count"`
+	PatientCount    int     `gorm:"column:patient_count"`
+	DeathCount      int     `gorm:"column:death_count"`
+	SeverityLevel   string  `gorm:"column:severity_level"`
+	RelatedFoodsCSV string  `gorm:"column:related_foods"`
+	TypicalSettings string  `gorm:"column:typical_settings"`
+	ActionStrategy  string  `gorm:"column:action_strategy"`
+	TestDirection   string  `gorm:"column:test_direction"`
+	IncubationHr    string  `gorm:"column:incubation_hr"`
+	MainSymptom     string  `gorm:"column:main_symptom"`
+}
+
+func GetDiseaseStats(ctx context.Context, args string) (string, error) {
+	var rows []diseaseStatsRow
+	err := models.DBDashboard.Raw(`
+		SELECT pathogen, pathogen_type, case_count, patient_count, death_count,
+		       severity_level, related_foods, typical_settings, action_strategy,
+		       test_direction, incubation_hr, main_symptom
+		FROM disease_outbreak_stats
+		ORDER BY sort_order, case_count DESC
+	`).Scan(&rows).Error
+	if err != nil {
+		return "", fmt.Errorf("查詢 disease_outbreak_stats 失敗: %v", err)
+	}
+
+	items := make([]map[string]interface{}, 0, len(rows))
+	for _, r := range rows {
+		items = append(items, map[string]interface{}{
+			"pathogen":         r.Pathogen,
+			"pathogen_type":    r.PathogenType,
+			"case_count":       r.CaseCount,
+			"patient_count":    r.PatientCount,
+			"death_count":      r.DeathCount,
+			"severity_level":   r.SeverityLevel,
+			"related_foods":    splitCSV(r.RelatedFoodsCSV),
+			"typical_settings": r.TypicalSettings,
+			"action_strategy":  r.ActionStrategy,
+			"test_direction":   r.TestDirection,
+			"incubation_hr":    r.IncubationHr,
+			"main_symptom":     r.MainSymptom,
+		})
+	}
+
+	out := map[string]interface{}{
+		"items":  items,
+		"count":  len(items),
+		"source": "衛福部食藥署 (TFDA) 民國 112 年全國食品中毒案件統計",
+		"note":   "民國 112 年全國 633 件 / 5,196 人 / 1 死 (河豚毒)；諾羅蟬聯 8 年第一",
+	}
+	b, _ := json.Marshal(out)
+	return string(b), nil
+}
+
 // === 註冊 ===
 
 func init() {
@@ -336,4 +397,5 @@ func init() {
 	Register("get_top_recidivists", GetTopRecidivists)
 	Register("get_vulnerable_exposure", GetVulnerableExposure)
 	Register("get_district_risk", GetDistrictRisk)
+	Register("get_disease_stats", GetDiseaseStats)
 }

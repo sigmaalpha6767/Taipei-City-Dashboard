@@ -3,7 +3,7 @@
 //   BE → 註冊 4 個 Go tool（food_safety.go） + 多輪 tool calling 迴圈 + ai_chatlog 寫入
 import { defineStore } from "pinia";
 import http from "../router/axios";
-import { loadFoodInspection, loadFoodExposure } from "./foodInspectionData";
+import { loadFoodInspection, loadFoodExposure, loadFoodDiseaseStats } from "./foodInspectionData";
 
 const TOOLS = [
 	{
@@ -49,6 +49,14 @@ const TOOLS = [
 			},
 		},
 	},
+	{
+		type: "function",
+		function: {
+			name: "get_disease_stats",
+			description: "取得衛福部食藥署 (TFDA) 民國 112 年全國食品中毒病因物質統計，回傳 12 種病原（諾羅、沙門氏菌、腸炎弧菌、金黃色葡萄球菌、仙人掌桿菌、大腸桿菌、組織胺、植物性、河豚毒、輪狀、肉毒、不明）的件數、患者數、死亡數、相關食材、典型場所、處置策略、檢驗方向、潛伏期、症狀。當使用者問群聚事件可能病原、症狀反推食材、檢驗優先順序、消毒策略時呼叫。",
+			parameters: { type: "object", properties: {}, required: [] },
+		},
+	},
 ];
 
 export const useAiAdvisorStore = defineStore("aiAdvisor", {
@@ -57,6 +65,7 @@ export const useAiAdvisorStore = defineStore("aiAdvisor", {
 		demoData: null,
 		foodInspection: null,
 		vulnerableExposure: null,
+		diseaseStats: null,
 		roleResponses: {},
 		activeRole: null,
 		docResponses: {},
@@ -134,6 +143,29 @@ export const useAiAdvisorStore = defineStore("aiAdvisor", {
 			};
 		},
 
+		// Component 6: 病因物質判定 — 給「事件 → 病因 → 食材 → 處置」決策段
+		diseaseSummary: (state) => {
+			const d = state.diseaseStats;
+			if (!d) return null;
+			const items = d.items || [];
+			// 排除「不明」單獨呈現
+			const known = items.filter((x) => x.pathogen_type !== "unknown" && x.pathogen !== "病因物質不明");
+			const unknown = items.find((x) => x.pathogen_type === "unknown" || x.pathogen === "病因物質不明");
+			return {
+				summary: d.summary || {},
+				metadata: d.metadata || {},
+				topPathogens: known.slice(0, 5),
+				allPathogens: known,
+				unknown,
+				totalCases: d.summary?.total_cases ?? 0,
+				totalPatients: d.summary?.total_patients ?? 0,
+				totalDeaths: d.summary?.total_deaths ?? 0,
+				identifiedShare: d.summary?.identified_share_pct ?? 0,
+				dataYear: d.metadata?.data_year ?? null,
+				isReal: d.metadata?.data_kind === "real",
+			};
+		},
+
 		propagationSummary: (state) => {
 			const v = state.vulnerableExposure;
 			if (!v) return null;
@@ -164,6 +196,10 @@ export const useAiAdvisorStore = defineStore("aiAdvisor", {
 			try {
 				// 脆弱場域暴露：postgres-data → BE /food/exposure（5 張表 join）
 				this.vulnerableExposure = await loadFoodExposure();
+			} catch (e) { /* silent */ }
+			try {
+				// 食源性疾病統計：postgres-data → BE /food/disease-stats (TFDA 民國 112 全國)
+				this.diseaseStats = await loadFoodDiseaseStats();
 			} catch (e) { /* silent */ }
 		},
 
@@ -252,10 +288,16 @@ export const useAiAdvisorStore = defineStore("aiAdvisor", {
 			const systemContent = `${role.system_prompt}
 
 你可呼叫以下工具取得即時資料：
-- get_food_risk_summary: 食安事件摘要
-- get_top_recidivists: 累犯店家
-- get_vulnerable_exposure: 校園長照影響
-- get_district_risk: 行政區風險
+- get_food_risk_summary: 食安事件摘要 (本期雙北抽驗)
+- get_top_recidivists: 累犯店家清單
+- get_vulnerable_exposure: 校園長照影響範圍
+- get_district_risk: 行政區風險排行
+- get_disease_stats: 食源性疾病病原統計 (TFDA 民國 112 年全國，含病原 → 食材 → 處置 → 檢驗 對照)
+
+決策時請依角色取用工具：
+- 衛生局 / 醫療端：症狀群聚 → get_disease_stats 反推可能病原與檢驗方向
+- 教育局 / 家長：高風險食材 → get_disease_stats 看病原關聯食材
+- 社會局 / 長照照顧者：諾羅 / 沙門特別注意校園 / 長照群聚
 
 請主動呼叫工具取得資料後，給出可執行行動建議。回答簡潔（≤200 字），引用具體數字。`;
 
@@ -293,7 +335,7 @@ export const useAiAdvisorStore = defineStore("aiAdvisor", {
 			const outputKind = doc.doc_type === "citizen_card" ? "市民行動卡片" : "公文/通知";
 			const systemContent = `${doc.system_prompt}
 
-你可呼叫工具取得即時資料：get_food_risk_summary / get_top_recidivists / get_vulnerable_exposure / get_district_risk。請先呼叫必要工具，再依資料生成${outputKind}。`;
+你可呼叫工具取得即時資料：get_food_risk_summary / get_top_recidivists / get_vulnerable_exposure / get_district_risk / get_disease_stats。請先呼叫必要工具（含病原統計，如有需要對應症狀/食材/處置/檢驗方向），再依資料生成${outputKind}。`;
 
 			const userPrompt = doc.doc_type === "citizen_card"
 				? "請依資料生成市民行動卡片，嚴格遵守 system prompt 中的 markdown 結構。語氣親切、實用。"

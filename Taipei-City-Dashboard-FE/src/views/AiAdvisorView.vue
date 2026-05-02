@@ -5,7 +5,7 @@ import { useAiAdvisorStore } from "../store/aiAdvisorStore";
 
 const aiStore = useAiAdvisorStore();
 const {
-	demoData, metadata, eventSummary, propagationSummary,
+	demoData, metadata, eventSummary, propagationSummary, diseaseSummary,
 	roleResponses, activeRole, docResponses, activeDoc,
 	audience,
 } = storeToRefs(aiStore);
@@ -744,10 +744,71 @@ function exportTxt() {
 					</div>
 				</section>
 
-				<!-- Section 4: AI Action Recommendations (LIVE) -->
+				<!-- Section 4: 病因物質判定 (Component 6) — 政府端 ④ / 市民端 ② -->
+				<section v-if="diseaseSummary" class="ai__section">
+					<div class="ai__sec-title">
+						<span>{{ isCitizen ? '② 該避開的食材' : '④ 病因物質判定' }}</span>
+						<span class="ai__sec-badge ai__sec-badge--real" v-if="diseaseSummary.isReal">
+							TFDA 民國 {{ diseaseSummary.dataYear - 1911 }} 年
+						</span>
+					</div>
+
+					<!-- ===== 政府端：完整 (4 KPI + Top 5 病原 含件數/處置/檢驗) ===== -->
+					<template v-if="!isCitizen">
+						<div class="ai__dx-kpi">
+							<div class="ai__dx-cell">
+								<span class="ai__dx-num">{{ n(diseaseSummary.totalCases) }}</span>
+								<span class="ai__dx-lab">年度件數</span>
+							</div>
+							<div class="ai__dx-cell">
+								<span class="ai__dx-num ai__dx-num--hi">{{ diseaseSummary.identifiedShare }}%</span>
+								<span class="ai__dx-lab">病因判明率</span>
+							</div>
+							<div class="ai__dx-cell">
+								<span class="ai__dx-num">{{ n(diseaseSummary.totalPatients) }}</span>
+								<span class="ai__dx-lab">中毒患者</span>
+							</div>
+							<div class="ai__dx-cell">
+								<span class="ai__dx-num" :class="{ 'ai__dx-num--hi': diseaseSummary.totalDeaths > 0 }">{{ diseaseSummary.totalDeaths }}</span>
+								<span class="ai__dx-lab">死亡</span>
+							</div>
+						</div>
+						<div class="ai__top-title">
+							<span>Top 病原 → 反推食材 + 處置 + 檢驗</span>
+						</div>
+						<div class="ai__dx-rows">
+							<div v-for="p in diseaseSummary.topPathogens" :key="p.pathogen" class="ai__dx-row ai__dx-row--gov">
+								<div class="ai__dx-rowhead">
+									<span class="ai__dx-pathogen">{{ p.pathogen }}</span>
+									<span class="ai__dx-cnt">{{ p.case_count }} 件 / {{ n(p.patient_count) }} 人</span>
+								</div>
+								<div class="ai__dx-foods">
+									<span v-for="f in p.related_foods.slice(0, 5)" :key="f" class="ai__dx-food">{{ f }}</span>
+								</div>
+								<div class="ai__dx-action">
+									<span class="ai__dx-action-key">檢驗</span>
+									<span class="ai__dx-action-val">{{ p.test_direction.split('、')[0] }}</span>
+								</div>
+							</div>
+						</div>
+					</template>
+
+					<!-- ===== 市民端：極簡 (Top 3 病原 → 食材，inline 一行) ===== -->
+					<template v-else>
+						<div class="ai__dx-simple">
+							<div v-for="p in diseaseSummary.topPathogens.slice(0, 3)" :key="p.pathogen" class="ai__dx-simple-row">
+								<span class="ai__dx-simple-pathogen">{{ p.pathogen }}</span>
+								<span class="ai__dx-simple-arrow">→</span>
+								<span class="ai__dx-simple-foods">{{ p.related_foods.slice(0, 3).join('、') }}</span>
+							</div>
+						</div>
+					</template>
+				</section>
+
+				<!-- Section 5: AI Action Recommendations (LIVE) -->
 				<section class="ai__section">
 					<div class="ai__sec-title">
-						<span>{{ isCitizen ? '② 我的 AI 行動建議' : '④ AI 行動建議' }}</span>
+						<span>{{ isCitizen ? '③ 我的 AI 行動建議' : '⑤ AI 行動建議' }}</span>
 						<span class="ai__sec-badge ai__sec-badge--live">
 							{{ isCitizen ? '選你的身分 · 即時生成' : 'TWCC Live · 點選即生' }}
 						</span>
@@ -792,7 +853,7 @@ function exportTxt() {
 				<!-- Section 5: Document Generator (LIVE) -->
 				<section class="ai__section">
 					<div class="ai__sec-title">
-						<span>{{ isCitizen ? '③ 我的可分享行動卡片' : '⑤ AI 一鍵公文/通知產生' }}</span>
+						<span>{{ isCitizen ? '④ 我的可分享行動卡片' : '⑥ AI 一鍵公文/通知產生' }}</span>
 						<span class="ai__sec-badge ai__sec-badge--live">
 							{{ isCitizen ? '一鍵生成・可複製轉發' : 'TWCC Live' }}
 						</span>
@@ -1263,6 +1324,102 @@ function exportTxt() {
 	}
 	&__dist-name { color: var(--color-normal-text); font-weight: 600; }
 	&__dist-cnt { color: var(--color-complement-text); font-variant-numeric: tabular-nums; }
+
+	/* Section 4: 病因物質判定 (Component 6) — 對齊 KPI / chip 既有風格 */
+	&__sec-badge--real {
+		color: var(--color-highlight);
+		border: 1px solid var(--color-highlight);
+		background: rgba(86, 185, 109, 0.08);
+	}
+	&__dx-kpi {
+		display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;
+		margin-bottom: 8px;
+	}
+	&__dx-cell {
+		background: rgba(0,0,0,0.18);
+		border: 1px solid var(--color-border);
+		border-radius: 4px;
+		padding: 8px 10px;
+		display: flex; flex-direction: column; gap: 2px;
+	}
+	&__dx-num {
+		font-size: 22px; font-weight: 700; line-height: 1;
+		color: var(--color-normal-text);
+		font-variant-numeric: tabular-nums;
+		&--hi { color: var(--color-highlight); }
+	}
+	&__dx-lab { font-size: 10px; color: var(--color-complement-text); }
+
+	&__dx-rows { display: flex; flex-direction: column; gap: 6px; }
+	&__dx-row {
+		display: flex; flex-direction: column; gap: 4px;
+		padding: 8px 10px;
+		background: rgba(0,0,0,0.12);
+		border-left: 2px solid var(--color-border);
+		border-radius: 3px;
+		font-size: 11px;
+		&--gov:hover { border-left-color: var(--color-highlight); }
+	}
+	&__dx-rowhead {
+		display: flex; justify-content: space-between; align-items: baseline;
+		gap: 8px;
+	}
+	&__dx-pathogen {
+		color: var(--color-normal-text); font-weight: 600; font-size: 12px;
+	}
+	&__dx-cnt {
+		color: var(--color-complement-text); font-variant-numeric: tabular-nums;
+		font-size: 10px;
+	}
+	&__dx-foods { display: flex; flex-wrap: wrap; gap: 3px; }
+	&__dx-food {
+		font-size: 10px; padding: 1px 7px;
+		background: rgba(255,255,255,0.04);
+		border: 1px solid var(--color-border);
+		border-radius: 999px;
+		color: var(--color-complement-text);
+	}
+	&__dx-action {
+		display: flex; gap: 6px; align-items: baseline;
+		font-size: 10px;
+		padding-top: 2px;
+		border-top: 1px dashed rgba(255,255,255,0.05);
+	}
+	&__dx-action-key {
+		color: var(--color-highlight);
+		font-weight: 600;
+		min-width: 28px;
+	}
+	&__dx-action-val {
+		color: var(--color-complement-text);
+		flex: 1;
+	}
+
+	/* 市民端極簡版：一行 inline */
+	&__dx-simple {
+		display: flex; flex-direction: column; gap: 6px;
+	}
+	&__dx-simple-row {
+		display: flex; align-items: center; gap: 10px;
+		padding: 10px 14px;
+		background: rgba(0,0,0,0.18);
+		border: 1px solid var(--color-border);
+		border-left: 2px solid var(--color-highlight);
+		border-radius: 4px;
+		font-size: 13px;
+	}
+	&__dx-simple-pathogen {
+		color: var(--color-normal-text); font-weight: 600;
+		min-width: 80px;
+	}
+	&__dx-simple-arrow {
+		color: var(--color-complement-text);
+		font-family: monospace;
+	}
+	&__dx-simple-foods {
+		color: var(--color-complement-text);
+		flex: 1;
+	}
 
 	/* Section 2: Propagation flow */
 	&__prop-flow {
