@@ -116,9 +116,19 @@ def exposure_sql():
     with SRC_JSON.open(encoding="utf-8") as fh:
         d = json.load(fh)
 
-    # facilities (83)
+    # facilities — 對齊 component 設計：只留國中小 / 幼兒園 / 長照，所有高中／高職／附中／
+    # 家事餐飲學校全砍。判定方式：facility_type='school' 必須 facility_name 含「國小」或「國中」，
+    # 否則視為高中職並跳過。
+    def _is_high_school(rec):
+        if rec.get("facility_type") != "school":
+            return False
+        name = rec.get("facility_name", "")
+        return ("國小" not in name) and ("國中" not in name)
+
     f_rows = []
     for x in d.get("facilities", []):
+        if _is_high_school(x):
+            continue
         f_rows.append("(" + ", ".join([
             s(x.get("facility_id")),
             s(x.get("facility_name", "")[:200]),
@@ -144,15 +154,28 @@ def exposure_sql():
     print(" exposure_population, exposure_score, risk_level, suggested_attention) VALUES")
     print(",\n".join(f_rows) + ";")
 
-    # district summary (17)
+    # district summary — 重新依「過濾掉高中後」的 facilities 重算 affected_*_count
+    from collections import defaultdict
+    counts = defaultdict(lambda: {"school": 0, "kindergarten": 0, "elderly_home": 0})
+    for x in d.get("facilities", []):
+        if _is_high_school(x):
+            continue
+        key = (x.get("city"), x.get("district"))
+        counts[key][x.get("facility_type", "")] = counts[key].get(x.get("facility_type", ""), 0) + 1
+
     d_rows = []
     for x in d.get("districts", []):
+        key = (x.get("city"), x.get("district"))
+        c = counts.get(key, {"school": 0, "kindergarten": 0, "elderly_home": 0})
+        # 任何 type 都 0 的 row 跳過
+        if c["school"] + c["kindergarten"] + c["elderly_home"] == 0:
+            continue
         d_rows.append("(" + ", ".join([
             s(x.get("city")),
             s(x.get("district")),
-            n(x.get("affected_school_count")),
-            n(x.get("affected_kindergarten_count")),
-            n(x.get("affected_care_count")),
+            str(c["school"]),
+            str(c["kindergarten"]),
+            str(c["elderly_home"]),
             f(x.get("elderly_ratio")),
             n(x.get("estimated_exposed_population")),
             f(x.get("exposure_score")),
