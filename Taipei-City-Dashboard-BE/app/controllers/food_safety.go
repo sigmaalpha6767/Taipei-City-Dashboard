@@ -8,6 +8,7 @@ package controllers
 
 import (
 	"TaipeiCityDashboardBE/app/models"
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -662,6 +663,8 @@ type diseaseRow struct {
 	Pathogen        string  `gorm:"column:pathogen"          json:"pathogen"`
 	PathogenType    string  `gorm:"column:pathogen_type"     json:"pathogen_type"`
 	CaseCount       int     `gorm:"column:case_count"        json:"case_count"`
+	PatientCount    int     `gorm:"column:patient_count"     json:"patient_count"`
+	DeathCount      int     `gorm:"column:death_count"       json:"death_count"`
 	CaseSharePct    float64 `gorm:"column:case_share_pct"    json:"case_share_pct"`
 	SeverityLevel   string  `gorm:"column:severity_level"    json:"severity_level"`
 	RelatedFoodsCSV string  `gorm:"column:related_foods"     json:"-"`
@@ -672,27 +675,45 @@ type diseaseRow struct {
 	MainSymptom     string  `gorm:"column:main_symptom"      json:"main_symptom"`
 	ColorHex        string  `gorm:"column:color_hex"         json:"color_hex"`
 	SortOrder       int     `gorm:"column:sort_order"        json:"sort_order"`
+	DataYear        int     `gorm:"column:data_year"         json:"data_year"`
+	DataScope       string  `gorm:"column:data_scope"        json:"data_scope"`
 	Notes           string  `gorm:"column:notes"             json:"notes"`
 }
 
 func GetFoodDiseaseStats(c *gin.Context) {
 	var rows []diseaseRow
 	models.DBDashboard.Raw(`
-		SELECT pathogen, pathogen_type, case_count, case_share_pct, severity_level,
+		SELECT pathogen, pathogen_type, case_count, patient_count, death_count,
+		       case_share_pct, severity_level,
 		       related_foods, typical_settings, action_strategy, test_direction,
-		       incubation_hr, main_symptom, color_hex, sort_order, notes
+		       incubation_hr, main_symptom, color_hex, sort_order,
+		       COALESCE(data_year, 0) data_year, COALESCE(data_scope, '') data_scope, notes
 		FROM disease_outbreak_stats
 		ORDER BY sort_order, case_count DESC
 	`).Scan(&rows)
 
 	items := make([]gin.H, 0, len(rows))
-	totalCases := 0
+	identifiedCases := 0
+	identifiedPatients := 0
+	unknownCases := 0
+	unknownPatients := 0
+	totalDeaths := 0
 	for _, r := range rows {
-		totalCases += r.CaseCount
+		// 「病因物質不明」是另一個層級，不能直接跟其他病原加總
+		if r.PathogenType == "unknown" || r.Pathogen == "病因物質不明" {
+			unknownCases += r.CaseCount
+			unknownPatients += r.PatientCount
+		} else {
+			identifiedCases += r.CaseCount
+			identifiedPatients += r.PatientCount
+		}
+		totalDeaths += r.DeathCount
 		items = append(items, gin.H{
 			"pathogen":         r.Pathogen,
 			"pathogen_type":    r.PathogenType,
 			"case_count":       r.CaseCount,
+			"patient_count":    r.PatientCount,
+			"death_count":      r.DeathCount,
 			"case_share_pct":   r.CaseSharePct,
 			"severity_level":   r.SeverityLevel,
 			"related_foods":    splitNonEmpty(r.RelatedFoodsCSV),
@@ -711,6 +732,8 @@ func GetFoodDiseaseStats(c *gin.Context) {
 	highSev := 0
 	bacteriaCnt := 0
 	virusCnt := 0
+	dataYear := 0
+	dataScope := ""
 	for _, r := range rows {
 		if r.SeverityLevel == "high" {
 			highSev += r.CaseCount
@@ -721,24 +744,77 @@ func GetFoodDiseaseStats(c *gin.Context) {
 		if r.PathogenType == "virus" {
 			virusCnt += r.CaseCount
 		}
+		if dataYear == 0 && r.DataYear != 0 {
+			dataYear = r.DataYear
+		}
+		if dataScope == "" && r.DataScope != "" {
+			dataScope = r.DataScope
+		}
+	}
+
+	// 判斷資料屬性：有 data_year 則為 real
+	dataKind := "modeled"
+	noteText := "件數為依衛福部疾管署食品中毒監視系統「典型雙北年度分布」建模估算"
+	sourceText := "postgres-data.disease_outbreak_stats"
+	if dataYear > 0 {
+		dataKind = "real"
+		sourceText = "衛福部食品藥物管理署 (TFDA) 食品中毒案件統計"
+		if dataScope == "national" {
+			noteText = fmt.Sprintf("民國 %d 年（西元 %d 年）全國食品中毒案件統計，來源：衛福部食藥署。雙北場域可參照此分布比例。",
+				dataYear-1911, dataYear)
+		} else {
+			noteText = fmt.Sprintf("民國 %d 年雙北食品中毒案件統計", dataYear-1911)
+		}
+	}
+
+	// TFDA 報表「去重後」真實年度總計
+	// 因為單一事件可能驗出多種病原，TFDA 報表「病因物質判明合計、細菌小計、病毒小計皆扣除重複計數」
+	// 所以逐 row 加總會略高於報表總計。對 112 年用報表官方數字，其他年份 fallback compute。
+	totalCases := identifiedCases + unknownCases
+	totalPatients := identifiedPatients + unknownPatients
+	identifiedSharePct := 0.0
+	if totalCases > 0 {
+		identifiedSharePct = float64(identifiedCases) / float64(totalCases) * 100
+	}
+	dedupNote := ""
+	if dataYear == 2023 && dataScope == "national" {
+		// TFDA 民國 112 年報表官方數字（去重後）
+		totalCases = 633
+		totalPatients = 5196
+		identifiedCases = 265
+		identifiedPatients = 3254
+		identifiedSharePct = 41.9
+		dedupNote = "總計採 TFDA 報表去重後值（單事件多病原會在病原小計重複計數）"
 	}
 
 	c.JSON(http.StatusOK, gin.H{
 		"status": "success",
 		"data": gin.H{
 			"summary": gin.H{
-				"total_cases":      totalCases,
-				"pathogen_count":   len(rows),
-				"high_severity":    highSev,
-				"bacteria_cases":   bacteriaCnt,
-				"virus_cases":      virusCnt,
+				"total_cases":          totalCases,
+				"total_patients":       totalPatients,
+				"total_deaths":         totalDeaths,
+				"identified_cases":     identifiedCases,
+				"identified_patients":  identifiedPatients,
+				"unknown_cases":        unknownCases,
+				"unknown_patients":     unknownPatients,
+				"identified_share_pct": roundTo(identifiedSharePct, 1),
+				"pathogen_count":       len(rows) - 1,
+				"high_severity":        highSev,
+				"bacteria_cases":       bacteriaCnt,
+				"virus_cases":          virusCnt,
+				"data_year":            dataYear,
+				"data_scope":           dataScope,
+				"dedup_note":           dedupNote,
 			},
 			"items": items,
 			"metadata": gin.H{
-				"source":     "postgres-data.disease_outbreak_stats",
-				"data_kind":  "modeled",
-				"note":       "件數為依衛福部疾管署食品中毒監視系統「典型雙北年度分布」建模估算，非真實 surveillance 統計。病原名稱、相關食材、處置策略、檢驗方向皆對齊 CDC/WHO 公衛標準。",
-				"replace_with_real": "把真實年度報告整理成 db-sample-data/food-safety/sources/disease_outbreak_real.csv，跑 scripts/ingest_disease_to_db.py 即可換掉這 7 筆估算",
+				"source":     sourceText,
+				"data_kind":  dataKind,
+				"data_year":  dataYear,
+				"data_scope": dataScope,
+				"note":       noteText,
+				"upstream_url": "https://www.fda.gov.tw/TC/siteContent.aspx?sid=323",
 			},
 		},
 	})

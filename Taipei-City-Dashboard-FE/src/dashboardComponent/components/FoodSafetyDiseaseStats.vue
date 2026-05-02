@@ -26,6 +26,11 @@ const items = computed(() => payload.value?.items ?? []);
 const summary = computed(() => payload.value?.summary ?? {});
 const metadata = computed(() => payload.value?.metadata ?? {});
 const isModeled = computed(() => metadata.value?.data_kind === "modeled");
+const isReal = computed(() => metadata.value?.data_kind === "real");
+const dataYearROC = computed(() => {
+	const y = metadata.value?.data_year;
+	return y ? `民國 ${y - 1911} 年` : "";
+});
 const selectedItem = computed(() =>
 	items.value.find((x) => x.pathogen === selected.value) ?? items.value[0],
 );
@@ -43,27 +48,31 @@ function pickPathogen(p) {
 
 <template>
 	<div v-if="activeChart === 'FoodSafetyDiseaseStats' && payload" class="ddx">
-		<!-- 透明標示：件數為估算（避免被當真實 surveillance 引用） -->
-		<div v-if="isModeled" class="ddx__lineage" :title="metadata.note">
+		<!-- 資料來源標示 -->
+		<div v-if="isReal" class="ddx__lineage ddx__lineage--real" :title="metadata.note">
+			✓ {{ dataYearROC }}全國食品中毒統計 · 來源：衛福部食藥署 (TFDA)
+		</div>
+		<div v-else-if="isModeled" class="ddx__lineage" :title="metadata.note">
 			件數為依疾管署典型分布建模估算（非真實年度報告）
 		</div>
-		<!-- Summary KPI -->
+
+		<!-- Summary KPI（4 格）-->
 		<div class="ddx__kpis">
 			<div class="ddx__kpi">
 				<span class="ddx__kpi-num">{{ summary.total_cases }}</span>
-				<span class="ddx__kpi-lab">年度件數</span>
+				<span class="ddx__kpi-lab">年度總件數</span>
 			</div>
 			<div class="ddx__kpi">
-				<span class="ddx__kpi-num">{{ summary.pathogen_count }}</span>
-				<span class="ddx__kpi-lab">病原類型</span>
+				<span class="ddx__kpi-num ddx__kpi-num--hi">{{ summary.identified_cases }}</span>
+				<span class="ddx__kpi-lab">病因判明（{{ summary.identified_share_pct }}%）</span>
 			</div>
 			<div class="ddx__kpi">
-				<span class="ddx__kpi-num ddx__kpi-num--hi">{{ summary.high_severity }}</span>
-				<span class="ddx__kpi-lab">高嚴重度</span>
+				<span class="ddx__kpi-num">{{ (summary.total_patients || 0).toLocaleString() }}</span>
+				<span class="ddx__kpi-lab">中毒患者人次</span>
 			</div>
 			<div class="ddx__kpi">
-				<span class="ddx__kpi-num">{{ summary.bacteria_cases }}</span>
-				<span class="ddx__kpi-lab">細菌類</span>
+				<span class="ddx__kpi-num" :class="{ 'ddx__kpi-num--hi': summary.total_deaths > 0 }">{{ summary.total_deaths }}</span>
+				<span class="ddx__kpi-lab">死亡數</span>
 			</div>
 		</div>
 
@@ -140,6 +149,12 @@ function pickPathogen(p) {
 	border: 1px dashed var(--color-border);
 	border-radius: 3px;
 	cursor: help;
+	&--real {
+		background: rgba(86, 185, 109, 0.08);
+		color: var(--color-highlight);
+		border: 1px solid var(--color-highlight);
+		border-style: solid;
+	}
 }
 
 .ddx__kpis {

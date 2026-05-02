@@ -65,6 +65,8 @@ def main():
                 s(r.get("pathogen", "").strip()),
                 s(r.get("pathogen_type", "").strip()),
                 n(r.get("case_count")),
+                n(r.get("patient_count", "")),
+                n(r.get("death_count", "")),
                 f(r.get("case_share_pct")),
                 s(r.get("severity_level", "").strip()),
                 s(r.get("related_foods", "").strip()),
@@ -75,6 +77,8 @@ def main():
                 s(r.get("main_symptom", "").strip()),
                 s("#888787"),  # color_hex 預設灰
                 n(r.get("sort_order")) if r.get("sort_order") else "0",
+                n(r.get("data_year", "")),
+                s(r.get("data_scope", "national").strip()),
                 s(r.get("notes", "").strip()),
             ]) + ")")
 
@@ -82,9 +86,11 @@ def main():
     print("BEGIN;")
     print("TRUNCATE disease_outbreak_stats RESTART IDENTITY;")
     print("INSERT INTO disease_outbreak_stats")
-    print("(pathogen, pathogen_type, case_count, case_share_pct, severity_level,")
+    print("(pathogen, pathogen_type, case_count, patient_count, death_count,")
+    print(" case_share_pct, severity_level,")
     print(" related_foods, typical_settings, action_strategy, test_direction,")
-    print(" incubation_hr, main_symptom, color_hex, sort_order, notes) VALUES")
+    print(" incubation_hr, main_symptom, color_hex, sort_order,")
+    print(" data_year, data_scope, notes) VALUES")
     print(",\n".join(rows) + ";")
     print("COMMIT;")
 
