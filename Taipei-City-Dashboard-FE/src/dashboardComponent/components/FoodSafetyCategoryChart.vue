@@ -76,11 +76,7 @@ function handleDataSelection(_e, _ctx, config) {
 }
 
 const chartOptions = computed(() => ({
-	chart: {
-		borderRadius: 5,
-		toolbar: { show: false },
-		events: { dataPointSelection: handleDataSelection },
-	},
+	chart: { borderRadius: 5, toolbar: { show: false } },
 	colors: distributedColors.value,
 	dataLabels: {
 		enabled: true,
@@ -119,7 +115,13 @@ const chartOptions = computed(() => ({
 			<h5>高風險食材 Top {{ top10.length }}</h5>
 			<h6>{{ top10Sum }} 件 / 占全市 {{ top10Pct }}%</h6>
 		</div>
-		<VueApexCharts width="100%" type="treemap" :options="chartOptions" :series="apexSeries" />
+		<VueApexCharts
+			width="100%"
+			type="treemap"
+			:options="chartOptions"
+			:series="apexSeries"
+			@data-point-selection="handleDataSelection"
+		/>
 	</div>
 </template>
 
