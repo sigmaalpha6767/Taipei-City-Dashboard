@@ -735,8 +735,10 @@ func GetFoodDiseaseStats(c *gin.Context) {
 			},
 			"items": items,
 			"metadata": gin.H{
-				"source": "衛福部疾管署食品中毒監視系統 (典型雙北年度分布) + postgres-data.disease_outbreak_stats",
-				"note":   "資料模型對齊衛福部疾管署歷年公開統計，數值為雙北年度典型分布",
+				"source":     "postgres-data.disease_outbreak_stats",
+				"data_kind":  "modeled",
+				"note":       "件數為依衛福部疾管署食品中毒監視系統「典型雙北年度分布」建模估算，非真實 surveillance 統計。病原名稱、相關食材、處置策略、檢驗方向皆對齊 CDC/WHO 公衛標準。",
+				"replace_with_real": "把真實年度報告整理成 db-sample-data/food-safety/sources/disease_outbreak_real.csv，跑 scripts/ingest_disease_to_db.py 即可換掉這 7 筆估算",
 			},
 		},
 	})

@@ -24,6 +24,8 @@ onMounted(load);
 
 const items = computed(() => payload.value?.items ?? []);
 const summary = computed(() => payload.value?.summary ?? {});
+const metadata = computed(() => payload.value?.metadata ?? {});
+const isModeled = computed(() => metadata.value?.data_kind === "modeled");
 const selectedItem = computed(() =>
 	items.value.find((x) => x.pathogen === selected.value) ?? items.value[0],
 );
@@ -41,6 +43,10 @@ function pickPathogen(p) {
 
 <template>
 	<div v-if="activeChart === 'FoodSafetyDiseaseStats' && payload" class="ddx">
+		<!-- 透明標示：件數為估算（避免被當真實 surveillance 引用） -->
+		<div v-if="isModeled" class="ddx__lineage" :title="metadata.note">
+			件數為依疾管署典型分布建模估算（非真實年度報告）
+		</div>
 		<!-- Summary KPI -->
 		<div class="ddx__kpis">
 			<div class="ddx__kpi">
@@ -125,6 +131,15 @@ function pickPathogen(p) {
 	font-size: var(--font-s);
 	padding: 4px 8px 8px;
 	display: flex; flex-direction: column; gap: 12px;
+}
+.ddx__lineage {
+	font-size: 10px;
+	padding: 4px 8px;
+	background: rgba(245, 173, 74, 0.08);
+	color: var(--color-complement-text);
+	border: 1px dashed var(--color-border);
+	border-radius: 3px;
+	cursor: help;
 }
 
 .ddx__kpis {
