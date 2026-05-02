@@ -669,7 +669,7 @@ function exportTxt() {
 						<!-- 累犯店家（只政府端顯示，對市民意義不大）-->
 						<template v-if="!isCitizen && eventSummary.recidivistsRaw && eventSummary.recidivistsRaw.length">
 							<div class="ai__top-title">
-								<span>主要累犯店家</span>
+								<span>主要累犯場域</span>
 							</div>
 							<div class="ai__chips">
 								<div v-for="r in eventSummary.recidivistsRaw.slice(0, 6)" :key="r.store_name" class="ai__chip ai__chip--recid">
@@ -747,7 +747,7 @@ function exportTxt() {
 				<!-- Section 4: 病因物質判定 (Component 6) — 政府端 ④ / 市民端 ② -->
 				<section v-if="diseaseSummary" class="ai__section">
 					<div class="ai__sec-title">
-						<span>{{ isCitizen ? '② 該避開的食材' : '④ 病因物質判定' }}</span>
+						<span>{{ isCitizen ? '② 該注意的疾病與食材' : '④ 病因物質判定' }}</span>
 						<span class="ai__sec-badge ai__sec-badge--real" v-if="diseaseSummary.isReal">
 							TFDA 民國 {{ diseaseSummary.dataYear - 1911 }} 年
 						</span>
