@@ -200,9 +200,10 @@ func configureContributorRoutes() {
 
 func configureAIRoutes() {
 	aiRoutes := RouterGroup.Group("/ai")
+	// 速率限制保留（防 TWCC token 被 spam），但移除 IsLoggedIn —— 對齊 /food/* 與
+	// /component/:id/chart 公開端點，讓 demo 訪客直接點 AI 頁也能用。
 	aiRoutes.Use(middleware.LimitAPIRequests(global.ComponentLimitAPIRequestsTimes, global.LimitRequestsDuration))
 	aiRoutes.Use(middleware.LimitTotalRequests(global.ComponentLimitTotalRequestsTimes, global.LimitRequestsDuration))
-	aiRoutes.Use(middleware.IsLoggedIn())
 	{
 		aiRoutes.POST("/chat/twai", controllers.ChatWithTWCC)
 	}

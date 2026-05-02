@@ -7,16 +7,23 @@
 
 ## TL;DR — 一鍵安裝
 
-確認 `docker compose up -d` 已起、`postgres-data` 容器在跑後，repo 根目錄執行：
+確認 `docker compose up -d` 已起、`postgres-data` / `dashboard-be` 都在跑後，repo 根目錄執行：
 
 ```bash
-docker exec -i postgres-data psql -U postgres -d dashboard < db-sample-data/food-safety/schema/01_food_inspection.sql
-docker exec -i postgres-data psql -U postgres -d dashboard < db-sample-data/food-safety/schema/02_vulnerable_exposure.sql
-docker exec postgres-data psql -U postgres -d dashboard -c "ALTER TABLE school_directory DROP CONSTRAINT IF EXISTS school_directory_agency_code_key;"
-docker exec -i postgres-data psql -U postgres -d dashboard < db-sample-data/food-safety/data/03_food_inspection_data.sql
-docker exec -i postgres-data psql -U postgres -d dashboard < db-sample-data/food-safety/data/04_vulnerable_data.sql
-docker restart dashboard-be
+bash db-sample-data/food-safety/setup.sh
 ```
+
+腳本會自動跑：建 schema、鬆綁 school unique 約束、灌兩份 SQL、重啟 BE、驗證筆數。
+
+> **手動分步版本**（萬一 setup.sh 跑不了）：
+> ```bash
+> docker exec -i postgres-data psql -U postgres -d dashboard < db-sample-data/food-safety/schema/01_food_inspection.sql
+> docker exec -i postgres-data psql -U postgres -d dashboard < db-sample-data/food-safety/schema/02_vulnerable_exposure.sql
+> docker exec postgres-data psql -U postgres -d dashboard -c "ALTER TABLE school_directory DROP CONSTRAINT IF EXISTS school_directory_agency_code_key;"
+> docker exec -i postgres-data psql -U postgres -d dashboard < db-sample-data/food-safety/data/03_food_inspection_data.sql
+> docker exec -i postgres-data psql -U postgres -d dashboard < db-sample-data/food-safety/data/04_vulnerable_data.sql
+> docker restart dashboard-be
+> ```
 
 跑完打開 http://localhost:8888/dashboard，「食安事件摘要」「行政區排行」「累犯店家」「脆弱族群暴露」等組件都會顯示真實數字。
 

@@ -147,21 +147,155 @@ func GetFoodSummary(c *gin.Context) {
 	// === recidivists (≥2 fails) ===
 	recids := queryRecidivists()
 
-	// === categories (依食品類別聚合) ===
+	// === categories (依食品類別聚合，含 risk_score / risk_level / involved_district_count) ===
 	type categoryRow struct {
-		Category          string `gorm:"column:category"            json:"category"`
-		FailCount         int    `gorm:"column:fail_count"          json:"fail_count"`
-		MainViolationType string `gorm:"column:main_violation_type" json:"main_violation_type"`
+		Category              string  `gorm:"column:category"               json:"category"`
+		FailCount             int     `gorm:"column:fail_count"             json:"fail_count"`
+		MainViolationType     string  `gorm:"column:main_violation_type"    json:"main_violation_type"`
+		InvolvedDistrictCount int     `gorm:"column:involved_district_count" json:"involved_district_count"`
+		RiskScore             float64 `gorm:"-"                              json:"risk_score"`
+		RiskLevel             string  `gorm:"-"                              json:"risk_level"`
 	}
 	var categories []categoryRow
 	models.DBDashboard.Raw(`
 		SELECT COALESCE(category, '其他') category,
 		       COUNT(*) fail_count,
-		       MODE() WITHIN GROUP (ORDER BY violation_type) main_violation_type
+		       MODE() WITHIN GROUP (ORDER BY violation_type) main_violation_type,
+		       COUNT(DISTINCT district) FILTER (WHERE district != '未知') involved_district_count
 		FROM food_inspection_raw
 		GROUP BY category
 		ORDER BY fail_count DESC
 	`).Scan(&categories)
+	// 算 risk_score：fail_count 占最大值的比例 → 0~100；level 用門檻分檔
+	maxCatFail := 1
+	for _, c := range categories {
+		if c.FailCount > maxCatFail {
+			maxCatFail = c.FailCount
+		}
+	}
+	for i := range categories {
+		s := float64(categories[i].FailCount) / float64(maxCatFail) * 100
+		categories[i].RiskScore = roundTo(s, 2)
+		switch {
+		case s >= 80:
+			categories[i].RiskLevel = "red"
+		case s >= 65:
+			categories[i].RiskLevel = "orange"
+		case s >= 45:
+			categories[i].RiskLevel = "yellow"
+		default:
+			categories[i].RiskLevel = "green"
+		}
+	}
+
+	// === monthly_trend (依月份分組，雙北雙線) ===
+	type trendRow struct {
+		Month string `gorm:"column:m"`
+		City  string `gorm:"column:city"`
+		Cnt   int    `gorm:"column:cnt"`
+	}
+	var trendRows []trendRow
+	models.DBDashboard.Raw(`
+		SELECT TO_CHAR(test_date, 'YYYY-MM') m, city, COUNT(*) cnt
+		FROM food_inspection_raw
+		WHERE test_date IS NOT NULL AND city IN ('臺北市','新北市')
+		GROUP BY m, city
+		ORDER BY m
+	`).Scan(&trendRows)
+	monthSet := map[string]struct{}{}
+	for _, t := range trendRows {
+		monthSet[t.Month] = struct{}{}
+	}
+	months := make([]string, 0, len(monthSet))
+	for m := range monthSet {
+		months = append(months, m)
+	}
+	// PG 已 ORDER BY m 但 map 會打亂，重排
+	for i := 0; i < len(months); i++ {
+		for j := i + 1; j < len(months); j++ {
+			if months[j] < months[i] {
+				months[i], months[j] = months[j], months[i]
+			}
+		}
+	}
+	tpeData := make([]int, len(months))
+	ntcData := make([]int, len(months))
+	monthIdx := map[string]int{}
+	for i, m := range months {
+		monthIdx[m] = i
+	}
+	for _, t := range trendRows {
+		idx := monthIdx[t.Month]
+		if t.City == "臺北市" {
+			tpeData[idx] = t.Cnt
+		} else if t.City == "新北市" {
+			ntcData[idx] = t.Cnt
+		}
+	}
+	monthlyTrend := gin.H{
+		"months": months,
+		"series": []gin.H{
+			{"name": "臺北市", "data": tpeData},
+			{"name": "新北市", "data": ntcData},
+		},
+	}
+
+	// === suggested_inspections (累犯店家 + 高風險食材店家整合，給稽查派工 chart 用) ===
+	type sgRow struct {
+		StoreName         string  `gorm:"column:store_name"`
+		Address           string  `gorm:"column:address"`
+		City              string  `gorm:"column:city"`
+		DistrictsCSV      string  `gorm:"column:districts_csv"`
+		MainViolationType string  `gorm:"column:main_violation_type"`
+		FailCount         int     `gorm:"column:fail_count"`
+		Severity          float64 `gorm:"column:severity"`
+	}
+	var sgRows []sgRow
+	models.DBDashboard.Raw(`
+		SELECT store_name,
+		       MAX(address) address,
+		       (ARRAY_AGG(DISTINCT city))[1] city,
+		       STRING_AGG(DISTINCT district, ',') FILTER (WHERE district != '未知') districts_csv,
+		       MODE() WITHIN GROUP (ORDER BY violation_type) main_violation_type,
+		       COUNT(*) fail_count,
+		       AVG(violation_severity) severity
+		FROM food_inspection_raw
+		WHERE store_name IS NOT NULL AND store_name != ''
+		GROUP BY store_name
+		ORDER BY fail_count DESC, severity DESC
+		LIMIT 30
+	`).Scan(&sgRows)
+	suggested := make([]gin.H, 0, len(sgRows))
+	maxSgFail := 1
+	for _, s := range sgRows {
+		if s.FailCount > maxSgFail {
+			maxSgFail = s.FailCount
+		}
+	}
+	for i, s := range sgRows {
+		actionType := "高風險食材"
+		if s.FailCount >= 2 {
+			actionType = "累犯店家"
+		}
+		// action_score = (fail_count 占比 * 0.6) + (severity 標準化 * 0.4)
+		freqScore := float64(s.FailCount) / float64(maxSgFail) * 100
+		sevScore := s.Severity
+		if sevScore > 100 {
+			sevScore = 100
+		}
+		actionScore := freqScore*0.6 + sevScore*0.4
+		suggested = append(suggested, gin.H{
+			"rank":                i + 1,
+			"store_name":          s.StoreName,
+			"address":             s.Address,
+			"city":                s.City,
+			"districts":           splitNonEmpty(s.DistrictsCSV),
+			"main_violation_type": s.MainViolationType,
+			"fail_count":          s.FailCount,
+			"action_type":         actionType,
+			"action_score":        roundTo(actionScore, 2),
+		})
+	}
 
 	// === violations (最近 N 筆，給「近期違規」tab 用) ===
 	type violationRow struct {
@@ -205,13 +339,15 @@ func GetFoodSummary(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"status": "success",
 		"data": gin.H{
-			"summary":     summary,
-			"samples":     samples,
-			"categories":  categories,
-			"violations":  violations,
-			"districts":   districts,
-			"recidivists": recids,
-			"cities":      cities,
+			"summary":               summary,
+			"samples":               samples,
+			"categories":            categories,
+			"violations":            violations,
+			"districts":             districts,
+			"recidivists":           recids,
+			"cities":                cities,
+			"monthly_trend":         monthlyTrend,
+			"suggested_inspections": suggested,
 			"metadata": gin.H{
 				"source":       "postgres-data.food_inspection_raw",
 				"note":         "資料即時取自 postgres-data，每次呼叫都重算",
