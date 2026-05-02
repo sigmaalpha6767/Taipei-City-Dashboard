@@ -18,7 +18,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_top_recidivists",
-			description: "取得多次違規累犯店家清單。回傳店家名稱、違規次數、城市、主要違規類別、相關食材。",
+			description: "取得多次違規累犯場域清單（含店家、校園、供應商）。回傳場域名稱、違規次數、城市、主要違規類別、相關食材。",
 			parameters: {
 				type: "object",
 				properties: { limit: { type: "integer", description: "取前幾名（預設 5）" } },
@@ -289,7 +289,7 @@ export const useAiAdvisorStore = defineStore("aiAdvisor", {
 
 你可呼叫以下工具取得即時資料：
 - get_food_risk_summary: 食安事件摘要 (本期雙北抽驗)
-- get_top_recidivists: 累犯店家清單
+- get_top_recidivists: 累犯場域清單（含店家 / 校園 / 供應商）
 - get_vulnerable_exposure: 校園長照影響範圍
 - get_district_risk: 行政區風險排行
 - get_disease_stats: 食源性疾病病原統計 (TFDA 民國 112 年全國，含病原 → 食材 → 處置 → 檢驗 對照)

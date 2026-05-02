@@ -125,7 +125,7 @@ func GetTopRecidivists(ctx context.Context, args string) (string, error) {
 		params.Limit = 5
 	}
 
-	// 在地店家（雙北 + 有 district）優先
+	// 在地場域（雙北 + 有 district 的店家、校園、供應商）優先
 	q := `
 		SELECT store_name,
 		       COUNT(*) fail_count,
@@ -163,7 +163,7 @@ func GetTopRecidivists(ctx context.Context, args string) (string, error) {
 			"districts":      districts,
 		}
 		if len(districts) > 0 {
-			entry["kind"] = "在地店家"
+			entry["kind"] = "在地場域"
 			entry["location_summary"] = strings.Join(districts, "、")
 		} else {
 			entry["kind"] = "食品供應商"
@@ -174,7 +174,7 @@ func GetTopRecidivists(ctx context.Context, args string) (string, error) {
 	out := map[string]interface{}{
 		"items": items,
 		"count": len(items),
-		"note":  "已優先列出有具體雙北行政區的在地店家；不足才補上食品供應商型違規。",
+		"note":  "已優先列出有具體雙北行政區的在地場域（含店家、校園、供應商）；不足才補上食品供應商型違規。",
 	}
 	b, _ := json.Marshal(out)
 	return string(b), nil
