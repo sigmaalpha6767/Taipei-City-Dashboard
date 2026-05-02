@@ -230,7 +230,13 @@ export const useChatStore = defineStore('chat', () => {
 			}));
 	};
 
-	// 主對話入口：使用者送出訊息 → BE LLM + tools → 串接結果
+	// 偵測「典型食安 FAQ」 — 走「短 prompt + 資料塞 user message + 不給 tools」快路徑。
+	// 為什麼這樣設計：TWCC llama3.3-ffm-70b 對長 system prompt（>1k 字）不忠實，
+	// 會回退成訓練資料的通用空話。文件範例 system prompt 都只有一句話。
+	// 對典型問題「拿掉 tool 選擇權 + 把資料放在 user 訊息裡」，模型只能讀資料回答。
+	const FOOD_FAQ_REGEX = /(?:哪些(?:食物|食材|東西)|什麼食物|什麼東西.*(?:風險|危險)|高風險食物|風險食物|該避(?:開|免)|食物.*(?:風險|危險)|飲食安全|該注意.*(?:食材|食物|疾病|什麼)|市民.*(?:建議|注意)|民眾.*(?:建議|注意)|(?:一般|普通).*(?:民眾|市民|人).*(?:風險|建議|注意))/;
+
+	// 主對話入口：使用者送出訊息 → BE LLM (+/- tools) → 串接結果
 	const sendChat = async (text) => {
 		if (chatStreaming.value) return;
 		const trimmed = text?.trim();
@@ -258,24 +264,47 @@ export const useChatStore = defineStore('chat', () => {
 
 		// pre-fetch 即時資料快照（第一次同步等，之後 cache 立返）
 		const snapshot = await buildReferenceSnapshot().catch(() => '');
-		const systemContent = snapshot
-			? `${SYSTEM_PROMPT}\n\n# 即時資料快照（直接引用以下實際數字、食材名、場域名回答；不要憑空編造、不要只列病原名稱）\n\n${snapshot}`
-			: SYSTEM_PROMPT;
 
-		const messages = [
-			{ role: 'system', content: systemContent },
-			...buildHistoryMessages().slice(0, -1), // 排除最後一筆空的 bot 預留
-		];
+		// 路徑分流：典型食安 FAQ 走短 prompt 快路徑（強制模型讀資料），其他走 tool calling
+		const isFoodFAQ = FOOD_FAQ_REGEX.test(trimmed) && snapshot;
+		let messages;
+		let useTool = !isFoodFAQ;
+
+		if (isFoodFAQ) {
+			// 短 system + 資料放 user message（多數模型對 user role 忠實度 > system role）+ 不給 tools
+			messages = [
+				{
+					role: 'system',
+					content: '你是雙北食安顧問。直接用使用者提供的「資料」回答，主體必須是「食材名稱」（不是病原名）。中文，≤ 220 字。每項食材後括號標註關聯病原與案件數。最後一句行動建議。禁止只列病原名後說「請注意食品安全」這種空話。'
+				},
+				...buildHistoryMessages().slice(0, -1).slice(-4), // 留最近 4 輪上下文
+				{
+					role: 'user',
+					content: `問題：${trimmed}\n\n以下是雙北食安 + TFDA 即時資料（請直接從中挑出相關食材回答）：\n\n${snapshot}`
+				},
+			];
+		} else {
+			const systemContent = snapshot
+				? `${SYSTEM_PROMPT}\n\n# 即時資料快照（直接引用以下實際數字、食材名、場域名回答；不要憑空編造、不要只列病原名稱）\n\n${snapshot}`
+				: SYSTEM_PROMPT;
+			messages = [
+				{ role: 'system', content: systemContent },
+				...buildHistoryMessages().slice(0, -1),
+			];
+		}
 
 		try {
-			const resp = await http.post('/ai/chat/twai', {
+			const payload = {
 				messages,
-				tools: TOOLS,
-				tool_choice: 'auto',
 				max_new_tokens: 600,
-				temperature: 0.4,
+				temperature: isFoodFAQ ? 0.3 : 0.4,
 				stream: false,
-			});
+			};
+			if (useTool) {
+				payload.tools = TOOLS;
+				payload.tool_choice = 'auto';
+			}
+			const resp = await http.post('/ai/chat/twai', payload);
 
 			const data = resp.data?.data ?? {};
 			const content = data.content ?? '';
