@@ -73,6 +73,8 @@ type aiSession struct {
 	totalOutput     int
 	toolUsed        bool
 	executedTools   []string
+	// 同一 (tool,args) 的執行結果 cache，避免 LLM 在 multi-turn 重複呼叫
+	toolCallCache   map[string]string
 	lastResp        *llms.ContentResponse
 	lastErr         error
 	startTime       time.Time
@@ -81,6 +83,7 @@ type aiSession struct {
 func (s *aiSession) run(ctx context.Context) (*models.AIChatLog, error) {
 	maxLoops := 5
 	s.executedTools = make([]string, 0)
+	s.toolCallCache = make(map[string]string)
 	for i := 0; i < maxLoops; i++ {
 		s.sendHeartbeat(ctx)
 
@@ -90,6 +93,28 @@ func (s *aiSession) run(ctx context.Context) (*models.AIChatLog, error) {
 
 		toolCalls := s.extractToolCalls()
 		if len(toolCalls) == 0 {
+			break
+		}
+
+		// Dedup: 如果這一輪所有 tool 都已經呼叫過（相同 args），直接結束
+		// 避免 LLM 因為某些原因不停重複呼叫同一 tool
+		allDup := true
+		for _, tc := range toolCalls {
+			sig := tc.FunctionCall.Name + ":" + tc.FunctionCall.Arguments
+			if _, seen := s.toolCallCache[sig]; !seen {
+				allDup = false
+				break
+			}
+		}
+		if allDup {
+			logs.FInfo("Loop %d: all tool calls already executed (dedup), forcing final answer", i)
+			// 把 cache 結果回灌一次給 LLM，但下一輪要強制回答
+			if err := s.executeTools(ctx, toolCalls); err != nil {
+				break
+			}
+			// 再 generate 一次拿最終文字
+			s.sendHeartbeat(ctx)
+			s.generate(ctx)
 			break
 		}
 
@@ -157,10 +182,21 @@ func (s *aiSession) executeTools(ctx context.Context, toolCalls []llms.ToolCall)
 
 	for _, tc := range toolCalls {
 		s.executedTools = append(s.executedTools, tc.FunctionCall.Name)
-		result, err := tools.Execute(ctx, tc.FunctionCall.Name, tc.FunctionCall.Arguments)
-		if err != nil {
-			result = fmt.Sprintf("Error: %v. Please verify arguments.", err)
-			logs.FError("Tool Error: %v", err)
+		sig := tc.FunctionCall.Name + ":" + tc.FunctionCall.Arguments
+
+		var result string
+		if cached, ok := s.toolCallCache[sig]; ok {
+			// 重複呼叫 → 用上次結果 + 提示 LLM「資料已取得，請依此回答不要再呼叫」
+			result = cached + "\n\n[NOTE] 此 tool 已用相同參數呼叫過，請直接根據以上資料給最終答案，不要再呼叫工具。"
+			logs.FInfo("Tool dedup hit: %s", sig)
+		} else {
+			r, err := tools.Execute(ctx, tc.FunctionCall.Name, tc.FunctionCall.Arguments)
+			if err != nil {
+				r = fmt.Sprintf("Error: %v. Please verify arguments.", err)
+				logs.FError("Tool Error: %v", err)
+			}
+			result = r
+			s.toolCallCache[sig] = r
 		}
 
 		s.currentMessages = append(s.currentMessages, llms.MessageContent{

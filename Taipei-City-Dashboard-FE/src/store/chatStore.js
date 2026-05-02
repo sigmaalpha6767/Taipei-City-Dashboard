@@ -3,10 +3,14 @@ import { defineStore } from 'pinia'
 import http from "../router/axios";
 
 // 統一對話入口：原本只做 vector search，現在升級為 LLM + tool calling。
-// 工具集：
-//   - search_dashboard_components: 找儀表板組件（vector search，渲染成「建立儀表板」推薦表）
-//   - get_food_risk_summary / get_top_recidivists / get_vulnerable_exposure / get_district_risk: 食安主題
-// 對話歷史完整保留，BE 走 multi-turn tool calling loop。
+// 工具集（6 個，全部讀 postgres-data 後端）：
+//   - search_dashboard_components: 找儀表板組件 (vector search Qdrant)
+//   - get_food_risk_summary:       食安抽驗摘要 (food_inspection_raw)
+//   - get_top_recidivists:         累犯場域 (food_inspection_raw)
+//   - get_vulnerable_exposure:     校園長照影響 (vulnerable_facility_exposure + food_event_current)
+//   - get_district_risk:           行政區風險 (food_inspection_raw)
+//   - get_disease_stats:           食源性疾病統計 (disease_outbreak_stats, TFDA 民國 112 年)
+// 對話歷史完整保留，BE 走 multi-turn tool calling loop（已加 dedup 避免重複呼叫）。
 
 const TOOLS = [
 	{
@@ -57,7 +61,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_district_risk",
-			description: "取得指定城市的行政區風險排行。",
+			description: "取得指定城市的行政區風險排行（依違規件數）。",
 			parameters: {
 				type: "object",
 				properties: {
@@ -68,17 +72,38 @@ const TOOLS = [
 			},
 		},
 	},
+	{
+		type: "function",
+		function: {
+			name: "get_disease_stats",
+			description: "取得衛福部食藥署 TFDA 民國 112 年全國食品中毒病因物質統計。回傳 12 種病原（諾羅、沙門氏菌、腸炎弧菌、金黃色葡萄球菌、仙人掌桿菌、大腸桿菌、組織胺、植物性、河豚毒、輪狀、肉毒、不明）的件數、患者數、死亡數、相關食材、典型場所、處置策略、檢驗方向、潛伏期、症狀。當使用者問「一般民眾飲食安全建議」「該注意什麼疾病/食材」「群聚事件可能病原」「症狀反推食材」「檢驗優先順序」時呼叫。",
+			parameters: { type: "object", properties: {}, required: [] },
+		},
+	},
 ];
 
-const SYSTEM_PROMPT = `你是【臺北城市儀表板】小幫手，同時也是雙北食安事件分析 AI。
+const SYSTEM_PROMPT = `你是【臺北城市儀表板】小幫手 — 雙北食安決策分析 AI。
+你能讀取 postgres-data 後端 7 張表（food_inspection_raw、school_directory、care_facility_directory、vulnerable_facility_exposure、district_exposure_summary、food_event_current、disease_outbreak_stats）取得即時資料。
 
-**回答風格**：簡潔、直接、引用具體數字。中文回應。回答 ≤ 200 字。
+**回答風格**：簡潔、直接、引用具體數字。中文回應。回答 ≤ 250 字。
 
-**工具使用原則**：
-- 使用者描述要找的儀表板/組件 → 呼叫 search_dashboard_components
-- 使用者問食安事件、累犯場域、行政區風險、學校長照影響 → 呼叫對應食安工具
-- 使用者問「它們」「他們」「那些」這類代名詞 → 從上下文找出指涉對象，必要時重新呼叫工具取得補充資訊（如場域所在地、累犯細節等。場域包含店家、校園、供應商）
-- 工具回傳的資料要充分利用，不要只重複先前回答`;
+**工具選擇對照**（依使用者問題類型，每次只選 1~2 個最相關的 tool，**禁止重複呼叫同一 tool**）：
+
+| 使用者問題類型 | 該選 tool |
+|---|---|
+| 找儀表板組件 / 圖表 | search_dashboard_components |
+| 本期食安整體狀況 / Top 違規食材 / 違規類別 | get_food_risk_summary |
+| 累犯場域 / 該稽查的店或學校 / 它們在哪 | get_top_recidivists |
+| 受影響學校、長照、暴露人口、當前事件 | get_vulnerable_exposure |
+| 哪些行政區風險高 / 行政區排行 | get_district_risk |
+| **一般民眾飲食安全建議** / **該注意什麼疾病或食材** / 病原症狀 / 檢驗方向 | **get_disease_stats** |
+
+**重要規則**：
+1. 同一個 tool 在一次對話內**最多呼叫 1 次**。tool 拿到結果後直接生成最終答案，不要重新呼叫。
+2. 使用者問泛問題（如「飲食安全建議」「該注意什麼」），優先呼叫 **get_disease_stats** 加 **get_food_risk_summary**。
+3. 使用者用代名詞（它們/那些）→ 從上下文找指涉，**不**呼叫第二次工具。
+4. 工具失敗或無結果時，用既有知識答，**不**重試同一 tool。
+5. 場域 = 店家 / 校園 / 供應商 三類；累犯場域可能是學校或食品公司。`;
 
 export const useChatStore = defineStore('chat', () => {
 	const defaultChatData = [
