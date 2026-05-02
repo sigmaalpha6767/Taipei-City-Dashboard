@@ -2,15 +2,14 @@ import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import http from "../router/axios";
 
-// 統一對話入口：原本只做 vector search，現在升級為 LLM + tool calling。
-// 工具集（6 個，全部讀 postgres-data 後端）：
-//   - search_dashboard_components: 找儀表板組件 (vector search Qdrant)
-//   - get_food_risk_summary:       食安抽驗摘要 (food_inspection_raw)
-//   - get_top_recidivists:         累犯場域 (food_inspection_raw)
-//   - get_vulnerable_exposure:     校園長照影響 (vulnerable_facility_exposure + food_event_current)
-//   - get_district_risk:           行政區風險 (food_inspection_raw)
-//   - get_disease_stats:           食源性疾病統計 (disease_outbreak_stats, TFDA 民國 112 年)
-// 對話歷史完整保留，BE 走 multi-turn tool calling loop（已加 dedup 避免重複呼叫）。
+// 統一對話入口：LLM + 「資料先注入，tool 為輔助」混合策略。
+// 為什麼不純走 multi-turn tool calling：TWCC llama3.3-ffm-70b 對 tool result 整合
+// 能力弱，常常 call 完 tool 還是用通用知識回答 → 文不對題。
+// 解法：sendChat 第一句先 pre-fetch /food/summary + /food/disease-stats，
+// 把實際數字、食材名、累犯名直接注入 system prompt 的「即時資料快照」。
+// LLM 一開始就「拿著資料寫答案」，不必依賴會迷路的 tool calling loop。
+// 工具仍保留：search_dashboard_components（向量搜組件）、其餘 5 個食安 tool 給
+// 想做精細查詢時用，但泛問題（「哪些食物高風險」「累犯在哪」）已不需 tool。
 
 const TOOLS = [
 	{
@@ -85,24 +84,25 @@ const TOOLS = [
 const SYSTEM_PROMPT = `你是【臺北城市儀表板】小幫手 — 雙北食安決策分析 AI。
 你能讀取 postgres-data 後端 7 張表（food_inspection_raw、school_directory、care_facility_directory、vulnerable_facility_exposure、district_exposure_summary、food_event_current、disease_outbreak_stats）取得即時資料。
 
+**最高指導原則**：本訊息底部會附「即時資料快照」（含具體食材名、件數、累犯場域、病原-食材對照表）。**先讀完快照，再用快照裡的實際資料寫答案**。快照已涵蓋 80% 食安問題的答案，請優先引用而非呼叫工具。只有快照沒有的維度（如向量搜組件、特定行政區深挖、長照學校暴露細節）才呼叫工具。
+
 **回答風格**：直接回答使用者「實際問的東西」。中文。回答 ≤ 250 字。
 
-**工具選擇對照**（依使用者問題類型，每次只選 1~2 個最相關的 tool，**禁止重複呼叫同一 tool**）：
+**工具策略**（快照已涵蓋大部分情境；以下情況才需呼叫 tool）：
 
-| 使用者問題類型 | 該選 tool |
+| 使用者問題類型 | 處理方式 |
 |---|---|
-| 找儀表板組件 / 圖表 | search_dashboard_components |
-| 本期食安整體狀況 / Top 違規食材 / 違規類別 | get_food_risk_summary |
-| 累犯場域 / 該稽查的店或學校 / 它們在哪 | get_top_recidivists |
-| 受影響學校、長照、暴露人口、當前事件 | get_vulnerable_exposure |
-| 哪些行政區風險高 / 行政區排行 | get_district_risk |
-| **哪些食物高風險** / **一般民眾飲食安全建議** / **該注意什麼疾病或食材** / 病原症狀 / 檢驗方向 | **get_disease_stats**（必要時加 get_food_risk_summary） |
+| 「我想看 XX 組件 / 圖表」「有沒有 OO 圖」 | 呼叫 **search_dashboard_components** |
+| 哪些食物高風險 / 飲食建議 / 該注意什麼疾病 / 病原症狀 / 違規食材 / Top 累犯場域 / 行政區排行 | **直接讀快照回答，不呼叫 tool** |
+| 想看「特定城市」（taipei vs newtaipei）的行政區排行 | 呼叫 **get_district_risk** with city 參數 |
+| 想看「校園/長照」受影響細節（學校名/人數） | 呼叫 **get_vulnerable_exposure** |
+| 快照沒涵蓋的精細查詢（特定累犯排行第 N 名以後等） | 才呼叫對應 tool |
 
 **重要規則**：
-1. 同一個 tool 在一次對話內**最多呼叫 1 次**。tool 拿到結果後直接生成最終答案，不要重新呼叫。
-2. 使用者問泛問題（如「飲食安全建議」「該注意什麼」「哪些食物高風險」），呼叫 **get_disease_stats** 加 **get_food_risk_summary**。
+1. **預設不呼叫 tool**。先看快照能不能答完。能就直接答，不要為了 call 而 call。
+2. 同一個 tool 在一次對話內**最多呼叫 1 次**，且呼叫前確認快照沒這個資料。
 3. 使用者用代名詞（它們/那些）→ 從上下文找指涉，**不**呼叫第二次工具。
-4. 工具失敗或無結果時，用既有知識答，**不**重試同一 tool。
+4. 工具失敗或無結果時，回到快照答，**不**重試同一 tool。
 5. 場域 = 店家 / 校園 / 供應商 三類；累犯場域可能是學校或食品公司。
 
 **回答內容硬規則**（違反 = 文不對題）：
@@ -139,6 +139,69 @@ export const useChatStore = defineStore('chat', () => {
 	const chatData = ref([...defaultChatData, ...savedChatData]);
 
 	const chatStreaming = ref(false);
+
+	// 即時資料快照：第一次 sendChat 時 pre-fetch 後 cache 整個 session 重用。
+	// 這份資料會直接注入 system prompt，讓 LLM 不用 call tool 就能拿到具體數字。
+	const referenceSnapshot = ref('');
+	let referenceFetchPromise = null;
+
+	const buildReferenceSnapshot = async () => {
+		if (referenceSnapshot.value) return referenceSnapshot.value;
+		if (referenceFetchPromise) return referenceFetchPromise;
+
+		referenceFetchPromise = (async () => {
+			const lines = [];
+			const [summaryRes, diseaseRes] = await Promise.allSettled([
+				http.get('/food/summary'),
+				http.get('/food/disease-stats'),
+			]);
+
+			if (summaryRes.status === 'fulfilled') {
+				const d = summaryRes.value?.data?.data;
+				if (d) {
+					lines.push('## 雙北食安抽驗（postgres-data 即時資料）');
+					if (d.summary) {
+						lines.push(`- 總違規件數：${d.summary.total_fail_count} 件，涵蓋 ${d.summary.involved_district_count} 區，期間 ${d.metadata?.data_period || '—'}`);
+						const vt = d.summary.violation_type_breakdown || {};
+						const vtList = Object.entries(vt).sort((a, b) => b[1] - a[1]).slice(0, 5)
+							.map(([k, v]) => `${k}(${v}件)`).join('、');
+						if (vtList) lines.push(`- 違規類別 Top 5：${vtList}`);
+					}
+					const samples = (d.samples || []).slice(0, 8)
+						.map(s => `${s.sample_name}(${s.fail_count}件，主違: ${s.main_violation_type})`).join('、');
+					if (samples) lines.push(`- 高頻違規食材 Top 8：${samples}`);
+					const districts = (d.districts || []).slice(0, 6)
+						.map(x => `${x.city || ''}${x.district}(${x.fail_count}件)`).join('、');
+					if (districts) lines.push(`- 風險前 6 行政區：${districts}`);
+					const recids = (d.recidivists || []).slice(0, 5)
+						.map(r => `${r.name}[${r.kind || '場域'}/${r.fail_count}次/${r.city || ''}${r.district || ''}]`).join('、');
+					if (recids) lines.push(`- Top 5 累犯場域：${recids}`);
+				}
+			}
+
+			if (diseaseRes.status === 'fulfilled') {
+				const d = diseaseRes.value?.data?.data;
+				if (d?.summary && d?.items) {
+					const s = d.summary;
+					const yr = s.data_year ? `${s.data_year - 1911}` : '112';
+					lines.push('');
+					lines.push(`## TFDA 民國 ${yr} 年食品中毒（${s.data_scope === 'national' ? '全國' : '雙北'}，可作為食材—病原參照）`);
+					lines.push(`- 全年 ${s.total_cases} 件 / ${s.total_patients} 人 / ${s.total_deaths} 死`);
+					lines.push(`- 病因判明 ${s.identified_cases} 件（${s.identified_share_pct}%）；不明 ${s.unknown_cases} 件`);
+					lines.push('- 各病原 → 相關食材 對照（直接引用此清單回答「哪些食物高風險」）：');
+					(d.items || []).filter(p => p.pathogen_type !== 'unknown').slice(0, 12).forEach(p => {
+						const foods = Array.isArray(p.related_foods) ? p.related_foods.join('、') : (p.related_foods || '不限');
+						const death = p.death_count > 0 ? ` / ${p.death_count}死` : '';
+						lines.push(`  · ${p.pathogen}：${p.case_count}件 / ${p.patient_count}人${death}（佔 ${p.case_share_pct}%）→ 食材：${foods}；場所：${p.typical_settings || '—'}；症狀：${p.main_symptom || '—'}`);
+					});
+				}
+			}
+
+			referenceSnapshot.value = lines.join('\n');
+			return referenceSnapshot.value;
+		})();
+		return referenceFetchPromise;
+	};
 
 	watch(
 		chatData,
@@ -189,8 +252,14 @@ export const useChatStore = defineStore('chat', () => {
 		const botIdx = chatData.value.length - 1;
 		chatStreaming.value = true;
 
+		// pre-fetch 即時資料快照（第一次同步等，之後 cache 立返）
+		const snapshot = await buildReferenceSnapshot().catch(() => '');
+		const systemContent = snapshot
+			? `${SYSTEM_PROMPT}\n\n# 即時資料快照（直接引用以下實際數字、食材名、場域名回答；不要憑空編造、不要只列病原名稱）\n\n${snapshot}`
+			: SYSTEM_PROMPT;
+
 		const messages = [
-			{ role: 'system', content: SYSTEM_PROMPT },
+			{ role: 'system', content: systemContent },
 			...buildHistoryMessages().slice(0, -1), // 排除最後一筆空的 bot 預留
 		];
 
