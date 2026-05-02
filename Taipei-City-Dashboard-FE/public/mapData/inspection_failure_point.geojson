@@ -1,6276 +1,1229 @@
 {
-  "type": "FeatureCollection",
-  "name": "InspectionFailurePoint",
-  "crs": {
-    "type": "name",
-    "properties": {
-      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-    }
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.446365,
+     24.976809
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0002",
+    "store_name": "新北市土城區廣福國小",
+    "sample_name": "蕎麥",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "土城區",
+    "address": "新北市土城區廣福國小",
+    "test_date": "2026-03-16",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Cyromazine 賽滅淨0.14ppm(標準：不得檢出)",
+    "is_mock": false
+   }
   },
-  "features": [
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.540659,
-          25.055791
-        ]
-      },
-      "properties": {
-        "violation_id": "V0001",
-        "store_name": "旺旺水果行(龍江水果行)",
-        "sample_name": "金棗",
-        "category": "柑桔類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區龍江路189號",
-        "test_date": "2024-01-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorpyrifos\t陶斯松0.03ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537442,
-          25.05763
-        ]
-      },
-      "properties": {
-        "violation_id": "V0002",
-        "store_name": "龍來餐飲有限公司(儂來美食)",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民生東路2段147巷11弄2-1號",
-        "test_date": "2024-01-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Boscalid\t白克列21.87ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.556824,
-          25.03738
-        ]
-      },
-      "properties": {
-        "violation_id": "V0003",
-        "store_name": "一級鮮果商行",
-        "sample_name": "大湖草莓",
-        "category": "小漿果類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區仁愛路4段408號",
-        "test_date": "2024-01-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Methomyl\t納乃得3.1ppm(標準：2.0ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.553076,
-          25.047589
-        ]
-      },
-      "properties": {
-        "violation_id": "V0004",
-        "store_name": "無市招菜攤(陳O宏)",
-        "sample_name": "芥菜(包心芥菜)",
-        "category": "包葉菜類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區八德路3段74巷3弄22號",
-        "test_date": "2024-01-17",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cypermethrin\t賽滅寧1.6ppm(標準：1.0ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557537,
-          25.05175
-        ]
-      },
-      "properties": {
-        "violation_id": "V0005",
-        "store_name": "微風超市股份有限公司(Breeze Super)",
-        "sample_name": "日本福岡草莓",
-        "category": "小漿果類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路3段337號2樓",
-        "test_date": "2024-01-17",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Flonicamid\t氟尼胺0.22ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.529675,
-          25.11898
-        ]
-      },
-      "properties": {
-        "violation_id": "V0006",
-        "store_name": "全聯實業股份有限公司天母天玉分公司",
-        "sample_name": "結球白菜",
-        "category": "包葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區天母西路3號地下",
-        "test_date": "2024-01-16",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Pyriproxyfen\t百利普芬0.08ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0007",
-        "store_name": "臺北市第二果菜批發市場18-09號攤",
-        "sample_name": "刈菜(包心芥菜)",
-        "category": "包葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號",
-        "test_date": "2024-01-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Flutolanil\t福多寧0.05ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.582982,
-          25.045351
-        ]
-      },
-      "properties": {
-        "violation_id": "V0008",
-        "store_name": "阿一蔬果有限公司",
-        "sample_name": "日本熊本草莓",
-        "category": "小漿果類",
-        "project": "蔬果",
-        "district": "南港區",
-        "address": "臺北市南港區忠孝東路6段85號",
-        "test_date": "2024-01-17",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Flonicamid\t氟尼胺0.04ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.514613,
-          25.046057
-        ]
-      },
-      "properties": {
-        "violation_id": "V0009",
-        "store_name": "梅林水果行",
-        "sample_name": "日本MOMO草莓",
-        "category": "小漿果類",
-        "project": "蔬果",
-        "district": "中正區",
-        "address": "臺北市中正區開封街1段81、83號1樓",
-        "test_date": "2024-01-16",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Flonicamid\t氟尼胺0.03ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.552642,
-          25.047737
-        ]
-      },
-      "properties": {
-        "violation_id": "V0010",
-        "store_name": "天香",
-        "sample_name": "芥蘭花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區八德路3段76號中崙市場第24號攤",
-        "test_date": "2024-01-17",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Emamectin benzoate\t因滅汀0.12ppm(標準：0.05ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.497064,
-          25.017135
-        ]
-      },
-      "properties": {
-        "violation_id": "V0011",
-        "store_name": "林O省(蔬菜承銷人3067)",
-        "sample_name": "茼蒿",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號(第一果菜批發市場地號1610)",
-        "test_date": "2024-01-16",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Difenoconazole\t待克利2.1ppm(標準：1.0ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.523131,
-          25.101562
-        ]
-      },
-      "properties": {
-        "violation_id": "V0012",
-        "store_name": "錢儷小吃店(錢都日式涮涮鍋)",
-        "sample_name": "茼蒿",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區福國路71號1樓",
-        "test_date": "2024-01-16",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Chlorothalonil四氯異苯腈4.1ppm(標準：2.0ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.553347,
-          25.019975
-        ]
-      },
-      "properties": {
-        "violation_id": "V0013",
-        "store_name": "三商家購股份有限公司大安樂業門市(美廉社)",
-        "sample_name": "茼蒿",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區樂業街141號",
-        "test_date": "2024-01-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Chlorothalonil\t四氯異苯腈3.9ppm(標準：2.0ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.510165,
-          25.047482
-        ]
-      },
-      "properties": {
-        "violation_id": "V0014",
-        "store_name": "鼎王國際餐飲股份有限公司無老台北中華分公司(無老鍋西門町店)",
-        "sample_name": "青江菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中正區",
-        "address": "臺北市中正區中華路1段55號2樓",
-        "test_date": "2024-01-16",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Tolfenpyrad\t脫芬瑞0.9ppm(標準：0.5ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.540659,
-          25.055791
-        ]
-      },
-      "properties": {
-        "violation_id": "V0015",
-        "store_name": "旺旺水果行（龍江水果行）",
-        "sample_name": "大湖草莓",
-        "category": "小漿果類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區龍江路189號",
-        "test_date": "2024-01-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Fludioxonil\t護汰寧2.2ppm(標準：2.0ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0016",
-        "store_name": "家樂福線上購物\n(https:",
-        "sample_name": "紅辣椒粉",
-        "category": "包裝",
-        "project": "網路販售市售辣椒粉食品",
-        "district": "信義區",
-        "address": "/online.carrefour.com.tw/)",
-        "test_date": "2024-02-19",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "克美素-0.1ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0017",
-        "store_name": "Pchome24h購物\n(https:",
-        "sample_name": "真好家辣椒粉",
-        "category": "包裝",
-        "project": "網路販售市售辣椒粉食品",
-        "district": "信義區",
-        "address": "/24h.pchome.com.tw/)",
-        "test_date": "2024-02-19",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "1.蘇丹三號-8ppb",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0018",
-        "store_name": "momo購物網\n(https:",
-        "sample_name": "匈牙利紅椒粉",
-        "category": "包裝",
-        "project": "網路販售市售辣椒粉食品",
-        "district": "大同區",
-        "address": "/www.momoshop.com.tw/main/Main.jsp)",
-        "test_date": "2024-02-19",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "1.二、四地(2,4-D)-0.27ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0019",
-        "store_name": "蝦皮購物-紀宸商行-南北貨批發\n(https:",
-        "sample_name": "極辣朝天椒",
-        "category": "包裝",
-        "project": "網路販售市售辣椒粉食品",
-        "district": "信義區",
-        "address": "/shopee.tw/jichenhang)",
-        "test_date": "2024-02-19",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "1.蘇丹三號-4ppb",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0020",
-        "store_name": "蝦皮購物-泰菲印越2.0\n(https:",
-        "sample_name": "泰式辣椒粉",
-        "category": "包裝",
-        "project": "網路販售市售辣椒粉食品",
-        "district": "信義區",
-        "address": "/shopee.tw/tfiv2.0)",
-        "test_date": "2024-02-19",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "1.蘇丹三號-8ppb",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.542263,
-          24.992196
-        ]
-      },
-      "properties": {
-        "violation_id": "V0021",
-        "store_name": "遠百企業股份有限公司景美分公司",
-        "sample_name": "細粉紅辣椒",
-        "category": "包裝",
-        "project": "網路販售市售辣椒粉食品",
-        "district": "文山區",
-        "address": "臺北市文山區景中街30巷12號1.2樓",
-        "test_date": "2024-02-19",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "克美素-0.08ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.56254,
-          25.028546
-        ]
-      },
-      "properties": {
-        "violation_id": "V0022",
-        "store_name": "阿泓潤餅",
-        "sample_name": "豆干碎丁",
-        "category": "豆乾類",
-        "project": "祭祀食品",
-        "district": "信義區",
-        "address": "臺北市信義區吳興街189號",
-        "test_date": "2024-02-16",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "苯甲酸1.25g/kg(標準：0.6g/kg以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.568365,
-          25.082309
-        ]
-      },
-      "properties": {
-        "violation_id": "V0023",
-        "store_name": "豪棧小吃店",
-        "sample_name": "花生粉",
-        "category": "花生粉",
-        "project": "祭祀食品",
-        "district": "內湖區",
-        "address": "臺北市內湖區內湖路1段285巷59弄1號",
-        "test_date": "2024-02-16",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "總黃麴毒素30.8ug/kg(標準：4ug/kg以下)、黃麴毒素B1 25.2ug/kg (標準：2ug/kg以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.568365,
-          25.082309
-        ]
-      },
-      "properties": {
-        "violation_id": "V0024",
-        "store_name": "麗山市場第70攤",
-        "sample_name": "豆干絲",
-        "category": "豆乾類",
-        "project": "祭祀食品",
-        "district": "內湖區",
-        "address": "臺北市內湖區內湖路1段737巷50弄6號",
-        "test_date": "2024-02-16",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "苯甲酸1.3g/kg(標準：0.6g/kg以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.575581,
-          25.049856
-        ]
-      },
-      "properties": {
-        "violation_id": "V0025",
-        "store_name": "新東南海鮮餐廳松山館",
-        "sample_name": "烏骨雞",
-        "category": "雞肉",
-        "project": "生鮮禽畜肉品",
-        "district": "松山區",
-        "address": "臺北市松山區八德路4段656號1樓、2樓",
-        "test_date": "2024-02-20",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "三甲氧芐氨嘧啶(trimethoprim): 0.1ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557427,
-          25.051828
-        ]
-      },
-      "properties": {
-        "violation_id": "V0026",
-        "store_name": "武昌市場-無市招攤販",
-        "sample_name": "烏骨雞",
-        "category": "雞肉",
-        "project": "生鮮禽畜肉品",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路5段59巷27弄27號",
-        "test_date": "2024-02-20",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "三甲氧芐氨嘧啶(trimethoprim): 0.1ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0027",
-        "store_name": "環南市場家禽區-健業生鮮肉品(13號攤)",
-        "sample_name": "烏骨雞",
-        "category": "雞肉",
-        "project": "生鮮禽畜肉品",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路二段245號 - 家禽區13號攤",
-        "test_date": "2024-02-21",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "三甲氧芐氨嘧啶(trimethoprim): 0.09ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.518003,
-          25.03248
-        ]
-      },
-      "properties": {
-        "violation_id": "V0028",
-        "store_name": "南門市場-光揚家禽畜產(7.8號攤)",
-        "sample_name": "雞胗",
-        "category": "雞肉",
-        "project": "生鮮禽畜肉品",
-        "district": "中正區",
-        "address": "臺北市中正區羅斯福路一段8號B103-06",
-        "test_date": "2024-02-21",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "脫氧羥四環黴素(Doxycycline): 0.4ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.577448,
-          25.043129
-        ]
-      },
-      "properties": {
-        "violation_id": "V0029",
-        "store_name": "永春市場65號攤-專售花東的雞",
-        "sample_name": "雞胗",
-        "category": "雞肉",
-        "project": "生鮮禽畜肉品",
-        "district": "信義區",
-        "address": "臺北市信義區松山路294號",
-        "test_date": "2024-02-22",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "脫氧羥四環黴素(Doxycycline): 0.8ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.495128,
-          25.029165
-        ]
-      },
-      "properties": {
-        "violation_id": "V0030",
-        "store_name": "三商家購股份有限公司(美廉社萬華雙園店)",
-        "sample_name": "心樸冷藏鮮雞蛋(白蛋)",
-        "category": "雞蛋",
-        "project": "生鮮禽畜肉品",
-        "district": "萬華區",
-        "address": "臺北市萬華區雙園街13號1樓",
-        "test_date": "2024-02-29",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "乃卡巴精(nicarbazin):",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.529476,
-          25.063657
-        ]
-      },
-      "properties": {
-        "violation_id": "V0031",
-        "store_name": "有利蛋行",
-        "sample_name": "紅蛋",
-        "category": "雞蛋",
-        "project": "生鮮禽畜肉品",
-        "district": "中山區",
-        "address": "臺北市中山區新生北路3段11巷49號",
-        "test_date": "2024-03-01",
-        "violation_type": "動物用藥",
-        "violation_severity": 80,
-        "reason_summary": "甲磺氯黴素(Thiamphenicol):",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.566199,
-          25.034502
-        ]
-      },
-      "properties": {
-        "violation_id": "V0032",
-        "store_name": "微風超市股份有限公司(Breeze Super)",
-        "sample_name": "日清葡萄籽油",
-        "category": "葡萄籽油",
-        "project": "油品抽驗計畫",
-        "district": "信義區",
-        "address": "臺北市信義區松智路17號B1F",
-        "test_date": "2024-02-20",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "檢出反式脂肪酸甲基酯(15項) 0.88 g/100 mL，惟案內產品外包裝營養標示每份(10毫升)反式脂肪含量為「0」，標示不實。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.509797,
-          25.056436
-        ]
-      },
-      "properties": {
-        "violation_id": "V0033",
-        "store_name": "湘帝蔘茸有限公司",
-        "sample_name": "薰衣草",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "大同區",
-        "address": "臺北市大同區迪化街1段58號1樓",
-        "test_date": "2024-02-20",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Acetamiprid\t亞滅培",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.539393,
-          25.062858
-        ]
-      },
-      "properties": {
-        "violation_id": "V0034",
-        "store_name": "閤家生活開發有限公司民權店(8% ice CAFÉ)",
-        "sample_name": "蝶豆花",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "中山區",
-        "address": "臺北市中山區民權東路1段79號1樓",
-        "test_date": "2024-02-20",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Carbendazim\t貝芬替",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.49716,
-          25.130911
-        ]
-      },
-      "properties": {
-        "violation_id": "V0035",
-        "store_name": "牙口義大利麵館",
-        "sample_name": "粉紅玫瑰",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "北投區",
-        "address": "臺北市北投區大興街9巷45號",
-        "test_date": "2024-02-20",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Phosalone裕必松 ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.54324,
-          25.023917
-        ]
-      },
-      "properties": {
-        "violation_id": "V0036",
-        "store_name": "棋軒實業有限公司(棋美點心屋)",
-        "sample_name": "乾燥蝶豆花20G",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "大安區",
-        "address": "臺北市大安區復興南路2段292號",
-        "test_date": "2024-02-21",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cypermethrin\t賽滅寧",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.566413,
-          25.079127
-        ]
-      },
-      "properties": {
-        "violation_id": "V0037",
-        "store_name": "運立國際有限公司",
-        "sample_name": "大馬士革玫瑰花茶",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "內湖區",
-        "address": "臺北市內湖區基湖路35巷16號4樓",
-        "test_date": "2024-02-22",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cypermethrin\t賽滅寧",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.500082,
-          25.039901
-        ]
-      },
-      "properties": {
-        "violation_id": "V0038",
-        "store_name": "燒杯咖啡餐坊(燒杯咖啡藝廚)",
-        "sample_name": "紫玫瑰花",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "萬華區",
-        "address": "臺北市萬華區西園路1段240號1樓",
-        "test_date": "2024-02-23",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Omethoate\t歐滅松",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.505564,
-          25.044974
-        ]
-      },
-      "properties": {
-        "violation_id": "V0039",
-        "store_name": "象泰泰手工泰式奶茶店(象泰泰)",
-        "sample_name": "蝶豆花",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "萬華區",
-        "address": "臺北市萬華區武昌街2段100號1樓",
-        "test_date": "2024-02-23",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Bifenthrin\t畢芬寧",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.514689,
-          25.045264
-        ]
-      },
-      "properties": {
-        "violation_id": "V0040",
-        "store_name": "非凡品樂有限公司(HERITAGE)",
-        "sample_name": "洋甘菊花茶",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "中正區",
-        "address": "臺北市中正區漢口街1段73之2號1樓",
-        "test_date": "2024-02-23",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Triadimenol\t三泰隆",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.559774,
-          25.04613
-        ]
-      },
-      "properties": {
-        "violation_id": "V0041",
-        "store_name": "伍五伍商行(泰讚了thai like tea市民店)",
-        "sample_name": "蝶豆花",
-        "category": "花草茶",
-        "project": "茶葉、花草茶",
-        "district": "松山區",
-        "address": "臺北市松山區市民大道5段37號",
-        "test_date": "2024-02-22",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cypermethrin\t賽滅寧0.04ppm(標準：0.03ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0042",
-        "store_name": "食代嚴選（https:",
-        "sample_name": "迷迭香_新鮮香草",
-        "category": "小漿果類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "/www.fresh2you.tw）",
-        "test_date": "2024-03-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Bifenthrin\t畢芬寧1.89ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0043",
-        "store_name": "食代嚴選（https:",
-        "sample_name": "山咖哩葉_九里香_新鮮香草",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "/www.fresh2you.tw）",
-        "test_date": "2024-03-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺草劑Ametryn\t草殺淨0.01ppm(標準：不得檢出)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.498416,
-          25.018506
-        ]
-      },
-      "properties": {
-        "violation_id": "V0044",
-        "store_name": "3446何O獅",
-        "sample_name": "義大利芹菜(歐芹)(巴西利)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號地號930",
-        "test_date": "2024-03-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Acetamiprid\t亞滅培0.37ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0045",
-        "store_name": "陳O明（臺北市中山區民族東路410巷55號門口前",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "榮濱市場路邊攤）",
-        "test_date": "2024-03-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Dimethomorph\t達滅芬0.02ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0046",
-        "store_name": "食代嚴選（https:",
-        "sample_name": "義大利芹菜-平葉巴西利-新鮮香草",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "/www.fresh2you.tw）",
-        "test_date": "2024-03-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Carbendazim\t貝芬替0.05ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.529203,
-          25.118931
-        ]
-      },
-      "properties": {
-        "violation_id": "V0047",
-        "store_name": "天寶小吃店(全國健康素食)",
-        "sample_name": "青菜豆(豇豆)",
-        "category": "豆菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區天母西路32號",
-        "test_date": "2024-03-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟎劑Formetanate\t覆滅蟎0.40ppm(標準：不得檢出)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.56607,
-          25.035471
-        ]
-      },
-      "properties": {
-        "violation_id": "V0048",
-        "store_name": "大地美饌有限公司(KiKi餐廳)",
-        "sample_name": "韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區松壽路12號6樓",
-        "test_date": "2024-03-06",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Cyproconazole\t環克座0.3ppm(標準：0.2ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537744,
-          25.066731
-        ]
-      },
-      "properties": {
-        "violation_id": "V0049",
-        "store_name": "吳O玲",
-        "sample_name": "白蘿蔔5A3",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路410巷2弄10號前榮濱市場路邊攤",
-        "test_date": "2024-03-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Dinotefuran\t達特南0.17ppm(標準：0.05ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0050",
-        "store_name": "新鮮屋（https:",
-        "sample_name": "日本熊本草莓(2入/箱)",
-        "category": "小漿果類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "/www.fresco.casa）",
-        "test_date": "2024-03-04",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺蟎劑Acrinathrin 阿納寧0.01 ppm（標準：不得檢出）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.529203,
-          25.118931
-        ]
-      },
-      "properties": {
-        "violation_id": "V0051",
-        "store_name": "天寶小吃店(全國健康素食)",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區天母西路32號",
-        "test_date": "2024-03-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorpyrifos\t陶斯松0.28ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.576755,
-          25.041968
-        ]
-      },
-      "properties": {
-        "violation_id": "V0052",
-        "store_name": "無市招菜攤（邵O祥",
-        "sample_name": "青蔥粉蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區虎林街122號）",
-        "test_date": "2024-03-06",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺蟎劑Spirodiclofen\t賜派芬0.08ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.498416,
-          25.018506
-        ]
-      },
-      "properties": {
-        "violation_id": "V0053",
-        "store_name": "3232林O梅",
-        "sample_name": "白花椰菜",
-        "category": "包葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號地號216",
-        "test_date": "2024-03-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Emamectin benzoate\t因滅汀0.34ppm(標準：0.05ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.498416,
-          25.018506
-        ]
-      },
-      "properties": {
-        "violation_id": "V0054",
-        "store_name": "3576陳O利",
-        "sample_name": "青蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號地號327",
-        "test_date": "2024-03-05",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Oxadiazon\t樂滅草0.03ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.576755,
-          25.041968
-        ]
-      },
-      "properties": {
-        "violation_id": "V0055",
-        "store_name": "無市招菜攤(邵O祥)",
-        "sample_name": "大芥菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區虎林街122號",
-        "test_date": "2024-03-06",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Diflubenzuron二福隆2.4 ppm（標準：1.0 ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.522064,
-          25.094252
-        ]
-      },
-      "properties": {
-        "violation_id": "V0056",
-        "store_name": "欣盛小吃店(晴光精緻自助餐)",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區中正路363號",
-        "test_date": "2024-04-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Azoxystrobin\t亞托敏1.2ppm(標準：1.0ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.543182,
-          25.023467
-        ]
-      },
-      "properties": {
-        "violation_id": "V0057",
-        "store_name": "全國食養創作全自助餐復興店(全國素食精緻全自助餐)",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區復興南路2段314號",
-        "test_date": "2024-04-09",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorpyrifos陶斯松0.45ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.498416,
-          25.018506
-        ]
-      },
-      "properties": {
-        "violation_id": "V0058",
-        "store_name": "第一果菜批發市場王黃O彫",
-        "sample_name": "韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號地號410",
-        "test_date": "2024-04-11",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑3-羥基加保扶(3-OH Carbofuran)0.11ppm、加保扶(Carbofuran)0.41ppm、丁基加保扶(Carbosulfan)0.08",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.521792,
-          25.044362
-        ]
-      },
-      "properties": {
-        "violation_id": "V0059",
-        "store_name": "祥和小吃店(祥和蔬食精緻料理)",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中正區",
-        "address": "臺北市中正區鎮江街1巷1號",
-        "test_date": "2024-04-11",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺草劑Ametryn草殺淨0.06ppm（ 標準： 不得檢出） ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.552986,
-          25.047606
-        ]
-      },
-      "properties": {
-        "violation_id": "V0060",
-        "store_name": "佰芸蔬菜行",
-        "sample_name": "朝天椒(辣椒)",
-        "category": "果菜類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區八德路3段74巷3弄18號",
-        "test_date": "2024-04-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Buprofezin布芬淨0.02ppm（標準：不得檢出）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.555137,
-          25.040864
-        ]
-      },
-      "properties": {
-        "violation_id": "V0061",
-        "store_name": "川妹子小吃店",
-        "sample_name": "韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區光復南路240巷52號",
-        "test_date": "2024-04-09",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑3-酮基加保扶（ 3-keto Carbofuran） 0.04ppm、3-羥基加保扶（ 3-OH Carbofuran）0.54ppm、加保扶（Carb",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.502053,
-          25.131175
-        ]
-      },
-      "properties": {
-        "violation_id": "V0062",
-        "store_name": "丁O江蔬果行",
-        "sample_name": "青蒜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "北投區",
-        "address": "臺北市北投區清江路35號",
-        "test_date": "2024-04-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Fluxapyroxad\t氟克殺0.03ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0063",
-        "store_name": "陳O溪(第二果菜批發市場23-12號攤)",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號1樓",
-        "test_date": "2024-04-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fipronil芬普尼0.006ppm、Fipronilsulfone芬普尼代謝物0.013ppm（標準：0.001ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557427,
-          25.051828
-        ]
-      },
-      "properties": {
-        "violation_id": "V0064",
-        "store_name": "全國食養創作全自助餐",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路5段123巷31號",
-        "test_date": "2024-04-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Azoxystrobin亞托敏5.4ppm（標準：1.0ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.530808,
-          25.096429
-        ]
-      },
-      "properties": {
-        "violation_id": "V0065",
-        "store_name": "瓦城泰統股份有限公司天母SOGO店(非常泰)",
-        "sample_name": "青蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區中正路6段77號8樓",
-        "test_date": "2024-04-10",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fipronil-sulfone芬普尼代謝物0.004ppm（標準：0.001ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537179,
-          25.06741
-        ]
-      },
-      "properties": {
-        "violation_id": "V0066",
-        "store_name": "高O松",
-        "sample_name": "青蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號1樓第二果菜批發市場11-08號攤",
-        "test_date": "2024-04-03",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺蟎劑\tSpirodiclofen\t賜派芬0.02ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0067",
-        "store_name": "陳O宏(第二果菜批發市場23-11號攤",
-        "sample_name": "韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號）",
-        "test_date": "2024-04-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑3-keto Carbofuran3-酮基加保扶0.02ppm、3-O H C arbofuran3-羥基加保扶0.22ppm 、Carbofuran加保",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.543182,
-          25.023467
-        ]
-      },
-      "properties": {
-        "violation_id": "V0068",
-        "store_name": "全國食養創作全自助餐復興店(全國素食精緻全自助餐)",
-        "sample_name": "辣椒條",
-        "category": "果菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區復興南路2段314號",
-        "test_date": "2024-04-09",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorfenapyr\t克凡派0.7ppm(標準：0.5ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557427,
-          25.051828
-        ]
-      },
-      "properties": {
-        "violation_id": "V0069",
-        "store_name": "田中湯圓",
-        "sample_name": "蘿蔔糕",
-        "category": "糕粿類製品",
-        "project": "米濕製品",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路5段291巷10號",
-        "test_date": "2024-04-10",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "苯甲酸：2.9g/kg",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.566859,
-          25.03631
-        ]
-      },
-      "properties": {
-        "violation_id": "V0070",
-        "store_name": "欣葉台菜信義新天地A9館",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區松壽路9號8樓",
-        "test_date": "2024-05-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Mandipropamid\t曼普胺0.06ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.498416,
-          25.018506
-        ]
-      },
-      "properties": {
-        "violation_id": "V0071",
-        "store_name": "第一果菜批發市場地號433",
-        "sample_name": "羅勒(九層塔)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號",
-        "test_date": "2024-05-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺草劑Ametryn\t草殺淨0.01ppm(標準：不得檢出)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.52133,
-          25.094426
-        ]
-      },
-      "properties": {
-        "violation_id": "V0072",
-        "store_name": "上禾食堂(潮味決湯滷專門店士林中正店)",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區中正路358號",
-        "test_date": "2024-05-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Thiamethoxam\t賽速安0.48ppm(標準：0.25ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0073",
-        "store_name": "協豐水果行",
-        "sample_name": "加州紅櫻桃",
-        "category": "梨果類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號6-08攤",
-        "test_date": "2024-05-09",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Mefentrifluconazole\t滅芬座0.12ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.584936,
-          25.045505
-        ]
-      },
-      "properties": {
-        "violation_id": "V0074",
-        "store_name": "菓之鄉水果專賣店",
-        "sample_name": "木瓜",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "南港區",
-        "address": "臺北市南港區同德路60號",
-        "test_date": "2024-05-02",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺蟎劑Bifenazate\t必芬蟎0.07ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.574871,
-          25.061285
-        ]
-      },
-      "properties": {
-        "violation_id": "V0075",
-        "store_name": "幸福品味實業股份有限公司(美福食集)",
-        "sample_name": "台灣特選韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "內湖區",
-        "address": "臺北市內湖區民善街128號",
-        "test_date": "2024-05-02",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺蟎劑Fenbutatin-oxide\t芬佈賜0.03ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.527977,
-          25.062335
-        ]
-      },
-      "properties": {
-        "violation_id": "V0076",
-        "store_name": "鼎皇麻辣火鍋店(天外天麻辣火鍋)",
-        "sample_name": "百香果",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民權東路2段1號",
-        "test_date": "2024-05-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cyromazine\t賽滅淨0.02ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.585279,
-          25.045697
-        ]
-      },
-      "properties": {
-        "violation_id": "V0077",
-        "store_name": "嘉年華小吃店",
-        "sample_name": "紅鳳菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "南港區",
-        "address": "臺北市南港區同德路72號1樓",
-        "test_date": "2024-05-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Fenoxanil\t芬諾尼0.01ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0078",
-        "store_name": "田心蔬果(田進和)",
-        "sample_name": "韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號環南綜合市場蔬菜攤250號攤",
-        "test_date": "2024-05-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Cyprodinil\t賽普洛0.04ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.574871,
-          25.061285
-        ]
-      },
-      "properties": {
-        "violation_id": "V0079",
-        "store_name": "幸福品味實業股份有限公司(美福食集)",
-        "sample_name": "台灣特選九層塔",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "內湖區",
-        "address": "臺北市內湖區民善街128號",
-        "test_date": "2024-05-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Pyraclostrobin\t百克敏0.03ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.566184,
-          25.0342
-        ]
-      },
-      "properties": {
-        "violation_id": "V0080",
-        "store_name": "微風超市股份有限公司(微風超市南山店",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "Breeze Super)/臺北市信義區松智路17號B1",
-        "test_date": "2024-05-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Dinotefuran\t達特南0.15ppm(標準：0.05ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.541477,
-          25.055173
-        ]
-      },
-      "properties": {
-        "violation_id": "V0081",
-        "store_name": "蔬菜攤",
-        "sample_name": "韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區龍江路179巷15之5號",
-        "test_date": "2024-05-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Pyriproxyfen\t百利普芬0.19ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.595822,
-          25.050701
-        ]
-      },
-      "properties": {
-        "violation_id": "V0082",
-        "store_name": "六福開發股份有限公司南港分公司",
-        "sample_name": "扁蟹",
-        "category": "蟹類",
-        "project": "生鮮水產品",
-        "district": "南港區",
-        "address": "臺北市南港區忠孝東路7段359號7樓",
-        "test_date": "2024-04-09",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "鎘：0.6mg/kg",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.531919,
-          25.016633
-        ]
-      },
-      "properties": {
-        "violation_id": "V0083",
-        "store_name": "李碧綺號(南門鮮魚號)",
-        "sample_name": "黃魚",
-        "category": "養殖魚類",
-        "project": "生鮮水產品",
-        "district": "中正區",
-        "address": "臺北市中正區羅斯福路1路8號(南門市場B1-47)",
-        "test_date": "2024-04-09",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "還原型結晶紫（leucocrystal violet, LCV） 0.6 ppb（標準",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.510101,
-          25.087664
-        ]
-      },
-      "properties": {
-        "violation_id": "V0084",
-        "store_name": "民友商行（民友超級商店）",
-        "sample_name": "辣椒粉",
-        "category": "辣椒粉",
-        "project": "調味料",
-        "district": "士林區",
-        "address": "臺北市士林區中正路586巷20號",
-        "test_date": "2024-05-31",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "二‧四地（2,4-D）:0.1ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.501369,
-          25.132206
-        ]
-      },
-      "properties": {
-        "violation_id": "V0085",
-        "store_name": "一加一五金行",
-        "sample_name": "101-1（2031）敦煌豆油池",
-        "category": "塑膠類",
-        "project": "美耐皿",
-        "district": "北投區",
-        "address": "臺北市北投區中央南路1段154號",
-        "test_date": "2024-05-15",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "本體未以印刷、打印或壓印方式標示耐熱溫度。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.50885,
-          25.063586
-        ]
-      },
-      "properties": {
-        "violation_id": "V0086",
-        "store_name": "嘉政國際有限公司",
-        "sample_name": "美耐皿餐具(湯匙)",
-        "category": "塑膠類",
-        "project": "美耐皿",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路1段181-6、181-7號1樓",
-        "test_date": "2024-05-17",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "1.未標示淨重、容量或數量。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.521657,
-          25.023817
-        ]
-      },
-      "properties": {
-        "violation_id": "V0087",
-        "store_name": "甯臻恩飲料店(黑丸嫩仙草古亭店)",
-        "sample_name": "四季青茶(含冰塊)",
-        "category": "飲料",
-        "project": "散裝飲冰品及配料",
-        "district": "中正區",
-        "address": "臺北市中正區同安街65號",
-        "test_date": "2024-06-06",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：1.6x10^3 CFU/mL",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.576557,
-          25.076848
-        ]
-      },
-      "properties": {
-        "violation_id": "V0088",
-        "store_name": "珍煮丹股份有限公司內湖江南分公司",
-        "sample_name": "橙香鮮茶(原汁含冰塊不含配料)",
-        "category": "飲料",
-        "project": "散裝飲冰品及配料",
-        "district": "內湖區",
-        "address": "臺北市內湖區江南街108號1樓",
-        "test_date": "2024-06-05",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：18 CFU/mL",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.539755,
-          25.065642
-        ]
-      },
-      "properties": {
-        "violation_id": "V0089",
-        "store_name": "崑成商行(酷加飲品)",
-        "sample_name": "魔法水晶",
-        "category": "配料",
-        "project": "散裝飲冰品及配料",
-        "district": "中山區",
-        "address": "臺北市中山區龍江路342巷23號",
-        "test_date": "2024-05-07",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "己二烯酸：0.33g/kg",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.543369,
-          25.036733
-        ]
-      },
-      "properties": {
-        "violation_id": "V0090",
-        "store_name": "沐鑫國際餐飲有限公司(烈奶茶忠孝復興店)",
-        "sample_name": "金麥文火烏龍(含冰)",
-        "category": "飲料",
-        "project": "散裝飲冰品及配料",
-        "district": "大安區",
-        "address": "臺北市大安區復興南路1段133號",
-        "test_date": "2024-06-05",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：4.6x10^4 CFU/mL",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.494949,
-          25.025026
-        ]
-      },
-      "properties": {
-        "violation_id": "V0091",
-        "store_name": "杏玥冰坊",
-        "sample_name": "紅豆牛奶冰(不含配料)",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "萬華區",
-        "address": "臺北市萬華區寶興街129號1樓",
-        "test_date": "2024-06-06",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：2.6x10^3 CFU/g",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557537,
-          25.05175
-        ]
-      },
-      "properties": {
-        "violation_id": "V0092",
-        "store_name": "橫濱牛排南京微風店",
-        "sample_name": "香草霜淇淋",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路3段337號3樓",
-        "test_date": "2024-06-13",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：5.4x10^2 CFU/g",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.564536,
-          24.982461
-        ]
-      },
-      "properties": {
-        "violation_id": "V0093",
-        "store_name": "馬祖奶茶(文山木新店)",
-        "sample_name": "馬祖奶茶(不含冰塊不含配料)",
-        "category": "飲料",
-        "project": "散裝飲冰品及配料",
-        "district": "文山區",
-        "address": "臺北市文山區木新路3段33號",
-        "test_date": "2024-06-13",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：1.7x10^4 CFU/mL",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.577805,
-          25.071568
-        ]
-      },
-      "properties": {
-        "violation_id": "V0094",
-        "store_name": "Journey Kaffe覺旅咖啡-陽光分公司",
-        "sample_name": "巧克力香蕉冰沙",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "內湖區",
-        "address": "臺北市內湖區陽光街321巷42號",
-        "test_date": "2024-06-13",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：3.2x10^2 CFU/g",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.525185,
-          25.021359
-        ]
-      },
-      "properties": {
-        "violation_id": "V0095",
-        "store_name": "果粉水果行(果粉水果超市汀州店)",
-        "sample_name": "豌豆",
-        "category": "豆菜類",
-        "project": "蔬果",
-        "district": "中正區",
-        "address": "臺北市中正區汀州路2段335號",
-        "test_date": "2024-06-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Bupirimate\t布瑞莫0.02ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.523287,
-          25.097343
-        ]
-      },
-      "properties": {
-        "violation_id": "V0096",
-        "store_name": "詠鑽蔬果專賣店(新天地蔬果量販店)",
-        "sample_name": "豌豆",
-        "category": "豆菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區美崙街18號1樓",
-        "test_date": "2024-06-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Diniconazole\t達克利0.05ppm(標準：不得檢出)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.525185,
-          25.021359
-        ]
-      },
-      "properties": {
-        "violation_id": "V0097",
-        "store_name": "果粉水果行(果粉水果超市汀州店)",
-        "sample_name": "玉荷包(荔枝)",
-        "category": "核果類",
-        "project": "蔬果",
-        "district": "中正區",
-        "address": "臺北市中正區汀州路2段335號",
-        "test_date": "2024-06-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorpyrifos陶斯松1.14ppm(標準：不得檢出) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.497064,
-          25.017135
-        ]
-      },
-      "properties": {
-        "violation_id": "V0098",
-        "store_name": "臺北市萬華區萬大路533號第一果菜批發市場地號137",
-        "sample_name": "韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號第一果菜批發市場地號137",
-        "test_date": "2024-06-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Acetamiprid\t亞滅培0.29ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.533526,
-          25.042039
-        ]
-      },
-      "properties": {
-        "violation_id": "V0099",
-        "store_name": "太平洋崇光百貨股份有限公司(Fresh Mart忠孝店)",
-        "sample_name": "韭菜花",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區忠孝東路4段45號B2",
-        "test_date": "2024-06-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑3-OH Carbofuran 3-羥基加保扶0.13ppm、Carbofuran加保扶0.18ppm(標準：0.2ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.497064,
-          25.017135
-        ]
-      },
-      "properties": {
-        "violation_id": "V0100",
-        "store_name": "臺北市萬華區萬大路533號第一果菜批發市場地號1314",
-        "sample_name": "芹菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號第一果菜批發市場地號1314",
-        "test_date": "2024-06-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Iprobenfos\t丙基喜樂松0.05ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.524922,
-          25.027096
-        ]
-      },
-      "properties": {
-        "violation_id": "V0101",
-        "store_name": "双喜臨門水果行(双囍臨門水果行)",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區和平東路3段228巷35號",
-        "test_date": "2024-06-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Dimethomorph\t達滅芬0.28ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.542346,
-          25.052719
-        ]
-      },
-      "properties": {
-        "violation_id": "V0102",
-        "store_name": "國賓大飯店股份有限公司遼寧營業所(國賓大飯店股份有限公司中餐廳)",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區遼寧街177號",
-        "test_date": "2024-06-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Isoprothiolane\t亞賜圃0.05ppm(標準：0.01ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.568128,
-          25.0368
-        ]
-      },
-      "properties": {
-        "violation_id": "V0103",
-        "store_name": "信遠國際開發股份有限公司",
-        "sample_name": "秀珍菇",
-        "category": "蕈菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區松仁路58號14樓",
-        "test_date": "2024-06-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorpyrifos陶斯松0.03ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.524922,
-          25.027096
-        ]
-      },
-      "properties": {
-        "violation_id": "V0104",
-        "store_name": "双喜臨門水果行(双囍臨門水果行)",
-        "sample_name": "蒜苗",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區和平東路3段228巷35號",
-        "test_date": "2024-06-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Pydiflumetofen\t派滅芬0.01ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.523376,
-          25.097265
-        ]
-      },
-      "properties": {
-        "violation_id": "V0105",
-        "store_name": "翡翠綠水果專賣店",
-        "sample_name": "豌豆",
-        "category": "豆菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區美崙街14號1樓",
-        "test_date": "2024-06-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Thiamethoxam\t賽速安0.17ppm(標準：0.02ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557427,
-          25.051828
-        ]
-      },
-      "properties": {
-        "violation_id": "V0106",
-        "store_name": "水果行",
-        "sample_name": "芒果",
-        "category": "核果類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路5段291巷3之2號前",
-        "test_date": "2024-06-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Dimethomorph\t達滅芬0.04ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.574871,
-          25.061285
-        ]
-      },
-      "properties": {
-        "violation_id": "V0107",
-        "store_name": "幸福品味實業股份有限公司(美福食集)",
-        "sample_name": "台灣特選玉荷包(荔枝)",
-        "category": "核果類",
-        "project": "蔬果",
-        "district": "內湖區",
-        "address": "臺北市內湖區民善街128號",
-        "test_date": "2024-06-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Phosmet\t益滅松0.6ppm(標準：0.2ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.509326,
-          25.087666
-        ]
-      },
-      "properties": {
-        "violation_id": "V0108",
-        "store_name": "無市招水果攤",
-        "sample_name": "百香果",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區社中街12號對面",
-        "test_date": "2024-06-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fenvalerate\t芬化利0.03ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.524922,
-          25.027096
-        ]
-      },
-      "properties": {
-        "violation_id": "V0109",
-        "store_name": "双喜臨門水果行(双囍臨門水果行)",
-        "sample_name": "芹菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區和平東路3段228巷35號",
-        "test_date": "2024-06-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Iprobenfos\t丙基喜樂松0.03ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.533526,
-          25.042039
-        ]
-      },
-      "properties": {
-        "violation_id": "V0110",
-        "store_name": "太平洋崇光百貨股份有限公司(Fresh Mart忠孝店)",
-        "sample_name": "玉荷包荔枝",
-        "category": "核果類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區忠孝東路4段45號B2",
-        "test_date": "2024-06-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Difenoconazole\t待克利1.4ppm(標準：0.5ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0111",
-        "store_name": "pchome24h購物網\n(https:",
-        "sample_name": "法國葛宏德天然海鹽-1kg",
-        "category": "包裝",
-        "project": "網路販售食品",
-        "district": "信義區",
-        "address": "/24h.pchome.com.tw/)",
-        "test_date": "2024-05-29",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "砷:0.35 mg/kg",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0112",
-        "store_name": "放心初蔬果網\n(https:",
-        "sample_name": "臺灣-貴妃玉荷包",
-        "category": "核果類",
-        "project": "網路販售食品",
-        "district": "信義區",
-        "address": "/funthingtrue.com.tw/)",
-        "test_date": "2024-06-04",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "百滅寧:0.09 ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0113",
-        "store_name": "放心初蔬果網\n(https:",
-        "sample_name": "越南-干腰榴槤(小貓山王)",
-        "category": "大漿果類",
-        "project": "網路販售食品",
-        "district": "信義區",
-        "address": "/funthingtrue.com.tw/)",
-        "test_date": "2024-06-04",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "撲滅寧:0.02 ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0114",
-        "store_name": "蝦皮購物-好食代 冷凍食品批發小舖\n(https:",
-        "sample_name": "百合根",
-        "category": "根莖菜類",
-        "project": "網路販售食品",
-        "district": "信義區",
-        "address": "/shopee.tw/lin24190902)",
-        "test_date": "2024-06-05",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "鎘:0.24 mg/kg",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0115",
-        "store_name": "蝦皮購物-sutinglin\n(https:",
-        "sample_name": "北海道白銀食用百合球根一球199元(非常好吃)",
-        "category": "根莖菜類",
-        "project": "網路販售食品",
-        "district": "信義區",
-        "address": "/shopee.tw/sutinglin)",
-        "test_date": "2024-06-06",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "鎘:0.17 mg/kg",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0116",
-        "store_name": "蝦皮購物-HomeBar泓吧嚴選新鮮蔬果\n(https:",
-        "sample_name": "日本百合(北海道)XXL",
-        "category": "根莖菜類",
-        "project": "網路販售食品",
-        "district": "信義區",
-        "address": "/shopee.tw/jacck2668)",
-        "test_date": "2024-06-07",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "鎘:0.53 mg/kg",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.503441,
-          25.132596
-        ]
-      },
-      "properties": {
-        "violation_id": "V0117",
-        "store_name": "阿玉素食(北投中繼市場133號攤)",
-        "sample_name": "小麥藥膳丸",
-        "category": "奶蛋素",
-        "project": "素摻葷",
-        "district": "北投區",
-        "address": "臺北市北投區磺港路33號",
-        "test_date": "2024-06-19",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "1.動物性成分陽性、動物性成分陽性(豬、雞)陽性。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.576275,
-          25.050022
-        ]
-      },
-      "properties": {
-        "violation_id": "V0118",
-        "store_name": "張阿姨蔬食",
-        "sample_name": "塔香燒球",
-        "category": "奶蛋素",
-        "project": "素摻葷",
-        "district": "松山區",
-        "address": "臺北市松山區八德路4段673巷6號",
-        "test_date": "2024-06-20",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "1.動物性成分陽性、動物性成分陽性(豬、雞、魚)陽性。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.529956,
-          25.057265
-        ]
-      },
-      "properties": {
-        "violation_id": "V0119",
-        "store_name": "果鮮一品商行(果鮮蔬果超市)",
-        "sample_name": "黑葉荔枝",
-        "category": "核果類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區吉林路176號",
-        "test_date": "2024-07-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Deltamethrin 第滅寧1.0ppm(標準：0.5ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537011,
-          25.066672
-        ]
-      },
-      "properties": {
-        "violation_id": "V0120",
-        "store_name": "臺北市中山區民族東路410巷2弄18-20號前(五常市場)",
-        "sample_name": "荔枝",
-        "category": "核果類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路410巷2弄18-20號前(五常市場)",
-        "test_date": "2024-07-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Deltamethrin 第滅寧1.4ppm(標準：0.5ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.50443,
-          25.027461
-        ]
-      },
-      "properties": {
-        "violation_id": "V0121",
-        "store_name": "我家蔬果園",
-        "sample_name": "粉殼K3(龍眼)",
-        "category": "核果類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區中華路2段416巷56號",
-        "test_date": "2024-07-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Difenoconazole 待克利1.0ppm(標準：0.5ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.567888,
-          25.035573
-        ]
-      },
-      "properties": {
-        "violation_id": "V0122",
-        "store_name": "辣十九國際開發股份有限公司(馬辣頂級鴛鴦鍋信義店)",
-        "sample_name": "百香果",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區松壽路22號3樓",
-        "test_date": "2024-07-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cyromazine 賽滅淨0.12ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.508087,
-          25.024686
-        ]
-      },
-      "properties": {
-        "violation_id": "V0123",
-        "store_name": "上奕商行(INDEX)",
-        "sample_name": "波蘿蜜",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區國興路32號",
-        "test_date": "2024-07-04",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "生長調節劑Gibberellic acid 勃激素A3 0.05ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.530053,
-          25.056127
-        ]
-      },
-      "properties": {
-        "violation_id": "V0124",
-        "store_name": "粒粒鮮股份有限公司(粒粒鮮)",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區吉林路146號146之1號",
-        "test_date": "2024-07-02",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Ametryn 草殺淨0.03ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.522214,
-          25.094217
-        ]
-      },
-      "properties": {
-        "violation_id": "V0125",
-        "store_name": "豪光回田實業有限公司(回田蔬苑)",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區中正路357號1樓",
-        "test_date": "2024-07-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Spinetoram 賜諾特0.02ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.522668,
-          25.089204
-        ]
-      },
-      "properties": {
-        "violation_id": "V0126",
-        "store_name": "璞園餐飲事業有限公司(台南海鮮會館)",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區基河路130號地下一層",
-        "test_date": "2024-07-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Pencycuron 賓克隆0.04ppm(標準0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0127",
-        "store_name": "臺北市萬華區環河南路2段245號蔬菜攤0068號",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號蔬菜攤0068號",
-        "test_date": "2024-07-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Clothianidin 可尼丁0.07ppm(標準：0.02ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.536732,
-          25.066695
-        ]
-      },
-      "properties": {
-        "violation_id": "V0128",
-        "store_name": "臺北市中山區民族東路410巷2弄20號前",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路410巷2弄20號前",
-        "test_date": "2024-07-02",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Oxadiazon 樂滅草0.02ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557427,
-          25.051828
-        ]
-      },
-      "properties": {
-        "violation_id": "V0129",
-        "store_name": "明欣鮮果專賣店",
-        "sample_name": "荔枝",
-        "category": "核果類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路5段123巷27號1樓",
-        "test_date": "2024-07-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cyhalothrin 賽洛寧1.0ppm(標準：0.5ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0130",
-        "store_name": "臺北市萬華區環河南路2段245號蔬菜攤0032號",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號蔬菜攤0032號",
-        "test_date": "2024-07-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Dimethomorph 達滅芬4.1ppm(標準：2.5ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.556889,
-          25.052439
-        ]
-      },
-      "properties": {
-        "violation_id": "V0131",
-        "store_name": "厚鋪牛排館(人从众厚切牛排)",
-        "sample_name": "麥香紅茶(不含冰塊及配料)",
-        "category": "飲料",
-        "project": "散裝飲冰品及配料",
-        "district": "松山區",
-        "address": "臺北市松山區光復北路146號1樓",
-        "test_date": "2024-06-13",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：5.4x10^3 CFU/mL",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.521461,
-          25.05386
-        ]
-      },
-      "properties": {
-        "violation_id": "V0132",
-        "store_name": "總柴日式氷菓專賣(CEO ICE CREAM)",
-        "sample_name": "北海道牛奶霜淇淋",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "中山區",
-        "address": "臺北市中山區中山北路2段26巷18號",
-        "test_date": "2024-06-19",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：40 CFU/g",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.519184,
-          25.057938
-        ]
-      },
-      "properties": {
-        "violation_id": "V0133",
-        "store_name": "冰讚飲食店",
-        "sample_name": "紅豆牛奶雪花冰(不含配料)",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "大同區",
-        "address": "臺北市大同區雙連街2號1樓",
-        "test_date": "2024-06-19",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：2.0x10^3 CFU/g",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.5167,
-          25.044711
-        ]
-      },
-      "properties": {
-        "violation_id": "V0134",
-        "store_name": "金霖企業社(甘蔗媽媽)",
-        "sample_name": "招牌甘蔗冰沙(不含配料)",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "中正區",
-        "address": "臺北市中正區信陽街5之1號",
-        "test_date": "2024-06-24",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：2.1x10^3 CFU/mL",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.510165,
-          25.047482
-        ]
-      },
-      "properties": {
-        "violation_id": "V0135",
-        "store_name": "喜客冰品店(冰封仙果)",
-        "sample_name": "圓圓圓(雪花冰)(不含冰塊不含配料)",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "萬華區",
-        "address": "臺北市萬華區中華路1段114巷18號1樓",
-        "test_date": "2024-06-19",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：30 CFU/g",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.509797,
-          25.056436
-        ]
-      },
-      "properties": {
-        "violation_id": "V0136",
-        "store_name": "森昱食品有限公司(夏樹甜品)",
-        "sample_name": "杏仁雪花冰",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "大同區",
-        "address": "臺北市大同區迪化街1段240號",
-        "test_date": "2024-06-24",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：3.2x10^2 CFU/g",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.524594,
-          25.105306
-        ]
-      },
-      "properties": {
-        "violation_id": "V0137",
-        "store_name": "廣安階",
-        "sample_name": "清香黑糖冰(不含配料)",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "士林區",
-        "address": "臺北市士林區中山北路6段77號8樓",
-        "test_date": "2024-06-26",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：88 CFU/mL",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.575022,
-          25.060238
-        ]
-      },
-      "properties": {
-        "violation_id": "V0138",
-        "store_name": "金探吉事業有限公司(荖子鍋)",
-        "sample_name": "霜淇淋(不含配料)",
-        "category": "冰品",
-        "project": "散裝飲冰品及配料",
-        "district": "內湖區",
-        "address": "臺北市內湖區民善街88號",
-        "test_date": "2024-07-01",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：1.5x10^3 CFU/g",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.5168,
-          25.03194
-        ]
-      },
-      "properties": {
-        "violation_id": "V0139",
-        "store_name": "水龍堂(大苑子)",
-        "sample_name": "芭樂梅",
-        "category": "飲料",
-        "project": "散裝飲冰品及配料",
-        "district": "中正區",
-        "address": "臺北市中正區南昌路1段80號",
-        "test_date": "2024-07-02",
-        "violation_type": "微生物",
-        "violation_severity": 85,
-        "reason_summary": "腸桿菌科：70 CFU/mL",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.561769,
-          25.029484
-        ]
-      },
-      "properties": {
-        "violation_id": "V0140",
-        "store_name": "吳興春天藥局",
-        "sample_name": "速清魚油",
-        "category": "膠囊錠狀食品",
-        "project": "市售產品塑化劑含量",
-        "district": "信義區",
-        "address": "臺北市信義區吳興街137號1樓",
-        "test_date": "2024-06-11",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "DINP:54 ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.564195,
-          25.048982
-        ]
-      },
-      "properties": {
-        "violation_id": "V0141",
-        "store_name": "啄木鳥藥師藥局八德店",
-        "sample_name": "綠芙特級高單位蜂膠軟膠囊",
-        "category": "膠囊錠狀食品",
-        "project": "市售產品塑化劑含量",
-        "district": "松山區",
-        "address": "臺北市松山區八德路4段211號",
-        "test_date": "2024-06-11",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "DBP:6.0ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.501369,
-          25.132206
-        ]
-      },
-      "properties": {
-        "violation_id": "V0142",
-        "store_name": "鴻璂雜糧行",
-        "sample_name": "精選毛綠豆-紅線",
-        "category": "乾豆類",
-        "project": "穀豆類",
-        "district": "北投區",
-        "address": "臺北市北投區中央南路1段163號1樓",
-        "test_date": "2024-06-17",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "賽速安(Thiamethoxam):0.09 ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.586696,
-          25.080763
-        ]
-      },
-      "properties": {
-        "violation_id": "V0143",
-        "store_name": "利民雜糧行",
-        "sample_name": "大毛綠(毛綠豆)",
-        "category": "乾豆類",
-        "project": "穀豆類",
-        "district": "內湖區",
-        "address": "臺北市內湖區內湖路2段300號",
-        "test_date": "2024-06-19",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "賽果培(Thiacloprid):0.04 ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.509797,
-          25.056436
-        ]
-      },
-      "properties": {
-        "violation_id": "V0144",
-        "store_name": "永利食品有限公司",
-        "sample_name": "綠豆",
-        "category": "乾豆類",
-        "project": "穀豆類",
-        "district": "大同區",
-        "address": "臺北市大同區迪化街1段143號",
-        "test_date": "2024-06-21",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "芬普尼(Fipronil):0.001 ppm、芬普尼代謝物(Fipronil-sulfone)0.001 ppm=0.002 ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.520895,
-          25.059058
-        ]
-      },
-      "properties": {
-        "violation_id": "V0145",
-        "store_name": "雙連市場來于蔬菜35號攤",
-        "sample_name": "四季豆",
-        "category": "烤肉用蔬菜",
-        "project": "中秋食品、烤肉食品、烤肉用容器具",
-        "district": "中山區",
-        "address": "臺北市中山區民生西路45巷",
-        "test_date": "2024-07-09",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "Indoxacarb因得克 0.02ppm",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.502651,
-          25.134891
-        ]
-      },
-      "properties": {
-        "violation_id": "V0146",
-        "store_name": "米泉食品行(米哥烘焙坊)",
-        "sample_name": "豪紀芋頭餡",
-        "category": "中秋月餅",
-        "project": "中秋食品、烤肉食品、烤肉用容器具",
-        "district": "北投區",
-        "address": "臺北市北投區光明路158號1樓",
-        "test_date": "2024-07-12",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "己二烯酸 1.0g/kg (標準:不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.534003,
-          25.061117
-        ]
-      },
-      "properties": {
-        "violation_id": "V0147",
-        "store_name": "金橞食品股份有限公司",
-        "sample_name": "豆沙半蛋酥",
-        "category": "中秋月餅",
-        "project": "中秋食品、烤肉食品、烤肉用容器具",
-        "district": "中山區",
-        "address": "臺北市中山區松江路297巷5號1樓",
-        "test_date": "2024-07-10",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "(一)內容物為二種以上混合物未依其含量多寡由高至低分別標示。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.534003,
-          25.061117
-        ]
-      },
-      "properties": {
-        "violation_id": "V0148",
-        "store_name": "金橞食品股份有限公司",
-        "sample_name": "芋火鳳凰酥",
-        "category": "中秋月餅",
-        "project": "中秋食品、烤肉食品、烤肉用容器具",
-        "district": "中山區",
-        "address": "臺北市中山區松江路297巷5號1樓",
-        "test_date": "2024-07-10",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "(一)內容物為二種以上混合物未依其含量多寡由高至低分別標示。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.534003,
-          25.061117
-        ]
-      },
-      "properties": {
-        "violation_id": "V0149",
-        "store_name": "金橞食品股份有限公司",
-        "sample_name": "金Q芋頭酥(葷)",
-        "category": "中秋月餅",
-        "project": "中秋食品、烤肉食品、烤肉用容器具",
-        "district": "中山區",
-        "address": "臺北市中山區松江路297巷5號1樓",
-        "test_date": "2024-07-10",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "(一)內容物為二種以上混合物未依其含量多寡由高至低分別標示。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.535424,
-          25.060951
-        ]
-      },
-      "properties": {
-        "violation_id": "V0150",
-        "store_name": "慧上癮",
-        "sample_name": "夏豆堅果塔(蛋奶素)",
-        "category": "中秋月餅",
-        "project": "中秋食品、烤肉食品、烤肉用容器具",
-        "district": "中山區",
-        "address": "臺北市中山區建國北路2段226巷42號",
-        "test_date": "2024-07-10",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "未標示原產地（國）、有效日期標示單獨黏貼未依規定印刷於外包裝上。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.535424,
-          25.060951
-        ]
-      },
-      "properties": {
-        "violation_id": "V0151",
-        "store_name": "慧上癮",
-        "sample_name": "慧上癮鳳梨酥",
-        "category": "中秋月餅",
-        "project": "中秋食品、烤肉食品、烤肉用容器具",
-        "district": "中山區",
-        "address": "臺北市中山區建國北路2段226巷42號",
-        "test_date": "2024-07-10",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "未標示有效日期。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.501283,
-          25.01864
-        ]
-      },
-      "properties": {
-        "violation_id": "V0152",
-        "store_name": "宜新蔬果行",
-        "sample_name": "油菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區富民路155巷49之3號1樓",
-        "test_date": "2024-08-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Abamectin 阿巴汀0.06ppm(標準：0.05ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.509506,
-          25.052128
-        ]
-      },
-      "properties": {
-        "violation_id": "V0153",
-        "store_name": "霸王川菜餐廳股份有限公司",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "大同區",
-        "address": "臺北市大同區長安西路287號1-2樓",
-        "test_date": "2024-08-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Clothianidin 可尼丁0.08ppm(標準：0.02ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.566819,
-          25.040541
-        ]
-      },
-      "properties": {
-        "violation_id": "V0154",
-        "store_name": "為福樓餐廳有限公司",
-        "sample_name": "芥蘭菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "南港區",
-        "address": "臺北市南港區忠孝東路5段996號1樓",
-        "test_date": "2024-08-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorfenapyr 克凡派2.4ppm(標準：1.0ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.543182,
-          25.023467
-        ]
-      },
-      "properties": {
-        "violation_id": "V0155",
-        "store_name": "復興小吃店(全國食養創作全自助餐復興店)",
-        "sample_name": "辣椒條",
-        "category": "果菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區復興南路2段314號",
-        "test_date": "2024-08-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Difenoconazole 待克利1.2ppm(標準：0.5ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.550798,
-          25.031959
-        ]
-      },
-      "properties": {
-        "violation_id": "V0156",
-        "store_name": "優市大安店",
-        "sample_name": "芹菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區敦化南路2段11巷38弄15號",
-        "test_date": "2024-08-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Dimethomorph 達滅芬2.9ppm(標準：2.5ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.514769,
-          25.051315
-        ]
-      },
-      "properties": {
-        "violation_id": "V0157",
-        "store_name": "無名水果攤",
-        "sample_name": "百香果",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "大同區",
-        "address": "臺北市大同區長安西路218之1號旁",
-        "test_date": "2024-08-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cyromazine 賽滅淨0.14ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557516,
-          25.083501
-        ]
-      },
-      "properties": {
-        "violation_id": "V0158",
-        "store_name": "統康生活事業股份有限公司美麗華分公司(Mia C'bon MARKET)",
-        "sample_name": "日本北海道大根(白蘿蔔)",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區敬業三路20號地下1樓之1",
-        "test_date": "2024-08-01",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺線蟲劑Fosthiazate 福賽絕0.02ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.556299,
-          25.029746
-        ]
-      },
-      "properties": {
-        "violation_id": "V0159",
-        "store_name": "秋香蔬菜商行",
-        "sample_name": "菜豆",
-        "category": "豆菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區臨江街29-1號",
-        "test_date": "2024-08-02",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Ametryn 草殺淨0.02ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.501226,
-          25.040286
-        ]
-      },
-      "properties": {
-        "violation_id": "V0160",
-        "store_name": "日鮮蔬果專賣店",
-        "sample_name": "網室栽培特選台農二號紅肉木瓜",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區貴陽街2段137號",
-        "test_date": "2024-08-07",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺蟎劑Fenbutatin-oxide 芬佈賜0.02ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0161",
-        "store_name": "臺北市第二果菜批發市場蔬菜零批場21-08號攤",
-        "sample_name": "芹菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號",
-        "test_date": "2024-08-01",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Thiobencarb 殺丹0.08ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.566819,
-          25.040541
-        ]
-      },
-      "properties": {
-        "violation_id": "V0162",
-        "store_name": "為福樓餐廳有限公司",
-        "sample_name": "大紅辣(辣椒)",
-        "category": "果菜類",
-        "project": "蔬果",
-        "district": "南港區",
-        "address": "臺北市南港區忠孝東路5段996號1樓",
-        "test_date": "2024-08-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Flonicamid 氟尼胺0.02ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.550798,
-          25.031959
-        ]
-      },
-      "properties": {
-        "violation_id": "V0163",
-        "store_name": "優市大安店",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區敦化南路2段11巷38弄15號",
-        "test_date": "2024-08-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Thiamethoxam 賽速安0.46ppm(標準：0.25ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.501729,
-          25.131408
-        ]
-      },
-      "properties": {
-        "violation_id": "V0164",
-        "store_name": "順豐蔬果行",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "北投區",
-        "address": "臺北市北投區清江路22號",
-        "test_date": "2024-08-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Thiamethoxam 賽速安0.38ppm(標準：0.25ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557427,
-          25.051828
-        ]
-      },
-      "properties": {
-        "violation_id": "V0165",
-        "store_name": "心元蔘藥行",
-        "sample_name": "生機菊花（有效日期：20260620）",
-        "category": "菊花",
-        "project": "可供食品使用中藥材",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路5段291巷20弄6號",
-        "test_date": "2024-08-20",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑Cypermethrin賽滅寧0.14ppm（標準：0.03ppm以下）、殺草劑Pendimethalin施得圃0.07ppm（ 標準： 0.05pp",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.509797,
-          25.056436
-        ]
-      },
-      "properties": {
-        "violation_id": "V0166",
-        "store_name": "利隆貿易有限公司(利隆行)",
-        "sample_name": "台灣菊花（有效日期：1160722）",
-        "category": "菊花",
-        "project": "可供食品使用中藥材",
-        "district": "大同區",
-        "address": "臺北市大同區迪化街1段46巷18弄6號",
-        "test_date": "2024-08-20",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑Chlorfenapyr\t克凡派11.0ppm(標準：2.0ppm以下)、Methomyl\t納乃得1.5ppm(標準：1.0ppm以下)\t",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.510073,
-          25.058137
-        ]
-      },
-      "properties": {
-        "violation_id": "V0167",
-        "store_name": "迪隆蔘藥行",
-        "sample_name": "乾白木耳（干白木耳）（有效日期：20261115）",
-        "category": "白木耳",
-        "project": "可供食品使用中藥材",
-        "district": "大同區",
-        "address": "臺北市大同區歸綏街220號1樓",
-        "test_date": "2024-08-20",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "生長調節劑Chlormequat\t克美素0.08ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.519861,
-          25.110734
-        ]
-      },
-      "properties": {
-        "violation_id": "V0168",
-        "store_name": "慶峰參藥行",
-        "sample_name": "台灣菊花（有效日期：20261123）",
-        "category": "菊花",
-        "project": "可供食品使用中藥材",
-        "district": "北投區",
-        "address": "臺北市北投區懷德街6-6號",
-        "test_date": "2024-08-20",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑Acetamiprid亞滅培3.9ppm（標準：2.0ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0169",
-        "store_name": "全興蔬菜行",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號環南市場33號攤",
-        "test_date": "2024-09-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Dimethomorph 達滅芬0.03ppm(標準：0.01ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.543247,
-          25.041052
-        ]
-      },
-      "properties": {
-        "violation_id": "V0170",
-        "store_name": "遠東都會股份有限公司復興店（city super復興店）",
-        "sample_name": "芫荽(香菜)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區忠孝東路3段300號B3樓",
-        "test_date": "2024-09-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Dimethomorph 達滅芬0.07ppm(標準：0.01ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.525552,
-          25.087861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0171",
-        "store_name": "無市招菜攤(李O立)",
-        "sample_name": "青江菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區文林路101巷26號前攤販",
-        "test_date": "2024-09-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorfenapyr 克凡派1.1ppm(標準：1.0ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0172",
-        "store_name": "第二果菜批發市場第23-13號攤(張O淳)",
-        "sample_name": "芹菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號",
-        "test_date": "2024-09-06",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "除草劑Metolachlor 莫多草0.04ppm(標準：0.01ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.516222,
-          25.11648
-        ]
-      },
-      "properties": {
-        "violation_id": "V0173",
-        "store_name": "易長泓有限公司石牌營業所（旺佳佳越法新麵包石牌店）",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "北投區",
-        "address": "臺北市北投區石牌路2段72號",
-        "test_date": "2024-09-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑3-OH Carbofuran3羥基加保扶0.01ppm、Carbofuran 加保扶0.01ppm(標準：不得檢出) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0174",
-        "store_name": "第二果菜批發市場第17-11號攤(莊O逸)",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號",
-        "test_date": "2024-09-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺草劑Ametryn 草殺淨0.04ppm(標準：不得檢出) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.503187,
-          25.027102
-        ]
-      },
-      "properties": {
-        "violation_id": "V0175",
-        "store_name": "22號蔬果園",
-        "sample_name": "青蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區西藏路125巷22號1樓",
-        "test_date": "2024-09-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fipronil-sulfone芬普尼代謝物0.007ppm(標準：0.001ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557537,
-          25.05175
-        ]
-      },
-      "properties": {
-        "violation_id": "V0176",
-        "store_name": "兄弟大飯店股份有限公司(兄弟大飯店)",
-        "sample_name": "青江菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路3段255號",
-        "test_date": "2024-09-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cyantraniliprole 賽安勃0.34ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.520229,
-          25.117983
-        ]
-      },
-      "properties": {
-        "violation_id": "V0177",
-        "store_name": "蘇杭企業股份有限公司天母分公司(蘇杭365)",
-        "sample_name": "青蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "北投區",
-        "address": "臺北市北投區明德路365號",
-        "test_date": "2024-09-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Thifluzamide 賽氟滅0.16ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0178",
-        "store_name": "第二果菜批發市場第19-13號攤(胡O傑)",
-        "sample_name": "青蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號",
-        "test_date": "2024-09-06",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺蟎劑Ethion 愛殺松0.04ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565297,
-          25.040652
-        ]
-      },
-      "properties": {
-        "violation_id": "V0179",
-        "store_name": "遠百企業股份有限公司忠孝分公司(愛買忠孝店)",
-        "sample_name": "進口西洋芹",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區忠孝東路5段297號地下3樓",
-        "test_date": "2024-09-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cyantraniliprole 賽安勃0.02ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.524227,
-          25.094762
-        ]
-      },
-      "properties": {
-        "violation_id": "V0180",
-        "store_name": "士林素食館(士林健康素食)",
-        "sample_name": "九層塔(羅勒)",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區中正路281號",
-        "test_date": "2024-09-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Pyraclostrobin 百克敏0.48ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.583206,
-          25.045253
-        ]
-      },
-      "properties": {
-        "violation_id": "V0181",
-        "store_name": "阿一蔬果有限公司(阿一蔬果)",
-        "sample_name": "油菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "南港區",
-        "address": "臺北市南港區忠孝東路6段85號1樓",
-        "test_date": "2024-09-03",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Oxadiazon 樂滅草0.03ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.506775,
-          25.118971
-        ]
-      },
-      "properties": {
-        "violation_id": "V0182",
-        "store_name": "全聯實業股份有限公司北投吉利分公司",
-        "sample_name": "進口蘿蔔600公克",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "北投區",
-        "address": "臺北市北投區吉利街125號1樓",
-        "test_date": "2024-09-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Lufenuron 祿芬隆0.02ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.498416,
-          25.018506
-        ]
-      },
-      "properties": {
-        "violation_id": "V0183",
-        "store_name": "第一果菜批發市場",
-        "sample_name": "朝天椒(辣椒)",
-        "category": "果菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號地號919",
-        "test_date": "2024-09-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Flonicamid 氟尼胺0.02ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.543247,
-          25.041052
-        ]
-      },
-      "properties": {
-        "violation_id": "V0184",
-        "store_name": "遠東都會股份有限公司復興店（city super復興店）",
-        "sample_name": "大黃瓜(胡瓜)",
-        "category": "瓜菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區忠孝東路3段300號B3樓",
-        "test_date": "2024-09-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Trichlorfon 三氯松0.02ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.578986,
-          25.059815
-        ]
-      },
-      "properties": {
-        "violation_id": "V0185",
-        "store_name": "大潤發流通事業股份有限公司南湖分公司(大潤發)",
-        "sample_name": "台灣敏豆",
-        "category": "豆菜類",
-        "project": "蔬果",
-        "district": "內湖區",
-        "address": "臺北市內湖區舊宗路1段188號",
-        "test_date": "2024-09-02",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Pyraclostrobin百克敏0.8ppm(標準：0.5ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.555561,
-          25.055001
-        ]
-      },
-      "properties": {
-        "violation_id": "V0186",
-        "store_name": "惠康百貨股份有限公司松山光復公司(家樂福超市)",
-        "sample_name": "中國白蘿蔔600G",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區光復北路198號",
-        "test_date": "2024-09-03",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Thiamethoxam賽速安0.27ppm(標準：0.25ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.466375,
-          25.024334
-        ]
-      },
-      "properties": {
-        "violation_id": "V0187",
-        "store_name": "惠香食品有限公司",
-        "sample_name": "珍茶柚",
-        "category": "八仙果",
-        "project": "醃製及脫水蔬果(含蜜餞)",
-        "district": "信義區",
-        "address": "新北市板橋區民有街5號",
-        "test_date": "2024-09-03",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "檢出甜味劑「甜菊糖」及「蔗糖素」，惟未於成分內容物標示。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.471072,
-          25.078913
-        ]
-      },
-      "properties": {
-        "violation_id": "V0188",
-        "store_name": "金德恩國際貿易有限公司",
-        "sample_name": "八仙果佛手金磚塊",
-        "category": "八仙果",
-        "project": "醃製及脫水蔬果(含蜜餞)",
-        "district": "信義區",
-        "address": "新北市蘆洲區中山一路282號2樓",
-        "test_date": "2024-09-04",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "檢出著色劑「食用色素紅色六號」、「食用色素黃色五號」及「食用色素藍色一號」及甜味劑「甘草素」，惟未於成分內容物標示。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.45898,
-          24.994197
-        ]
-      },
-      "properties": {
-        "violation_id": "V0190",
-        "store_name": "維元食品有限公司",
-        "sample_name": "化應子",
-        "category": "蜜餞食品",
-        "project": "醃製及脫水蔬果(含蜜餞)",
-        "district": "信義區",
-        "address": "新北市板橋區和平路10之1號3樓",
-        "test_date": "2024-09-04",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "檢出甜味劑「蔗糖素」惟未於成分內容物標示。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.222092,
-          25.018027
-        ]
-      },
-      "properties": {
-        "violation_id": "V0191",
-        "store_name": "陳Ο君",
-        "sample_name": "洛神花",
-        "category": "蜜餞食品",
-        "project": "醃製及脫水蔬果(含蜜餞)",
-        "district": "信義區",
-        "address": "桃園市中壢區青峰路2段",
-        "test_date": "2024-09-05",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "1.檢驗結果檢出防腐劑「己二烯酸」、著色劑「食用色素紅色六號」、甜味劑「紐甜」及「甜菊糖」，惟未於成分內容物標示。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.222092,
-          25.018027
-        ]
-      },
-      "properties": {
-        "violation_id": "V0192",
-        "store_name": "陳Ο君",
-        "sample_name": "化核五香橄欖",
-        "category": "蜜餞食品",
-        "project": "醃製及脫水蔬果(含蜜餞)",
-        "district": "信義區",
-        "address": "桃園市中壢區青峰路2段",
-        "test_date": "2024-09-05",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "產品外包裝未標示「製造廠商或國內負責廠商名稱、電話號碼及地址」及「淨重、容量或數量」，且營養標示未標示「每一份量（或每一份、每份）」。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.222092,
-          25.018027
-        ]
-      },
-      "properties": {
-        "violation_id": "V0193",
-        "store_name": "陳Ο君",
-        "sample_name": "甘草杏李",
-        "category": "蜜餞食品",
-        "project": "醃製及脫水蔬果(含蜜餞)",
-        "district": "信義區",
-        "address": "桃園市中壢區青峰路2段",
-        "test_date": "2024-09-05",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "產品外包裝未標示「製造廠商或國內負責廠商名稱、電話號碼及地址」及「淨重、容量或數量」，且營養標示未標示「每一份量（或每一份、每份）」。",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.510719,
-          25.057816
-        ]
-      },
-      "properties": {
-        "violation_id": "V0200",
-        "store_name": "燈燦食品有限公司",
-        "sample_name": "動物性鮮奶油",
-        "category": "鮮奶油",
-        "project": "油品抽驗計畫",
-        "district": "大同區",
-        "address": "臺北市大同區民樂街125號1樓",
-        "test_date": "2024-10-18",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "營養標示反式脂肪含量為「每份：0公克/每100公克：0公克」，惟檢出每100公克反式脂肪酸含量0.41公克，依據「包裝食品營養標示應遵行事項」，每100公克固體",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.55731,
-          25.036427
-        ]
-      },
-      "properties": {
-        "violation_id": "V0201",
-        "store_name": "喜之坊食品有限公司(光復店)",
-        "sample_name": "永新烘焙沙拉醬",
-        "category": "沙拉醬",
-        "project": "油品抽驗計畫",
-        "district": "大安區",
-        "address": "臺北市大安區光復南路422號",
-        "test_date": "2024-10-17",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "營養標示反式脂肪含量為「每份：0公克/每100公克：0公克」，惟檢出每100公克反式脂肪酸含量0.40公克，依據「包裝食品營養標示應遵行事項」，每100公克固體",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.614881,
-          25.067365
-        ]
-      },
-      "properties": {
-        "violation_id": "V0202",
-        "store_name": "萬日蔬果行",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "內湖區",
-        "address": "臺北市內湖區五分街臨16之10號",
-        "test_date": "2024-10-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺草劑Ametryn 草殺淨0.01ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.498416,
-          25.018506
-        ]
-      },
-      "properties": {
-        "violation_id": "V0203",
-        "store_name": "黃O玉",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號地號928",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorpyrifos 陶斯松0.01ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.527537,
-          25.114956
-        ]
-      },
-      "properties": {
-        "violation_id": "V0204",
-        "store_name": "御鼎屋食品股份有限公司",
-        "sample_name": "青蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區中山北路6段711號",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorfenapyr 克凡派4.6ppm(標準：1.0ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.584936,
-          25.045505
-        ]
-      },
-      "properties": {
-        "violation_id": "V0205",
-        "store_name": "菓之鄉水果專賣店",
-        "sample_name": "特選百香果",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "南港區",
-        "address": "臺北市南港區同德路60號",
-        "test_date": "2024-10-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Cyromazine 賽滅淨0.48ppm(標準：不得檢出) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.555589,
-          25.029789
-        ]
-      },
-      "properties": {
-        "violation_id": "V0206",
-        "store_name": "王O鴻",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區臨江街70號前",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺草劑Linuron 理有龍0.02ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0207",
-        "store_name": "輝哥蔬菜批發行",
-        "sample_name": "紅鳳菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號環南市場蔬菜區第184號",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺草劑Ametryn 草殺淨0.12ppm(標準：不得檢出) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0208",
-        "store_name": "茂盛蔬菜商行",
-        "sample_name": "紅鳳菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號環南市場第198號攤",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺草劑Ametryn 草殺淨0.02ppm(標準：不得檢出) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.549218,
-          25.04034
-        ]
-      },
-      "properties": {
-        "violation_id": "V0209",
-        "store_name": "台灣產健股份有限公司台北2店(良食生活)",
-        "sample_name": "茄子",
-        "category": "果菜類",
-        "project": "蔬果",
-        "district": "大安區",
-        "address": "臺北市大安區敦化南路1段233巷68號",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Imidacloprid 益達胺0.9ppm(標準：0.5ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.527537,
-          25.114956
-        ]
-      },
-      "properties": {
-        "violation_id": "V0210",
-        "store_name": "御鼎屋食品股份有限公司",
-        "sample_name": "白蘿蔔(包)",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區中山北路6段711號",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Clothianidin 可尼丁0.20ppm(標準：0.02ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.515475,
-          25.110892
-        ]
-      },
-      "properties": {
-        "violation_id": "V0211",
-        "store_name": "果菜俗賣",
-        "sample_name": "芫荽(香菜)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "北投區",
-        "address": "臺北市北投區自強街119號",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Dimethomorph 達滅芬0.02ppm(標準：0.01ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.527193,
-          25.054683
-        ]
-      },
-      "properties": {
-        "violation_id": "V0212",
-        "store_name": "唐龍國際餐飲股份有限公司(龍軒傳承)",
-        "sample_name": "辣椒條",
-        "category": "果菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區長春路90號2樓",
-        "test_date": "2024-10-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Difenoconazole 待克利2.7ppm(標準：0.5ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.532196,
-          25.060222
-        ]
-      },
-      "properties": {
-        "violation_id": "V0213",
-        "store_name": "吉晟蔬果行",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區錦州街222號松江市場69",
-        "test_date": "2024-10-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fenitrothion 撲滅松0.03ppm(標準：0.01ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.584936,
-          25.045505
-        ]
-      },
-      "properties": {
-        "violation_id": "V0214",
-        "store_name": "菓之鄉水果專賣店",
-        "sample_name": "網室木瓜台農2號",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "南港區",
-        "address": "臺北市南港區同德路60號",
-        "test_date": "2024-10-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Pyriproxyfen 百利普芬0.04ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.530444,
-          25.0605
-        ]
-      },
-      "properties": {
-        "violation_id": "V0215",
-        "store_name": "全聯實業股份有限公司中山吉林分公司",
-        "sample_name": "青蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區吉林路213、215、217、219號1樓",
-        "test_date": "2024-10-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fipronil-sulfone芬普尼代謝物0.003ppm(標準：0.001ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.527537,
-          25.114956
-        ]
-      },
-      "properties": {
-        "violation_id": "V0216",
-        "store_name": "御鼎屋食品股份有限公司",
-        "sample_name": "青江白菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區中山北路6段711號",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Tolfenpyrad 脫芬瑞1.2ppm(標準：0.5ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.613793,
-          25.067425
-        ]
-      },
-      "properties": {
-        "violation_id": "V0217",
-        "store_name": "東和蔬果行",
-        "sample_name": "木瓜(台農2號)",
-        "category": "大漿果類",
-        "project": "蔬果",
-        "district": "內湖區",
-        "address": "臺北市內湖區五分街16號1樓",
-        "test_date": "2024-10-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Famoxadone 凡殺同0.02ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.525953,
-          25.064807
-        ]
-      },
-      "properties": {
-        "violation_id": "V0218",
-        "store_name": "統康生活事業股份有限公司台北農安二店分公司（家樂福超市）",
-        "sample_name": "青江菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區農安街26號、26-1號",
-        "test_date": "2024-10-01",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Oxadiazon 樂滅草0.02ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0219",
-        "store_name": "臺北市第二果菜批發市場20-14攤",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號1樓",
-        "test_date": "2024-10-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fenitrothion 撲滅松0.02ppm(標準：0.01ppｍ以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0220",
-        "store_name": "茂盛蔬菜商行",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號環南市場第198號攤",
-        "test_date": "2024-10-04",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fipronil-sulfone芬普尼代謝物0.002ppm(標準：0.001ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.568092,
-          25.035379
-        ]
-      },
-      "properties": {
-        "violation_id": "V0221",
-        "store_name": "昕殿有限公司（辛殿麻辣鍋信義店）",
-        "sample_name": "蔥",
-        "category": "鮮果蔬菜類及其加工品",
-        "project": "火鍋料",
-        "district": "信義區",
-        "address": "臺北市信義區松壽路28號1樓",
-        "test_date": "2024-10-14",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑滅芬諾(Methoxyfenozide)：0.29ppm(標準：0.01ppm) 2.殺菌劑賽氟滅(Thifluzamide)：0.55ppm(標準：",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.566056,
-          25.035259
-        ]
-      },
-      "properties": {
-        "violation_id": "V0222",
-        "store_name": "旨王開發有限公司（王鍋屋新京都風味鍋物）",
-        "sample_name": "青江菜",
-        "category": "鮮果蔬菜類及其加工品",
-        "project": "火鍋料",
-        "district": "信義區",
-        "address": "臺北市信義區松壽路12號5樓",
-        "test_date": "2024-10-14",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑克凡派(Chlorfenapyr)：1.8ppm(標準：1.0ppm)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.595822,
-          25.050701
-        ]
-      },
-      "properties": {
-        "violation_id": "V0223",
-        "store_name": "三澧企業股份有限公司（Mo- Mo-Paradise南港潤泰牧場）",
-        "sample_name": "青江菜",
-        "category": "鮮果蔬菜類及其加工品",
-        "project": "火鍋料",
-        "district": "南港區",
-        "address": "臺北市南港區忠孝東路7段369號C棟10樓",
-        "test_date": "2024-10-15",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑克凡派(Chlorfenapyr)：1.1ppm(標準：1.0ppm)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.503159,
-          25.043551
-        ]
-      },
-      "properties": {
-        "violation_id": "V0224",
-        "store_name": "格萊思美國際餐飲股份有限公司(心心麻辣鍋)",
-        "sample_name": "青江菜",
-        "category": "鮮果蔬菜類及其加工品",
-        "project": "火鍋料",
-        "district": "萬華區",
-        "address": "臺北市萬華區成都路141號",
-        "test_date": "2024-10-17",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑芬普尼(Fipronil)：0.372ppm、芬普尼代謝物(Fipronil- sulfone)：0.039ppm，共計0.411 ppm（標準：0.",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.505517,
-          25.04578
-        ]
-      },
-      "properties": {
-        "violation_id": "V0225",
-        "store_name": "辣之王麻辣火鍋店(夯麻辣火鍋燒肉)",
-        "sample_name": "白蘿蔔",
-        "category": "鮮果蔬菜類及其加工品",
-        "project": "火鍋料",
-        "district": "萬華區",
-        "address": "臺北市萬華區昆明街76號2樓",
-        "test_date": "2024-10-17",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑賽洛寧(λ-Cyhalothrin)：0.02ppm (標準：0.01ppm)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.520189,
-          25.108598
-        ]
-      },
-      "properties": {
-        "violation_id": "V0226",
-        "store_name": "明煬四方有限公司（丰明殿）",
-        "sample_name": "青蔥",
-        "category": "鮮果蔬菜類及其加工品",
-        "project": "火鍋料",
-        "district": "北投區",
-        "address": "臺北市北投區東華街1段362號1樓",
-        "test_date": "2024-10-18",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺菌劑賽氟滅(Thifluzamide)：0.14ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.516248,
-          25.117808
-        ]
-      },
-      "properties": {
-        "violation_id": "V0227",
-        "store_name": "寒順企業社（寒聚精緻鍋物）",
-        "sample_name": "花生粉",
-        "category": "花生粉",
-        "project": "火鍋料",
-        "district": "北投區",
-        "address": "臺北市北投區石牌路2段97巷8號1樓",
-        "test_date": "2024-10-18",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "1.黃麴毒素B1：19.0 μg/kg（標準：2 μg/kg以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.524417,
-          25.12282
-        ]
-      },
-      "properties": {
-        "violation_id": "V0228",
-        "store_name": "百世佳興業有限公司石牌分公司（火鍋世家）",
-        "sample_name": "青蔥",
-        "category": "鮮果蔬菜類及其加工品",
-        "project": "火鍋料",
-        "district": "北投區",
-        "address": "臺北市北投區石牌路2段335號",
-        "test_date": "2024-10-18",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺菌劑四克利(Tetraconazole)：0.09ppm(標準：0.01ppm)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.523464,
-          25.081999
-        ]
-      },
-      "properties": {
-        "violation_id": "V0229",
-        "store_name": "富樂台式有限公司(富樂台式涮涮鍋)",
-        "sample_name": "三星青蔥 SE1",
-        "category": "鮮果蔬菜類及其加工品",
-        "project": "火鍋料",
-        "district": "士林區",
-        "address": "臺北市士林區承德路4段 75-1號",
-        "test_date": "2024-10-18",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑克凡派(Chlorfenapyr)：2.2ppm(標準：1.0ppm)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.523464,
-          25.081999
-        ]
-      },
-      "properties": {
-        "violation_id": "V0230",
-        "store_name": "富樂台式有限公司(富樂台式涮涮鍋)",
-        "sample_name": "豆腐",
-        "category": "豆腐",
-        "project": "火鍋料",
-        "district": "士林區",
-        "address": "臺北市士林區承德路4段 75-1號",
-        "test_date": "2024-10-18",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "1.苯甲酸：0.5 g/kg(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.560411,
-          25.036404
-        ]
-      },
-      "properties": {
-        "violation_id": "V0231",
-        "store_name": "同學の店",
-        "sample_name": "芥藍",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區仁愛路4段496巷19號",
-        "test_date": "2024-11-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Emamectin benzoate 因滅汀總量0.13ppm(標準：0.05ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.558507,
-          25.033308
-        ]
-      },
-      "properties": {
-        "violation_id": "V0232",
-        "store_name": "丰明殿涮涮鍋殿堂信義店(丰明殿)",
-        "sample_name": "油菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區信義路4段393號",
-        "test_date": "2024-11-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Acetamiprid 亞滅培9.1ppm(標準：2.0ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.531919,
-          25.016633
-        ]
-      },
-      "properties": {
-        "violation_id": "V0233",
-        "store_name": "阿萬青菜號",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "中正區",
-        "address": "臺北市中正區羅斯福路1段8號南門市場B1-17、63、64號攤",
-        "test_date": "2024-11-06",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fenitrothion 撲滅松0.02ppm(標準：0.01ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.59109,
-          25.072887
-        ]
-      },
-      "properties": {
-        "violation_id": "V0234",
-        "store_name": "三軍總醫院營養部",
-        "sample_name": "油菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "內湖區",
-        "address": "臺北市內湖區成功路2段325號B1",
-        "test_date": "2024-11-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorfenapyr 克凡派2.2ppm(標準：1.0ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.529294,
-          25.118598
-        ]
-      },
-      "properties": {
-        "violation_id": "V0235",
-        "store_name": "統康生活事業股份有限公司天母分公司（Mia C'bon）",
-        "sample_name": "青江菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區天母西路3號2樓",
-        "test_date": "2024-11-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorfenapyr 克凡派2.0ppm(標準：1.0ppm以下) ",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.491099,
-          25.024264
-        ]
-      },
-      "properties": {
-        "violation_id": "V0236",
-        "store_name": "灃群物流有限公司",
-        "sample_name": "菠菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路3段117、119號",
-        "test_date": "2024-11-07",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Flutolanil福多寧2.9ppm（標準：2.0ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.520944,
-          25.060174
-        ]
-      },
-      "properties": {
-        "violation_id": "V0237",
-        "store_name": "蔬菜攤(程O明)",
-        "sample_name": "香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區錦西街26號",
-        "test_date": "2024-11-05",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Linuron 理有龍0.03ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.528183,
-          25.051898
-        ]
-      },
-      "properties": {
-        "violation_id": "V0238",
-        "store_name": "人杰老四川餐飲管理顧問股份有限公司台北南京東分公司（老四川巴蜀麻辣燙）",
-        "sample_name": "蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區南京東路2段45號1-2樓、47號1-3樓",
-        "test_date": "2024-11-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Thifluzamide賽氟滅0.02ppm（標準：不得檢出）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.529675,
-          25.11898
-        ]
-      },
-      "properties": {
-        "violation_id": "V0239",
-        "store_name": "全聯實業股份有限公司天母天玉分公司(全聯福利中心)",
-        "sample_name": "特選香菜(芫荽)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "士林區",
-        "address": "臺北市士林區天母西路3號地下",
-        "test_date": "2024-11-05",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Linuron理有龍0.02ppm（標準：不得檢出）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.557427,
-          25.051828
-        ]
-      },
-      "properties": {
-        "violation_id": "V0240",
-        "store_name": "尚揚蔬果行",
-        "sample_name": "芫荽(香菜)",
-        "category": "香辛植物及其他草木本植物",
-        "project": "蔬果",
-        "district": "松山區",
-        "address": "臺北市松山區南京東路5段291巷30號1樓",
-        "test_date": "2024-11-05",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Diazinon 大利松0.01ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0241",
-        "store_name": "第二果菜批發市場18-08號攤",
-        "sample_name": "蔥",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號",
-        "test_date": "2024-11-01",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺蟎劑Spirodiclofen 賜派芬0.07ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0242",
-        "store_name": "景O文",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號115號攤",
-        "test_date": "2024-11-06",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Fipronil芬普尼0.001ppm、Fipronil-sulfone芬普尼代謝物0.003ppm，合計共0.004ppm（標準：0.001ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.489759,
-          25.02866
-        ]
-      },
-      "properties": {
-        "violation_id": "V0243",
-        "store_name": "景O文",
-        "sample_name": "菠菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "萬華區",
-        "address": "臺北市萬華區環河南路2段245號115號攤",
-        "test_date": "2024-11-06",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "殺草劑Oxadiazon 樂滅草0.04ppm(標準：0.01ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537321,
-          25.067861
-        ]
-      },
-      "properties": {
-        "violation_id": "V0244",
-        "store_name": "第二果菜批發市場19-09號攤",
-        "sample_name": "彩色甜椒",
-        "category": "果菜類",
-        "project": "蔬果",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路336號1樓",
-        "test_date": "2024-11-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Profenophos 佈飛松1.8ppm(標準：1.0ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.560411,
-          25.036404
-        ]
-      },
-      "properties": {
-        "violation_id": "V0245",
-        "store_name": "同學の店",
-        "sample_name": "菠菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區仁愛路4段496巷19號",
-        "test_date": "2024-11-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Imidacloprid益達胺1.7pm（標準：1.0ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.511146,
-          25.02694
-        ]
-      },
-      "properties": {
-        "violation_id": "V0246",
-        "store_name": "三商家購股份有限公司中正汀州分公司（美廉社中正汀州店）",
-        "sample_name": "茼蒿",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "中正區",
-        "address": "臺北市中正區汀州路1段220號",
-        "test_date": "2024-11-06",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Flutolanil 福多寧2.7ppm(標準：2.0ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565314,
-          25.041942
-        ]
-      },
-      "properties": {
-        "violation_id": "V0247",
-        "store_name": "築間餐飲事業股份有限公司信義世貿營業所(築間幸福鍋物)",
-        "sample_name": "青江菜",
-        "category": "小葉菜類",
-        "project": "蔬果",
-        "district": "信義區",
-        "address": "臺北市信義區基隆路1段426號1樓",
-        "test_date": "2024-11-01",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorfenapyr 克凡派1.3ppm(標準：1.0ppm以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.49419,
-          25.020705
-        ]
-      },
-      "properties": {
-        "violation_id": "V0248",
-        "store_name": "捷達農產企業社",
-        "sample_name": "白蘿蔔(SA9)",
-        "category": "根莖菜類",
-        "project": "年節食品",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路424巷151號環南市場甲棟1樓第121號攤",
-        "test_date": "2024-11-12",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Clothianidin可尼丁0.15 ppm（標準：0.02 ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.587158,
-          25.061015
-        ]
-      },
-      "properties": {
-        "violation_id": "V0249",
-        "store_name": "純香食品行",
-        "sample_name": "白蘿蔔",
-        "category": "根莖菜類",
-        "project": "年節食品",
-        "district": "內湖區",
-        "address": "臺北市內湖區南京東路6段330巷18弄15號2樓",
-        "test_date": "2024-11-15",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Chlorfenapyr克凡派0.08 ppm（標準：0.05 ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.58452,
-          25.039641
-        ]
-      },
-      "properties": {
-        "violation_id": "V0250",
-        "store_name": "吉米蔬果行",
-        "sample_name": "包心芥菜",
-        "category": "包葉菜類",
-        "project": "年節食品",
-        "district": "信義區",
-        "address": "臺北市信義區中坡南路257號及261號",
-        "test_date": "2024-11-12",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Acetamiprid亞滅培2.5 ppm（標準：2.0 ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.498416,
-          25.018506
-        ]
-      },
-      "properties": {
-        "violation_id": "V0251",
-        "store_name": "第一果菜批發市場",
-        "sample_name": "大刈菜",
-        "category": "包葉菜類",
-        "project": "年節食品",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號地號1209",
-        "test_date": "2024-11-12",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Propamocarb hydrochloride普拔克6.6ppm（標準： 5.0ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.537403,
-          25.06685
-        ]
-      },
-      "properties": {
-        "violation_id": "V0252",
-        "store_name": "謝O壹",
-        "sample_name": "刈菜",
-        "category": "小葉菜類",
-        "project": "年節食品",
-        "district": "中山區",
-        "address": "臺北市中山區民族東路410巷2弄O號前",
-        "test_date": "2024-11-12",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Propam ocarb hydrochloride普拔克11.6ppm（標準：5.0ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.543369,
-          25.036733
-        ]
-      },
-      "properties": {
-        "violation_id": "V0253",
-        "store_name": "台北市農會蔬果舖子",
-        "sample_name": "農產白蘿蔔",
-        "category": "根莖菜類",
-        "project": "年節食品",
-        "district": "大安區",
-        "address": "臺北市大安區復興南路1段340巷旁空地",
-        "test_date": "2024-11-12",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Thiamethoxam賽速安0.52ppm（標準：0.25ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.497064,
-          25.017135
-        ]
-      },
-      "properties": {
-        "violation_id": "V0254",
-        "store_name": "3499林O鴦",
-        "sample_name": "辣椒(FV1小紅)",
-        "category": "果菜類",
-        "project": "年節食品",
-        "district": "萬華區",
-        "address": "臺北市萬華區萬大路533號第一果菜批發市場地號2215",
-        "test_date": "2024-11-12",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺菌劑Cyprodinil賽普洛0.8ppm（標準：0.5ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0255",
-        "store_name": "蝦皮購物-台瑞格(美食&日用品)",
-        "sample_name": "竹荪(製造日期：\n20240903)",
-        "category": "竹笙",
-        "project": "年節食品",
-        "district": "信義區",
-        "address": "蝦皮購物-台瑞格(美食&日用品)",
-        "test_date": "2024-11-08",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "1.殺蟲劑克凡派0.09ppm（標準：0.05ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.559292,
-          25.036425
-        ]
-      },
-      "properties": {
-        "violation_id": "V0256",
-        "store_name": "鼎昌雜糧行(易順興雜糧行)",
-        "sample_name": "竹笙",
-        "category": "竹笙",
-        "project": "年節食品",
-        "district": "信義區",
-        "address": "臺北市信義區仁愛路4段452巷21號",
-        "test_date": "2024-11-12",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "重金屬鎘5mg/kg(標準：2mg/kg以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0257",
-        "store_name": "蝦皮購物-台瑞格(美食&日用品)",
-        "sample_name": "竹荪(製造日期：\n20241010)",
-        "category": "竹笙",
-        "project": "年節食品",
-        "district": "信義區",
-        "address": "蝦皮購物-台瑞格(美食&日用品)",
-        "test_date": "2024-11-08",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "1.重金屬鎘5mg/kg（標準：2mg/kg以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.543378,
-          25.024944
-        ]
-      },
-      "properties": {
-        "violation_id": "V0258",
-        "store_name": "鼎旺麻辣有限公司(鼎旺麻辣鍋)",
-        "sample_name": "竹笙",
-        "category": "竹笙",
-        "project": "年節食品",
-        "district": "大安區",
-        "address": "臺北市大安區大安路1段 251號",
-        "test_date": "2024-11-12",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "重金屬鎘3mg/kg(標準：2mg/kg以下)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.509797,
-          25.056436
-        ]
-      },
-      "properties": {
-        "violation_id": "V0259",
-        "store_name": "八玖食小食樂趣",
-        "sample_name": "大豆干（不辣）",
-        "category": "豆乾類",
-        "project": "年節食品",
-        "district": "大同區",
-        "address": "臺北市大同區迪化街1段21號永樂市場 1019攤",
-        "test_date": "2024-11-20",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "1.防腐劑苯甲酸1.0g/kg（標準：0.6g/kg以下）、己二烯酸4.0g/kg（標準：2.0g/kg以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.504536,
-          25.032266
-        ]
-      },
-      "properties": {
-        "violation_id": "V0260",
-        "store_name": "正祥食品行（黃日香豆干台北總店）",
-        "sample_name": "休閒片（有效日期：\n20250213）",
-        "category": "豆乾類",
-        "project": "年節食品",
-        "district": "萬華區",
-        "address": "臺北市萬華區中華路2段66號1樓/實際抽驗地址為64號",
-        "test_date": "2024-11-19",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "防腐劑己二烯酸2.3g/kg（標準：2.0g/kg以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.491908,
-          25.028448
-        ]
-      },
-      "properties": {
-        "violation_id": "V0261",
-        "store_name": "大福慧素食食品商行",
-        "sample_name": "猴頭菇",
-        "category": "蕈菜類",
-        "project": "年節食品",
-        "district": "萬華區",
-        "address": "臺北市萬華區西藏路293號1樓",
-        "test_date": "2024-11-14",
-        "violation_type": "其他",
-        "violation_severity": 60,
-        "reason_summary": "生長調節劑Chlormequat克美素0.13ppm（標準：不得檢出）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.509797,
-          25.056436
-        ]
-      },
-      "properties": {
-        "violation_id": "V0262",
-        "store_name": "勝隆南北雜貨行",
-        "sample_name": "巴西蘑菇",
-        "category": "巴西蘑菇",
-        "project": "年節食品",
-        "district": "大同區",
-        "address": "臺北市大同區迪化街1段258號1樓",
-        "test_date": "2024-11-11",
-        "violation_type": "重金屬",
-        "violation_severity": 100,
-        "reason_summary": "重金屬鎘9mg/kg（標準：2mg/kg以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.562772,
-          25.02834
-        ]
-      },
-      "properties": {
-        "violation_id": "V0263",
-        "store_name": "興長生蔘藥行",
-        "sample_name": "特花椒粒（有效日期：\n20261019）",
-        "category": "香辛植物類",
-        "project": "年節食品",
-        "district": "信義區",
-        "address": "臺北市信義區吳興街197號",
-        "test_date": "2024-11-12",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Acetamiprid亞滅培1.08ppm（標準：0.05ppm以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.531919,
-          25.016633
-        ]
-      },
-      "properties": {
-        "violation_id": "V0264",
-        "store_name": "趙不金號(協盛福州商店)",
-        "sample_name": "白木耳",
-        "category": "木耳",
-        "project": "年節食品",
-        "district": "中正區",
-        "address": "臺北市中正區羅斯福路1段8號 1樓南門市場1F-20",
-        "test_date": "2024-11-12",
-        "violation_type": "農藥殘留",
-        "violation_severity": 90,
-        "reason_summary": "殺蟲劑Imidacloprid益達胺0.50ppm(標準：0.05ppm以下)殺蟲劑Methomyl納乃得0.10ppm(標準：不得檢出)",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0265",
-        "store_name": "彼娜滋",
-        "sample_name": "原味花生粉(有效日期：\n20250216)",
-        "category": "花生製品",
-        "project": "年節食品",
-        "district": "信義區",
-        "address": "彼娜滋",
-        "test_date": "2024-11-19",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "1.黃麴毒素B1：27.3µg/kg（標準：2µg/kg以下）及總黃麴毒素：33.5µg/kg（標準：4µg/kg以下）",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.590768,
-          25.086434
-        ]
-      },
-      "properties": {
-        "violation_id": "V0266",
-        "store_name": "萬年興商行",
-        "sample_name": "竹笙(有效日期：\n20260616)",
-        "category": "竹笙",
-        "project": "年節食品",
-        "district": "內湖區",
-        "address": "臺北市內湖區內湖路3段107號1樓",
-        "test_date": "2024-11-15",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "產品屬包裝食品惟未依規定以中文標示",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.565427,
-          25.032964
-        ]
-      },
-      "properties": {
-        "violation_id": "V0267",
-        "store_name": "蝦皮-巧巧精品冷凍食品團購窩",
-        "sample_name": "基隆劉家純無糖花生醬",
-        "category": "花生製品",
-        "project": "年節食品",
-        "district": "信義區",
-        "address": "蝦皮-巧巧精品冷凍食品團購窩",
-        "test_date": "2024-11-19",
-        "violation_type": "標示不符",
-        "violation_severity": 50,
-        "reason_summary": "產品外包裝未標示「品名」、「內容物名稱」、「淨 重、容量或數量」、「原產地（國）」及「有效日期」且營養標示未標示「每100公克（或毫升）」",
-        "geocoded": true
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          121.591332,
-          25.082092
-        ]
-      },
-      "properties": {
-        "violation_id": "V0268",
-        "store_name": "三允有限公司(米特肉舖)",
-        "sample_name": "樂食鱻香菇虱目魚丸（有效日期： 2025.09.12）",
-        "category": "水產及其加工品",
-        "project": "年節食品",
-        "district": "內湖區",
-        "address": "臺北市內湖區成功路4段30巷 10號",
-        "test_date": "2024-11-19",
-        "violation_type": "防腐劑與添加物",
-        "violation_severity": 70,
-        "reason_summary": "檢出防腐劑己二烯酸0.24g/kg（標準：2.0g/kg以下），惟外包裝未標示該食品添加物名稱，及標示「不添加防腐劑」字樣，標示不實",
-        "geocoded": true
-      }
-    }
-  ]
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.562193,
+     25.056058
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0006",
+    "store_name": "臺北市松山區介壽國中",
+    "sample_name": "板豆腐",
+    "category": "豆菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "松山區",
+    "address": "臺北市松山區介壽國中",
+    "test_date": "2026-03-22",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Pydiflumetofen\t派滅芬0.01ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.542125,
+     24.964437
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0009",
+    "store_name": "新北市新店區中正國小",
+    "sample_name": "三色豆",
+    "category": "豆菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "新店區",
+    "address": "新北市新店區中正國小",
+    "test_date": "2026-03-12",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Mandipropamid\t曼普胺0.06ppm(標準：不得檢出) 殺菌劑Oxathiapiprolin\t歐西比0.01ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.478986,
+     25.085663
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0012",
+    "store_name": "新北市蘆洲區忠義國小",
+    "sample_name": "九層塔",
+    "category": "香辛植物及其他草木本植物",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "蘆洲區",
+    "address": "新北市蘆洲區忠義國小",
+    "test_date": "2026-03-30",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Difenoconazole\t待克利1.4ppm(標準：0.5ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.542213,
+     24.967596
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0014",
+    "store_name": "新北市新店區雙城國小",
+    "sample_name": "蘿蔔乾",
+    "category": "根莖菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "新店區",
+    "address": "新北市新店區雙城國小",
+    "test_date": "2026-03-08",
+    "violation_type": "其他",
+    "violation_severity": 60,
+    "reason_summary": "總黃麴毒素30.8ug/kg(標準：4ug/kg以下)、黃麴毒素B1 25.2ug/kg (標準：2ug/kg以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.604036,
+     25.057823
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0015",
+    "store_name": "臺北市南港區南港國小",
+    "sample_name": "鳳梨",
+    "category": "大漿果類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "南港區",
+    "address": "臺北市南港區南港國小",
+    "test_date": "2026-03-24",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "1.蘇丹三號-4ppb (標準：不得檢出) 2.克美素-0.06ppm (標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.49162,
+     25.066466
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0016",
+    "store_name": "新北市三重區碧華國小",
+    "sample_name": "豬後腿肉",
+    "category": "肉品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "三重區",
+    "address": "新北市三重區碧華國小",
+    "test_date": "2026-03-12",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Clothianidin 可尼丁0.07ppm(標準：0.02ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.56907,
+     24.984589
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0019",
+    "store_name": "臺北市文山區力行國小",
+    "sample_name": "松茸",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "文山區",
+    "address": "臺北市文山區力行國小",
+    "test_date": "2026-03-23",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Dimethomorph 達滅芬4.1ppm(標準：2.5ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.567545,
+     24.990324
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0021",
+    "store_name": "臺北市文山區興華國小",
+    "sample_name": "鬼頭刀",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "文山區",
+    "address": "臺北市文山區興華國小",
+    "test_date": "2026-03-13",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Clothianidin 可尼丁0.08ppm(標準：0.02ppm以下)  殺蟲劑Dichlorvos二氯松0.04ppm(標準：不得檢出) 殺蟲劑Trichlorfon 三氯松0.19ppm(標準：0.01ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.418029,
+     24.987133
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0023",
+    "store_name": "新北市樹林區三多國中",
+    "sample_name": "鹹酸菜",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "樹林區",
+    "address": "新北市樹林區三多國中",
+    "test_date": "2026-03-05",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Chlorpyrifos陶斯松0.45ppm(標準：不得檢出) 殺菌劑Cyazofamid\t賽座滅0.03ppm(標準：0.01ppm以下)\t 殺蟲劑Imidacloprid\t益達胺1.2ppm(標準：1.0ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.571669,
+     24.990347
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0026",
+    "store_name": "臺北市文山區興華國小",
+    "sample_name": "茄子",
+    "category": "果菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "文山區",
+    "address": "臺北市文山區興華國小",
+    "test_date": "2026-03-29",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Cyantraniliprole 賽安勃0.34ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.635012,
+     25.222263
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0027",
+    "store_name": "新北市金山區金美國小",
+    "sample_name": "韭菜",
+    "category": "香辛植物及其他草木本植物",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "金山區",
+    "address": "新北市金山區金美國小",
+    "test_date": "2026-03-10",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟎劑Formetanate\t覆滅蟎0.40ppm(標準：不得檢出)\t 殺蟲劑Thiamethoxam\t賽速安0.04ppm(標準：0.02ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.57185,
+     25.029694
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0029",
+    "store_name": "臺北市信義區吳興國小",
+    "sample_name": "白米",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "信義區",
+    "address": "臺北市信義區吳興國小",
+    "test_date": "2026-03-29",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "還原型結晶紫（leucocrystal violet, LCV） 0.6 ppb（標準 ：不得檢出）",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.575591,
+     24.986133
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0030",
+    "store_name": "臺北市文山區木柵國小",
+    "sample_name": "獅子頭",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "文山區",
+    "address": "臺北市文山區木柵國小",
+    "test_date": "2026-03-08",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Cyhalothrin 賽洛寧1.0ppm(標準：0.5ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.586172,
+     25.063307
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0033",
+    "store_name": "臺北市內湖區西湖國小",
+    "sample_name": "傳統豆腐",
+    "category": "豆菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "內湖區",
+    "address": "臺北市內湖區西湖國小",
+    "test_date": "2026-03-01",
+    "violation_type": "其他",
+    "violation_severity": 60,
+    "reason_summary": "1.黃麴毒素B1：19.0 μg/kg（標準：2 μg/kg以下） 2.總黃麴毒素B1+B2+G1+G2：21.7μg/kg（標準：4 μg/kg以下）",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.600538,
+     25.050246
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0035",
+    "store_name": "臺北市南港區東新國小",
+    "sample_name": "櫛瓜",
+    "category": "果菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "南港區",
+    "address": "臺北市南港區東新國小",
+    "test_date": "2026-03-17",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Deltamethrin 第滅寧1.4ppm(標準：0.5ppm以下)  殺菌劑Pyraclostrobin 百克敏0.6ppm(標準：0.5ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.45157,
+     25.034402
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0037",
+    "store_name": "新北市新莊區思賢國小",
+    "sample_name": "栗子",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "新莊區",
+    "address": "新北市新莊區思賢國小",
+    "test_date": "2026-03-12",
+    "violation_type": "標示不符",
+    "violation_severity": 50,
+    "reason_summary": "未標示原產地（國）、有效日期標示單獨黏貼未依規定印刷於外包裝上。",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.439285,
+     25.16564
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0039",
+    "store_name": "新北市淡水區竹圍國小",
+    "sample_name": "芹菜",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "淡水區",
+    "address": "新北市淡水區竹圍國小",
+    "test_date": "2026-03-30",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟎劑Bifenazate\t必芬蟎0.07ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.691721,
+     25.179792
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0043",
+    "store_name": "新北市萬里區大鵬國小",
+    "sample_name": "洋蔥",
+    "category": "香辛植物及其他草木本植物",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "萬里區",
+    "address": "新北市萬里區大鵬國小",
+    "test_date": "2026-03-30",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Boscalid\t白克列21.87ppm(標準：0.01ppm以下)\t 殺菌劑Procymidone\t撲滅寧10.3ppm(標準：5.0ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.590868,
+     25.068405
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0044",
+    "store_name": "臺北市內湖區文湖國小",
+    "sample_name": "豬大里肌",
+    "category": "肉品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "內湖區",
+    "address": "臺北市內湖區文湖國小",
+    "test_date": "2026-03-31",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Chlorfenapyr 克凡派2.0ppm(標準：1.0ppm以下)  殺蟲劑Indoxacarb 因得克2.4ppm(標準：2.0ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.528651,
+     25.060585
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0046",
+    "store_name": "臺北市中山區中山國小",
+    "sample_name": "毛豆仁",
+    "category": "豆菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "中山區",
+    "address": "臺北市中山區中山國小",
+    "test_date": "2026-03-21",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Flutolanil\t福多寧0.05ppm(標準：0.01ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.624694,
+     25.070205
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0050",
+    "store_name": "新北市汐止區白雲國小",
+    "sample_name": "香菇",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "汐止區",
+    "address": "新北市汐止區白雲國小",
+    "test_date": "2026-03-12",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Methomyl\t納乃得3.1ppm(標準：2.0ppm以下)\t 殺菌劑Pyraclostrobin\t百克敏1.4ppm(標準0.5ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.802628,
+     25.10358
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0051",
+    "store_name": "新北市瑞芳區九份國小",
+    "sample_name": "白蘿蔔(長形)",
+    "category": "根莖菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "瑞芳區",
+    "address": "新北市瑞芳區九份國小",
+    "test_date": "2026-03-10",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Chlorfenapyr 克凡派2.2ppm(標準：1.0ppm以下)  殺蟲劑Fipronil 芬普尼0.435ppm及芬普尼代謝物Fipronil-sulfone0.083ppm，合計共0.518ppm(標準：0.001ppm以下)  殺蟲劑Indoxacarb 因得克3.7ppm(標準：2.0ppm以下)  殺蟲劑Pyriproxyfen 百利普芬1.53ppm(標準：0.01ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.6081,
+     25.0517
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0052",
+    "store_name": "臺北市南港區成德國中",
+    "sample_name": "蒟蒻小卷",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "南港區",
+    "address": "臺北市南港區成德國中",
+    "test_date": "2026-03-13",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Buprofezin布芬淨0.02ppm（標準：不得檢出） 殺菌劑Pyraclostrobin百克敏0.8ppm（標準：0.5ppm以下）",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.519286,
+     25.063091
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0053",
+    "store_name": "臺北市大同區建成國中",
+    "sample_name": "葡萄",
+    "category": "小漿果類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "大同區",
+    "address": "臺北市大同區建成國中",
+    "test_date": "2026-03-08",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Chlorothalonil四氯異苯腈4.1ppm(標準：2.0ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.455862,
+     25.037348
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0056",
+    "store_name": "新北市新莊區民安國小",
+    "sample_name": "洋蔥",
+    "category": "香辛植物及其他草木本植物",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "新莊區",
+    "address": "新北市新莊區民安國小",
+    "test_date": "2026-03-01",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Chlorfenapyr 克凡派2.2ppm(標準：1.0ppm以下)  殺蟲劑Fipronil 芬普尼0.435ppm及芬普尼代謝物Fipronil-sulfone0.083ppm，合計共0.518ppm(標準：0.001ppm以下)  殺蟲劑Indoxacarb 因得克3.7ppm(標準：2.0ppm以下)  殺蟲劑Pyriproxyfen 百利普芬1.53ppm(標準：0.01ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.534327,
+     25.06006
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0059",
+    "store_name": "臺北市中山區大佳國小",
+    "sample_name": "無鹽奶油",
+    "category": "乳品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "中山區",
+    "address": "臺北市中山區大佳國小",
+    "test_date": "2026-03-21",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "脫氧羥四環黴素(Doxycycline): 0.8ppm （標準：0.3 ppm）",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.548082,
+     25.022962
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0062",
+    "store_name": "臺北市大安區幸安國小",
+    "sample_name": "南瓜",
+    "category": "果菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "大安區",
+    "address": "臺北市大安區幸安國小",
+    "test_date": "2026-03-29",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "生長調節劑Gibberellic acid 勃激素A3 0.05ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.51784,
+     25.090693
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0063",
+    "store_name": "臺北市士林區陽明山國小",
+    "sample_name": "帶皮雞胸肉(肉雞)",
+    "category": "肉品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "士林區",
+    "address": "臺北市士林區陽明山國小",
+    "test_date": "2026-03-25",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Fipronil-sulfone芬普尼代謝物0.007ppm(標準：0.001ppm以下)  殺菌劑Fluxapyroxad 氟克殺0.7ppm(標準：0.6ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.495763,
+     25.002653
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0064",
+    "store_name": "新北市中和區漳和國中",
+    "sample_name": "黃豆芽",
+    "category": "豆菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "中和區",
+    "address": "新北市中和區漳和國中",
+    "test_date": "2026-03-27",
+    "violation_type": "微生物",
+    "violation_severity": 85,
+    "reason_summary": "腸桿菌科：2.6x10^3 CFU/g (標準：10 CFU/g)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.54534,
+     25.021583
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0066",
+    "store_name": "臺北市大安區大安國小",
+    "sample_name": "切片火腿(豬肉)",
+    "category": "肉品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "大安區",
+    "address": "臺北市大安區大安國小",
+    "test_date": "2026-03-06",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Omethoate\t歐滅松 0.07ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.523255,
+     25.099051
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0067",
+    "store_name": "臺北市士林區芝山國小",
+    "sample_name": "地瓜",
+    "category": "根莖菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "士林區",
+    "address": "臺北市士林區芝山國小",
+    "test_date": "2026-03-27",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Pydiflumetofen\t派滅芬0.01ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.511884,
+     25.069038
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0069",
+    "store_name": "臺北市大同區蘭州國中",
+    "sample_name": "粉圓",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "大同區",
+    "address": "臺北市大同區蘭州國中",
+    "test_date": "2026-03-15",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟎劑Bifenazate\t必芬蟎0.07ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.555053,
+     25.06163
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0070",
+    "store_name": "臺北市松山區民生國中",
+    "sample_name": "海苔絲",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "松山區",
+    "address": "臺北市松山區民生國中",
+    "test_date": "2026-03-30",
+    "violation_type": "標示不符",
+    "violation_severity": 50,
+    "reason_summary": "(一)內容物為二種以上混合物未依其含量多寡由高至低分別標示。 (二)未標示「淨重、容量或數量」及「原產地（國）」。 (三)內容物含有麩質之穀類、蛋、奶、大豆及其製品，未標示食品過敏原資訊等。",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.571545,
+     24.991767
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0071",
+    "store_name": "臺北市文山區實踐國中",
+    "sample_name": "雞里肌肉",
+    "category": "肉品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "文山區",
+    "address": "臺北市文山區實踐國中",
+    "test_date": "2026-03-03",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Cyromazine 賽滅淨0.12ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.522384,
+     25.088272
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0072",
+    "store_name": "臺北市士林區陽明山國小",
+    "sample_name": "洋菇罐頭",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "士林區",
+    "address": "臺北市士林區陽明山國小",
+    "test_date": "2026-03-19",
+    "violation_type": "重金屬",
+    "violation_severity": 100,
+    "reason_summary": "鎘:0.17 mg/kg (標準:0.05 mg/kg以下) 扶吉胺:0.30 ppm (標準:不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.486117,
+     25.060926
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0078",
+    "store_name": "新北市三重區三和國中",
+    "sample_name": "鵪鶉蛋",
+    "category": "蛋品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "三重區",
+    "address": "新北市三重區三和國中",
+    "test_date": "2026-03-06",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "賽果培(Thiacloprid):0.04 ppm (標準:0.02 ppm)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.51131,
+     25.012994
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0079",
+    "store_name": "新北市永和區福和國中",
+    "sample_name": "洋蔥",
+    "category": "香辛植物及其他草木本植物",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "永和區",
+    "address": "新北市永和區福和國中",
+    "test_date": "2026-03-05",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "1.殺蟲劑Acetamiprid亞滅培3.9ppm（標準：2.0ppm以下） 2.產品外包裝標示「天然生機」字樣及產品內附有未檢出農藥殘留之檢驗報告，標示不實且易生誤解",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.454518,
+     25.006477
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0082",
+    "store_name": "新北市板橋區中山國小",
+    "sample_name": "魷魚羹",
+    "category": "水產",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "板橋區",
+    "address": "新北市板橋區中山國小",
+    "test_date": "2026-03-26",
+    "violation_type": "標示不符",
+    "violation_severity": 50,
+    "reason_summary": "本體未以印刷、打印或壓印方式標示耐熱溫度。",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.529146,
+     25.067054
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0083",
+    "store_name": "臺北市中山區長春國小",
+    "sample_name": "小番茄",
+    "category": "果菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "中山區",
+    "address": "臺北市中山區長春國小",
+    "test_date": "2026-03-18",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Iprobenfos\t丙基喜樂松0.05ppm(標準：0.01ppm以下)\t 殺菌劑Tricyclazole\t三賽唑0.03ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.482248,
+     25.061516
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0084",
+    "store_name": "新北市三重區明志國中",
+    "sample_name": "骨腿",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "三重區",
+    "address": "新北市三重區明志國中",
+    "test_date": "2026-03-09",
+    "violation_type": "標示不符",
+    "violation_severity": 50,
+    "reason_summary": "未標示原產地（國）、有效日期標示單獨黏貼未依規定印刷於外包裝上。",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.512465,
+     25.008533
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0087",
+    "store_name": "新北市永和區私立竹林國小",
+    "sample_name": "海帶絲",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "永和區",
+    "address": "新北市永和區私立竹林國小",
+    "test_date": "2026-03-16",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Triadimenol\t三泰隆 0.27ppm(標準：0.05ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.519294,
+     25.089166
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0089",
+    "store_name": "臺北市士林區士林國中",
+    "sample_name": "黑糖蜜",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "士林區",
+    "address": "臺北市士林區士林國中",
+    "test_date": "2026-03-27",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "克美素-0.1ppm (標準：不得檢出)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.535632,
+     24.962561
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0090",
+    "store_name": "新北市新店區直潭國小",
+    "sample_name": "醬油",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "新店區",
+    "address": "新北市新店區直潭國小",
+    "test_date": "2026-03-22",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Thiamethoxam\t賽速安0.48ppm(標準：0.25ppm以下)\t 殺蟲劑Trichlorfon\t三氯松0.04ppm(標準：0.01ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.447973,
+     25.037243
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0091",
+    "store_name": "新北市新莊區新莊國中",
+    "sample_name": "冬瓜",
+    "category": "果菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "新莊區",
+    "address": "新北市新莊區新莊國中",
+    "test_date": "2026-03-17",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Bupirimate\t布瑞莫0.02ppm(標準：0.01ppm以下)\t 殺菌劑Prochloraz\t撲克拉0.69ppm(標準：0.01ppm以下)\t 殺蟲劑Pyriproxyfen\t百利普芬0.6ppm(標準：0.2ppm以下)\t 殺蟲劑Spinetoram\t賜諾特0.08ppm(標準：0.05ppm以下)\t 殺蟲劑Tolfenpyrad\t脫芬瑞0.07ppm(標準：0.01ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.449463,
+     25.038821
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0092",
+    "store_name": "新北市新莊區豐年國小",
+    "sample_name": "地瓜",
+    "category": "根莖菜類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "新莊區",
+    "address": "新北市新莊區豐年國小",
+    "test_date": "2026-03-26",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Bifenthrin\t畢芬寧 0.07ppm(標準：0.03ppm以下) 殺蟲劑Cypermethrin\t賽滅寧 0.06ppm(標準：0.03ppm以下) 殺蟲劑Fipronil\t芬普尼 0.003ppm(標準：0.002ppm以下)\t 殺蟲劑Triazophos\t三落松 0.08ppm(標準：0.05ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.521741,
+     25.093248
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0094",
+    "store_name": "臺北市士林區平等國小",
+    "sample_name": "楊桃",
+    "category": "核果類",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "士林區",
+    "address": "臺北市士林區平等國小",
+    "test_date": "2026-03-24",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Cypermethrin\t賽滅寧 0.04ppm(標準：0.03ppm以下)\t 殺蟲劑Deltamethrin\t第滅寧 0.04ppm(標準：0.03ppm以下) 殺菌劑Tebuconazole\t得克利 0.72ppm(標準：0.05ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.604891,
+     25.051352
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0095",
+    "store_name": "臺北市南港區修德國小",
+    "sample_name": "海帶結",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "南港區",
+    "address": "臺北市南港區修德國小",
+    "test_date": "2026-03-27",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Pyriproxyfen\t百利普芬0.19ppm(標準：0.01ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.502922,
+     25.039532
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0097",
+    "store_name": "臺北市萬華區私立光仁國小",
+    "sample_name": "蒜泥",
+    "category": "香辛植物及其他草木本植物",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "萬華區",
+    "address": "臺北市萬華區私立光仁國小",
+    "test_date": "2026-03-27",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Chlorothalonil四氯異苯腈4.1ppm(標準：2.0ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.490312,
+     25.060896
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0098",
+    "store_name": "新北市三重區永福國小",
+    "sample_name": "鴻喜菇",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "三重區",
+    "address": "新北市三重區永福國小",
+    "test_date": "2026-03-09",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺蟲劑Fenvalerate\t芬化利0.03ppm(標準：0.01ppm以下)",
+    "is_mock": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     121.475368,
+     25.080637
+    ]
+   },
+   "properties": {
+    "violation_id": "MOCK0099",
+    "store_name": "新北市蘆洲區鷺江國小",
+    "sample_name": "冷凍栗子",
+    "category": "其他食品",
+    "project": "雙北食品抽驗（模擬）",
+    "district": "蘆洲區",
+    "address": "新北市蘆洲區鷺江國小",
+    "test_date": "2026-03-18",
+    "violation_type": "農藥殘留",
+    "violation_severity": 90,
+    "reason_summary": "殺菌劑Iprobenfos\t丙基喜樂松0.05ppm(標準：0.01ppm以下)\t 殺菌劑Tricyclazole\t三賽唑0.03ppm(標準：不得檢出)",
+    "is_mock": false
+   }
+  }
+ ]
 }
