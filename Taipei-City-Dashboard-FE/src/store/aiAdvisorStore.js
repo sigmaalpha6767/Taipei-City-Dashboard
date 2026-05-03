@@ -66,6 +66,10 @@ export const useAiAdvisorStore = defineStore("aiAdvisor", {
 		foodInspection: null,
 		vulnerableExposure: null,
 		diseaseStats: null,
+		// 進階卡片：醫療應變 / 食品供應鏈 / 學校溯源（從 component chart endpoint 動態彙整）
+		hospitalsSummary: null,
+		supplyTraceSummary: null,
+		schoolTraceSummary: null,
 		roleResponses: {},
 		activeRole: null,
 		docResponses: {},
@@ -201,6 +205,38 @@ export const useAiAdvisorStore = defineStore("aiAdvisor", {
 				// 食源性疾病統計：postgres-data → BE /food/disease-stats (TFDA 民國 112 全國)
 				this.diseaseStats = await loadFoodDiseaseStats();
 			} catch (e) { /* silent */ }
+			// 進階卡片：醫療應變 + 食品供應鏈 + 學校溯源
+			this.hospitalsSummary = await this._loadComponentSummary(1, "metrotaipei");
+			this.supplyTraceSummary = await this._loadComponentSummary(500, "metrotaipei");
+			this.schoolTraceSummary = await this._loadComponentSummary(501, "metrotaipei");
+		},
+
+		// 從 BE component chart endpoint 取一個 three_d 圖的 categories + series，
+		// 算出每個 series 的 total / 各 category total / top 3 category。
+		async _loadComponentSummary(componentId, city) {
+			try {
+				const resp = await http.get(`/component/${componentId}/chart`, { params: { city } });
+				// BE 端把 {categories, data} 直接放在 axios resp.data 頂層（不再多包一層）
+				const payload = resp?.data ?? {};
+				const categories = payload.categories ?? [];
+				const series = payload.data ?? [];
+				const seriesTotals = series.map((s) => ({
+					name: s.name,
+					total: (s.data || []).reduce((a, b) => a + (Number(b) || 0), 0),
+				}));
+				const grandTotal = seriesTotals.reduce((a, b) => a + b.total, 0);
+				const categoryTotals = categories.map((cat, i) => ({
+					name: cat,
+					total: series.reduce((a, s) => a + (Number(s.data?.[i]) || 0), 0),
+				}));
+				const topCategories = [...categoryTotals]
+					.filter((c) => c.total > 0)
+					.sort((a, b) => b.total - a.total)
+					.slice(0, 5);
+				return { categories, series: seriesTotals, grandTotal, topCategories };
+			} catch (e) {
+				return null;
+			}
 		},
 
 		// === 透過 BE wrapper 呼叫 TWCC + 真 tool registry ===

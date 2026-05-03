@@ -555,6 +555,22 @@ type expDistrict struct {
 }
 
 func GetFoodExposure(c *gin.Context) {
+	// Optional city filter — FE component 220/223 sends ?city=taipei|newtaipei|metrotaipei.
+	// 'metrotaipei' (or empty) = both cities; 'taipei' / 'newtaipei' = SQL-level filter.
+	cityFilter := ""
+	switch c.Query("city") {
+	case "taipei":
+		cityFilter = "臺北市"
+	case "newtaipei":
+		cityFilter = "新北市"
+	}
+	whereCity := ""
+	args := []interface{}{}
+	if cityFilter != "" {
+		whereCity = "WHERE city = ?"
+		args = append(args, cityFilter)
+	}
+
 	var facilities []expFacility
 	models.DBDashboard.Raw(
 		`SELECT facility_id, facility_name, facility_type, city, district, address,
@@ -563,8 +579,9 @@ func GetFoodExposure(c *gin.Context) {
 		        COALESCE(exposure_population,0) exposure_population,
 		        COALESCE(exposure_score,0) exposure_score,
 		        risk_level, suggested_attention
-		 FROM vulnerable_facility_exposure
+		 FROM vulnerable_facility_exposure `+whereCity+`
 		 ORDER BY exposure_score DESC NULLS LAST`,
+		args...,
 	).Scan(&facilities)
 
 	var districts []expDistrict
@@ -577,11 +594,12 @@ func GetFoodExposure(c *gin.Context) {
 		        COALESCE(estimated_exposed_population,0) estimated_exposed_population,
 		        COALESCE(exposure_score,0) exposure_score,
 		        risk_level, main_reason
-		 FROM district_exposure_summary
+		 FROM district_exposure_summary `+whereCity+`
 		 ORDER BY exposure_score DESC NULLS LAST`,
+		args...,
 	).Scan(&districts)
 
-	// summary KPIs
+	// summary KPIs (also respects city filter)
 	var summary struct {
 		AffectedSchoolCount        int `gorm:"column:school_count"`
 		AffectedKindergartenCount  int `gorm:"column:kg_count"`
@@ -589,16 +607,31 @@ func GetFoodExposure(c *gin.Context) {
 		HighExposureDistrictCount  int `gorm:"column:high_exposure_districts"`
 		EstimatedExposedPopulation int `gorm:"column:total_exposed"`
 	}
+	summaryArgs := []interface{}{}
+	if cityFilter != "" {
+		summaryArgs = append(summaryArgs, cityFilter, cityFilter, cityFilter)
+	}
 	models.DBDashboard.Raw(
 		`SELECT
 		   COUNT(*) FILTER (WHERE facility_type = 'school')        school_count,
 		   COUNT(*) FILTER (WHERE facility_type = 'kindergarten')  kg_count,
 		   COUNT(*) FILTER (WHERE facility_type = 'elderly_home')  care_count,
 		   (SELECT COUNT(*) FROM district_exposure_summary
-		    WHERE risk_level IN ('red','orange'))                  high_exposure_districts,
+		    WHERE risk_level IN ('red','orange') `+func() string {
+			if cityFilter != "" {
+				return "AND city = ?"
+			}
+			return ""
+		}()+`)                                                     high_exposure_districts,
 		   (SELECT COALESCE(SUM(estimated_exposed_population),0)
-		    FROM district_exposure_summary)                        total_exposed
-		 FROM vulnerable_facility_exposure`,
+		    FROM district_exposure_summary `+func() string {
+			if cityFilter != "" {
+				return "WHERE city = ?"
+			}
+			return ""
+		}()+`)                                                     total_exposed
+		 FROM vulnerable_facility_exposure `+whereCity,
+		summaryArgs...,
 	).Scan(&summary)
 
 	// active event
@@ -681,16 +714,49 @@ type diseaseRow struct {
 }
 
 func GetFoodDiseaseStats(c *gin.Context) {
+	// Optional ?city=taipei|newtaipei|metrotaipei → 對應 data_scope。
+	// 沒帶 / 任何 unknown 值 → 預設 metrotaipei（雙北統計）。
+	scope := "metrotaipei"
+	switch c.Query("city") {
+	case "taipei":
+		scope = "taipei"
+	case "newtaipei":
+		scope = "newtaipei"
+	case "metrotaipei":
+		scope = "metrotaipei"
+	case "national":
+		scope = "national"
+	}
+	// 若請求的 scope 沒資料，自動退回 metrotaipei；都沒有再退到任何 scope。
+	var hits int64
+	models.DBDashboard.Raw(
+		`SELECT COUNT(*) FROM disease_outbreak_stats WHERE data_scope = ?`, scope,
+	).Row().Scan(&hits)
+	if hits == 0 {
+		scope = "metrotaipei"
+		models.DBDashboard.Raw(
+			`SELECT COUNT(*) FROM disease_outbreak_stats WHERE data_scope = ?`, scope,
+		).Row().Scan(&hits)
+		if hits == 0 {
+			scope = ""
+		}
+	}
 	var rows []diseaseRow
+	whereClause := "WHERE data_scope = ?"
+	args := []interface{}{scope}
+	if scope == "" {
+		whereClause = ""
+		args = nil
+	}
 	models.DBDashboard.Raw(`
 		SELECT pathogen, pathogen_type, case_count, patient_count, death_count,
 		       case_share_pct, severity_level,
 		       related_foods, typical_settings, action_strategy, test_direction,
 		       incubation_hr, main_symptom, color_hex, sort_order,
 		       COALESCE(data_year, 0) data_year, COALESCE(data_scope, '') data_scope, notes
-		FROM disease_outbreak_stats
+		FROM disease_outbreak_stats `+whereClause+`
 		ORDER BY sort_order, case_count DESC
-	`).Scan(&rows)
+	`, args...).Scan(&rows)
 
 	items := make([]gin.H, 0, len(rows))
 	identifiedCases := 0
@@ -752,19 +818,29 @@ func GetFoodDiseaseStats(c *gin.Context) {
 		}
 	}
 
-	// 判斷資料屬性：有 data_year 則為 real
+	// 判斷資料屬性：
+	//   - data_scope='national' 且有 data_year → real（TFDA 公開報表）
+	//   - data_scope IN ('metrotaipei','taipei','newtaipei') → modeled（依全國 TFDA 比例推估）
+	//   - 否則 → modeled（無年度標示）
 	dataKind := "modeled"
 	noteText := "件數為依衛福部疾管署食品中毒監視系統「典型雙北年度分布」建模估算"
 	sourceText := "postgres-data.disease_outbreak_stats"
-	if dataYear > 0 {
+	if dataYear > 0 && dataScope == "national" {
 		dataKind = "real"
 		sourceText = "衛福部食品藥物管理署 (TFDA) 食品中毒案件統計"
-		if dataScope == "national" {
-			noteText = fmt.Sprintf("民國 %d 年（西元 %d 年）全國食品中毒案件統計，來源：衛福部食藥署。雙北場域可參照此分布比例。",
-				dataYear-1911, dataYear)
-		} else {
-			noteText = fmt.Sprintf("民國 %d 年雙北食品中毒案件統計", dataYear-1911)
-		}
+		noteText = fmt.Sprintf("民國 %d 年（西元 %d 年）全國食品中毒案件統計，來源：衛福部食藥署。雙北場域可參照此分布比例。",
+			dataYear-1911, dataYear)
+	} else if dataYear > 0 && (dataScope == "metrotaipei" || dataScope == "taipei" || dataScope == "newtaipei") {
+		dataKind = "modeled"
+		sourceText = "依全國 TFDA 民國 " + fmt.Sprintf("%d", dataYear-1911) + " 年資料按都會通報率比例推估"
+		scopeLabel := map[string]string{
+			"metrotaipei": "雙北",
+			"taipei":      "臺北市",
+			"newtaipei":   "新北市",
+		}[dataScope]
+		noteText = fmt.Sprintf("%s 推估值（民國 %d 年）：依全國 TFDA 報表按都會區人口密度與通報率比例推估。"+
+			"正式雙北數字請查臺北市／新北市政府衛生局疾管科年度報告。",
+			scopeLabel, dataYear-1911)
 	}
 
 	// TFDA 報表「去重後」真實年度總計

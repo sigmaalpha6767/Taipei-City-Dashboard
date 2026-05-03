@@ -143,6 +143,13 @@ export const useMapStore = defineStore("map", {
 					this.marker.setLngLat(coordinates).addTo(this.map);
 				})
 				.on("idle", () => {
+					// Guard against route-leave race: skip pinia mutation if
+					// nothing in loadingLayers needs filtering. After initial
+					// load, "rendering" is gone, so this becomes a no-op for
+					// every subsequent idle tick — preventing the Vue scheduler
+					// from patching a half-unmounted MapContainer subtree
+					// (crashes with null 'subTree' / 'emitsOptions').
+					if (!this.loadingLayers.includes("rendering")) return;
 					this.loadingLayers = this.loadingLayers.filter(
 						(el) => el !== "rendering",
 					);
@@ -187,6 +194,7 @@ export const useMapStore = defineStore("map", {
 			fetch(`/mapData/metrotaipei_town.geojson`)
 				.then((response) => response.json())
 				.then((data) => {
+					if (!this.map || this.map.getSource("metrotaipei_town_label")) return;
 					this.map
 						.addSource("metrotaipei_town_label", {
 							type: "geojson",
@@ -198,6 +206,7 @@ export const useMapStore = defineStore("map", {
 			fetch(`/mapData/metrotaipei_village.geojson`)
 				.then((response) => response.json())
 				.then((data) => {
+					if (!this.map || this.map.getSource("metrotaipei_village_label")) return;
 					this.map
 						.addSource("metrotaipei_village_label", {
 							type: "geojson",
@@ -206,52 +215,58 @@ export const useMapStore = defineStore("map", {
 						.addLayer(metroTaipeiVillage);
 				});
 			// Taipei 3D Buildings
-			if (!authStore.isMobileDevice) {
-				this.map
-					.addSource("taipei_building_3d_source", {
-						type: "vector",
-						url: import.meta.env.VITE_MAPBOXTILE,
-					})
-					.addLayer(TaipeiBuilding);
+			if (!authStore.isMobileDevice && !this.map.getSource("taipei_building_3d_source")) {
+				this.map.addSource("taipei_building_3d_source", {
+					type: "vector",
+					url: import.meta.env.VITE_MAPBOXTILE,
+				});
+				try { this.map.addLayer(TaipeiBuilding); }
+				catch (e) { /* malformed layer config — see project-setup.md i02 */ }
 			}
 			// Taipei Village Boundaries
 			if (hasSourceLayer) {
-				this.map
-					.addSource(`metrotaipei_village`, {
-						type: "vector",
-						scheme: "tms",
-						tolerance: 0,
-						tiles: [
-							`${location.origin}/geo_server/gwc/service/tms/1.0.0/taipei_vioc:metrotaipei_village@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
-						],
-					})
-					.addLayer(metroTpVillage);
-				this.map
-					.addSource(`metrotaipei_town`, {
-						type: "vector",
-						scheme: "tms",
-						tolerance: 0,
-						tiles: [
-							`${location.origin}/geo_server/gwc/service/tms/1.0.0/taipei_vioc:metrotaipei_town@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
-						],
-					})
-					.addLayer(metroTpDistrict);
+				if (!this.map.getSource("metrotaipei_village")) {
+					this.map
+						.addSource(`metrotaipei_village`, {
+							type: "vector",
+							scheme: "tms",
+							tolerance: 0,
+							tiles: [
+								`${location.origin}/geo_server/gwc/service/tms/1.0.0/taipei_vioc:metrotaipei_village@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+							],
+						})
+						.addLayer(metroTpVillage);
+				}
+				if (!this.map.getSource("metrotaipei_town")) {
+					this.map
+						.addSource(`metrotaipei_town`, {
+							type: "vector",
+							scheme: "tms",
+							tolerance: 0,
+							tiles: [
+								`${location.origin}/geo_server/gwc/service/tms/1.0.0/taipei_vioc:metrotaipei_town@EPSG:900913@pbf/{z}/{x}/{y}.pbf`,
+							],
+						})
+						.addLayer(metroTpDistrict);
+				}
 			} else {
 				// 加入 loading
 				this.loadingLayers.push("metrotaipei_town");
 
 				// 載入區界
 				// 加入 source + layer
-				this.map.addSource("metrotaipei_town", {
-					type: "geojson",
-					data: "/mapData/metrotaipei_town.geojson",
-				});
+				if (!this.map.getSource("metrotaipei_town")) {
+					this.map.addSource("metrotaipei_town", {
+						type: "geojson",
+						data: "/mapData/metrotaipei_town.geojson",
+					});
 
-				this.map.addLayer({
-					...metroTpDistrict,
-					id: "metrotaipei_town",
-					source: "metrotaipei_town",
-				});
+					this.map.addLayer({
+						...metroTpDistrict,
+						id: "metrotaipei_town",
+						source: "metrotaipei_town",
+					});
+				}
 
 				// 綁定 loading 完成
 				this.map.on("sourcedata", (e) => {
@@ -271,16 +286,18 @@ export const useMapStore = defineStore("map", {
 				this.loadingLayers.push("metrotaipei_village");
 
 				// 加入 source + layer
-				this.map.addSource("metrotaipei_village", {
-					type: "geojson",
-					data: "/mapData/metrotaipei_village.geojson",
-				});
+				if (!this.map.getSource("metrotaipei_village")) {
+					this.map.addSource("metrotaipei_village", {
+						type: "geojson",
+						data: "/mapData/metrotaipei_village.geojson",
+					});
 
-				this.map.addLayer({
-					...metroTpVillage,
-					id: "metrotaipei_village",
-					source: "metrotaipei_village",
-				});
+					this.map.addLayer({
+						...metroTpVillage,
+						id: "metrotaipei_village",
+						source: "metrotaipei_village",
+					});
+				}
 
 				// 綁定 loading 完成
 				this.map.on("sourcedata", (e) => {
@@ -2306,8 +2323,14 @@ export const useMapStore = defineStore("map", {
 		},
 		// 4. Update the zoom and center of the map
 		updateMapViewForCity(city) {
-			this.map.setZoom(CityMapView[city].zoom);
-			this.map.setCenter(CityMapView[city].center);
+			// Guard against route-change race: the city watcher in MapContainer
+			// can fire during unmount (after we've torn the map down), which
+			// would explode with "setZoom on null" and trip Vue's scheduler.
+			if (!this.map) return;
+			const cv = CityMapView[city];
+			if (!cv) return;
+			this.map.setZoom(cv.zoom);
+			this.map.setCenter(cv.center);
 		},
 
 		/* Map Filtering */

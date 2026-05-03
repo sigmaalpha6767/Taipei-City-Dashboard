@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { loadFoodExposure } from "../../store/foodInspectionData";
 
 const props = defineProps([
@@ -16,10 +16,12 @@ const payload = ref(null);
 const loading = ref(true);
 const error = ref(null);
 
+const activeCity = computed(() => props.map_config?.[0]?.city || "");
+
 async function load() {
 	try {
 		loading.value = true;
-		payload.value = await loadFoodExposure();
+		payload.value = await loadFoodExposure({ city: activeCity.value });
 	} catch (e) {
 		error.value = e.message || String(e);
 	} finally {
@@ -27,6 +29,7 @@ async function load() {
 	}
 }
 onMounted(load);
+watch(activeCity, load);
 
 const event = computed(() => payload.value?.event ?? null);
 const facilities = computed(() => payload.value?.facilities ?? []);

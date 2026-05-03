@@ -1,0 +1,24 @@
+{
+  "Servers": {
+    "1": {
+      "Name": "dashboard",
+      "Group": "Servers",
+      "Host": "postgres-data",
+      "Port": 5432,
+      "MaintenanceDB": "dashboard",
+      "Username": "postgres",
+      "PassFile": "/var/lib/pgadmin/storage/b13705005_ntu.edu.tw/.pgpass",
+      "SSLMode": "prefer"
+    },
+    "2": {
+      "Name": "dashboardmanager",
+      "Group": "Servers",
+      "Host": "postgres-manager",
+      "Port": 5432,
+      "MaintenanceDB": "dashboardmanager",
+      "Username": "postgres",
+      "PassFile": "/var/lib/pgadmin/storage/b13705005_ntu.edu.tw/.pgpass",
+      "SSLMode": "prefer"
+    }
+  }
+}

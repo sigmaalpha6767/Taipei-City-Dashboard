@@ -36,14 +36,20 @@ services:
     image: dpage/pgadmin4:latest
     container_name: pgadmin
     restart: always
+    user: root
+    entrypoint: ["/bin/sh", "/pgadmin-entrypoint.sh"]
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
       PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
+      PGADMIN_SERVER_JSON_FILE: /pgadmin4/servers.json
     ports:
       - "8889:80"
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+      - ./pgadmin-servers.json:/pgadmin4/servers.json:ro
+      - ./pgadmin-pgpass:/pgpass-seed:ro
+      - ./pgadmin-entrypoint.sh:/pgadmin-entrypoint.sh:ro
 
   qdrant:
     image: qdrant/qdrant:latest

@@ -44,6 +44,11 @@ services:
       dockerfile: Dockerfile
     container_name: dashboard-be
     restart: always
+    # Bypass Docker Desktop's 127.0.0.11 DNS proxy cold-start race
+    # (causes intermittent "no such host" on first TWCC request after BE start).
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
     environment:
       GIN_MODE: ${GIN_MODE}
       GIN_DOMAIN: ${GIN_DOMAIN}

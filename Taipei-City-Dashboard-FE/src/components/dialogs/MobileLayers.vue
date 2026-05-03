@@ -40,12 +40,11 @@ const filteredMapLayers = computed(() => {
           <!-- Map Layers Dashboard -->
           <div
             v-if="
-              contentStore?.currentDashboard.index.includes('map-layers')
+              contentStore?.currentDashboard?.index?.includes('map-layers')
             "
           >
             <MobileLayerTab
-              v-for="item in contentStore?.currentDashboard
-                .components"
+              v-for="item in (contentStore?.currentDashboard?.components || [])"
               :key="`map-layer-${item.index}`"
               :content="item"
             />

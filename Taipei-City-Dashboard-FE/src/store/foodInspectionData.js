@@ -8,8 +8,8 @@
 import http from "../router/axios";
 
 let summaryCache = null;
-let exposureCache = null;
-let diseaseCache = null;
+let exposureCache = {}; // keyed by city ('', 'taipei', 'newtaipei', 'metrotaipei')
+let diseaseCache = {};  // keyed by city (same key set)
 
 export function loadFoodInspection({ forceReload = false } = {}) {
 	if (forceReload) summaryCache = null;
@@ -26,37 +26,43 @@ export function loadFoodInspection({ forceReload = false } = {}) {
 }
 
 // 脆弱場域暴露：facilities/districts/event/summary 來自 postgres-data 三張表
-export function loadFoodExposure({ forceReload = false } = {}) {
-	if (forceReload) exposureCache = null;
-	if (!exposureCache) {
-		exposureCache = http
-			.get("/food/exposure")
+// 'city' 可以是 'taipei' / 'newtaipei' / 'metrotaipei' / undefined（雙北全集）
+export function loadFoodExposure({ forceReload = false, city = "" } = {}) {
+	const key = city || "";
+	if (forceReload) delete exposureCache[key];
+	if (!exposureCache[key]) {
+		const params = key && key !== "metrotaipei" ? { city: key } : {};
+		exposureCache[key] = http
+			.get("/food/exposure", { params })
 			.then((resp) => resp.data?.data || {})
 			.catch((e) => {
-				exposureCache = null;
+				delete exposureCache[key];
 				throw e;
 			});
 	}
-	return exposureCache;
+	return exposureCache[key];
 }
 
 // 食源性疾病統計 — Component 6（從 postgres-data.disease_outbreak_stats）
-export function loadFoodDiseaseStats({ forceReload = false } = {}) {
-	if (forceReload) diseaseCache = null;
-	if (!diseaseCache) {
-		diseaseCache = http
-			.get("/food/disease-stats")
+// 'city' 可選值：'metrotaipei' / 'taipei' / 'newtaipei' / 'national' / undefined（預設雙北）
+export function loadFoodDiseaseStats({ forceReload = false, city = "" } = {}) {
+	const key = city || "";
+	if (forceReload) delete diseaseCache[key];
+	if (!diseaseCache[key]) {
+		const params = key ? { city: key } : {};
+		diseaseCache[key] = http
+			.get("/food/disease-stats", { params })
 			.then((resp) => resp.data?.data || {})
 			.catch((e) => {
-				diseaseCache = null;
+				delete diseaseCache[key];
 				throw e;
 			});
 	}
-	return diseaseCache;
+	return diseaseCache[key];
 }
 
 export function clearFoodInspectionCache() {
 	summaryCache = null;
-	exposureCache = null;
-	diseaseCache = null;
+	exposureCache = {};
+	diseaseCache = {};
 }

@@ -67,7 +67,9 @@ function findClosestPointGA() {
 watch(
 	() => route.query?.city,
 	(newValue) => {
-		newValue 
+		// Skip if the map has been torn down (route leaving the map view).
+		if (!mapStore.map) return;
+		newValue
 			? mapStore.updateMapViewForCity(newValue)
 			: mapStore.updateMapViewForCity('default');
 	}
@@ -76,10 +78,17 @@ watch(
 onMounted(() => {
 	mapStore.initializeMapBox();
 	mapStore.setCurrentLocation();
-	route.query.city 
+	route.query.city
 		? mapStore.updateMapViewForCity(route.query.city)
 		: mapStore.updateMapViewForCity('default');
 });
+
+// NOTE: Earlier attempts to destroy the mapbox instance here on unmount
+// caused cascading null-reference crashes ('subTree' / 'emitsOptions' / 'setZoom')
+// because Vue's watch + mapbox's RAF loop both still touched the (now-null)
+// instance during the unmount window. The original codebase intentionally
+// does NOT remove the map; the .on("idle") handler guard in mapStore is what
+// prevents the Vue scheduler from being triggered after unmount.
 </script>
 
 <template>

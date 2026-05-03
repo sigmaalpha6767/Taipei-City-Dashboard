@@ -1,0 +1,189 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6028761,
+          25.058478
+        ]
+      },
+      "properties": {
+        "node_id": "kitchen::28673689",
+        "node_type": "kitchen",
+        "name": "第一餐盒股份有限公司",
+        "tax_id": "28673689",
+        "city": "taipei",
+        "address": "115台灣南港區重陽路263巷8號",
+        "geocode_status": "ok",
+        "risk_level": "orange",
+        "district": "南港區",
+        "reason": "received_same_ingredient",
+        "reason_zh": "同食材其他廚房（潛在風險）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5518671,
+          25.0587801
+        ]
+      },
+      "properties": {
+        "node_id": "kitchen::83160925",
+        "node_type": "kitchen",
+        "name": "味安美食股份有限公司",
+        "tax_id": "83160925",
+        "city": "taipei",
+        "district": "松山區",
+        "address": "105台灣松山區民生東路四段97巷5號",
+        "geocode_status": "ok",
+        "risk_level": "orange",
+        "reason": "received_same_ingredient",
+        "reason_zh": "同食材其他廚房（潛在風險）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.585258,
+          25.052109
+        ]
+      },
+      "properties": {
+        "node_id": "kitchen::97307955",
+        "node_type": "kitchen",
+        "name": "宮保王食品有限公司",
+        "tax_id": "97307955",
+        "city": "taipei",
+        "address": "115臺北市南港區南港路三段149巷49弄14號",
+        "geocode_status": "ok",
+        "risk_level": "orange",
+        "district": "南港區",
+        "reason": "received_same_ingredient",
+        "reason_zh": "同食材其他廚房（潛在風險）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.589215,
+          25.058513
+        ]
+      },
+      "properties": {
+        "node_id": "kitchen::83475761",
+        "node_type": "kitchen",
+        "name": "士福美食股份有限公司",
+        "tax_id": "83475761",
+        "city": "taipei",
+        "address": "114臺北市內湖區新明路195號",
+        "geocode_status": "ok",
+        "risk_level": "orange",
+        "district": "內湖區",
+        "reason": "received_same_ingredient",
+        "reason_zh": "同食材其他廚房（潛在風險）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5483089,
+          25.0417523
+        ]
+      },
+      "properties": {
+        "node_id": "kitchen::89459057",
+        "node_type": "kitchen",
+        "name": "天仁餐盒有限公司",
+        "tax_id": "89459057",
+        "city": "taipei",
+        "district": "大安區",
+        "address": "106臺北市大安區忠孝東路四段107號6樓",
+        "geocode_status": "ok",
+        "risk_level": "orange",
+        "reason": "received_same_ingredient",
+        "reason_zh": "同食材其他廚房（潛在風險）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4972347,
+          25.0344899
+        ]
+      },
+      "properties": {
+        "node_id": "kitchen::22640634",
+        "node_type": "kitchen",
+        "name": "中原食品工業開發股份有限公司",
+        "tax_id": "22640634",
+        "city": "taipei",
+        "address": "108臺北市萬華區大理街133巷2號",
+        "geocode_status": "ok",
+        "risk_level": "orange",
+        "district": "萬華區",
+        "reason": "received_same_ingredient",
+        "reason_zh": "同食材其他廚房（潛在風險）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.587615,
+          25.058513
+        ]
+      },
+      "properties": {
+        "node_id": "kitchen::86710923",
+        "node_type": "kitchen",
+        "name": "士福實業股份有限公司",
+        "tax_id": "86710923",
+        "city": "taipei",
+        "address": "114臺北市內湖區新明路195號",
+        "geocode_status": "ok",
+        "risk_level": "orange",
+        "district": "內湖區",
+        "reason": "received_same_ingredient",
+        "reason_zh": "同食材其他廚房（潛在風險）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.504628,
+          25.043828
+        ]
+      },
+      "properties": {
+        "node_id": "middleman_03735408",
+        "node_type": "middleman",
+        "name": "臺北農產運銷股份有限公司",
+        "tax_id": "03735408",
+        "city": "taipei",
+        "district": "萬華區",
+        "address": "臺北市萬華區萬大路533號",
+        "geocode_status": "",
+        "risk_level": "red",
+        "reason": "middleman",
+        "reason_zh": "中盤運銷商（推定 90% 經手）"
+      }
+    }
+  ]
+}

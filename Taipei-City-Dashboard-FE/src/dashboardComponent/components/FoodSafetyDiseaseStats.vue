@@ -1,6 +1,6 @@
 <!-- Component 6 — 食源性疾病統計（病原 → 可能食材 + 處置策略 + 檢驗方向） -->
 <script setup>
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, ref, watch } from "vue";
 import { loadFoodDiseaseStats } from "../../store/foodInspectionData";
 
 const props = defineProps([
@@ -11,9 +11,12 @@ const props = defineProps([
 const payload = ref(null);
 const selected = ref(null);
 
+// City 從 activeCity prop 或 query_charts 帶下來的 city（用 props.activeCity 為主，因為這個元件沒有 map_config）
+const cityKey = computed(() => props.activeCity || "");
+
 async function load() {
 	try {
-		payload.value = await loadFoodDiseaseStats();
+		payload.value = await loadFoodDiseaseStats({ city: cityKey.value });
 		// 預設選第一筆（諾羅病毒）
 		if (payload.value?.items?.length && !selected.value) {
 			selected.value = payload.value.items[0].pathogen;
@@ -21,6 +24,7 @@ async function load() {
 	} catch (e) { /* silent */ }
 }
 onMounted(load);
+watch(cityKey, () => { selected.value = null; load(); });
 
 const items = computed(() => payload.value?.items ?? []);
 const summary = computed(() => payload.value?.summary ?? {});
@@ -51,9 +55,6 @@ function pickPathogen(p) {
 		<!-- 資料來源標示 -->
 		<div v-if="isReal" class="ddx__lineage ddx__lineage--real" :title="metadata.note">
 			✓ {{ dataYearROC }}全國食品中毒統計 · 來源：衛福部食藥署 (TFDA)
-		</div>
-		<div v-else-if="isModeled" class="ddx__lineage" :title="metadata.note">
-			件數為依疾管署典型分布建模估算（非真實年度報告）
 		</div>
 
 		<!-- Summary KPI（4 格）-->

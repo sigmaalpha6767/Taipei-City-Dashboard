@@ -1,0 +1,3785 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區中山國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5264755,
+          25.0628946
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區中正國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5393708,
+          25.0506621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區五常國中",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.543251,
+          25.0634804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區五常國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5418175,
+          25.0640119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區北安國中",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5415678,
+          25.0777783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區吉林國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5292245,
+          25.0541638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區大佳國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-21"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5360181,
+          25.0733728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區大直國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5464127,
+          25.0805261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區懷生國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5417844,
+          25.0452404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區新興國中",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5263386,
+          25.062038
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區永安國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5495772,
+          25.0787857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區濱江國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5610254,
+          25.0776229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區濱江實驗國中",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5607499,
+          25.07955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區長安國中",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5320162,
+          25.0493783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區長安國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5301942,
+          25.0498254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中山區長春國小",
+        "district": "中山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-18"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5339509,
+          25.0548904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區中正國中",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.521894,
+          25.0322885
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區南門國中",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5092027,
+          25.0352063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區南門國小",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5089988,
+          25.0350106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區古亭國中",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5108066,
+          25.0249449
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區國語實驗國小",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          25.0303805,
+          121.5083084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區弘道國中",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5152934,
+          25.0374875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區忠孝國小",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5315814,
+          25.0430886
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區忠義國小",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5061905,
+          25.0297043
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區東門國小",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5209036,
+          25.0386345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區河堤國小",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5223251,
+          25.023202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區臺北市立大學附設國小",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5155233,
+          25.036164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區螢橋國中",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5262598,
+          25.019376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市中正區螢橋國小",
+        "district": "中正區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5143526,
+          25.0251379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區三興國小",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5588319,
+          25.0292438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區信義國中",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5677566,
+          25.0288257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區信義國小",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5629977,
+          25.0312351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區光復國小",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5581897,
+          25.0402306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區博愛國小",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5708933,
+          25.0359962
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區吳興國小",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5683186,
+          25.0255934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區永吉國中",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5737906,
+          25.0483189
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區瑠公國中",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5854371,
+          25.0370894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區福德國小",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5867071,
+          25.0385144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區興雅國中",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5722586,
+          25.035644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區興雅國小",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5696554,
+          25.047249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市信義區雙永國小",
+        "district": "信義區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5798135,
+          25.0430966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區三民國中",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5863956,
+          25.069161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區內湖國中",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5886895,
+          25.077035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區內湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5805088,
+          25.0796114
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區南湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6116241,
+          25.0681686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區大湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6004917,
+          25.0881016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區康寧國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5949113,
+          25.0800888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區文湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-31"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5599854,
+          25.0863225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區新湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5884679,
+          25.0682888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區明湖國中",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6106431,
+          25.0706196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區明湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6112683,
+          25.0713268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區東湖國中",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6201035,
+          25.0725594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區東湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.616085,
+          25.0689881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區潭美國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5814525,
+          25.05933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區碧湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5911128,
+          25.0851686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區西湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-01"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5657339,
+          25.0838152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區西湖實中",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5660775,
+          25.0854627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區麗山國中",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5759675,
+          25.0821733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區麗山國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5723182,
+          25.0830794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市內湖區麗湖國小",
+        "district": "內湖區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6012039,
+          25.073162
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區北投國中",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5046844,
+          25.1344332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區北投國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5002075,
+          25.1341467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區大屯國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5040167,
+          25.1549141
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區文化國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4965074,
+          25.1371562
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區文林國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5147455,
+          25.1059061
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區新民國中",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5063989,
+          25.1382345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區明德國中",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5190055,
+          25.107897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區明德國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5217958,
+          25.112128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區桃源國中",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.477338,
+          25.1347115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區桃源國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4844614,
+          25.1397049
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區泉源實驗國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5240858,
+          25.1493082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區清江國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5074753,
+          25.1268231
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區湖山國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.535925,
+          25.1500052
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區湖田實驗國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.538774,
+          25.168457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區石牌國中",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5141674,
+          25.1149627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區石牌國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5124252,
+          25.1154038
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區私立薇閣國小(低年級)",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5008795,
+          25.1360521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區私立薇閣國小(高年級)",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5008795,
+          25.1360521
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區立農國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.505032,
+          25.119493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區義方國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5092916,
+          25.1419691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區逸仙國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5051666,
+          25.1383717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區關渡國中",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4671378,
+          25.1198994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市北投區關渡國小",
+        "district": "北投區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4665248,
+          25.1262112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區修德國小",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5896272,
+          25.0454795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區南港國小",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-24"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6107725,
+          25.0576651
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區成德國中",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-13"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5876777,
+          25.0449417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區成德國小",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5868725,
+          25.0470902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區東新國小",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.60211,
+          25.056042
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區玉成國小",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5945708,
+          25.0536151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區胡適國小",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.617798,
+          25.0427148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區舊莊國小",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.619421,
+          25.0397244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市南港區誠正國中",
+        "district": "南港區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.6188493,
+          25.0536955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區三玉國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5371384,
+          25.1172163
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區劍潭國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5228989,
+          25.0798338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區士東國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5269179,
+          25.112849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區士林國中",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5225531,
+          25.0943673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區士林國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5249268,
+          25.0933199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區天母國中",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5381925,
+          25.1180479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區天母國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5272988,
+          25.1198565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區富安國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.482581,
+          25.105838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區平等國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-24"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5767074,
+          25.1288022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區文昌國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5213458,
+          25.0994218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區格致國中",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.546345,
+          25.1308722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區溪山實驗國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5796194,
+          25.1195861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區百齡國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5185773,
+          25.0859766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區社子國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5027354,
+          25.0906111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區福安國中",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4878824,
+          25.1032614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區福林國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5298544,
+          25.098198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區私立華興國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5387415,
+          25.1045441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區至善國中",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5555851,
+          25.1036391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區芝山國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5366139,
+          25.1106601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區葫蘆國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5074579,
+          25.0839019
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區蘭雅國中",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.531819,
+          25.1105848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區蘭雅國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.523121,
+          25.108283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區陽明山國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-25"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5527652,
+          25.1198928
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區雙溪國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.56466,
+          25.1065255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區雨聲國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5352657,
+          25.1026251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市士林區雨農國小",
+        "district": "士林區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5301968,
+          25.1050237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區大同國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5162473,
+          25.0648965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區大橋國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5134164,
+          25.0640638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區大龍國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5168631,
+          25.0734158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區太平國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.511449,
+          25.061383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區延平國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5124288,
+          25.0666472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區建成國中",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5186507,
+          25.0516308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區忠孝國中",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5082165,
+          25.051247
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區日新國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5164821,
+          25.0544041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區民權國中",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5138696,
+          25.0637538
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區永樂國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5110848,
+          25.061297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區蓬萊國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5163712,
+          25.0563265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區蘭州國中",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-15"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5166706,
+          25.0693236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區重慶國中",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5180299,
+          25.0759168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大同區雙蓮國小",
+        "district": "大同區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5168171,
+          25.0601267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區仁愛國中",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5508351,
+          25.037321
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區仁愛國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5522273,
+          25.0358938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區公館國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5432268,
+          25.0118525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區古亭國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5287222,
+          25.0205359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區和平實驗國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5466427,
+          25.0206987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區國立臺北教育大學附設實驗國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5405518,
+          25.0244396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區大安國中",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.54625,
+          25.0308602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區大安國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-06"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5497544,
+          25.0194828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區幸安國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5349574,
+          25.0369689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區建安國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5461523,
+          25.0294281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區懷生國中",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5411475,
+          25.0403808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區新生國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5331684,
+          25.0298538
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區民族實驗國中",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5388404,
+          25.0111994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區私立復興國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5484174,
+          25.0393216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區私立新民國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5316611,
+          25.0222236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區私立立人國中(小)",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5519283,
+          25.0298352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區金華國中",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5328307,
+          25.0311309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區金華國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5277667,
+          25.0322766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區銘傳國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5354217,
+          25.0140674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區龍安國小",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5352182,
+          25.0236178
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市大安區龍門國中",
+        "district": "大安區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5387036,
+          25.0244738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區力行國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-23"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5611275,
+          24.9809608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區北政國中",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5779958,
+          24.9845598
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區博嘉實驗國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.575794,
+          25.0017864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區國立政治大學附設實驗國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.579681,
+          24.9848538
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區實踐國中",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-03"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5555398,
+          24.9835854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區實踐國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.557268,
+          24.9831947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區志清國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5388826,
+          24.9985863
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區指南實驗國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5840716,
+          24.9762353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區明道國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5635125,
+          24.9874606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區景美國中",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5429395,
+          24.9931712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區景美國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5407883,
+          24.9895171
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區景興國中",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.543713,
+          24.996515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區景興國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5488254,
+          24.9962827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區木柵國中",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5666988,
+          24.9874127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區木柵國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5701489,
+          24.9902695
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區武功國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5403992,
+          25.0039259
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區永建國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5558131,
+          24.9892632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區溪口國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5390753,
+          24.994284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區私立中山國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.556328,
+          24.9883007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區私立再興國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5582292,
+          24.9901829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區私立靜心國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5468002,
+          24.9987787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區興德國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5508457,
+          25.0016269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區興福國中",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5499886,
+          25.0049235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區興華國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-29"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5592502,
+          24.9995861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區興隆國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5519275,
+          25.0024035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區萬福國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5367507,
+          25.004898
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區萬興國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5766713,
+          24.9904073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區萬芳國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5672899,
+          25.0007508
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市文山區辛亥國小",
+        "district": "文山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5592414,
+          25.0062244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區三民國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5641784,
+          25.0638072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區中山國中",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5455307,
+          25.0606103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區介壽國中",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-22"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5563789,
+          25.0568339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區健康國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5627472,
+          25.0564197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區敦化國中",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5467051,
+          25.0509665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區敦化國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5481039,
+          25.0491523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區松山國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5782972,
+          25.0504278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區民族國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5513308,
+          25.0594659
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區民權國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5623183,
+          25.0622135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區民生國中",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5667159,
+          25.0597793
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區民生國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5521795,
+          25.0565153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區私立育達高中附設國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5543494,
+          25.0506438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市松山區西松國小",
+        "district": "松山區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5628828,
+          25.052771
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區大理國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4937164,
+          25.0313314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區新和國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5028585,
+          25.0261174
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區東園國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4978536,
+          25.0231992
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區福星國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.508879,
+          25.0467891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區私立光仁國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "high",
+        "supplier": "",
+        "last_incident_date": "2026-03-27"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4995444,
+          25.021642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區老松國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5026351,
+          25.0374164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區華江國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4912626,
+          25.0340923
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區萬大國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4992855,
+          25.0236071
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區萬華國中",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4989765,
+          25.0285877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區西園國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4983379,
+          25.0267763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區西門國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.503981,
+          25.0425653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區雙園國中",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4920072,
+          25.0276017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區雙園國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4981343,
+          25.0308536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區龍山國中",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.5053509,
+          25.0355438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "臺北市萬華區龍山國小",
+        "district": "萬華區",
+        "city": "taipei",
+        "risk_level": "low",
+        "supplier": "",
+        "last_incident_date": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.4961552,
+          25.0356648
+        ]
+      }
+    }
+  ]
+}

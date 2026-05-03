@@ -1,0 +1,2 @@
+postgres-data:5432:*:postgres:Tienmu01
+postgres-manager:5432:*:postgres:Tienmu01

@@ -6,6 +6,7 @@ import { useAiAdvisorStore } from "../store/aiAdvisorStore";
 const aiStore = useAiAdvisorStore();
 const {
 	demoData, metadata, eventSummary, propagationSummary, diseaseSummary,
+	hospitalsSummary, supplyTraceSummary, schoolTraceSummary,
 	roleResponses, activeRole, docResponses, activeDoc,
 	audience,
 } = storeToRefs(aiStore);
@@ -805,10 +806,131 @@ function exportTxt() {
 					</template>
 				</section>
 
-				<!-- Section 5: AI Action Recommendations (LIVE) -->
+				<!-- Section 5: 醫療應變資源 — 政府詳細 / 市民簡化 -->
+				<section v-if="hospitalsSummary" class="ai__section">
+					<div class="ai__sec-title">
+						<span>{{ isCitizen ? '③ 你身邊的醫療資源' : '⑤ 醫療應變資源' }}</span>
+						<span class="ai__sec-badge">{{ isCitizen ? '需要時可去' : '雙北機構統計' }}</span>
+					</div>
+
+					<!-- 政府端：4 KPI（總量 + 三層級）+ Top 5 行政區 -->
+					<template v-if="!isCitizen">
+						<div class="ai__dx-kpi">
+							<div class="ai__dx-cell">
+								<span class="ai__dx-num">{{ hospitalsSummary.grandTotal }}</span>
+								<span class="ai__dx-lab">雙北醫療機構</span>
+							</div>
+							<div v-for="s in hospitalsSummary.series" :key="s.name" class="ai__dx-cell">
+								<span class="ai__dx-num" :class="{ 'ai__dx-num--hi': s.name === '醫學中心' }">{{ s.total }}</span>
+								<span class="ai__dx-lab">{{ s.name }}</span>
+							</div>
+						</div>
+						<div class="ai__top-title">
+							<span>醫療密度 Top 5 行政區</span>
+						</div>
+						<div class="ai__districts">
+							<div v-for="d in hospitalsSummary.topCategories" :key="d.name" class="ai__dist">
+								<span class="ai__dist-name">{{ d.name }}</span>
+								<span class="ai__dist-cnt">{{ d.total }} 所</span>
+							</div>
+						</div>
+					</template>
+
+					<!-- 市民端：一句話 + 急重症提示 -->
+					<template v-else>
+						<div class="ai__dx-simple">
+							<div class="ai__dx-simple-row">
+								<span class="ai__dx-simple-pathogen">雙北共</span>
+								<span class="ai__dx-simple-arrow">→</span>
+								<span class="ai__dx-simple-foods">{{ hospitalsSummary.grandTotal }} 所醫院（醫學中心 {{ hospitalsSummary.series.find(s => s.name === '醫學中心')?.total ?? 0 }} 所、區域醫院 {{ hospitalsSummary.series.find(s => s.name === '區域醫院')?.total ?? 0 }} 所）</span>
+							</div>
+							<div class="ai__dx-simple-row">
+								<span class="ai__dx-simple-pathogen">食物中毒疑慮</span>
+								<span class="ai__dx-simple-arrow">→</span>
+								<span class="ai__dx-simple-foods">立即到附近醫療機構急診，並保留可疑食物與嘔吐物供採樣</span>
+							</div>
+						</div>
+					</template>
+				</section>
+
+				<!-- Section 6: 供應鏈與廠商追溯 — 政府 only -->
+				<section v-if="!isCitizen && (supplyTraceSummary || schoolTraceSummary)" class="ai__section">
+					<div class="ai__sec-title">
+						<span>⑥ 供應鏈與校園追溯</span>
+						<span class="ai__sec-badge">關聯展開</span>
+					</div>
+
+					<!-- 食品端 → 上游 -->
+					<template v-if="supplyTraceSummary">
+						<div class="ai__top-title">
+							<span>食品供應鏈風險追溯（上游）</span>
+						</div>
+						<div class="ai__dx-kpi">
+							<div class="ai__dx-cell">
+								<span class="ai__dx-num">{{ supplyTraceSummary.grandTotal }}</span>
+								<span class="ai__dx-lab">關聯節點</span>
+							</div>
+							<div v-for="s in supplyTraceSummary.series" :key="s.name" class="ai__dx-cell">
+								<span class="ai__dx-num"
+									:class="{ 'ai__dx-num--hi': s.name === 'contaminated_kitchen' || s.name === 'supplier_of_red_kitchen' || s.name === 'middleman' }">
+									{{ s.total }}
+								</span>
+								<span class="ai__dx-lab">
+									{{ {
+										contaminated_kitchen: '污染廚房',
+										supplier_of_red_kitchen: '上游原料商',
+										middleman: '中盤商',
+										received_same_ingredient: '收同食材廚房',
+									}[s.name] || s.name }}
+								</span>
+							</div>
+						</div>
+					</template>
+
+					<!-- 學校端 → 下游 -->
+					<template v-if="schoolTraceSummary">
+						<div class="ai__top-title">
+							<span>學校食安事件溯源（下游）</span>
+						</div>
+						<div class="ai__dx-kpi">
+							<div class="ai__dx-cell">
+								<span class="ai__dx-num">{{ schoolTraceSummary.grandTotal }}</span>
+								<span class="ai__dx-lab">關聯學校</span>
+							</div>
+							<div v-for="s in schoolTraceSummary.series" :key="s.name" class="ai__dx-cell">
+								<span class="ai__dx-num"
+									:class="{ 'ai__dx-num--hi': s.name === 'reported_school' || s.name === 'direct_upstream_kitchen' }">
+									{{ s.total }}
+								</span>
+								<span class="ai__dx-lab">
+									{{ {
+										reported_school: '發報學校',
+										direct_upstream_kitchen: '直接上游廚房',
+										same_ingredient_school: '同食材其他校',
+									}[s.name] || s.name }}
+								</span>
+							</div>
+						</div>
+					</template>
+
+					<!-- Top 行政區（食品端） -->
+					<template v-if="supplyTraceSummary && supplyTraceSummary.topCategories.length">
+						<div class="ai__top-title">
+							<span>受影響行政區 Top 5（食品端）</span>
+						</div>
+						<div class="ai__districts">
+							<div v-for="d in supplyTraceSummary.topCategories" :key="d.name" class="ai__dist ai__dist--hi">
+								<span class="ai__dist-name">{{ d.name }}</span>
+								<span class="ai__dist-cnt">{{ d.total }} 處</span>
+							</div>
+						</div>
+					</template>
+				</section>
+
+				<!-- Section 7: AI Action Recommendations (LIVE) — was Section 5 -->
 				<section class="ai__section">
 					<div class="ai__sec-title">
-						<span>{{ isCitizen ? '③ 我的 AI 行動建議' : '⑤ AI 行動建議' }}</span>
+						<span>{{ isCitizen ? '④ 我的 AI 行動建議' : '⑦ AI 行動建議' }}</span>
 						<span class="ai__sec-badge ai__sec-badge--live">
 							{{ isCitizen ? '選你的身分 · 即時生成' : 'TWCC Live · 點選即生' }}
 						</span>
@@ -850,10 +972,10 @@ function exportTxt() {
 					</div>
 				</section>
 
-				<!-- Section 5: Document Generator (LIVE) -->
+				<!-- Section 8: Document Generator (LIVE) — was Section 6 -->
 				<section class="ai__section">
 					<div class="ai__sec-title">
-						<span>{{ isCitizen ? '④ 我的可分享行動卡片' : '⑥ AI 一鍵公文/通知產生' }}</span>
+						<span>{{ isCitizen ? '⑤ 我的可分享行動卡片' : '⑧ AI 一鍵公文/通知產生' }}</span>
 						<span class="ai__sec-badge ai__sec-badge--live">
 							{{ isCitizen ? '一鍵生成・可複製轉發' : 'TWCC Live' }}
 						</span>

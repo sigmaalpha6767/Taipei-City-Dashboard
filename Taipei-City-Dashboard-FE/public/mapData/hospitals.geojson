@@ -1,0 +1,1621 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5186982,25.02874869 ]
+    },
+    "properties": {
+    "編號":1,
+    "醫院名稱":"郵政醫院（委託中英醫療社團法人經營）",
+    "層級":"",
+    "地址":"臺北市中正區福州街14號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"中正區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5187506,25.04434314 ]
+    },
+    "properties": {
+    "編號":2,
+    "醫院名稱":"國立臺灣大學醫學院附設醫院兒童醫院",
+    "層級":"",
+    "地址":"臺北市中正區中山南路8號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"中正區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5088874,25.05069244 ]
+    },
+    "properties": {
+    "編號":3,
+    "醫院名稱":"臺北市立聯合醫院",
+    "層級":"",
+    "地址":"臺北市大同區鄭州路145號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"大同區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5316407,25.06145984 ]
+    },
+    "properties": {
+    "編號":4,
+    "醫院名稱":"泰安醫院",
+    "層級":"",
+    "地址":"臺北市中山區民權東路二段９２巷２之1號(地下一樓至地上六樓)",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"中山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5339434,25.05027331 ]
+    },
+    "properties": {
+    "編號":5,
+    "醫院名稱":"協和婦女醫院",
+    "層級":"",
+    "地址":"臺北市中山區松江路85巷5號1，2，3，4樓、93巷6號1，2，4樓",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"中山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.522558,25.05888423 ]
+    },
+    "properties": {
+    "編號":6,
+    "醫院名稱":"台灣基督長老教會馬偕醫療財團法人馬偕兒童醫院",
+    "層級":"",
+    "地址":"臺北市中山區中山北路2段92號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"中山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.557695,25.04990354 ]
+    },
+    "properties": {
+    "編號":7,
+    "醫院名稱":"博仁綜合醫院",
+    "層級":"",
+    "地址":"臺北市松山區光復北路66號、68號地下一層、68號、68號2至7樓、68號2樓之1至7樓之1、68號2樓之2至7樓之2",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"松山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5682821,25.04940059 ]
+    },
+    "properties": {
+    "編號":8,
+    "醫院名稱":"培靈醫院",
+    "層級":"",
+    "地址":"臺北市松山區八德路四段３５５號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"松山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5497106,25.03655173 ]
+    },
+    "properties": {
+    "編號":9,
+    "醫院名稱":"中山醫療社團法人中山醫院",
+    "層級":"",
+    "地址":"臺北市大安區仁愛路四段112巷11號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"大安區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5577045,25.05394015 ]
+    },
+    "properties": {
+    "編號":10,
+    "醫院名稱":"三軍總醫院松山分院附設民眾診療服務處",
+    "層級":"",
+    "地址":"臺北市松山區健康路１３１號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"松山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5439164,25.01449586 ]
+    },
+    "properties": {
+    "編號":11,
+    "醫院名稱":"國立臺灣大學醫學院附設癌醫中心醫院",
+    "層級":"",
+    "地址":"臺北市大安區基隆路 3段155巷57號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"大安區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5568623,25.04311217 ]
+    },
+    "properties": {
+    "編號":12,
+    "醫院名稱":"秀傳醫院",
+    "層級":"",
+    "地址":"臺北市大安區光復南路116巷1、3、5號1至4樓及地下1樓",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"大安區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5470295,25.03849645 ]
+    },
+    "properties": {
+    "編號":13,
+    "醫院名稱":"宏恩醫療財團法人宏恩綜合醫院",
+    "層級":"",
+    "地址":"臺北市大安區仁愛路四段７１巷１號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"大安區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5473297,25.04186487 ]
+    },
+    "properties": {
+    "編號":14,
+    "醫院名稱":"中心診所醫療財團法人中心綜合醫院",
+    "層級":"",
+    "地址":"臺北市大安區忠孝東路四段７７號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"大安區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5098259,25.02405006 ]
+    },
+    "properties": {
+    "編號":15,
+    "醫院名稱":"同仁院醫療財團法人萬華醫院",
+    "層級":"",
+    "地址":"臺北市萬華區中華路二段６０６巷６號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"萬華區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5042335,25.03642709 ]
+    },
+    "properties": {
+    "編號":16,
+    "醫院名稱":"財團法人台灣省私立台北仁濟院附設仁濟醫院",
+    "層級":"",
+    "地址":"臺北市萬華區廣州街２００，２４３號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"萬華區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4945402,25.0277877 ]
+    },
+    "properties": {
+    "編號":17,
+    "醫院名稱":"西園醫療社團法人西園醫院",
+    "層級":"",
+    "地址":"臺北市萬華區西園路二段266、268、270、272、276號、185、187、189號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"萬華區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5025511,25.04222858 ]
+    },
+    "properties": {
+    "編號":18,
+    "醫院名稱":"國立臺灣大學醫學院附設醫院北護分院",
+    "層級":"",
+    "地址":"臺北市萬華區康定路３７號、臺北市萬華區內江街87號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"萬華區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5097013,25.1398048 ]
+    },
+    "properties": {
+    "編號":19,
+    "醫院名稱":"三軍總醫院北投分院附設民眾診療服務處",
+    "層級":"",
+    "地址":"臺北市北投區新民路６０號 中和街二五○號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"北投區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5037059,25.13758475 ]
+    },
+    "properties": {
+    "編號":20,
+    "醫院名稱":"臺北市北投健康管理醫院",
+    "層級":"",
+    "地址":"臺北市北投區中和街2號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"北投區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5224005,25.11754255 ]
+    },
+    "properties": {
+    "編號":21,
+    "醫院名稱":"振興醫療財團法人振興醫院",
+    "層級":"",
+    "地址":"臺北市北投區振興街４５號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"北投區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4663577,25.12018758 ]
+    },
+    "properties": {
+    "編號":22,
+    "醫院名稱":"臺北市立關渡醫院─委託臺北榮民總醫院經營",
+    "層級":"",
+    "地址":"臺北市北投區知行路二二五巷十二號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"北投區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5905997,25.08212491 ]
+    },
+    "properties": {
+    "編號":23,
+    "醫院名稱":"中國醫藥大學附設醫院臺北分院",
+    "層級":"",
+    "地址":"臺北市內湖區內湖路二段360號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"內湖區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.6087792,25.07595162 ]
+    },
+    "properties": {
+    "編號":24,
+    "醫院名稱":"康寧醫療財團法人康寧醫院",
+    "層級":"",
+    "地址":"臺北市內湖區成功路五段４２０巷２６號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"內湖區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5583303,25.00030628 ]
+    },
+    "properties": {
+    "編號":25,
+    "醫院名稱":"臺北市立萬芳醫院－委託財團法人臺北醫學大學辦理",
+    "層級":"",
+    "地址":"臺北市文山區興隆路三段111號",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"文山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5405334,24.99001925 ]
+    },
+    "properties": {
+    "編號":26,
+    "醫院名稱":"景美醫院",
+    "層級":"",
+    "地址":"臺北市文山區羅斯福路六段280號、文山區育英街2巷18號、文山區羅斯福路六段276巷1號1樓",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"文山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5751861,25.08056184 ]
+    },
+    "properties": {
+    "編號":27,
+    "醫院名稱":"德威國際牙醫口腔醫院",
+    "層級":"",
+    "地址":"臺北市內湖區內湖路一段659號1樓",
+    "定位精度":"",
+    "city":"taipei",
+    "district":"內湖區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5202285,25.0961018 ]
+    },
+    "properties": {
+    "編號":28,
+    "醫院名稱":"新光醫療財團法人新光吳火獅紀念醫院",
+    "層級":"醫學中心",
+    "地址":"臺北市士林區文昌路95號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"士林區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5201589,25.1221491 ]
+    },
+    "properties": {
+    "編號":29,
+    "醫院名稱":"臺北榮民總醫院",
+    "層級":"醫學中心",
+    "地址":"臺北市北投區石牌路二段201號",
+    "定位精度":"ROOFTOP",
+    "city":"taipei",
+    "district":"北投區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5946509,25.071737 ]
+    },
+    "properties": {
+    "編號":30,
+    "醫院名稱":"三軍總醫院附設民眾診療服務處",
+    "層級":"醫學中心",
+    "地址":"臺北市內湖區成功路二段325號",
+    "定位精度":"ROOFTOP",
+    "city":"taipei",
+    "district":"內湖區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5584967,25.0004801 ]
+    },
+    "properties": {
+    "編號":31,
+    "醫院名稱":"臺北市立萬芳醫院-委託財團法人臺北醫學大學辦理",
+    "層級":"醫學中心",
+    "地址":"臺北市文山區興隆路三段111號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"文山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5206943,25.0405703 ]
+    },
+    "properties": {
+    "編號":32,
+    "醫院名稱":"國立臺灣大學醫學院附設醫院",
+    "層級":"醫學中心",
+    "地址":"臺北市中正區中山南路7號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"中正區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5223697,25.0584634 ]
+    },
+    "properties": {
+    "編號":33,
+    "醫院名稱":"台灣基督長老教會馬偕醫療財團法人馬偕紀念醫院",
+    "層級":"醫學中心",
+    "地址":"臺北市中山區中山北路2段92號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"中山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5527439,25.0371818 ]
+    },
+    "properties": {
+    "編號":34,
+    "醫院名稱":"國泰醫療財團法人國泰綜合醫院",
+    "層級":"醫學中心",
+    "地址":"臺北市大安區仁愛路四段266巷6號280號",
+    "定位精度":"ROOFTOP",
+    "city":"taipei",
+    "district":"大安區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5496667,25.0555177 ]
+    },
+    "properties": {
+    "編號":35,
+    "醫院名稱":"長庚醫療財團法人台北長庚紀念醫院",
+    "層級":"醫學中心",
+    "地址":"臺北市松山區敦化北路199號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"松山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.563012,25.0269555 ]
+    },
+    "properties": {
+    "編號":36,
+    "醫院名稱":"臺北醫學大學附設醫院",
+    "層級":"區域醫院",
+    "地址":"臺北市信義區吳興街252號",
+    "定位精度":"ROOFTOP",
+    "city":"taipei",
+    "district":"信義區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4718668,25.1286458 ]
+    },
+    "properties": {
+    "編號":37,
+    "醫院名稱":"醫療財團法人辜公亮基金會和信治癌中心醫院",
+    "層級":"區域醫院",
+    "地址":"臺北市北投區立德路125號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"北投區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5223697,25.1161524 ]
+    },
+    "properties": {
+    "編號":38,
+    "醫院名稱":"【振興醫療財團法人振興醫院",
+    "層級":"區域醫院",
+    "地址":"臺北市北投區振興街45號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"北投區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5861422,25.0465996 ]
+    },
+    "properties": {
+    "編號":39,
+    "醫院名稱":"臺北市立聯合醫院忠孝院區",
+    "層級":"區域醫院",
+    "地址":"臺北市南港區同德路87號",
+    "定位精度":"ROOFTOP",
+    "city":"taipei",
+    "district":"南港區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5318912,25.1051369 ]
+    },
+    "properties": {
+    "編號":40,
+    "醫院名稱":"臺北市立聯合醫院-陽明院區",
+    "層級":"區域醫院",
+    "地址":"臺北市士林區雨聲街105號",
+    "定位精度":"ROOFTOP",
+    "city":"taipei",
+    "district":"士林區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5092691,25.0513786 ]
+    },
+    "properties": {
+    "編號":41,
+    "醫院名稱":"臺北市立聯合醫院-中興院區",
+    "層級":"區域醫院",
+    "地址":"臺北市大同區鄭州路145號",
+    "定位精度":"ROOFTOP",
+    "city":"taipei",
+    "district":"大同區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5453853,25.037298 ]
+    },
+    "properties": {
+    "編號":42,
+    "醫院名稱":"臺北市立聯合醫院仁愛院區",
+    "層級":"區域醫院",
+    "地址":"臺北市大安區仁愛路四段10號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"大安區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5072028,25.0358858 ]
+    },
+    "properties": {
+    "編號":43,
+    "醫院名稱":"臺北市立聯合醫院-和平婦幼院區",
+    "層級":"區域醫院",
+    "地址":"臺北市中正區廣州街12號",
+    "定位精度":"RANGE_INTERPOLATED",
+    "city":"taipei",
+    "district":"中正區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5464244,25.0481331 ]
+    },
+    "properties": {
+    "編號":44,
+    "醫院名稱":"國防醫學院三軍總醫院松山分院",
+    "層級":"區域醫院",
+    "地址":"臺北市松山區八德路二段424,426號",
+    "定位精度":"GEOMETRIC_CENTER",
+    "city":"taipei",
+    "district":"松山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5582183,25.0550907 ]
+    },
+    "properties": {
+    "編號":45,
+    "醫院名稱":"基督復臨安息日會醫療財團法人臺安醫院",
+    "層級":"區域醫院",
+    "地址":"臺北市松山區健康路131號",
+    "定位精度":"ROOFTOP",
+    "city":"taipei",
+    "district":"松山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.6197527,25.2120835 ]
+    },
+    "properties": {
+    "編號":46,
+    "醫院名稱":"國立臺灣大學醫學院附設醫院金山分院",
+    "層級":"",
+    "地址":"新北市金山區五湖里玉爐路7號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"金山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4532953,24.9972359 ]
+    },
+    "properties": {
+    "編號":47,
+    "醫院名稱":"醫療財團法人徐元智先生醫藥基金會亞東紀念醫院",
+    "層級":"醫學中心",
+    "地址":"新北市板橋區南雅南路二段21號及高爾富路300號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"板橋區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4633916,25.0023818 ]
+    },
+    "properties": {
+    "編號":48,
+    "醫院名稱":"板橋中興醫院",
+    "層級":"",
+    "地址":"新北市板橋區忠孝路十五號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"板橋區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4618415,25.0114095 ]
+    },
+    "properties": {
+    "編號":49,
+    "醫院名稱":"板橋國泰醫院",
+    "層級":"",
+    "地址":"新北市板橋區忠孝路五、七、九、十一號一至三樓。",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"板橋區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4563528,25.016861 ]
+    },
+    "properties": {
+    "編號":50,
+    "醫院名稱":"板新醫院",
+    "層級":"",
+    "地址":"新北市板橋區中正路１８９號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"板橋區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4672253,25.0221159 ]
+    },
+    "properties": {
+    "編號":51,
+    "醫院名稱":"中英醫療社團法人板英醫院",
+    "層級":"",
+    "地址":"新北市板橋區文化路1段267、269、271號1-4樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"板橋區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4662057,25.0197857 ]
+    },
+    "properties": {
+    "編號":52,
+    "醫院名稱":"中英醫療社團法人中英醫院",
+    "層級":"",
+    "地址":"新北市板橋區文化路一段192之1號1樓、194號1至4樓、196號1至4樓、198號1至4樓、200號1至4樓、202號1至4樓、204號1至4樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"板橋區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4564446,25.0068789 ]
+    },
+    "properties": {
+    "編號":53,
+    "醫院名稱":"蕭中正醫院",
+    "層級":"",
+    "地址":"新北市板橋區南雅南路一段15號之1、17號、19號(1、2、3、4樓)",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"板橋區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.6609281,25.0729852 ]
+    },
+    "properties": {
+    "編號":54,
+    "醫院名稱":"國泰醫療財團法人汐止國泰綜合醫院",
+    "層級":"區域醫院",
+    "地址":"新北市汐止區建成路59巷2號地下4樓至地上12樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"汐止區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.8021747,25.1086013 ]
+    },
+    "properties": {
+    "編號":55,
+    "醫院名稱":"瑞芳礦工醫院",
+    "層級":"",
+    "地址":"新北市瑞芳區一坑路71之2號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"瑞芳區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.535615,24.984117 ]
+    },
+    "properties": {
+    "編號":56,
+    "醫院名稱":"佛教慈濟醫療財團法人台北慈濟醫院",
+    "層級":"醫學中心",
+    "地址":"新北市新店區建國路277號地上1、3、4樓及289號地下1至3樓至地上1至15樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新店區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4882939,24.9386239 ]
+    },
+    "properties": {
+    "編號":57,
+    "醫院名稱":"宏慈療養院",
+    "層級":"",
+    "地址":"新北市新店區安泰路１５７號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新店區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4999742,24.9553628 ]
+    },
+    "properties": {
+    "編號":58,
+    "醫院名稱":"新北仁康醫院",
+    "層級":"",
+    "地址":"新北市新店區安康路2段323號地上1至2樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新店區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5377321,24.9826334 ]
+    },
+    "properties": {
+    "編號":59,
+    "醫院名稱":"同仁醫院",
+    "層級":"",
+    "地址":"新北市新店區民權路８９號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新店區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5144713,24.9585424 ]
+    },
+    "properties": {
+    "編號":60,
+    "醫院名稱":"怡濟慈園醫療社團法人宏濟神經精神科醫院",
+    "層級":"",
+    "地址":"新北市新店區安忠路57巷5號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新店區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5359298,24.9763593 ]
+    },
+    "properties": {
+    "編號":61,
+    "醫院名稱":"天主教耕莘醫療財團法人耕莘醫院",
+    "層級":"區域醫院",
+    "地址":"新北市新店區中正路362號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新店區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5179183,25.0118281 ]
+    },
+    "properties": {
+    "編號":62,
+    "醫院名稱":"天主教耕莘醫療財團法人永和耕莘醫院",
+    "層級":"",
+    "地址":"新北市永和區中興街80號地下1樓至地上6樓及國光路123號地下3樓至地上11樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"永和區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5119755,25.0038303 ]
+    },
+    "properties": {
+    "編號":63,
+    "醫院名稱":"永和復康醫院",
+    "層級":"",
+    "地址":"新北市永和區中和路575、577、579號1至4樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"永和區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4935259,24.9926989 ]
+    },
+    "properties": {
+    "編號":64,
+    "醫院名稱":"衛生福利部雙和醫院(委託臺北醫學大學興建經營)",
+    "層級":"",
+    "地址":"新北市中和區中正路291號醫療大樓地下2層至地上12層",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"中和區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4610026,25.0386662 ]
+    },
+    "properties": {
+    "編號":65,
+    "醫院名稱":"祥顥醫院",
+    "層級":"",
+    "地址":"新北市新莊區思源路2號1、4、5、6樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4985018,25.0018532 ]
+    },
+    "properties": {
+    "編號":66,
+    "醫院名稱":"怡和醫院",
+    "層級":"",
+    "地址":"新北市中和區連城路49號1至4樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"中和區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4809212,25.0054809 ]
+    },
+    "properties": {
+    "編號":67,
+    "醫院名稱":"蕙生醫院",
+    "層級":"",
+    "地址":"新北市中和區中山路二段551號地下一樓至地上一至六樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"中和區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5020569,25.0032502 ]
+    },
+    "properties": {
+    "編號":68,
+    "醫院名稱":"中祥醫院",
+    "層級":"",
+    "地址":"新北市中和區中山路二段138號〈二至四樓〉?140及142號〈一至四樓〉",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"中和區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4548156,24.9822464 ]
+    },
+    "properties": {
+    "編號":69,
+    "醫院名稱":"廣川醫院",
+    "層級":"",
+    "地址":"新北市土城區裕民路２７４．２７６．２７８號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"土城區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4488764,24.991179 ]
+    },
+    "properties": {
+    "編號":70,
+    "醫院名稱":"恩樺醫院",
+    "層級":"",
+    "地址":"新北市土城區中央路一段7-18號地下1樓、1樓、2樓、4至10樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"土城區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.6964678,25.0731867 ]
+    },
+    "properties": {
+    "編號":71,
+    "醫院名稱":"仁安醫院",
+    "層級":"",
+    "地址":"新北市土城區中央路1段六二．六四號1-５樓中華路一段一號2-5樓三號1-5樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"土城區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4489754,24.9760369 ]
+    },
+    "properties": {
+    "編號":72,
+    "醫院名稱":"新北市立土城醫院(委託長庚醫療財團法人興建經營)",
+    "層級":"",
+    "地址":"新北市土城區金城路二段6號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"土城區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.440269,24.9729402 ]
+    },
+    "properties": {
+    "編號":73,
+    "醫院名稱":"元復醫院",
+    "層級":"",
+    "地址":"新北市土城區中央路2段318．320．322．324號1至4樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"土城區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.3876805,24.9336707 ]
+    },
+    "properties": {
+    "編號":74,
+    "醫院名稱":"永聖醫療社團法人文化醫院",
+    "層級":"",
+    "地址":"新北市三峽區介壽路1段199號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三峽區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.3798342,24.9300529 ]
+    },
+    "properties": {
+    "編號":75,
+    "醫院名稱":"清福醫院",
+    "層級":"",
+    "地址":"新北市三峽區介壽路一段286號2樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三峽區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.3655032,24.9388696 ]
+    },
+    "properties": {
+    "編號":76,
+    "醫院名稱":"行天宮醫療志業醫療財團法人恩主公醫院",
+    "層級":"區域醫院",
+    "地址":"新北市三峽區復興路399號、中山路198號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三峽區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4199928,24.9871959 ]
+    },
+    "properties": {
+    "編號":77,
+    "醫院名稱":"仁愛醫院",
+    "層級":"",
+    "地址":"新北市樹林區文化街9號(地下1、2樓及地上1樓至8樓)",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"樹林區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.3249209,24.9733036 ]
+    },
+    "properties": {
+    "編號":78,
+    "醫院名稱":"名恩療養院",
+    "層級":"",
+    "地址":"新北市鶯歌區鶯桃路二段62號及64號1至4樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"鶯歌區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4837835,25.0539981 ]
+    },
+    "properties": {
+    "編號":79,
+    "醫院名稱":"宏仁醫院",
+    "層級":"",
+    "地址":"新北市三重區水漾路一段158號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三重區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4867114,25.0614534 ]
+    },
+    "properties": {
+    "編號":80,
+    "醫院名稱":"新北市立聯合醫院三重院區",
+    "層級":"",
+    "地址":"新北市三重區新北大道1段3號、3之1號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三重區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4575803,25.0234364 ]
+    },
+    "properties": {
+    "編號":81,
+    "醫院名稱":"新北市立聯合醫院板橋院區",
+    "層級":"",
+    "地址":"新北市板橋區英士路198號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"板橋區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4689873,25.0545316 ]
+    },
+    "properties": {
+    "編號":82,
+    "醫院名稱":"三重中興醫院",
+    "層級":"",
+    "地址":"新北市三重區中興北街二十一號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三重區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4551347,25.0400788 ]
+    },
+    "properties": {
+    "編號":83,
+    "醫院名稱":"益民醫院",
+    "層級":"",
+    "地址":"新北市新莊區中港路127號1-4樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4538016,25.0357693 ]
+    },
+    "properties": {
+    "編號":84,
+    "醫院名稱":"新莊英仁醫院",
+    "層級":"",
+    "地址":"新北市新莊區大觀街４６－２號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4342319,25.0215071 ]
+    },
+    "properties": {
+    "編號":85,
+    "醫院名稱":"新泰綜合醫院",
+    "層級":"",
+    "地址":"新北市新莊區新樹路176號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4421161,25.0413814 ]
+    },
+    "properties": {
+    "編號":86,
+    "醫院名稱":"財團法人台灣省私立台北仁濟院附設新莊仁濟醫院",
+    "層級":"",
+    "地址":"新北市新莊區中環路1段28號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4454597,25.0344964 ]
+    },
+    "properties": {
+    "編號":87,
+    "醫院名稱":"新仁醫療社團法人新仁醫院",
+    "層級":"",
+    "地址":"新北市新莊區中正路395號1-5樓、397-3號、397-4號、福海街24巷1號1樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4089468,25.0224955 ]
+    },
+    "properties": {
+    "編號":88,
+    "醫院名稱":"衛生福利部樂生療養院",
+    "層級":"",
+    "地址":"新北市新莊區中正路794號及桃園縣龜山鄉萬壽路1段50巷2號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4307908,25.0312217 ]
+    },
+    "properties": {
+    "編號":89,
+    "醫院名稱":"大順醫院",
+    "層級":"",
+    "地址":"新北市新莊區中正路二一五號一至四樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4590085,25.0430059 ]
+    },
+    "properties": {
+    "編號":90,
+    "醫院名稱":"衛生福利部臺北醫院",
+    "層級":"區域醫院",
+    "地址":"新北市新莊區思源路127號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新莊區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4313441,25.0401655 ]
+    },
+    "properties": {
+    "編號":91,
+    "醫院名稱":"輔仁大學學校財團法人輔仁大學附設醫院",
+    "層級":"區域醫院",
+    "地址":"新北市泰山區貴子路69號(地下4層、地上1至9層及13層)",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"泰山區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4869397,25.0768718 ]
+    },
+    "properties": {
+    "編號":92,
+    "醫院名稱":"全民醫院",
+    "層級":"",
+    "地址":"新北市三重區三和路四段103之2號、103之2號2樓、103之2號3樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三重區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4600806,24.989566 ]
+    },
+    "properties": {
+    "編號":93,
+    "醫院名稱":"衛生福利部八里療養院",
+    "層級":"區域醫院",
+    "地址":"新北市八里區華富山33號、土城區青雲路6號1、2樓、蘆洲區光榮路116號1樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"八里區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4599904,25.1398794 ]
+    },
+    "properties": {
+    "編號":94,
+    "醫院名稱":"台灣基督長老教會馬偕醫療財團法人淡水馬偕紀念醫院",
+    "層級":"醫學中心",
+    "地址":"新北市淡水區民生路四十五號、民權路47號B1~10樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"淡水區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4759676015738,25.19315574926209 ]
+    },
+    "properties": {
+    "編號":95,
+    "醫院名稱":"北新醫療社團法人北新醫院",
+    "層級":"",
+    "地址":"新北市淡水區忠寮里演戲埔腳1之2號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"淡水區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4491894,25.208894 ]
+    },
+    "properties": {
+    "編號":96,
+    "醫院名稱":"泓安醫院",
+    "層級":"",
+    "地址":"新北市淡水區下圭柔山九一巷二號一至四樓．地下一樓",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"淡水區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.500888,25.210572 ]
+    },
+    "properties": {
+    "編號":97,
+    "醫院名稱":"台安醫院",
+    "層級":"",
+    "地址":"新北市三芝區興華里楓子林路四十二之五號、四十二之九號〈一至二樓〉",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三芝區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.5209508,24.9725968 ]
+    },
+    "properties": {
+    "編號":98,
+    "醫院名稱":"豐榮醫院",
+    "層級":"",
+    "地址":"新北市新店區安樂街26巷3號(B棟)",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"新店區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4575803,25.0234364 ]
+    },
+    "properties": {
+    "編號":99,
+    "醫院名稱":"新北市立聯合醫院",
+    "層級":"區域醫院",
+    "地址":"新北市三重區新北大道１段３號、３之１號、板橋區英士路１９８號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"三重區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4489754,24.9760369 ]
+    },
+    "properties": {
+    "編號":100,
+    "醫院名稱":"新北市立土城醫院（委託長庚醫療財團法人興建經營）",
+    "層級":"區域醫院",
+    "地址":"新北市土城區金城路２段６號",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"土城區"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 121.4935259,24.9926989 ]
+    },
+    "properties": {
+    "編號":101,
+    "醫院名稱":"衛生福利部雙和醫院〈委託臺北醫學大學興建經營〉",
+    "層級":"醫學中心",
+    "地址":"新北市中和區中正路２９１號醫療大樓地下２層至地上１２層",
+    "定位精度":"Google Geocoding API",
+    "city":"new_taipei",
+    "district":"中和區"
+    }
+  }
+]
+}
