@@ -73,6 +73,9 @@ type aiSession struct {
 	totalOutput     int
 	toolUsed        bool
 	executedTools   []string
+	// toolCallRecords 保留每次 tool call 的 name + 原始 args，
+	// 透過 finalize() 寫進 AIChatLog.ToolCalls 帶回 FE，讓 FE 可以做 UI 動作（如 focus_view）。
+	toolCallRecords []models.ToolCallRecord
 	// 同一 (tool,args) 的執行結果 cache，避免 LLM 在 multi-turn 重複呼叫
 	toolCallCache   map[string]string
 	lastResp        *llms.ContentResponse
@@ -83,6 +86,7 @@ type aiSession struct {
 func (s *aiSession) run(ctx context.Context) (*models.AIChatLog, error) {
 	maxLoops := 5
 	s.executedTools = make([]string, 0)
+	s.toolCallRecords = make([]models.ToolCallRecord, 0)
 	s.toolCallCache = make(map[string]string)
 	for i := 0; i < maxLoops; i++ {
 		s.sendHeartbeat(ctx)
@@ -182,6 +186,10 @@ func (s *aiSession) executeTools(ctx context.Context, toolCalls []llms.ToolCall)
 
 	for _, tc := range toolCalls {
 		s.executedTools = append(s.executedTools, tc.FunctionCall.Name)
+		s.toolCallRecords = append(s.toolCallRecords, models.ToolCallRecord{
+			Name: tc.FunctionCall.Name,
+			Args: tc.FunctionCall.Arguments,
+		})
 		sig := tc.FunctionCall.Name + ":" + tc.FunctionCall.Arguments
 
 		var result string
@@ -264,6 +272,8 @@ func (s *aiSession) finalize() (*models.AIChatLog, error) {
 				log.Tools = string(toolJSON)
 			}
 		}
+		// 把 records 帶回（不會被持久化，但會出現在 HTTP response）
+		log.ToolCalls = s.toolCallRecords
 	}
 
 	if err := models.CreateAIChatLog(log); err != nil {

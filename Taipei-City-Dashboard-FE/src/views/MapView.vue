@@ -12,8 +12,7 @@ Testing: Jack Huang (Data Scientist), Ian Huang (Data Analysis Intern)
 
 <script setup>
 /* global gtag */
-import { computed, ref, watch } from "vue";
-import { useRoute } from "vue-router";
+import { computed } from "vue";
 import DashboardComponent from "../dashboardComponent/DashboardComponent.vue";
 import { useContentStore } from "../store/contentStore";
 import { useDialogStore } from "../store/dialogStore";
@@ -25,14 +24,6 @@ import ReportIssue from "../components/dialogs/ReportIssue.vue";
 const contentStore = useContentStore();
 const dialogStore = useDialogStore();
 const mapStore = useMapStore();
-const route = useRoute();
-
-const toggleOn = ref({
-	hasMap: [],
-	noMap: [],
-	mapLayer: [],
-	basicLayer: [],
-});
 
 // Separate components with maps from those without
 const parseMapLayers = computed(() => {
@@ -46,27 +37,25 @@ const parseMapLayers = computed(() => {
 	return { hasMap: hasMap, noMap: noMap };
 });
 
-watch(
-	() => route.query.index,
-	(newIndex, oldIndex) => {
-		if (newIndex !== oldIndex) {
-			toggleOn.value = {
-				hasMap: new Array(parseMapLayers.value.hasMap?.length).fill(
-					false,
-				),
-				noMap: new Array(parseMapLayers.value.noMap?.length).fill(
-					false,
-				),
-				mapLayer: new Array(
-					contentStore.currentDashboard.components?.length,
-				).fill(false),
-				basicLayer: new Array(contentStore.mapLayers?.length).fill(
-					false,
-				),
-			};
-		}
-	},
-);
+// toggleOn 改成 computed —— 直接由 mapStore.currentVisibleLayers 推導，
+// 確保使用者點擊 toggle、AI 透過 focus_dashboard_view 切換、或其他程式呼叫
+// addToMapLayerList/turnOffMapLayerVisibility 時，左側 toggle 視覺都會跟著切換。
+//
+// 之前是本地 ref（toggleSwitchBtn 寫入），導致 AI/程式呼叫 mapStore 的途徑不會
+// 反映在 sidebar UI。
+const isComponentVisible = (component) => {
+	if (!component?.map_config?.length) return false;
+	return component.map_config.some((mc) =>
+		mapStore.currentVisibleLayers.includes(`${mc.index}-${mc.type}-${mc.city}`),
+	);
+};
+const toggleOn = computed(() => ({
+	hasMap: parseMapLayers.value.hasMap?.map(isComponentVisible) ?? [],
+	noMap: parseMapLayers.value.noMap?.map(isComponentVisible) ?? [],
+	mapLayer:
+		contentStore.currentDashboard.components?.map(isComponentVisible) ?? [],
+	basicLayer: contentStore.mapLayers?.map(isComponentVisible) ?? [],
+}));
 
 function handleOpenSettings() {
 	contentStore.editDashboard = JSON.parse(
@@ -95,9 +84,9 @@ function handleToggle(value, map_config) {
 	}
 }
 
-function toggleSwitchBtn(value, Btn, BtnIndex) {
-	toggleOn.value[Btn][BtnIndex] = value;
-}
+// toggleSwitchBtn 改為 no-op：toggleOn 是 computed，自動從 mapStore.currentVisibleLayers 推導，
+// 不需要再手動同步。保留函數本身只為避免 template 內既有的呼叫點報錯。
+function toggleSwitchBtn() {}
 
 function shouldDisable(map_config) {
 	const allMapLayerIds = map_config.map(

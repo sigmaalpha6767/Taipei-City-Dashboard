@@ -1,22 +1,19 @@
 import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 import http from "../router/axios";
+import { useMapStore } from "./mapStore";
+import { useContentStore } from "./contentStore";
 
-// 統一對話入口：LLM + 「資料先注入，tool 為輔助」混合策略。
-// 為什麼不純走 multi-turn tool calling：TWCC llama3.3-ffm-70b 對 tool result 整合
-// 能力弱，常常 call 完 tool 還是用通用知識回答 → 文不對題。
-// 解法：sendChat 第一句先 pre-fetch /food/summary + /food/disease-stats，
-// 把實際數字、食材名、累犯名直接注入 system prompt 的「即時資料快照」。
-// LLM 一開始就「拿著資料寫答案」，不必依賴會迷路的 tool calling loop。
-// 工具仍保留：search_dashboard_components（向量搜組件）、其餘 5 個食安 tool 給
-// 想做精細查詢時用，但泛問題（「哪些食物高風險」「累犯在哪」）已不需 tool。
+// 與後端 /ai/chat/twai 的薄介接層 — 對齊官方 PDF「開發者只需定義 tools，AI 自動決定呼叫時機」契約。
+// FE 不再做 topic 分流 / snapshot 注入 / 多 system prompt — 那些屬於 BE LLM/state machine 的職責。
+// 我們只負責：(1) 串訊息送 BE，(2) 把回答顯示出來，(3) 若 LLM 呼叫了組件搜尋，再做一次向量查詢拼 UI 按鈕。
 
 const TOOLS = [
 	{
 		type: "function",
 		function: {
 			name: "search_dashboard_components",
-			description: "依照使用者描述，從本站台組件資料庫找出最相似的儀表板組件清單（vector search）。當使用者問「我想看 XX 的儀表板/組件」「有沒有 OO 的圖表」這類問題時呼叫。",
+			description: "依使用者描述從本站組件向量庫搜尋最相似的儀表板組件（Qdrant）。當使用者問「我想看 XX 的儀表板/組件」「有沒有 OO 的圖表」這類問題時呼叫。",
 			parameters: {
 				type: "object",
 				properties: {
@@ -32,7 +29,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_food_risk_summary",
-			description: "取得本期雙北食安抽驗的核心摘要：總件數、Top 高頻食材、行政區排行、違規類別分布。沒有參數。",
+			description: "雙北食安抽驗的核心摘要：總件數、Top 高頻違規食材、行政區排行、違規類別分布。當使用者問「最近食安狀況」「哪些違規多」時呼叫。無參數。",
 			parameters: { type: "object", properties: {}, required: [] },
 		},
 	},
@@ -40,10 +37,10 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_top_recidivists",
-			description: "取得多次違規累犯場域清單（含店家、校園、供應商）。回傳場域名稱、違規次數、城市、所在行政區、主要違規類別、相關食材。當使用者問「累犯」「該稽查的場域」「它們在哪裡」之類接續問題時呼叫。",
+			description: "多次違規累犯場域清單（店家、校園、供應商）。回傳場域名稱、違規次數、城市、所在行政區、主要違規類別、相關食材。當使用者問「累犯」「該稽查的店」「它們在哪」時呼叫。",
 			parameters: {
 				type: "object",
-				properties: { limit: { type: "integer", description: "取前幾名（預設 5）" } },
+				properties: { limit: { type: "integer", description: "取前幾名，預設 5" } },
 				required: [],
 			},
 		},
@@ -52,7 +49,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_vulnerable_exposure",
-			description: "取得目前事件對校園與長照機構的影響範圍：受影響學校數、幼兒園數、長照機構數、估計暴露人口、事件相關供應商與食材。",
+			description: "目前事件對校園、長照機構的暴露範圍：受影響學校、幼兒園、長照機構數、估計暴露人口、相關供應商。當使用者問「校園/長照受影響」時呼叫。",
 			parameters: { type: "object", properties: {}, required: [] },
 		},
 	},
@@ -60,12 +57,12 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_district_risk",
-			description: "取得指定城市的行政區風險排行（依違規件數）。",
+			description: "指定城市的行政區風險排行（依違規件數）。當使用者問特定區或想比較行政區時呼叫。",
 			parameters: {
 				type: "object",
 				properties: {
-					city: { type: "string", enum: ["taipei", "newtaipei", "metrotaipei"], description: "查詢城市，預設 metrotaipei" },
-					limit: { type: "integer", description: "取前幾區（預設 5）" },
+					city: { type: "string", enum: ["taipei", "newtaipei", "metrotaipei"], description: "查詢城市，預設 metrotaipei（雙北）" },
+					limit: { type: "integer", description: "取前幾區，預設 5" },
 				},
 				required: [],
 			},
@@ -75,52 +72,51 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_disease_stats",
-			description: "取得衛福部食藥署 TFDA 民國 112 年全國食品中毒病因物質統計。回傳 12 種病原（諾羅、沙門氏菌、腸炎弧菌、金黃色葡萄球菌、仙人掌桿菌、大腸桿菌、組織胺、植物性、河豚毒、輪狀、肉毒、不明）的件數、患者數、死亡數、相關食材、典型場所、處置策略、檢驗方向、潛伏期、症狀。當使用者問「一般民眾飲食安全建議」「該注意什麼疾病/食材」「群聚事件可能病原」「症狀反推食材」「檢驗優先順序」時呼叫。",
+			description: "TFDA 民國 112 年全國食品中毒統計（諾羅、沙門氏菌、腸炎弧菌等 12 種病原）：件數、患者數、死亡數、相關食材、典型場所、處置策略、症狀。當使用者問「哪些食物高風險」「飲食建議」「群聚事件可能病原」「症狀反推食材」時呼叫 — 回答時主體是「食材」，病原當補充。",
 			parameters: { type: "object", properties: {}, required: [] },
+		},
+	},
+	{
+		type: "function",
+		function: {
+			name: "focus_dashboard_view",
+			description: "UI 指令型工具：當你已決定要用某個儀表板組件輔助分析時呼叫此工具，前端會自動把該組件的地圖圖層加入並套用 filter，讓使用者畫面跟你的分析重點同步。可與資料查詢工具同回合一起呼叫（例如先 get_district_risk 拿資料，再 focus_dashboard_view 把畫面切到行政區風險圖）。一次對話內針對同一組件最多呼叫 1 次。",
+			parameters: {
+				type: "object",
+				properties: {
+					component_index: {
+						type: "string",
+						description: "組件 index（不是 id）。常見：food_safety_district_chart（行政區排行）、school_food_risk（校園食安）、school_supplier_picker（廠商查詢）、food_supply_chain（供應鏈）、school_outbreak_trace（事件溯源）、food_safety_vulnerable_exposure（校園暴露）、food_safety_care_exposure（長照暴露）、hospitals（醫療密度）",
+					},
+					city: {
+						type: "string",
+						enum: ["taipei", "newtaipei", "metrotaipei"],
+						description: "想顯示的城市範圍。雙北全集用 metrotaipei；只看台北用 taipei；只看新北用 newtaipei",
+					},
+					filters: {
+						type: "object",
+						description: "額外 filter，常見鍵：district（行政區中文名，如「新莊區」）",
+					},
+					reason: {
+						type: "string",
+						description: "簡短說明為何選此組件（一句話，給使用者理解）",
+					},
+				},
+				required: ["component_index"],
+			},
 		},
 	},
 ];
 
-const SYSTEM_PROMPT = `你是【臺北城市儀表板】小幫手 — 雙北食安決策分析 AI。
-你能讀取 postgres-data 後端 7 張表（food_inspection_raw、school_directory、care_facility_directory、vulnerable_facility_exposure、district_exposure_summary、food_event_current、disease_outbreak_stats）取得即時資料。
+// 短 system prompt — domain 規則進 tool description（LLM 對 tool 描述的注意力比 prompt 末段強）
+const SYSTEM_PROMPT = `你是【臺北城市儀表板】小幫手，專注雙北食安與儀表板導覽。
+回答用中文，簡潔直接（≤ 250 字）。
+有相關工具時請呼叫工具拿真實資料，並引用回傳的具體數字、食材名、場域名，不要泛泛而談。
+找儀表板組件呼叫 search_dashboard_components；食安問題依問題類型呼叫對應 food/disease 工具。
+分析時若有對應組件可以視覺化你的論點，**同時呼叫 focus_dashboard_view** 讓畫面跟著你的分析切換，使用者就能看到你說的東西。
+找不到資料時誠實說明，不要靠通用知識亂答。`;
 
-**最高指導原則**：本訊息底部會附「即時資料快照」（含具體食材名、件數、累犯場域、病原-食材對照表）。**先讀完快照，再用快照裡的實際資料寫答案**。快照已涵蓋 80% 食安問題的答案，請優先引用而非呼叫工具。只有快照沒有的維度（如向量搜組件、特定行政區深挖、長照學校暴露細節）才呼叫工具。
-
-**回答風格**：直接回答使用者「實際問的東西」。中文。回答 ≤ 250 字。
-
-**工具策略**（快照已涵蓋大部分情境；以下情況才需呼叫 tool）：
-
-| 使用者問題類型 | 處理方式 |
-|---|---|
-| 「我想看 XX 組件 / 圖表」「有沒有 OO 圖」 | 呼叫 **search_dashboard_components** |
-| 哪些食物高風險 / 飲食建議 / 該注意什麼疾病 / 病原症狀 / 違規食材 / Top 累犯場域 / 行政區排行 | **直接讀快照回答，不呼叫 tool** |
-| 想看「特定城市」（taipei vs newtaipei）的行政區排行 | 呼叫 **get_district_risk** with city 參數 |
-| 想看「校園/長照」受影響細節（學校名/人數） | 呼叫 **get_vulnerable_exposure** |
-| 快照沒涵蓋的精細查詢（特定累犯排行第 N 名以後等） | 才呼叫對應 tool |
-
-**重要規則**：
-1. **預設不呼叫 tool**。先看快照能不能答完。能就直接答，不要為了 call 而 call。
-2. 同一個 tool 在一次對話內**最多呼叫 1 次**，且呼叫前確認快照沒這個資料。
-3. 使用者用代名詞（它們/那些）→ 從上下文找指涉，**不**呼叫第二次工具。
-4. 工具失敗或無結果時，回到快照答，**不**重試同一 tool。
-5. 場域 = 店家 / 校園 / 供應商 三類；累犯場域可能是學校或食品公司。
-
-**回答內容硬規則**（違反 = 文不對題）：
-- 使用者問「哪些**食物**」「哪些**食材**」「哪些東西高風險」→ 答案**主體必須是食材名稱清單**（生食/海鮮/即食便當/蛋品/肉品/...），不是病原名稱。把病原當成「為什麼」的補充說明。
-- 必須引用 tool 回傳的具體欄位：食材名（"top_categories" / 病原 "related_foods"）、件數、人數、佔比，不要只說「諾羅、沙門等」這種空泛列舉。
-- 結構建議：(1) 一句結論點出 Top 3-5 高風險**食材**；(2) 每項食材後括號標註關聯病原與場所；(3) 一句行動建議。
-
-**良好回答範本**（使用者問「哪些食物高風險」）：
-> 依 TFDA 112 年 633 件中毒案件 + 雙北抽驗資料，民眾要特別注意：
-> ① **生食/即食食品**（諾羅 187 件 / 1,658 人，佔 29.8%，常見於餐廳、外帶便當）
-> ② **海鮮類**（腸炎弧菌 + 河豚毒，唯一死亡案例為河豚毒）
-> ③ **蛋品/肉品**（沙門氏菌 25 件 / 1,107 人，加熱不足是主因）
-> ④ **米飯/麵食久放**（仙人掌桿菌 19 件 / 927 人，常溫超過 2 小時就有風險）
-> 行動：外食選有 HACCP 認證、生食當餐吃完、剩飯 2 小時內冷藏。
-
-**禁止回答範本**（這就是「文不對題」）：
-> ❌「主要病原體包括諾羅病毒、沙門氏菌、金黃色葡萄球菌等。建議民眾注意食品來源和安全性。」
-> 為什麼錯：使用者問「食物」你卻只列病原；建議是空話沒指名食材。`;
+const FALLBACK_MESSAGE = '我不太確定怎麼回答這個問題，可以換個說法，或試試「哪些食物高風險」、「找空氣品質的組件」、「最近食安累犯有哪些」嗎？';
 
 export const useChatStore = defineStore('chat', () => {
 	const defaultChatData = [
@@ -135,76 +131,69 @@ export const useChatStore = defineStore('chat', () => {
 
 	const recommendComponents = ref(null);
 
+	// LLM 透過 focus_dashboard_view 下的 UI 指令最近一次值，
+	// 供其他 view (例如 AI 顧問頁) 監聽並做更細的反應（高亮、展開區塊等）
+	const focusDirective = ref(null);
+
 	const savedChatData = JSON.parse(sessionStorage.getItem('chatData')) || [];
 	const chatData = ref([...defaultChatData, ...savedChatData]);
 
 	const chatStreaming = ref(false);
 
-	// 即時資料快照：第一次 sendChat 時 pre-fetch 後 cache 整個 session 重用。
-	// 這份資料會直接注入 system prompt，讓 LLM 不用 call tool 就能拿到具體數字。
-	const referenceSnapshot = ref('');
-	let referenceFetchPromise = null;
+	// 把 LLM 的 focus_dashboard_view 指令套用到地圖：找組件 → 加圖層 → 套 district/city filter。
+	// 失敗 fallback 為 silent — LLM 的文字回答仍在，使用者體驗不會炸。
+	const applyFocusDirective = async (params) => {
+		try {
+			focusDirective.value = params;
+			const { component_index, city, filters } = params || {};
+			if (!component_index) return;
 
-	const buildReferenceSnapshot = async () => {
-		if (referenceSnapshot.value) return referenceSnapshot.value;
-		if (referenceFetchPromise) return referenceFetchPromise;
+			const mapStore = useMapStore();
+			const contentStore = useContentStore();
+			if (!mapStore.map) return; // 不在 map view 就不動作
 
-		referenceFetchPromise = (async () => {
-			const lines = [];
-			const [summaryRes, diseaseRes] = await Promise.allSettled([
-				http.get('/food/summary'),
-				http.get('/food/disease-stats'),
-			]);
-
-			if (summaryRes.status === 'fulfilled') {
-				const d = summaryRes.value?.data?.data;
-				if (d) {
-					lines.push('## 雙北食安抽驗（postgres-data 即時資料）');
-					if (d.summary) {
-						lines.push(`- 總違規件數：${d.summary.total_fail_count} 件，涵蓋 ${d.summary.involved_district_count} 區，期間 ${d.metadata?.data_period || '—'}`);
-						const vt = d.summary.violation_type_breakdown || {};
-						const vtList = Object.entries(vt).sort((a, b) => b[1] - a[1]).slice(0, 5)
-							.map(([k, v]) => `${k}(${v}件)`).join('、');
-						if (vtList) lines.push(`- 違規類別 Top 5：${vtList}`);
-					}
-					const samples = (d.samples || []).slice(0, 8)
-						.map(s => `${s.sample_name}(${s.fail_count}件，主違: ${s.main_violation_type})`).join('、');
-					if (samples) lines.push(`- 高頻違規食材 Top 8：${samples}`);
-					const districts = (d.districts || []).slice(0, 6)
-						.map(x => `${x.city || ''}${x.district}(${x.fail_count}件)`).join('、');
-					if (districts) lines.push(`- 風險前 6 行政區：${districts}`);
-					const recids = (d.recidivists || []).slice(0, 5)
-						.map(r => {
-							const dist = Array.isArray(r.districts) && r.districts.length ? r.districts.join('、') : '';
-							const loc = [r.city, dist].filter(Boolean).join(' ');
-							return `${r.store_name}[${r.fail_count}次違規${loc ? '／' + loc : ''}；主違: ${r.main_violation_type || '—'}]`;
-						}).join('、');
-					if (recids) lines.push(`- Top 5 累犯場域：${recids}`);
-				}
+			const components = contentStore.cityDashboard?.components || [];
+			const component = components.find((c) => c.index === component_index);
+			if (!component || !Array.isArray(component.map_config) || component.map_config.length === 0) {
+				// component 不在當前儀表板就靜默跳過 — LLM 的文字答案還在
+				return;
 			}
 
-			if (diseaseRes.status === 'fulfilled') {
-				const d = diseaseRes.value?.data?.data;
-				if (d?.summary && d?.items) {
-					const s = d.summary;
-					const yr = s.data_year ? `${s.data_year - 1911}` : '112';
-					lines.push('');
-					lines.push(`## TFDA 民國 ${yr} 年食品中毒（${s.data_scope === 'national' ? '全國' : '雙北'}，可作為食材—病原參照）`);
-					lines.push(`- 全年 ${s.total_cases} 件 / ${s.total_patients} 人 / ${s.total_deaths} 死`);
-					lines.push(`- 病因判明 ${s.identified_cases} 件（${s.identified_share_pct}%）；不明 ${s.unknown_cases} 件`);
-					lines.push('- 各病原 → 相關食材 對照（直接引用此清單回答「哪些食物高風險」）：');
-					(d.items || []).filter(p => p.pathogen_type !== 'unknown').slice(0, 12).forEach(p => {
-						const foods = Array.isArray(p.related_foods) ? p.related_foods.join('、') : (p.related_foods || '不限');
-						const death = p.death_count > 0 ? ` / ${p.death_count}死` : '';
-						lines.push(`  · ${p.pathogen}：${p.case_count}件 / ${p.patient_count}人${death}（佔 ${p.case_share_pct}%）→ 食材：${foods}；場所：${p.typical_settings || '—'}；症狀：${p.main_symptom || '—'}`);
+			// 過濾 city — 若指定城市，只加該城市 layer + metrotaipei（雙北全集）
+			let mapConfigs = component.map_config;
+			if (city) {
+				const filtered = mapConfigs.filter((mc) => mc.city === city || mc.city === 'metrotaipei');
+				if (filtered.length > 0) mapConfigs = filtered;
+			}
+
+			mapStore.addToMapLayerList(mapConfigs);
+
+			// 套用城市 view（飛到對應 zoom/center）
+			if (city) {
+				const cityViewKey = city === 'taipei' ? 'taipei' : 'metrotaipei';
+				mapStore.updateMapViewForCity(cityViewKey);
+			}
+
+			// 套 district filter — 直接用 mapbox setFilter，等 layer 載入完才呼叫
+			const districtName = filters?.district;
+			if (districtName) {
+				const tryApplyFilter = (attempt = 0) => {
+					mapConfigs.forEach((mc) => {
+						const layerId = `${mc.index}-${mc.type}-${mc.city}`;
+						if (mapStore.map && mapStore.map.getLayer && mapStore.map.getLayer(layerId)) {
+							try {
+								mapStore.map.setFilter(layerId, ['==', ['get', 'district'], districtName]);
+							} catch { /* 該 layer 沒有 district 屬性就忽略 */ }
+						} else if (attempt < 6) {
+							setTimeout(() => tryApplyFilter(attempt + 1), 400);
+						}
 					});
-				}
+				};
+				setTimeout(() => tryApplyFilter(0), 500);
 			}
-
-			referenceSnapshot.value = lines.join('\n');
-			return referenceSnapshot.value;
-		})();
-		return referenceFetchPromise;
+		} catch {
+			// 失敗 silent — LLM 文字回答仍可看
+		}
 	};
 
 	watch(
@@ -230,29 +219,12 @@ export const useChatStore = defineStore('chat', () => {
 			}));
 	};
 
-	// 對話 topic 路徑分流（避免食安 snapshot 污染所有問題）：
-	//   FAQ:  「哪些食物/該注意什麼疾病食材/飲食建議」→ 短 prompt + 資料塞 user msg + 無 tool
-	//   COMP: 「找/有沒有 XX 組件/圖表/儀表板」→ 乾淨 prompt + 只給 search_dashboard_components
-	//   FOOD: 「累犯/抽驗/稽查/店家/食材」→ 食安 system prompt + snapshot + 食安 tools
-	//   CHAT: 你好/謝謝/閒聊/找不到 keyword → minimal prompt 無 tool
-	const FOOD_FAQ_REGEX = /(?:哪些(?:食物|食材|東西)|什麼食物|什麼東西.*(?:風險|危險)|高風險食物|風險食物|該避(?:開|免)|食物.*(?:風險|危險)|飲食安全|該注意.*(?:食材|食物|疾病|什麼)|市民.*(?:建議|注意)|民眾.*(?:建議|注意)|(?:一般|普通).*(?:民眾|市民|人).*(?:風險|建議|注意))/;
-	const COMPONENT_REGEX = /(?:組件|圖表|儀表板|dashboard|chart)/i;
-	const FOOD_DEEP_REGEX = /(?:累犯|抽驗|稽查|食安|違規|店家|供應商|食材|食品|食源|疾病|病原|諾羅|沙門|TFDA|衛福|長照|校園|脆弱|暴露|行政區.*(?:風險|排行)|風險.*行政區)/;
-
-	const detectTopic = (q) => {
-		if (FOOD_FAQ_REGEX.test(q)) return 'faq';
-		if (COMPONENT_REGEX.test(q)) return 'component';
-		if (FOOD_DEEP_REGEX.test(q)) return 'food';
-		return 'chat';
-	};
-
-	// 主對話入口：使用者送出訊息 → BE LLM (+/- tools) → 串接結果
+	// 主對話入口：使用者送出訊息 → BE LLM (帶完整 tools + tool_choice:auto) → 顯示回答
 	const sendChat = async (text) => {
 		if (chatStreaming.value) return;
 		const trimmed = text?.trim();
 		if (!trimmed) return;
 
-		// 1. 加入使用者訊息
 		chatData.value.push({
 			id: chatData.value.length + 1,
 			role: 'user',
@@ -260,7 +232,6 @@ export const useChatStore = defineStore('chat', () => {
 			content: trimmed,
 		});
 
-		// 2. 加入 bot 預留訊息
 		const botMessage = {
 			id: chatData.value.length + 1,
 			role: 'bot',
@@ -272,71 +243,37 @@ export const useChatStore = defineStore('chat', () => {
 		const botIdx = chatData.value.length - 1;
 		chatStreaming.value = true;
 
-		const topic = detectTopic(trimmed);
-		// 食安類才需要 snapshot；其他主題不 fetch（也避免污染）
-		const needSnapshot = topic === 'faq' || topic === 'food';
-		const snapshot = needSnapshot ? await buildReferenceSnapshot().catch(() => '') : '';
+		// 把「當前儀表板實際載入的組件清單」注入 system prompt —
+		// LLM 看到精確 index 才不會編造（ground truth > tool description）。
+		// 沒在當前儀表板的組件,LLM 應該避免 focus（無法生效）。
+		const contentStore = useContentStore();
+		const loaded = (contentStore.currentDashboard?.components || [])
+			.map((c) => `  - ${c.index} (${c.name}, city=${c.city})`)
+			.join('\n');
+		const componentContext = loaded
+			? `\n\n# 當前儀表板已載入的組件（focus_dashboard_view.component_index 必須從此清單挑選，不可編造）：\n${loaded}`
+			: '';
 
-		let messages;
-		let payloadTools = null; // null = 該 path 不傳 tools
-
-		if (topic === 'faq' && snapshot) {
-			messages = [
-				{
-					role: 'system',
-					content: '你是雙北食安顧問。直接用使用者提供的「資料」回答，主體必須是「食材名稱」（不是病原名）。中文，≤ 220 字。每項食材後括號標註關聯病原與案件數。最後一句行動建議。禁止只列病原名後說「請注意食品安全」這種空話。'
-				},
-				...buildHistoryMessages().slice(0, -1).slice(-4),
-				{
-					role: 'user',
-					content: `問題：${trimmed}\n\n以下是雙北食安 + TFDA 即時資料（請直接從中挑出相關食材回答）：\n\n${snapshot}`
-				},
-			];
-		} else if (topic === 'component') {
-			messages = [
-				{
-					role: 'system',
-					content: '你是【臺北城市儀表板】導覽小幫手。使用者要找儀表板組件或圖表時，**必須**呼叫 search_dashboard_components 工具搜尋，不要憑空回答。回應 ≤ 100 字介紹找到的組件。'
-				},
-				...buildHistoryMessages().slice(0, -1),
-			];
-			payloadTools = [TOOLS[0]]; // 只給 search_dashboard_components
-		} else if (topic === 'food' && snapshot) {
-			messages = [
-				{
-					role: 'system',
-					content: `${SYSTEM_PROMPT}\n\n# 即時資料快照（請直接引用實際數字、食材名、場域名回答）\n\n${snapshot}`
-				},
-				...buildHistoryMessages().slice(0, -1),
-			];
-			payloadTools = TOOLS.slice(1); // 食安 tools，不含 search_dashboard_components 避免誤觸
-		} else {
-			// chat: 一般閒聊 / 沒命中 keyword
-			messages = [
-				{
-					role: 'system',
-					content: '你是【臺北城市儀表板】小幫手。簡潔回答使用者問題（中文，≤ 150 字）。如果使用者要找儀表板組件，請提示他們可以說「幫我找 XX 的組件」；如果問食安，可以提示「哪些食物高風險」。'
-				},
-				...buildHistoryMessages().slice(0, -1),
-			];
-		}
+		const messages = [
+			{ role: 'system', content: SYSTEM_PROMPT + componentContext },
+			...buildHistoryMessages().slice(0, -1),
+		];
 
 		try {
-			const payload = {
+			const resp = await http.post('/ai/chat/twai', {
 				messages,
+				tools: TOOLS,
+				tool_choice: 'auto',
 				max_new_tokens: 600,
-				temperature: topic === 'faq' ? 0.3 : 0.4,
+				temperature: 0.3,
 				stream: false,
-			};
-			if (payloadTools) {
-				payload.tools = payloadTools;
-				payload.tool_choice = 'auto';
-			}
-			const resp = await http.post('/ai/chat/twai', payload);
+			});
 
 			const data = resp.data?.data ?? {};
-			const content = data.content ?? '';
+			let content = data.content ?? '';
 			const toolsRaw = data.tools;
+			const toolCallsRaw = Array.isArray(data.tool_calls) ? data.tool_calls : [];
+
 			let executedTools = [];
 			if (typeof toolsRaw === 'string' && toolsRaw && toolsRaw !== 'null') {
 				try { executedTools = JSON.parse(toolsRaw); } catch { /* ignore */ }
@@ -344,15 +281,26 @@ export const useChatStore = defineStore('chat', () => {
 				executedTools = toolsRaw;
 			}
 
-			// 模擬執行軌跡顯示
 			chatData.value[botIdx].toolCalls = executedTools.map((name, i) => ({
 				id: `t-${i}`,
 				name,
 				status: 'done',
 			}));
 
-			// 如果 LLM 呼叫過 search_dashboard_components，再打一次 vector search
-			// 把推薦組件渲染成「建立儀表板」按鈕（LLM 拿到的精簡資料無法直接餵進 UI）
+			// 處理 LLM 的 UI 指令型 tool — 把 focus_dashboard_view 的 args 套用到地圖
+			// 同一組件去重（LLM 偶爾會重複呼叫），保留第一個有效的
+			const focusSeen = new Set();
+			for (const tc of toolCallsRaw) {
+				if (tc.name !== 'focus_dashboard_view' || !tc.args) continue;
+				let parsed;
+				try { parsed = JSON.parse(tc.args); } catch { continue; }
+				const key = parsed.component_index;
+				if (!key || focusSeen.has(key)) continue;
+				focusSeen.add(key);
+				await applyFocusDirective(parsed);
+			}
+
+			// LLM 呼叫過 search_dashboard_components → 再打一次 vector search 拿完整 metadata 供 UI 渲染按鈕
 			if (executedTools.includes('search_dashboard_components')) {
 				try {
 					const vec = await http.post(
@@ -377,7 +325,9 @@ export const useChatStore = defineStore('chat', () => {
 				} catch (e) { /* ignore vector failure, LLM 文字答案還在 */ }
 			}
 
-			// 打字機效果
+			// 空回應 fallback — 避免使用者看到空字串以為 bot 壞了
+			if (!content.trim()) content = FALLBACK_MESSAGE;
+
 			await typewriter(content, (chunk) => {
 				chatData.value[botIdx].content += chunk;
 			});
@@ -438,6 +388,7 @@ export const useChatStore = defineStore('chat', () => {
 	return {
 		chatData,
 		recommendComponents,
+		focusDirective,
 		chatStreaming,
 		addChatData,
 		addQueryData,

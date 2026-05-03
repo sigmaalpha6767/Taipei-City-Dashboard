@@ -134,6 +134,9 @@ func ChatWithTWCC(c *gin.Context) {
 			},
 			"tool_used":   logEntry.ToolUsed,
 			"tools":       logEntry.Tools,
+			// tool_calls 為每次 tool call 的 name + raw args，FE 用來執行 UI 動作（如 focus_view）。
+			// 跟 tools（只有 name list）並存以保留向後相容。
+			"tool_calls":  logEntry.ToolCalls,
 			"latency_ms":  logEntry.LatencyMS,
 			"model":       logEntry.Model,
 			"provider":    logEntry.Provider,
