@@ -13,7 +13,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "search_dashboard_components",
-			description: "依使用者描述從本站組件向量庫搜尋最相似的儀表板組件（Qdrant）。當使用者問「我想看 XX 的儀表板/組件」「有沒有 OO 的圖表」這類問題時呼叫。",
+			description: "向量搜儀表板組件。問「有沒有 XX 組件」時呼叫。",
 			parameters: {
 				type: "object",
 				properties: {
@@ -29,7 +29,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_food_risk_summary",
-			description: "雙北食安抽驗的核心摘要：總件數、Top 高頻違規食材、行政區排行、違規類別分布。當使用者問「最近食安狀況」「哪些違規多」時呼叫。無參數。",
+			description: "雙北食安抽驗摘要(總件數、Top 違規食材、行政區排行)。問「最近食安」「哪些違規」時呼叫。",
 			parameters: { type: "object", properties: {}, required: [] },
 		},
 	},
@@ -37,7 +37,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_top_recidivists",
-			description: "多次違規累犯場域清單（店家、校園、供應商）。回傳場域名稱、違規次數、城市、所在行政區、主要違規類別、相關食材。當使用者問「累犯」「該稽查的店」「它們在哪」時呼叫。",
+			description: "累犯場域清單(店家/校園/供應商)。問「累犯」「該稽查的店」時呼叫。",
 			parameters: {
 				type: "object",
 				properties: { limit: { type: "integer", description: "取前幾名，預設 5" } },
@@ -49,7 +49,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_vulnerable_exposure",
-			description: "目前事件對校園、長照機構的暴露範圍：受影響學校、幼兒園、長照機構數、估計暴露人口、相關供應商。當使用者問「校園/長照受影響」時呼叫。",
+			description: "校園/長照暴露範圍。問「校園/長照受影響」時呼叫。",
 			parameters: { type: "object", properties: {}, required: [] },
 		},
 	},
@@ -57,7 +57,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_district_risk",
-			description: "指定城市的行政區風險排行（依違規件數）。當使用者問特定區或想比較行政區時呼叫。",
+			description: "行政區風險排行(依違規件數)。問特定區或行政區比較時呼叫。",
 			parameters: {
 				type: "object",
 				properties: {
@@ -72,7 +72,7 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "get_disease_stats",
-			description: "TFDA 民國 112 年全國食品中毒統計（諾羅、沙門氏菌、腸炎弧菌等 12 種病原）：件數、患者數、死亡數、相關食材、典型場所、處置策略、症狀。當使用者問「哪些食物高風險」「飲食建議」「群聚事件可能病原」「症狀反推食材」時呼叫 — 回答時主體是「食材」，病原當補充。",
+			description: "TFDA 112 年食品中毒病因統計(12 種病原+食材對照)。問「哪些食物高風險」「飲食建議」「症狀反推食材」時呼叫。回答時主體是食材。",
 			parameters: { type: "object", properties: {}, required: [] },
 		},
 	},
@@ -80,26 +80,21 @@ const TOOLS = [
 		type: "function",
 		function: {
 			name: "focus_dashboard_view",
-			description: "UI 指令型工具：當你已決定要用某個儀表板組件輔助分析時呼叫此工具，前端會自動把該組件的地圖圖層加入並套用 filter，讓使用者畫面跟你的分析重點同步。可與資料查詢工具同回合一起呼叫（例如先 get_district_risk 拿資料，再 focus_dashboard_view 把畫面切到行政區風險圖）。一次對話內針對同一組件最多呼叫 1 次。",
+			description: "UI 指令:把畫面切到指定組件 + 套 filter。可跟資料 tool 同回合呼叫。",
 			parameters: {
 				type: "object",
 				properties: {
 					component_index: {
 						type: "string",
-						description: "組件 index（不是 id）。常見：food_safety_district_chart（行政區排行）、school_food_risk（校園食安）、school_supplier_picker（廠商查詢）、food_supply_chain（供應鏈）、school_outbreak_trace（事件溯源）、food_safety_vulnerable_exposure（校園暴露）、food_safety_care_exposure（長照暴露）、hospitals（醫療密度）",
+						description: "從 system prompt 載入清單挑,不可編造。",
 					},
 					city: {
 						type: "string",
 						enum: ["taipei", "newtaipei", "metrotaipei"],
-						description: "想顯示的城市範圍。雙北全集用 metrotaipei；只看台北用 taipei；只看新北用 newtaipei",
 					},
 					filters: {
 						type: "object",
-						description: "額外 filter，常見鍵：district（行政區中文名，如「新莊區」）",
-					},
-					reason: {
-						type: "string",
-						description: "簡短說明為何選此組件（一句話，給使用者理解）",
+						description: "如 {district: '新莊區'}",
 					},
 				},
 				required: ["component_index"],
@@ -108,15 +103,80 @@ const TOOLS = [
 	},
 ];
 
-// 短 system prompt — domain 規則進 tool description（LLM 對 tool 描述的注意力比 prompt 末段強）
-const SYSTEM_PROMPT = `你是【臺北城市儀表板】小幫手，專注雙北食安與儀表板導覽。
-回答用中文，簡潔直接（≤ 250 字）。
-有相關工具時請呼叫工具拿真實資料，並引用回傳的具體數字、食材名、場域名，不要泛泛而談。
-找儀表板組件呼叫 search_dashboard_components；食安問題依問題類型呼叫對應 food/disease 工具。
-分析時若有對應組件可以視覺化你的論點，**同時呼叫 focus_dashboard_view** 讓畫面跟著你的分析切換，使用者就能看到你說的東西。
-找不到資料時誠實說明，不要靠通用知識亂答。`;
+// 極短 prompt — TWCC 16k context 很緊,長 prompt + 多 tool 結果累積會爆。
+// 兩種 prompt:有 tool 用「分析師」版,沒 tool 用「快路徑」版(下方 sendChat 動態挑)。
+const SYSTEM_PROMPT_WITH_TOOLS = `你是雙北食安決策分析師。
+規則:
+1. 數字、店名、食材、行政區只能引用 tool 結果,沒回的不准提(沒對應 tool 直接說「無資料 tool」)
+2. 三段式:**觀察**(具體資料)/**推論**(風險集中)/**建議**(1-2 條 actionable)
+3. 一次最多呼叫 1 個 tool,避免 context 爆掉
+4. 200 字內。禁止「請持續關注」這類空話,禁止「根據結果」開場`;
+
+const SYSTEM_PROMPT_NO_TOOLS = `你是雙北食安/儀表板小幫手。地圖已自動切到使用者要看的組件。
+請用中文簡短回應使用者的問題,直接給觀察跟一條行動建議,合計三到五句話。
+若使用者問的領域沒有對應資料,只要回「目前無此資料,請從地圖點位判讀位置即可」,千萬不要編造數字、店名、食材。`;
 
 const FALLBACK_MESSAGE = '我不太確定怎麼回答這個問題，可以換個說法，或試試「哪些食物高風險」、「找空氣品質的組件」、「最近食安累犯有哪些」嗎？';
+
+// ============================================================================
+// FE 端 focus 意圖偵測 — 因為 TWCC llama3.3-70b 對 tool calling 的可靠性有限,
+// 改用「確定性偵測 + LLM 兜底」的 hybrid 策略:
+//   - 強匹配關鍵字 → FE 直接派發 focus（不等 LLM）→ 保證畫面立即切到正確組件
+//   - 弱匹配 / 沒匹配 → 維持 LLM 自主判斷的路徑
+// LLM 仍負責文字分析(可能有幻覺,接受),但畫面切換從「LLM 抽獎」變成「FE 確定」。
+// 這違背極簡契約,但模型弱是現實,demo 可靠性 > 架構純粹。
+// ============================================================================
+
+// component_index → 觸發關鍵字(用 RegExp,可加入同義詞)。
+// 只列出真實存在於 DB 的 15 個 index 中、跟我們食安主題相關的 7 個,其他維持 LLM 判斷。
+const COMPONENT_KEYWORDS = [
+	{ idx: 'hospitals', patterns: [/醫療機構|醫院分布|醫院位置|醫療資源|診所/] },
+	{ idx: 'food_safety_vulnerable_exposure', patterns: [/校園.*食安.*暴露|幼兒園.*食安|校園.*受影響/] },
+	{ idx: 'food_safety_care_exposure', patterns: [/長照.*(?:食安|暴露)|養老.*食安|長照機構受影響/] },
+	{ idx: 'school_food_risk', patterns: [/中小學.*(?:食安|風險)|學校風險(?:地圖)?|校園.*風險地圖/] },
+	{ idx: 'school_supplier_picker', patterns: [/廠商.*(?:供應|查詢)|供應商查詢|廠商供應(?:學校)?/] },
+	{ idx: 'food_supply_chain', patterns: [/食品供應鏈|供應鏈.*(?:追溯|風險)/] },
+	{ idx: 'school_outbreak_trace', patterns: [/食安事件(?:溯源)?|學校.*事件.*溯源|outbreak/i] },
+];
+
+const TPE_DISTRICTS = ['中正區', '大同區', '中山區', '松山區', '大安區', '萬華區', '信義區', '士林區', '北投區', '內湖區', '南港區', '文山區'];
+const NEW_TPE_DISTRICTS = ['板橋區', '三重區', '中和區', '永和區', '新莊區', '新店區', '土城區', '蘆洲區', '汐止區', '樹林區', '鶯歌區', '三峽區', '淡水區', '瑞芳區', '五股區', '泰山區', '林口區', '深坑區', '石碇區', '坪林區', '三芝區', '石門區', '八里區', '平溪區', '雙溪區', '貢寮區', '金山區', '萬里區', '烏來區'];
+
+// 從使用者本輪問句解析出 focus 意圖。回傳 null 表示沒命中任何強匹配 → 交給 LLM。
+function detectFocusIntent(text) {
+	if (!text) return null;
+	let component_index = null;
+	for (const { idx, patterns } of COMPONENT_KEYWORDS) {
+		if (patterns.some((p) => p.test(text))) {
+			component_index = idx;
+			break;
+		}
+	}
+	if (!component_index) return null;
+
+	let city = null;
+	let district = null;
+	for (const d of TPE_DISTRICTS) {
+		if (text.includes(d)) { district = d; city = 'taipei'; break; }
+	}
+	if (!district) {
+		for (const d of NEW_TPE_DISTRICTS) {
+			if (text.includes(d)) { district = d; city = 'newtaipei'; break; }
+		}
+	}
+	if (!city) {
+		if (/臺北|台北/.test(text) && !/新北/.test(text)) city = 'taipei';
+		else if (/新北/.test(text)) city = 'newtaipei';
+		else city = 'metrotaipei';
+	}
+
+	return {
+		component_index,
+		city,
+		filters: district ? { district } : {},
+		_source: 'fe_keyword', // debug 標記
+	};
+}
 
 export const useChatStore = defineStore('chat', () => {
 	const defaultChatData = [
@@ -209,15 +269,8 @@ export const useChatStore = defineStore('chat', () => {
 		chatData.value.push({ id: chatData.value.length + 1, isDefault: false, ...newChatData });
 	};
 
-	// 把 chatData 轉成 BE 期待的 messages 格式（過濾預設訊息與 UI-only 欄位）
-	const buildHistoryMessages = () => {
-		return chatData.value
-			.filter((m) => !m.isDefault && m.content)
-			.map((m) => ({
-				role: m.role === 'bot' ? 'assistant' : 'user',
-				content: m.content,
-			}));
-	};
+	// 不再用對話歷史 — TWCC 16k context 很緊,加上 BE 端 multi-turn tool result 就爆。
+	// 改成單輪獨立呼叫,每輪只送當前 user msg。失去多輪一致性但換到不爆 context。
 
 	// 主對話入口：使用者送出訊息 → BE LLM (帶完整 tools + tool_choice:auto) → 顯示回答
 	const sendChat = async (text) => {
@@ -243,31 +296,55 @@ export const useChatStore = defineStore('chat', () => {
 		const botIdx = chatData.value.length - 1;
 		chatStreaming.value = true;
 
-		// 把「當前儀表板實際載入的組件清單」注入 system prompt —
-		// LLM 看到精確 index 才不會編造（ground truth > tool description）。
-		// 沒在當前儀表板的組件,LLM 應該避免 focus（無法生效）。
-		const contentStore = useContentStore();
-		const loaded = (contentStore.currentDashboard?.components || [])
-			.map((c) => `  - ${c.index} (${c.name}, city=${c.city})`)
-			.join('\n');
-		const componentContext = loaded
-			? `\n\n# 當前儀表板已載入的組件（focus_dashboard_view.component_index 必須從此清單挑選，不可編造）：\n${loaded}`
-			: '';
+		// FE 端意圖偵測 — 在 LLM 之前先做一次強匹配判斷:
+		//   命中 → 立刻派發 focus(畫面馬上切),LLM 後續只負責文字分析
+		//   沒命中 → 維持原本「讓 LLM 自己呼叫 focus_dashboard_view」流程
+		// 這是 hybrid 策略,確保「我想看醫療機構」「新莊區食安怎樣」這類明確指令
+		// 不會因為模型弱、tool calling 不穩而錯過或延遲。
+		const fePreFocus = detectFocusIntent(trimmed);
+		if (fePreFocus) {
+			applyFocusDirective(fePreFocus); // 不 await — 不阻塞 LLM
+		}
 
-		const messages = [
-			{ role: 'system', content: SYSTEM_PROMPT + componentContext },
-			...buildHistoryMessages().slice(0, -1),
-		];
+		// 雙路徑:命中 fePreFocus → 無工具快路徑(極省 token)
+		//        沒命中 → 一般工具路徑(LLM 自己呼叫資料 tool)
+		// 兩條路徑都 **不送歷史 + 不送 componentContext**,單輪獨立。
+		// (TWCC 16k context 很緊,BE 端 multi-turn tool result 就會吃掉一大半,
+		//  歷史 + 組件清單再疊上去就會爆 → 19000+ token 的事件常見)
+		let messages;
+		let toolsForLLM;
+		let maxTokens;
+
+		if (fePreFocus) {
+			// 快路徑:畫面已切好,只要簡短文字分析 → 不需 tools
+			messages = [
+				{ role: 'system', content: SYSTEM_PROMPT_NO_TOOLS },
+				{ role: 'user', content: trimmed },
+			];
+			toolsForLLM = null;
+			maxTokens = 250;
+		} else {
+			// 工具路徑:LLM 自選工具呼叫
+			messages = [
+				{ role: 'system', content: SYSTEM_PROMPT_WITH_TOOLS },
+				{ role: 'user', content: trimmed },
+			];
+			toolsForLLM = TOOLS;
+			maxTokens = 350;
+		}
 
 		try {
-			const resp = await http.post('/ai/chat/twai', {
+			const payload = {
 				messages,
-				tools: TOOLS,
-				tool_choice: 'auto',
-				max_new_tokens: 600,
-				temperature: 0.3,
+				max_new_tokens: maxTokens,
+				temperature: 0.1,
 				stream: false,
-			});
+			};
+			if (toolsForLLM) {
+				payload.tools = toolsForLLM;
+				payload.tool_choice = 'auto';
+			}
+			const resp = await http.post('/ai/chat/twai', payload);
 
 			const data = resp.data?.data ?? {};
 			let content = data.content ?? '';
@@ -300,8 +377,16 @@ export const useChatStore = defineStore('chat', () => {
 				await applyFocusDirective(parsed);
 			}
 
-			// LLM 呼叫過 search_dashboard_components → 再打一次 vector search 拿完整 metadata 供 UI 渲染按鈕
-			if (executedTools.includes('search_dashboard_components')) {
+			// 「資料關聯表 + 建立儀表板按鈕」只在使用者「純粹找組件」時才顯示。
+			// 若 LLM 同回合也呼叫了食安/疾病資料 tool 或 focus_dashboard_view,
+			// 代表這次是「分析任務」而非「找組件」,顯示關聯表會干擾決策回答的閱讀。
+			const dataTools = ['get_food_risk_summary', 'get_top_recidivists', 'get_vulnerable_exposure', 'get_district_risk', 'get_disease_stats'];
+			const calledDataOrFocus = executedTools.some(
+				(t) => dataTools.includes(t) || t === 'focus_dashboard_view',
+			);
+			const isPureComponentSearch =
+				executedTools.includes('search_dashboard_components') && !calledDataOrFocus;
+			if (isPureComponentSearch) {
 				try {
 					const vec = await http.post(
 						'/vector/component',

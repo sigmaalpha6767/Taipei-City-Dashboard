@@ -84,16 +84,25 @@ type aiSession struct {
 }
 
 func (s *aiSession) run(ctx context.Context) (*models.AIChatLog, error) {
-	maxLoops := 5
+	// maxLoops 從 5 → 2:TWCC llama 16k context 很緊,單個 tool 結果動輒 3000+ token,
+	// 5 輪累積後可達 40000+ token 直接爆 context。2 輪足夠「拿資料 → 整合回答」的常見場景。
+	maxLoops := 2
 	s.executedTools = make([]string, 0)
 	s.toolCallRecords = make([]models.ToolCallRecord, 0)
 	s.toolCallCache = make(map[string]string)
+
+	// pendingFinal 追蹤「剛 executeTools 了但還沒 generate 拿最終文字」的狀態。
+	// 解決 boundary bug:loop i=1(最後一輪)若 LLM 還呼叫 tool,executeTools 後就直接退出,
+	// 沒機會 generate 文字答案,使用者看到 tool calls 跑完但沒回答。
+	pendingFinal := false
+
 	for i := 0; i < maxLoops; i++ {
 		s.sendHeartbeat(ctx)
 
 		if err := s.generate(ctx); err != nil {
 			break
 		}
+		pendingFinal = false // 剛 generate 過,有 lastResp
 
 		toolCalls := s.extractToolCalls()
 		if len(toolCalls) == 0 {
@@ -127,7 +136,17 @@ func (s *aiSession) run(ctx context.Context) (*models.AIChatLog, error) {
 		if err := s.executeTools(ctx, toolCalls); err != nil {
 			break
 		}
+		pendingFinal = true // 剛跑完 tool,messages 裡有新 tool result,需再 generate 拿文字
 	}
+
+	// Boundary fix:迴圈結束後若還有 pendingFinal,強制再 generate 一次以拿到 LLM 的文字答案。
+	// 否則使用者只看到「tool_calls 跑完」但沒分析回答。
+	if pendingFinal {
+		logs.FInfo("Forcing final generate after maxLoops to get text answer")
+		s.sendHeartbeat(ctx)
+		s.generate(ctx)
+	}
+
 	return s.finalize()
 }
 
@@ -205,6 +224,14 @@ func (s *aiSession) executeTools(ctx context.Context, toolCalls []llms.ToolCall)
 			}
 			result = r
 			s.toolCallCache[sig] = r
+		}
+
+		// Tool result 防爆 — 單個結果超過 6000 chars(~3000 token)就 truncate。
+		// 食安 tool 偶爾回傳整個累犯 + 食材陣列幾千筆會直接讓 BE 累積到 40k+ token 爆 context。
+		const maxToolResultChars = 6000
+		if len(result) > maxToolResultChars {
+			logs.FInfo("Tool result truncated: %s (%d → %d chars)", tc.FunctionCall.Name, len(result), maxToolResultChars)
+			result = result[:maxToolResultChars] + "\n\n[TRUNCATED] 結果過大已截斷,請以已收到資料回答,不要再呼叫工具拿更多。"
 		}
 
 		s.currentMessages = append(s.currentMessages, llms.MessageContent{

@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from "vue";
-import { loadFoodExposure } from "../../store/foodInspectionData";
+import axios from "axios";
+import { useMapStore } from "../../store/mapStore";
 
 const props = defineProps([
 	"chart_config",
@@ -11,19 +12,23 @@ const props = defineProps([
 	"map_filter_on",
 ]);
 
-// 從 postgres-data 取（BE /food/exposure 聚合 vulnerable_facility_exposure +
-// district_exposure_summary + food_event_current）
-const payload = ref(null);
+const mapStore = useMapStore();
+
+// 直接讀 geojson(school + kindergarten) — 全集校園,跟地圖圖層同源
+const facilities = ref([]);
 const loading = ref(true);
 const error = ref(null);
-
-// City 從 map_config 推導（map_config[0].city = 'metrotaipei' / 'taipei'）
-const activeCity = computed(() => props.map_config?.[0]?.city || "");
 
 async function load() {
 	try {
 		loading.value = true;
-		payload.value = await loadFoodExposure({ city: activeCity.value });
+		const [schoolResp, kinResp] = await Promise.all([
+			axios.get("/mapData/vulnerable_facility_school.geojson"),
+			axios.get("/mapData/vulnerable_facility_kindergarten.geojson"),
+		]);
+		const fromGeojson = (resp) =>
+			(resp.data?.features || []).map((ft) => ({ ...ft.properties }));
+		facilities.value = [...fromGeojson(schoolResp), ...fromGeojson(kinResp)];
 	} catch (e) {
 		error.value = e.message || String(e);
 	} finally {
@@ -31,31 +36,55 @@ async function load() {
 	}
 }
 onMounted(load);
-watch(activeCity, load);
 
-const event = computed(() => payload.value?.event ?? null);
-const facilities = computed(() => payload.value?.facilities ?? []);
-const districts = computed(() => payload.value?.districts ?? []);
+// City 過濾:'taipei' → 只台北市;'newtaipei' → 只新北市;'metrotaipei'(雙北) → 全集
+const activeCity = computed(() => props.map_config?.[0]?.city || "metrotaipei");
+const cityToCh = { taipei: "臺北市", newtaipei: "新北市" };
 
-// 校園子集：school + kindergarten
-const schoolFacilities = computed(() =>
-	facilities.value.filter((f) => f.facility_type === "school" || f.facility_type === "kindergarten")
+const filtered = computed(() => {
+	const target = cityToCh[activeCity.value];
+	if (!target) return facilities.value;
+	return facilities.value.filter((f) => f.city === target);
+});
+
+const schoolCount = computed(
+	() => filtered.value.filter((f) => f.facility_type === "school").length,
 );
-const schoolCount = computed(() => schoolFacilities.value.filter((f) => f.facility_type === "school").length);
-const kindergartenCount = computed(() => schoolFacilities.value.filter((f) => f.facility_type === "kindergarten").length);
-
-// 行政區數：有任何 校 或 幼 的行政區
+const kindergartenCount = computed(
+	() => filtered.value.filter((f) => f.facility_type === "kindergarten").length,
+);
 const districtCount = computed(
-	() => new Set(schoolFacilities.value.map((f) => f.district)).size
+	() => new Set(filtered.value.map((f) => f.district).filter(Boolean)).size,
+);
+const totalCapacity = computed(() =>
+	filtered.value.reduce((acc, f) => acc + (f.population_or_capacity || 0), 0),
 );
 
-// 估計暴露學童：facilities 裡 type 是 school/kindergarten 的 exposure_population 加總
-const estimatedExposed = computed(() =>
-	schoolFacilities.value.reduce((acc, f) => acc + (f.exposure_population || 0), 0)
-);
-
-function pctEvent(p) { return `${(p * 100).toFixed(0)}%`; }
 function fmt(n) { return (n ?? 0).toLocaleString(); }
+
+// 把 activeCity 套到地圖 layer 上(mapbox setFilter)
+function applyMapCityFilter() {
+	if (!mapStore.map) return;
+	const target = cityToCh[activeCity.value];
+	for (const mc of (props.map_config || [])) {
+		const layerId = `${mc.index}-${mc.type}-${mc.city}`;
+		if (mapStore.map.getLayer && mapStore.map.getLayer(layerId)) {
+			try {
+				if (target) {
+					mapStore.map.setFilter(layerId, ["==", ["get", "city"], target]);
+				} else {
+					mapStore.map.setFilter(layerId, null);
+				}
+			} catch { /* layer 沒 city 屬性就忽略 */ }
+		}
+	}
+}
+onMounted(applyMapCityFilter);
+watch(
+	() => [activeCity.value, mapStore.currentLayers.length],
+	() => applyMapCityFilter(),
+	{ flush: "post" },
+);
 </script>
 
 <template>
@@ -64,34 +93,13 @@ function fmt(n) { return (n ?? 0).toLocaleString(); }
 		<div v-else-if="error" class="vexp__state vexp__state--error">載入失敗：{{ error }}</div>
 
 		<template v-else>
-			<!-- 事件 header -->
-			<div v-if="event" class="vexp__event">
-				<div class="vexp__event-cell">
-					<span class="vexp__label">疑似原料</span>
-					<span class="vexp__value vexp__value--em">{{ event.suspected_ingredient }}</span>
-				</div>
-				<div class="vexp__event-cell">
-					<span class="vexp__label">疑似供應商</span>
-					<span class="vexp__value">{{ event.suspected_supplier_name }}</span>
-				</div>
-				<div class="vexp__event-cell">
-					<span class="vexp__label">風險類型</span>
-					<span class="vexp__value">{{ event.risk_type }}</span>
-				</div>
-				<div class="vexp__event-cell">
-					<span class="vexp__label">機率</span>
-					<span class="vexp__value vexp__value--em">{{ pctEvent(event.probability) }}</span>
-				</div>
-			</div>
-
-			<!-- 4 格 KPI -->
 			<div class="vexp__quad">
 				<div class="vexp__quad-cell">
-					<div class="vexp__quad-label">受影響國中小</div>
+					<div class="vexp__quad-label">國中小</div>
 					<div class="vexp__quad-value">{{ schoolCount }}<span class="vexp__quad-unit">所</span></div>
 				</div>
 				<div class="vexp__quad-cell">
-					<div class="vexp__quad-label">受影響幼兒園</div>
+					<div class="vexp__quad-label">幼兒園</div>
 					<div class="vexp__quad-value">{{ kindergartenCount }}<span class="vexp__quad-unit">所</span></div>
 				</div>
 				<div class="vexp__quad-cell">
@@ -99,8 +107,8 @@ function fmt(n) { return (n ?? 0).toLocaleString(); }
 					<div class="vexp__quad-value">{{ districtCount }}<span class="vexp__quad-unit">區</span></div>
 				</div>
 				<div class="vexp__quad-cell">
-					<div class="vexp__quad-label">估計暴露學童</div>
-					<div class="vexp__quad-value">{{ fmt(estimatedExposed) }}<span class="vexp__quad-unit">人</span></div>
+					<div class="vexp__quad-label">總學童名額</div>
+					<div class="vexp__quad-value">{{ fmt(totalCapacity) }}<span class="vexp__quad-unit">人</span></div>
 				</div>
 			</div>
 		</template>
@@ -120,20 +128,6 @@ function fmt(n) { return (n ?? 0).toLocaleString(); }
 	color: var(--color-complement-text);
 	&--error { color: var(--color-highlight); }
 }
-.vexp__event {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 8px;
-	padding: 10px 12px;
-	background: rgba(0, 0, 0, 0.18);
-	border: 1px solid var(--color-border);
-	border-radius: 4px;
-	margin-bottom: 12px;
-}
-.vexp__event-cell { display: flex; flex-direction: column; gap: 4px; }
-.vexp__label { font-size: 10px; color: var(--color-complement-text); }
-.vexp__value { font-size: 13px; color: var(--color-normal-text); font-weight: 500; }
-.vexp__value--em { color: var(--color-highlight); font-weight: 700; }
 .vexp__quad {
 	display: grid;
 	grid-template-columns: 1fr 1fr;

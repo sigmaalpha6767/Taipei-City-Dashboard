@@ -43,9 +43,15 @@ const apexSeries = computed(() => [{
 	})),
 }]);
 
-const distributedColors = computed(() =>
-	top10.value.map((_, i) => RANK_COLORS[i] || "#999")
-);
+// 依 fail_count 分組：相同件數 → 相同顏色；件數越多 → 顏色越深
+const distributedColors = computed(() => {
+	const uniqueCounts = [...new Set(top10.value.map(s => s.fail_count))]
+		.sort((a, b) => b - a);
+	const countToColor = new Map(
+		uniqueCounts.map((c, i) => [c, RANK_COLORS[i] || "#999"])
+	);
+	return top10.value.map(s => countToColor.get(s.fail_count) || "#999");
+});
 
 const top10Sum = computed(() => top10.value.reduce((acc, s) => acc + s.fail_count, 0));
 const totalSum = computed(() => samples.value.reduce((acc, s) => acc + s.fail_count, 0));

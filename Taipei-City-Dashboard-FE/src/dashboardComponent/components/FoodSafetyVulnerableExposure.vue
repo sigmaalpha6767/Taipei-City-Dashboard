@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, ref, watch } from "vue";
-import { loadFoodExposure } from "../../store/foodInspectionData";
+import axios from "axios";
+import { useMapStore } from "../../store/mapStore";
 
 const props = defineProps([
 	"chart_config",
@@ -11,18 +12,23 @@ const props = defineProps([
 	"map_filter_on",
 ]);
 
-// 資料即時從 postgres-data 取（BE /food/exposure 聚合 vulnerable_facility_exposure +
-// district_exposure_summary + food_event_current 三張表，不再讀靜態 JSON）
-const payload = ref(null);
+const mapStore = useMapStore();
+
+// 直接讀 geojson(school + kindergarten) — 全集校園,跟地圖圖層同源
+const facilities = ref([]);
 const loading = ref(true);
 const error = ref(null);
-
-const activeCity = computed(() => props.map_config?.[0]?.city || "");
 
 async function load() {
 	try {
 		loading.value = true;
-		payload.value = await loadFoodExposure({ city: activeCity.value });
+		const [schoolResp, kinResp] = await Promise.all([
+			axios.get("/mapData/vulnerable_facility_school.geojson"),
+			axios.get("/mapData/vulnerable_facility_kindergarten.geojson"),
+		]);
+		const fromGeojson = (resp) =>
+			(resp.data?.features || []).map((ft) => ({ ...ft.properties }));
+		facilities.value = [...fromGeojson(schoolResp), ...fromGeojson(kinResp)];
 	} catch (e) {
 		error.value = e.message || String(e);
 	} finally {
@@ -30,14 +36,55 @@ async function load() {
 	}
 }
 onMounted(load);
-watch(activeCity, load);
 
-const event = computed(() => payload.value?.event ?? null);
-const summary = computed(() => payload.value?.summary ?? null);
+// City 過濾:'taipei' → 只台北市;'newtaipei' → 只新北市;'metrotaipei'(雙北) → 全集
+const activeCity = computed(() => props.map_config?.[0]?.city || "metrotaipei");
+const cityToCh = { taipei: "臺北市", newtaipei: "新北市" };
 
-function pctEvent(p) {
-	return `${(p * 100).toFixed(0)}%`;
+const filtered = computed(() => {
+	const target = cityToCh[activeCity.value];
+	if (!target) return facilities.value;
+	return facilities.value.filter((f) => f.city === target);
+});
+
+const schoolCount = computed(
+	() => filtered.value.filter((f) => f.facility_type === "school").length,
+);
+const kindergartenCount = computed(
+	() => filtered.value.filter((f) => f.facility_type === "kindergarten").length,
+);
+const districtCount = computed(
+	() => new Set(filtered.value.map((f) => f.district).filter(Boolean)).size,
+);
+const totalCapacity = computed(() =>
+	filtered.value.reduce((acc, f) => acc + (f.population_or_capacity || 0), 0),
+);
+
+function fmt(n) { return (n ?? 0).toLocaleString(); }
+
+// 把 activeCity 套到地圖 layer 上(mapbox setFilter)
+function applyMapCityFilter() {
+	if (!mapStore.map) return;
+	const target = cityToCh[activeCity.value];
+	for (const mc of (props.map_config || [])) {
+		const layerId = `${mc.index}-${mc.type}-${mc.city}`;
+		if (mapStore.map.getLayer && mapStore.map.getLayer(layerId)) {
+			try {
+				if (target) {
+					mapStore.map.setFilter(layerId, ["==", ["get", "city"], target]);
+				} else {
+					mapStore.map.setFilter(layerId, null);
+				}
+			} catch { /* layer 沒 city 屬性就忽略 */ }
+		}
+	}
 }
+onMounted(applyMapCityFilter);
+watch(
+	() => [activeCity.value, mapStore.currentLayers.length],
+	() => applyMapCityFilter(),
+	{ flush: "post" },
+);
 </script>
 
 <template>
@@ -46,51 +93,22 @@ function pctEvent(p) {
 		<div v-else-if="error" class="vexp__state vexp__state--error">載入失敗：{{ error }}</div>
 
 		<template v-else>
-			<!-- 事件資訊（4 column header）-->
-			<div v-if="event" class="vexp__event">
-				<div class="vexp__event-cell">
-					<span class="vexp__label">疑似原料</span>
-					<span class="vexp__value vexp__value--em">{{ event.suspected_ingredient }}</span>
-				</div>
-				<div class="vexp__event-cell">
-					<span class="vexp__label">疑似供應商</span>
-					<span class="vexp__value">{{ event.suspected_supplier_name }}</span>
-				</div>
-				<div class="vexp__event-cell">
-					<span class="vexp__label">風險類型</span>
-					<span class="vexp__value">{{ event.risk_type }}</span>
-				</div>
-				<div class="vexp__event-cell">
-					<span class="vexp__label">機率</span>
-					<span class="vexp__value vexp__value--em">{{ pctEvent(event.probability) }}</span>
-				</div>
-			</div>
-
-			<!-- 4 格 KPI（國中小 / 幼兒園 / 長照 / 高暴露行政區）-->
-			<div v-if="summary" class="vexp__quad">
+			<div class="vexp__quad">
 				<div class="vexp__quad-cell">
-					<div class="vexp__quad-label">受影響國中小</div>
-					<div class="vexp__quad-value">
-						{{ summary.affected_school_count }}<span class="vexp__quad-unit">所</span>
-					</div>
+					<div class="vexp__quad-label">國中小</div>
+					<div class="vexp__quad-value">{{ schoolCount }}<span class="vexp__quad-unit">所</span></div>
 				</div>
 				<div class="vexp__quad-cell">
-					<div class="vexp__quad-label">受影響幼兒園</div>
-					<div class="vexp__quad-value">
-						{{ summary.affected_kindergarten_count }}<span class="vexp__quad-unit">所</span>
-					</div>
+					<div class="vexp__quad-label">幼兒園</div>
+					<div class="vexp__quad-value">{{ kindergartenCount }}<span class="vexp__quad-unit">所</span></div>
 				</div>
 				<div class="vexp__quad-cell">
-					<div class="vexp__quad-label">受影響長照機構</div>
-					<div class="vexp__quad-value">
-						{{ summary.affected_care_count }}<span class="vexp__quad-unit">家</span>
-					</div>
+					<div class="vexp__quad-label">涉及行政區</div>
+					<div class="vexp__quad-value">{{ districtCount }}<span class="vexp__quad-unit">區</span></div>
 				</div>
 				<div class="vexp__quad-cell">
-					<div class="vexp__quad-label">高暴露行政區</div>
-					<div class="vexp__quad-value">
-						{{ summary.high_exposure_district_count }}<span class="vexp__quad-unit">區</span>
-					</div>
+					<div class="vexp__quad-label">總學童名額</div>
+					<div class="vexp__quad-value">{{ fmt(totalCapacity) }}<span class="vexp__quad-unit">人</span></div>
 				</div>
 			</div>
 		</template>
@@ -104,45 +122,12 @@ function pctEvent(p) {
 	font-size: var(--font-s);
 	padding: 4px 8px 8px;
 }
-
 .vexp__state {
 	padding: 40px;
 	text-align: center;
 	color: var(--color-complement-text);
 	&--error { color: var(--color-highlight); }
 }
-
-/* 事件 header */
-.vexp__event {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 8px;
-	padding: 10px 12px;
-	background: rgba(0, 0, 0, 0.18);
-	border: 1px solid var(--color-border);
-	border-radius: 4px;
-	margin-bottom: 12px;
-}
-.vexp__event-cell {
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
-}
-.vexp__label {
-	font-size: 10px;
-	color: var(--color-complement-text);
-}
-.vexp__value {
-	font-size: 13px;
-	color: var(--color-normal-text);
-	font-weight: 500;
-}
-.vexp__value--em {
-	color: var(--color-highlight);
-	font-weight: 700;
-}
-
-/* 4 格簡潔 KPI（仿長照指標 quadrant） */
 .vexp__quad {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -150,35 +135,17 @@ function pctEvent(p) {
 	min-height: 220px;
 }
 .vexp__quad-cell {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 8px;
-	padding: 16px;
+	display: flex; flex-direction: column; justify-content: center; align-items: center;
+	gap: 8px; padding: 16px;
 	border-right: 1px solid var(--color-border);
 	border-bottom: 1px solid var(--color-border);
-
 	&:nth-child(2n) { border-right: none; }
 	&:nth-child(n+3) { border-bottom: none; }
 }
-.vexp__quad-label {
-	font-size: 13px;
-	color: var(--color-complement-text);
-	letter-spacing: 0.04em;
-}
+.vexp__quad-label { font-size: 13px; color: var(--color-complement-text); letter-spacing: 0.04em; }
 .vexp__quad-value {
-	font-size: 36px;
-	font-weight: 700;
-	color: var(--color-highlight);
-	line-height: 1;
-	display: flex;
-	align-items: baseline;
-	gap: 4px;
+	font-size: 36px; font-weight: 700; color: var(--color-highlight); line-height: 1;
+	display: flex; align-items: baseline; gap: 4px;
 }
-.vexp__quad-unit {
-	font-size: 14px;
-	font-weight: 500;
-	color: var(--color-complement-text);
-}
+.vexp__quad-unit { font-size: 14px; font-weight: 500; color: var(--color-complement-text); }
 </style>
